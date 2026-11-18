@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>চাকরির খবর – আজকের সার্কুলার</title>
+<meta name="description" content="সরকারি, ব্যাংক, এনজিও ও বেসরকারি চাকরির নতুন সার্কুলার এক জায়গায়।">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;600;700&display=swap">
+<style>
+:root{--bg:#f3f5f1;--card:#fff;--ink:#16221b;--mute:#5c6b62;--line:#dbe2da;--acc:#0b6b57;--accfg:#fff;--hot:#b4321c;--hotbg:#fbe9e5}
+@media(prefers-color-scheme:dark){:root{--bg:#0f1713;--card:#17221c;--ink:#e6efe9;--mute:#9db0a5;--line:#263429;--acc:#4cc2a4;--accfg:#06241c;--hot:#ff9a85;--hotbg:#3a1e18}}
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Hind Siliguri","Noto Sans Bengali",system-ui,sans-serif;line-height:1.55}
+.wrap{max-width:720px;margin:0 auto;padding:16px}
+h1{margin:14px 0 0;font-size:1.7rem}
+.date{color:var(--mute);font-size:.95rem}
+.demo{margin:12px 0;padding:10px 12px;border:1px dashed var(--line);border-radius:10px;color:var(--mute);font-size:.88rem}
+.search{width:100%;padding:12px 14px;border:1px solid var(--line);border-radius:10px;background:var(--card);color:var(--ink);font:inherit}
+.tabs{display:flex;gap:8px;overflow-x:auto;padding:12px 0}
+.tabs button{flex:none;padding:7px 14px;border:1px solid var(--line);border-radius:999px;background:var(--card);color:var(--ink);font:inherit;cursor:pointer}
+.tabs button[aria-pressed="true"]{background:var(--acc);color:var(--accfg);border-color:var(--acc)}
+.count{color:var(--mute);font-size:.88rem;margin-bottom:10px}
+article{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px;margin-bottom:10px}
+article h2{margin:0 0 6px;font-size:1.08rem;line-height:1.4}
+.meta{display:flex;flex-wrap:wrap;gap:6px 14px;color:var(--mute);font-size:.88rem}
+.tag{color:var(--acc);font-weight:600}
+.left{margin-top:10px;font-size:.9rem;font-weight:600}
+.left.hot{display:inline-block;color:var(--hot);background:var(--hotbg);padding:2px 10px;border-radius:999px}
+.row{display:flex;gap:8px;margin-top:12px}
+.row a,.row button{flex:1;text-align:center;padding:9px;border-radius:9px;font:inherit;font-size:.92rem;cursor:pointer;text-decoration:none}
+.row a{background:var(--acc);color:var(--accfg)}
+.row button{background:transparent;color:var(--ink);border:1px solid var(--line)}
+.empty{text-align:center;color:var(--mute);padding:30px 0}
+footer{color:var(--mute);font-size:.82rem;padding:18px 0 28px}
+</style>
+</head>
+<body>
+<div class="wrap">
+<h1>চাকরির খবর</h1>
+<div class="date" id="today"></div>
+<div class="demo" id="demo" hidden>এখানকার কিছু সার্কুলার নমুনা তথ্য, আসল নয়।</div>
+<input class="search" id="q" type="search" placeholder="পদ বা প্রতিষ্ঠান খুঁজুন" aria-label="খুঁজুন">
+<div class="tabs" id="tabs"></div>
+<div class="count" id="count"></div>
+<main id="list"></main>
+<footer>আবেদনের আগে অবশ্যই প্রতিষ্ঠানের মূল বিজ্ঞপ্তি দেখে নিন। এখানকার তথ্যে ভুল থাকতে পারে।</footer>
+</div>
+<script>
+const cats=["সব","সরকারি","ব্যাংক","এনজিও","বেসরকারি","শিক্ষক"];
+const bn=s=>String(s).replace(/\d/g,d=>"০১২৩৪৫৬৭৮৯"[d]);
+const fmt=d=>d.toLocaleDateString("bn-BD",{day:"numeric",month:"long"});
+const now=new Date();now.setHours(0,0,0,0);
+document.getElementById("today").textContent=now.toLocaleDateString("bn-BD",{weekday:"long",day:"numeric",month:"long",year:"numeric"});
+let jobs=[],cat="সব",term="";
+const tabs=document.getElementById("tabs"),list=document.getElementById("list"),count=document.getElementById("count");
+cats.forEach(c=>{const b=document.createElement("button");b.textContent=c;b.setAttribute("aria-pressed",c===cat);b.onclick=()=>{cat=c;[...tabs.children].forEach(x=>x.setAttribute("aria-pressed",x===b));render()};tabs.appendChild(b)});
+document.getElementById("q").oninput=e=>{term=e.target.value.trim();render()};
+async function share(j,dl){
+  const text=j.title+" – "+j.org+" (শেষ তারিখ: "+fmt(dl)+")";
+  try{if(navigator.share){await navigator.share({title:j.title,text,url:location.href});return}}catch(e){return}
+  try{await navigator.clipboard.writeText(text+" "+location.href);alert("কপি হয়েছে")}catch(e){prompt("কপি করুন",text)}
+}
+function render(){
+  const r=jobs.filter(j=>(cat==="সব"||j.cat===cat)&&(!term||(j.title+j.org).includes(term)));
+  count.textContent=bn(r.length)+"টি সার্কুলার";
+  list.innerHTML="";
+  if(!r.length){list.innerHTML='<div class="empty">কিছু পাওয়া যায়নি।</div>';return}
+  r.forEach(j=>{
+    const dl=new Date(j.deadline+"T00:00:00"),days=Math.round((dl-now)/864e5),hot=days<=3;
+    const a=document.createElement("article");
+    a.innerHTML='<h2></h2><div class="meta"><span class="tag"></span><span class="o"></span><span class="v"></span><span class="g"></span></div><div class="left'+(hot?' hot':'')+'"></div><div class="row"><a target="_blank" rel="noopener">মূল বিজ্ঞপ্তি দেখুন</a><button type="button">শেয়ার করুন</button></div>';
+    a.querySelector("h2").textContent=j.title;
+    a.querySelector(".tag").textContent=j.cat;
+    a.querySelector(".o").textContent=j.org;
+    a.querySelector(".v").textContent="পদ: "+bn(j.posts);
+    a.querySelector(".g").textContent=j.grade||"";
+    a.querySelector(".left").textContent=(hot?"তাড়াতাড়ি! ":"")+bn(days)+" দিন বাকি (শেষ তারিখ "+fmt(dl)+")";
+    a.querySelector("a").href=j.link||"#";
+    a.querySelector("button").onclick=()=>share(j,dl);
+    list.appendChild(a);
+  });
+}
+fetch("jobs.json").then(r=>r.json()).then(d=>{
+  jobs=d.filter(j=>new Date(j.deadline+"T23:59:59")>=now).sort((a,b)=>a.deadline.localeCompare(b.deadline));
+  document.getElementById("demo").hidden=!jobs.some(j=>j.demo);
+  render();
+}).catch(()=>{count.textContent="সার্কুলার লোড করা যায়নি।"});
+</script>
+</body>
+</html>
