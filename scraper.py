@@ -1,6 +1,6 @@
-
-# চাকরির খবর স্ক্র্যাপার (v2): পত্রিকা, সরকারি ও বেসরকারি জব সাইট থেকে শিরোনাম, শেষ তারিখ ও মূল লিংক নেয়।
+# চাকরির খবর স্ক্র্যাপার (v3): পত্রিকা, সরকারি ও বেসরকারি জব সাইট থেকে শিরোনাম, শেষ তারিখ ও মূল লিংক নেয়।
 # Gemini দিয়ে প্রতিষ্ঠান / পদসংখ্যা / গ্রেড / ক্যাটেগরি বের করে (কী না থাকলে AI ছাড়াই চলে)।
+# v3 পরিবর্তন: Gemini 503 / Timeout / 429 হলে নিজে থেকে পরের মডেলে যায়, সময়সীমা বেঁধে দেওয়া আছে।
 import json, re, os, time, html, urllib.request, urllib.parse, urllib.error
 from datetime import date, timedelta
 from html.parser import HTMLParser
@@ -74,7 +74,12 @@ GEMINI_MODELS = ([os.environ["GEMINI_MODEL"]] if os.environ.get("GEMINI_MODEL") 
     "gemini-3.8-flash", "gemini-3.5-flash-lite", "gemini-3.5-flash", "gemini-2.5-flash"]
 MAX_AI_NEW = 30        # প্রতি রানে নতুন জবের জন্য সর্বোচ্চ Gemini কল
 MAX_AI_BACKFILL = 15   # পুরনো জবের তথ্য ভরার জন্য আলাদা সীমা
-AI = {"calls": 0, "off": not GEMINI_KEY, "model": 0}
+AI_TIMEOUT = 30        # প্রতিবার Gemini-র উত্তরের জন্য সর্বোচ্চ অপেক্ষা (সেকেন্ড)
+AI_TIME_LIMIT = 480    # পুরো রানে Gemini-র পেছনে সর্বোচ্চ সময় (৮ মিনিট), তারপর AI বন্ধ
+AI_STREAK_LIMIT = 3    # পরপর এতবার সব মডেল ব্যর্থ হলে এই রানে AI বন্ধ
+AI_MODEL_FAILS = 2     # একটা মডেল এতবার ব্যর্থ হলে এই রানে আর সেটা চেষ্টা করা হবে না
+# calls = কতগুলো জবের জন্য Gemini ডাকা হয়েছে, tries = মোট HTTP চেষ্টা (ফলব্যাকসহ)
+AI = {"calls": 0, "tries": 0, "off": not GEMINI_KEY, "streak": 0, "start": time.time(), "mfail": {}}
 ALLOWED_CATS = {"সরকারি", "ব্যাংক", "এনজিও", "শিক্ষক", "বেসরকারি"}
 EMPTY_POSTS = ("—", "–", "", None)
 JOB_WORDS = re.compile(r"নিয়োগ|বিজ্ঞপ্তি|চাকরি|চাকুরি|সার্কুলার|job|career|recruit|vacanc|circular|hiring|apply", re.I)
@@ -174,9 +179,23 @@ def guess_posts(t):
 
 
 # ------------------------ Gemini ------------------------
+def usable_models():
+    """এই রানে যে মডেলগুলো এখনো চেষ্টা করার মতো।"""
+    return [m for m in GEMINI_MODELS if AI["mfail"].get(m, 0) < AI_MODEL_FAILS]
+
+
+def model_failed(model, hard=False):
+    """hard=True হলে (মডেল নেই / কোটা শেষ) এই রানে মডেলটা পুরোপুরি বাদ।"""
+    AI["mfail"][model] = 99 if hard else AI["mfail"].get(model, 0) + 1
+
+
 def gemini_extract(title, body, budget):
-    """{org, posts, grade, cat} ফেরত দেয়। ব্যর্থ হলে None (খালি dict নয়, যাতে বোঝা যায় ব্যর্থ)।"""
+    """{org, posts, grade, cat} ফেরত দেয়। ব্যর্থ হলে None (খালি dict নয়, যাতে বোঝা যায় ব্যর্থ)।
+    একটা মডেল 503/Timeout/429 দিলে পরের মডেলে চেষ্টা করে।"""
     if AI["off"] or AI["calls"] >= budget:
+        return None
+    if time.time() - AI["start"] > AI_TIME_LIMIT:
+        print("Gemini-র সময়সীমা শেষ, এই রানে আর AI হবে না"); AI["off"] = True
         return None
     # টাইটেলের কাছাকাছি থেকে কেটে নিই, যাতে মেনুতেই সীমা শেষ না হয়
     i = body.find(title[:25]) if title else -1
@@ -191,39 +210,50 @@ def gemini_extract(title, body, budget):
         "শিরোনাম: " + title + "\n\nলেখা:\n" + body[:MAX_BODY])
     data = json.dumps({"contents": [{"parts": [{"text": prompt}]}],
                        "generationConfig": {"responseMimeType": "application/json", "temperature": 0}}).encode()
-    while AI["model"] < len(GEMINI_MODELS):
-        model = GEMINI_MODELS[AI["model"]]
+    AI["calls"] += 1
+    for model in usable_models():
         req = urllib.request.Request(
             "https://generativelanguage.googleapis.com/v1beta/models/" + model + ":generateContent", data=data,
             headers={"Content-Type": "application/json", "x-goog-api-key": GEMINI_KEY})
-        AI["calls"] += 1
+        AI["tries"] += 1
         try:
-            with urllib.request.urlopen(req, timeout=60) as r:
+            with urllib.request.urlopen(req, timeout=AI_TIMEOUT) as r:
                 res = json.loads(r.read().decode("utf-8"))
-            time.sleep(4)  # ফ্রি টিয়ারের প্রতি মিনিট সীমা
             out = json.loads(res["candidates"][0]["content"]["parts"][0]["text"])
-            if isinstance(out, list) and out: out = out[0]
-            if not isinstance(out, dict): return {}
-            posts = str(out.get("posts", "")).strip()
-            cat = str(out.get("cat", "")).strip()
-            return {"org": str(out.get("org", "")).strip()[:80],
-                    "posts": posts if re.fullmatch(r"[0-9০-৯]{1,5}", posts) else "",
-                    "grade": str(out.get("grade", "")).strip()[:40],
-                    "cat": cat if cat in ALLOWED_CATS else ""}
         except urllib.error.HTTPError as e:
             msg = ""
             try: msg = e.read().decode("utf-8", "ignore")[:200]
             except Exception: pass
-            if e.code == 404:  # শুধু মডেল না পেলে পরেরটায় যাই
-                print("Gemini মডেল পাওয়া যায়নি:", model); AI["model"] += 1; continue
-            if e.code in (400, 403):  # সাধারণত key ভুল/সীমাবদ্ধ: মডেল বদলে লাভ নেই
-                print("Gemini key/অনুরোধ সমস্যা", e.code, msg); AI["off"] = True; return None
-            if e.code == 429:
-                print("Gemini কোটা শেষ, এই রানে আর AI হবে না"); AI["off"] = True; return None
-            print("Gemini ত্রুটি:", e.code); time.sleep(4); return None
+            if e.code == 404:
+                print("Gemini মডেল পাওয়া যায়নি:", model); model_failed(model, hard=True)
+            elif e.code in (400, 401, 403) and re.search(r"api[\s_-]*key|permission|denied|unauthenticated", msg, re.I):
+                print("Gemini key সমস্যা", e.code, msg); AI["off"] = True
+                return None   # key ভুল: মডেল বদলে লাভ নেই
+            elif e.code == 429:
+                print("Gemini কোটা শেষ (429):", model); model_failed(model, hard=True)
+            else:
+                print("Gemini ত্রুটি:", e.code, model); model_failed(model)
+            time.sleep(2); continue
         except Exception as e:
-            print("Gemini ত্রুটি:", type(e).__name__); time.sleep(4); return None
-    print("কোনো Gemini মডেল কাজ করেনি, AI বন্ধ"); AI["off"] = True
+            print("Gemini ত্রুটি:", type(e).__name__, model); model_failed(model)
+            time.sleep(2); continue
+        # সফল
+        AI["mfail"][model] = 0; AI["streak"] = 0
+        time.sleep(4)  # ফ্রি টিয়ারের প্রতি মিনিট সীমা
+        if isinstance(out, list) and out: out = out[0]
+        if not isinstance(out, dict): return {}
+        posts = str(out.get("posts", "")).strip()
+        cat = str(out.get("cat", "")).strip()
+        return {"org": str(out.get("org", "")).strip()[:80],
+                "posts": posts if re.fullmatch(r"[0-9০-৯]{1,5}", posts) else "",
+                "grade": str(out.get("grade", "")).strip()[:40],
+                "cat": cat if cat in ALLOWED_CATS else ""}
+    # কোনো মডেলই সাড়া দেয়নি
+    AI["streak"] += 1
+    if not usable_models():
+        print("কোনো Gemini মডেল কাজ করছে না, এই রানে AI বন্ধ"); AI["off"] = True
+    elif AI["streak"] >= AI_STREAK_LIMIT:
+        print("পরপর", AI["streak"], "বার Gemini ব্যর্থ, এই রানে AI বন্ধ"); AI["off"] = True
     return None
 
 
@@ -324,7 +354,9 @@ def main():
     for name, obj in (("jobs.json", jobs), ("skipped.json", skipped)):
         json.dump(obj, open(name + ".tmp", "w", encoding="utf-8"), ensure_ascii=False, indent=2)
         os.replace(name + ".tmp", name)
-    print("যোগ হয়েছে:", added, "মোট:", len(jobs), "Gemini কল:", AI["calls"])
+    ok_ai = sum(1 for j in jobs if j.get("ai"))
+    print("যোগ হয়েছে:", added, "মোট:", len(jobs), "Gemini কল:", AI["calls"], "(চেষ্টা:", str(AI["tries"]) + ")",
+          "AI-ভরা জব:", ok_ai)
 
 
 if __name__ == "__main__":
