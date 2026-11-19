@@ -1,5 +1,5 @@
-# চাকরির খবর স্ক্র্যাপার: শিরোনাম, শেষ তারিখ ও মূল লিংক নেয়।
-import json, re, time, urllib.request, urllib.parse
+# চাকরির খবর স্ক্র্যাপার: শিরোনাম, শেষ তারিখ ও মূল লিংক নেয়। Gemini দিয়ে প্রতিষ্ঠান/পদসংখ্যা/গ্রেড বের করে।
+import json, re, os, time, urllib.request, urllib.parse, urllib.error
 from datetime import date
 from html.parser import HTMLParser
 from urllib.parse import urljoin, urlparse
@@ -27,6 +27,17 @@ MONTHS = {"জানুয়ারি":1,"ফেব্রুয়ারি":2,
           "আগস্ট":8,"সেপ্টেম্বর":9,"অক্টোবর":10,"নভেম্বর":11,"ডিসেম্বর":12}
 EN_MONTHS = {"jan":1,"feb":2,"mar":3,"apr":4,"may":5,"jun":6,"jul":7,"aug":8,"sep":9,"oct":10,"nov":11,"dec":12}
 BN = str.maketrans("০১২৩৪৫৬৭৮৯", "0123456789")
+
+# ---- Gemini সেটিং ----
+GEMINI_KEY = os.environ.get("GEMINI_API_KEY", "").strip()
+# একটা মডেল কাজ না করলে (404/400/403) পরেরটা চেষ্টা করবে। GEMINI_MODEL দিয়ে নিজের মডেলও দেওয়া যায়।
+GEMINI_MODELS = ([os.environ["GEMINI_MODEL"]] if os.environ.get("GEMINI_MODEL") else []) + [
+    "gemini-3.5-flash-lite", "gemini-3.5-flash", "gemini-3.8-flash"]
+MAX_AI = 40          # প্রতি রানে সর্বোচ্চ Gemini কল (ফ্রি কোটা বাঁচাতে)
+MAX_BACKFILL = 15    # পুরনো জবের তথ্য ঠিক করতে প্রতি রানে সর্বোচ্চ কতটা
+AI = {"calls": 0, "off": not GEMINI_KEY, "model": 0}
+ALLOWED_CATS = {"সরকারি", "ব্যাংক", "এনজিও", "শিক্ষক", "বেসরকারি"}
+EMPTY_POSTS = ("—", "–", "", None)
 
 def fetch(url):
     req = urllib.request.Request(urllib.parse.quote(url, safe=":/?&=%#"), headers={"User-Agent": "Mozilla/5.0 (Linux; Android 13) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0 Mobile Safari/537.36", "Accept-Language": "bn,en;q=0.8"})
@@ -83,12 +94,69 @@ def guess_posts(t):
     m = re.search(r"([০-৯]+)\s*(?:টি\s*)?পদ", t)
     return m.group(1) if m else "—"
 
+def clean_text(page):
+    page = re.sub(r"(?is)<(script|style|noscript)[^>]*>.*?</\1>", " ", page)
+    return " ".join(re.sub(r"<[^>]+>", " ", page).split())
+
+def gemini_extract(title, body):
+    """চাকরির পেজের লেখা পড়ে {org, posts, grade, cat} ফেরত দেয়। ব্যর্থ হলে {}।"""
+    if AI["off"] or AI["calls"] >= MAX_AI:
+        return {}
+    prompt = (
+        "তুমি বাংলাদেশের চাকরির বিজ্ঞপ্তি বিশ্লেষক। নিচের বিজ্ঞপ্তির লেখা থেকে শুধু JSON দাও, এই চারটি key সহ:\n"
+        '"org": যে প্রতিষ্ঠান লোক নিচ্ছে তার নাম (পত্রিকা বা ওয়েবসাইটের নাম নয়)। বাংলায় লেখো, না পেলে ইংরেজি নাম। না পেলে "".\n'
+        '"posts": মোট পদসংখ্যা, শুধু সংখ্যা (যেমন "১২০")। নিশ্চিত না হলে "".\n'
+        '"grade": বেতন গ্রেড (যেমন "১০ম গ্রেড")। না থাকলে "".\n'
+        '"cat": এগুলোর একটা: সরকারি, ব্যাংক, এনজিও, শিক্ষক, বেসরকারি।\n'
+        "অনুমান করবে না। লেখায় যা নেই তা খালি রাখো।\n\n"
+        "শিরোনাম: " + title + "\n\nলেখা:\n" + body[:6000])
+    data = json.dumps({"contents": [{"parts": [{"text": prompt}]}],
+                       "generationConfig": {"responseMimeType": "application/json", "temperature": 0}}).encode()
+    while AI["model"] < len(GEMINI_MODELS):
+        model = GEMINI_MODELS[AI["model"]]
+        req = urllib.request.Request(
+            "https://generativelanguage.googleapis.com/v1beta/models/" + model + ":generateContent", data=data,
+            headers={"Content-Type": "application/json", "x-goog-api-key": GEMINI_KEY})
+        AI["calls"] += 1
+        try:
+            with urllib.request.urlopen(req, timeout=60) as r:
+                res = json.loads(r.read().decode("utf-8"))
+            out = json.loads(res["candidates"][0]["content"]["parts"][0]["text"])
+            time.sleep(4)  # ফ্রি টিয়ারের প্রতি মিনিট সীমার জন্য
+            if not isinstance(out, dict): return {}
+            org = str(out.get("org", "")).strip()[:80]
+            posts = str(out.get("posts", "")).strip()
+            grade = str(out.get("grade", "")).strip()[:40]
+            cat = str(out.get("cat", "")).strip()
+            return {"org": org,
+                    "posts": posts if re.fullmatch(r"[0-9০-৯]{1,5}", posts) else "",
+                    "grade": grade,
+                    "cat": cat if cat in ALLOWED_CATS else ""}
+        except urllib.error.HTTPError as e:
+            if e.code in (400, 403, 404):
+                print("Gemini মডেল কাজ করেনি:", model, e.code); AI["model"] += 1; continue
+            if e.code == 429:
+                print("Gemini কোটা শেষ, এই রানে আর AI হবে না"); AI["off"] = True; return {}
+            print("Gemini ত্রুটি:", e.code); return {}
+        except Exception as e:
+            print("Gemini ত্রুটি:", type(e).__name__); return {}
+    print("কোনো Gemini মডেল কাজ করেনি, AI বন্ধ"); AI["off"] = True
+    return {}
+
+def apply_ai(j, ai):
+    if not ai: return
+    if ai.get("org") and j.get("org", "").startswith("সূত্র:"): j["org"] = ai["org"]
+    if ai.get("posts") and j.get("posts") in EMPTY_POSTS: j["posts"] = ai["posts"]
+    if ai.get("grade") and not j.get("grade"): j["grade"] = ai["grade"]
+    j["ai"] = True
+
 def main():
     try: jobs = json.load(open("jobs.json", encoding="utf-8"))
     except Exception: jobs = []
     jobs = [j for j in jobs if not j.get("demo")]
     seen = {j["link"] for j in jobs if "link" in j}
     today = date.today(); added = 0
+    if AI["off"]: print("GEMINI_API_KEY নেই, AI ছাড়া চলছে")
     for src in SOURCES:
         try:
             html = fetch(src["list_url"])
@@ -122,13 +190,29 @@ def main():
             if posts == "—":
                 m = re.search(r"Total\s+Vacanc\w*\D{0,30}(\d+)", text, re.I)
                 if m: posts = m.group(1)
-            jobs.append({"title": title, "org": "সূত্র: " + src.get("org", src["name"]),
-                         "cat": src.get("cat") or guess_cat(title), "posts": posts, "grade": "",
-                         "deadline": dl.isoformat(), "link": url, "added": today.isoformat()})
+            ai = gemini_extract(title, clean_text(page))
+            job = {"title": title, "org": "সূত্র: " + src.get("org", src["name"]),
+                   "cat": src.get("cat") or ai.get("cat") or guess_cat(title), "posts": posts, "grade": "",
+                   "deadline": dl.isoformat(), "link": url, "added": today.isoformat()}
+            apply_ai(job, ai)
+            jobs.append(job)
             seen.add(url); added += 1
+    # পুরনো জবগুলোর খালি তথ্য (প্রতিষ্ঠান/পদ/গ্রেড) Gemini দিয়ে ভরা
+    if not AI["off"]:
+        todo = [j for j in jobs if not j.get("ai") and j.get("link") and j.get("ai_try", 0) < 2]
+        for j in todo[:MAX_BACKFILL]:
+            if AI["off"] or AI["calls"] >= MAX_AI: break
+            try:
+                page = fetch(j["link"])
+            except Exception as e:
+                j["ai_try"] = j.get("ai_try", 0) + 1; continue
+            ai = gemini_extract(j.get("title", ""), clean_text(page))
+            if ai: apply_ai(j, ai)
+            else: j["ai_try"] = j.get("ai_try", 0) + 1
+            time.sleep(1)
     jobs = [j for j in jobs if j.get("deadline", "") >= today.isoformat()]
     jobs.sort(key=lambda j: j.get("deadline", ""))
     json.dump(jobs, open("jobs.json", "w", encoding="utf-8"), ensure_ascii=False, indent=2)
-    print("যোগ হয়েছে:", added, "মোট:", len(jobs))
+    print("যোগ হয়েছে:", added, "মোট:", len(jobs), "Gemini কল:", AI["calls"])
 
 main()
