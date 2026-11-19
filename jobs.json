@@ -12,13 +12,14 @@
   },
   {
     "title": "BOESL Job Circular 2026 - brms.boesl.gov.bd Apply",
-    "org": "সূত্র: EZ Jobs",
+    "org": "বাংলাদেশ ওভারসিজ এমপ্লয়মেন্ট এন্ড সার্ভিসেস লিমিটেড",
     "cat": "সরকারি",
-    "posts": "—",
+    "posts": "৩৫",
     "grade": "",
     "deadline": "2026-11-20",
     "link": "https://ezjobsbangla.com/job-circular/boesl-job-circular",
-    "added": "2026-11-19"
+    "added": "2026-11-19",
+    "ai": true
   },
   {
     "title": "E-Zone HRM Limited Job Circular 2026 - ezjobsbd.com Apply",
@@ -164,83 +165,91 @@
   },
   {
     "title": "BRAC NGO Job Circular 2026 - careers.brac.net Apply",
-    "org": "সূত্র: EZ Jobs",
+    "org": "ব্র্যাক",
     "cat": "এনজিও",
-    "posts": "—",
+    "posts": "২",
     "grade": "",
     "deadline": "2026-11-28",
     "link": "https://ezjobsbangla.com/job-circular/brac-job-circular",
-    "added": "2026-11-19"
+    "added": "2026-11-19",
+    "ai": true
   },
   {
     "title": "Grameenphone Job Circular 2026 - www.grameenphone.com Apply",
-    "org": "সূত্র: EZ Jobs",
+    "org": "Grameenphone Limited",
     "cat": "এনজিও",
     "posts": "—",
     "grade": "",
     "deadline": "2026-11-28",
     "link": "https://ezjobsbangla.com/job-circular/grameenphone-job-circular",
-    "added": "2026-11-19"
+    "added": "2026-11-19",
+    "ai": true
   },
   {
     "title": "IDRA Job Circular 2026 - idra.teletalk.com.bd Apply",
-    "org": "সূত্র: EZ Jobs",
+    "org": "Insurance Development and Regulatory Authority",
     "cat": "সরকারি",
-    "posts": "—",
+    "posts": "১",
     "grade": "",
     "deadline": "2026-11-30",
     "link": "https://ezjobsbangla.com/job-circular/idra-job-circular",
-    "added": "2026-11-19"
+    "added": "2026-11-19",
+    "ai": true
   },
   {
     "title": "Islamic University Job Circular 2026 - iu.ac.bd Apply",
-    "org": "সূত্র: EZ Jobs",
+    "org": "Islamic University",
     "cat": "সরকারি",
-    "posts": "—",
-    "grade": "",
+    "posts": "18",
+    "grade": "6th and 9th grades",
     "deadline": "2026-11-30",
     "link": "https://ezjobsbangla.com/job-circular/islamic-university-job-circular",
-    "added": "2026-11-19"
+    "added": "2026-11-19",
+    "ai": true
   },
   {
     "title": "Naogaon University Job Circular 2026 - www.nau.ac.bd Apply",
-    "org": "সূত্র: EZ Jobs",
+    "org": "Naogaon University",
     "cat": "সরকারি",
-    "posts": "—",
-    "grade": "",
+    "posts": "৯",
+    "grade": "৪র্থ, ৬ষ্ঠ এবং ৯ম গ্রেড",
     "deadline": "2026-11-30",
     "link": "https://ezjobsbangla.com/job-circular/naogaon-university-job-circular",
-    "added": "2026-11-19"
+    "added": "2026-11-19",
+    "ai": true
   },
   {
     "title": "PBK Job Circular 2026 - pbk-bd.org Apply",
-    "org": "সূত্র: EZ Jobs",
+    "org": "পল্লী বিকাশ কেন্দ্র (পিবিকে)",
     "cat": "এনজিও",
-    "posts": "—",
+    "posts": "৪০",
     "grade": "",
     "deadline": "2026-11-30",
     "link": "https://ezjobsbangla.com/job-circular/pbk-job-circular",
-    "added": "2026-11-19"
+    "added": "2026-11-19",
+    "ai": true
   },
   {
     "title": "MODC Job Circular 2026 - modcr.teletalk.com.bd Apply",
-    "org": "সূত্র: EZ Jobs",
+    "org": "Ministry of Defence Constabulary (MODC)",
     "cat": "সরকারি",
-    "posts": "—",
-    "grade": "",
+    "posts": "২",
+    "grade": "২০ম গ্রেড",
     "deadline": "2026-11-30",
     "link": "https://ezjobsbangla.com/job-circular/modc-job-circular",
-    "added": "2026-11-19"
+    "added": "2026-11-19",
+    "ai": true
   },
   {
     "title": "DISA NGO Job Circular 2026 - disabd.org Apply",
-    "org": "সূত্র: EZ Jobs",
+    "org": "Development Initiative for Social Advancement (DISA)",
     "cat": "এনজিও",
-    "posts": "—",
+    "posts": "545",
     "grade": "",
     "deadline": "2026-11-30",
     "link": "https://ezjobsbangla.com/job-circular/disa-ngo-job-circular",
-    "added": "2026-11-19"
+    "added": "2026-11-19",
+    "ai": true
   },
   {
     "title": "Rajshahi University Job Circular 2026 - job.ru.ac.bd Apply",
@@ -254,43 +263,47 @@
   },
   {
     "title": "NWPGCL Job Circular 2026 - career.nwpgcl.gov.bd Apply",
-    "org": "সূত্র: EZ Jobs",
+    "org": "North-West Power Generation Company Limited",
     "cat": "সরকারি",
-    "posts": "—",
+    "posts": "১০",
     "grade": "",
     "deadline": "2026-12-02",
     "link": "https://ezjobsbangla.com/job-circular/nwpgcl-job-circular",
-    "added": "2026-11-19"
+    "added": "2026-11-19",
+    "ai": true
   },
   {
     "title": "DCKC Job Circular 2026 - dckc.teletalk.com.bd Apply",
-    "org": "সূত্র: EZ Jobs",
+    "org": "Office of the District Commissioner, Khagrachhari Hill District (Revenue Branch)",
     "cat": "সরকারি",
-    "posts": "—",
-    "grade": "",
+    "posts": "১৬",
+    "grade": "১৬ম গ্রেড",
     "deadline": "2026-12-02",
     "link": "https://ezjobsbangla.com/job-circular/dckc-job-circular",
-    "added": "2026-11-19"
+    "added": "2026-11-19",
+    "ai": true
   },
   {
     "title": "CVASU Job Circular 2026 - cvasu.ac.bd Apply",
-    "org": "সূত্র: EZ Jobs",
+    "org": "Chattogram Veterinary and Animal Sciences University (CVASU)",
     "cat": "সরকারি",
-    "posts": "—",
-    "grade": "",
+    "posts": "৫",
+    "grade": "৯ম গ্রেড",
     "deadline": "2026-12-02",
     "link": "https://ezjobsbangla.com/job-circular/cvasu-job-circular",
-    "added": "2026-11-19"
+    "added": "2026-11-19",
+    "ai": true
   },
   {
     "title": "BPS Job Circular 2026 - bps.teletalk.com.bd Apply",
-    "org": "সূত্র: EZ Jobs",
+    "org": "Bangladesh Parliament Secretariat (BPS)",
     "cat": "সরকারি",
-    "posts": "—",
-    "grade": "",
+    "posts": "155",
+    "grade": "১১ম থেকে ২০তম গ্রেড",
     "deadline": "2026-12-02",
     "link": "https://ezjobsbangla.com/job-circular/bps-job-circular",
-    "added": "2026-11-19"
+    "added": "2026-11-19",
+    "ai": true
   },
   {
     "title": "DSCC Job Circular 2026 - dscc.teletalk.com.bd Apply",
