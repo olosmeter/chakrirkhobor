@@ -5,27 +5,28 @@ jobs:
   test:
     runs-on: ubuntu-latest
     steps:
-      - name: Check key is set
+      - name: List available models
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
         run: |
-          if [ -z "$GEMINI_API_KEY" ]; then echo "Secret empty!"; exit 1; fi
-          echo "Secret found"
+          curl -s -H "x-goog-api-key: $GEMINI_API_KEY" \
+            "https://generativelanguage.googleapis.com/v1beta/models?pageSize=100" \
+            | grep '"name"' | sed 's/ *"name": *//'
 
       - name: Call Gemini
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
         run: |
-          for i in 1 2 3; do
+          for i in 1 2 3 4 5 6; do
             code=$(curl -s -o response.json -w "%{http_code}" \
               -H "x-goog-api-key: $GEMINI_API_KEY" \
               -H "Content-Type: application/json" \
               -d '{"contents":[{"parts":[{"text":"Say hello"}]}]}' \
-              "https://generativelanguage.googleapis.com/v1beta/models/gemini-3.8-flash-lite:generateContent")
+              "https://generativelanguage.googleapis.com/v1beta/models/gemini-3.8-flash:generateContent")
             echo "Attempt $i: HTTP $code"
             cat response.json
             echo
             if [ "$code" = "200" ]; then exit 0; fi
-            sleep 15
+            sleep 20
           done
           exit 1
