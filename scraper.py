@@ -1,6 +1,6 @@
-# চাকরির খবর স্ক্র্যাপার (v3): পত্রিকা, সরকারি ও বেসরকারি জব সাইট থেকে শিরোনাম, শেষ তারিখ ও মূল লিংক নেয়।
+# চাকরির খবর স্ক্র্যাপার (v6): জব সাইট থেকে শিরোনাম, শেষ তারিখ ও মূল লিংক নেয়।
 # Gemini দিয়ে প্রতিষ্ঠান / পদসংখ্যা / গ্রেড / ক্যাটেগরি বের করে (কী না থাকলে AI ছাড়াই চলে)।
-# v3 পরিবর্তন: Gemini 503 / Timeout / 429 হলে নিজে থেকে পরের মডেলে যায়, সময়সীমা বেঁধে দেওয়া আছে।
+# v4 পরিবর্তন: যেসব সাইট GitHub থেকে আটকে দেয় সেগুলো বাদ, BD Govt Job যোগ, ত্রুটির কোড (403/404) লগে দেখায়।
 import json, re, os, time, html, urllib.request, urllib.parse, urllib.error
 from datetime import date, timedelta
 from html.parser import HTMLParser
@@ -11,55 +11,86 @@ from urllib.parse import urljoin, urlparse
 #   name    : দেখানোর নাম
 #   url     : লিস্ট পেজ
 #   cat     : নির্দিষ্ট ক্যাটেগরি (না দিলে AI/অনুমান)
-#   link_re : জবের লিংকের path-এর রেজেক্স (না দিলে generic মোড: নিয়োগ/job/circular শব্দ দেখে বাছে)
+#   link_re : জবের লিংকের path-এর রেজেক্স (না দিলে generic মোড)
 #   title_from_page : লিস্টের লেখা বাদ দিয়ে পেজ থেকে টাইটেল নেবে
 # নতুন সাইট যোগ করতে শুধু একটা লাইন বাড়ান। কোনো সাইটে "নতুন লিংক: 0" এলে link_re ঠিক করুন।
 # ------------------------------------------------------------------
 EZ_RE = r"^/job-circular/(?!govt-job$|bank-job$|ngo-job$)[a-z0-9\-]+$"
-SOURCES = [
-    # --- পত্রিকা ---
-    {"name": "প্রথম আলো", "url": "https://www.prothomalo.com/chakri/employment", "link_re": r"^/chakri/employment/[a-z0-9]+$"},
-    {"name": "যুগান্তর", "url": "https://www.jugantor.com/job-seek", "link_re": r"^/job-seek/\d+$"},
-    {"name": "বাংলা ট্রিবিউন", "url": "https://www.banglatribune.com/jobs", "link_re": r"^/jobs/\d+"},
-    {"name": "বিডি প্রতিদিন", "url": "https://www.bd-pratidin.com/career", "link_re": r"^/career/\d{4}/\d\d/\d\d/\d+$"},
-    {"name": "ইত্তেফাক", "url": "https://www.ittefaq.com.bd/topic/%E0%A6%A8%E0%A6%BF%E0%A7%9F%E0%A7%8B%E0%A6%97-%E0%A6%AC%E0%A6%BF%E0%A6%9C%E0%A7%8D%E0%A6%9E%E0%A6%AA%E0%A7%8D%E0%A6%A4%E0%A6%BF", "link_re": r"^/\d+/.+"},
-    {"name": "সমকাল", "url": "https://samakal.com/career", "link_re": r"^/[a-z\-]+/article/\d+"},
-    {"name": "জাগো নিউজ", "url": "https://www.jagonews24.com/job", "link_re": r"^/job/.*\d{4,}"},
-    {"name": "ঢাকা পোস্ট", "url": "https://www.dhakapost.com/job", "link_re": r"^/job/.*\d{4,}"},
-    {"name": "ইনকিলাব", "url": "https://www.dailyinqilab.com/jobs", "link_re": r"^/jobs?/.*\d{4,}"},
-    {"name": "নয়া দিগন্ত", "url": "https://www.dailynayadiganta.com/job", "link_re": r"^/job[^/]*/.*\d{4,}"},
-    {"name": "জনকণ্ঠ", "url": "https://www.dailyjanakantha.com/jobs", "link_re": r"^/jobs?/.*\d{4,}"},
-    {"name": "কালের কণ্ঠ", "url": "https://www.kalerkantho.com/online/job", "link_re": r"^/online/job/.*\d{4,}"},
-    {"name": "দৈনিক ইত্তেহাদ/ডেইলি স্টার (ক্যারিয়ার)", "url": "https://www.thedailystar.net/jobs", "link_re": r"^/.*jobs?.*\d{5,}"},
 
-    # --- জব পোর্টাল ও সার্কুলার সাইট ---
-    {"name": "EZ Jobs সরকারি", "org": "EZ Jobs", "cat": "সরকারি", "title_from_page": True, "url": "https://ezjobsbangla.com/job-circular/govt-job", "link_re": EZ_RE},
-    {"name": "EZ Jobs সরকারি-২", "org": "EZ Jobs", "cat": "সরকারি", "title_from_page": True, "url": "https://ezjobsbangla.com/job-circular/govt-job?page=2", "link_re": EZ_RE},
-    {"name": "EZ Jobs ব্যাংক", "org": "EZ Jobs", "cat": "ব্যাংক", "title_from_page": True, "url": "https://ezjobsbangla.com/job-circular/bank-job", "link_re": EZ_RE},
-    {"name": "EZ Jobs এনজিও", "org": "EZ Jobs", "cat": "এনজিও", "title_from_page": True, "url": "https://ezjobsbangla.com/job-circular/ngo-job", "link_re": EZ_RE},
+BDG = "https://bdgovtjob.net/category/"          # BD Govt Job (.net)
+BDS = "https://bdgovtjobs.com/category/"         # BD Govt Jobs (.com)
+JNB = "https://jobsnoticebd.com/"                # Jobs Notice BD
+BDI = "https://bdgovt.info/category/"            # BD Govt Info
+MBJ = "https://mybdjob.com/category/"            # My BD Job
+BDI_RE = r"^/(?!ongoing)[a-z0-9\-]*circula[a-z0-9\-]*/$"
+BDG_RE = r"^/(?!ongoing)[a-z0-9\-]*job-circular[a-z0-9\-]*/$"
+JNB_RE = r"^/(?!university-job-circular/$)[a-z0-9\-]*circular[a-z0-9\-]*/$"
 
-    # --- সরকারি সাইট (generic মোড: link_re নেই, নিয়োগ/recruitment/circular শব্দ দেখে বাছে) ---
-    {"name": "বাংলাদেশ সরকারি কর্ম কমিশন (BPSC)", "cat": "সরকারি", "url": "https://www.bpsc.gov.bd/"},
-    {"name": "Teletalk সরকারি জব", "cat": "সরকারি", "url": "https://alljobs.teletalk.com.bd/"},
-    {"name": "বাংলাদেশ ব্যাংক", "cat": "ব্যাংক", "url": "https://www.bb.org.bd/en/index.php/recruitment/circular"},
-    {"name": "প্রাথমিক ও গণশিক্ষা অধিদপ্তর", "cat": "শিক্ষক", "url": "https://dpe.gov.bd/"},
-    {"name": "মাধ্যমিক ও উচ্চশিক্ষা অধিদপ্তর", "cat": "শিক্ষক", "url": "https://dshe.gov.bd/"},
-    {"name": "এনটিআরসিএ", "cat": "শিক্ষক", "url": "https://ntrca.gov.bd/"},
-    {"name": "মন্ত্রিপরিষদ বিভাগ", "cat": "সরকারি", "url": "https://cabinet.gov.bd/"},
-    {"name": "জনপ্রশাসন মন্ত্রণালয়", "cat": "সরকারি", "url": "https://mopa.gov.bd/"},
-    {"name": "বাংলাদেশ পুলিশ", "cat": "সরকারি", "url": "https://www.police.gov.bd/"},
-    {"name": "সেনাবাহিনী", "cat": "সরকারি", "url": "https://joinbangladesharmy.com.bd/"},
 
-    # --- বেসরকারি জব সাইট (generic মোড) ---
-    {"name": "Chakri.com", "cat": "বেসরকারি", "url": "https://www.chakri.com/"},
-    {"name": "Bdjobs", "cat": "বেসরকারি", "url": "https://jobs.bdjobs.com/jobsearch.asp?fcatId=-1"},
-    {"name": "Jobs.com.bd", "cat": "বেসরকারি", "url": "https://jobs.com.bd/"},
-    {"name": "Careerjet BD", "cat": "বেসরকারি", "url": "https://www.careerjet.com.bd/"},
-    {"name": "NGO Job BD", "cat": "এনজিও", "url": "https://ngojobsbd.com/"},
-]
+def wp(site, slug, cat, label, rx, pages=(1,)):
+    """WordPress ক্যাটাগরি পেজ (এবং চাইলে পেজ ২, ৩...) থেকে জবের লিংক নেওয়ার সোর্স।
+    ai_cat: সাইডবারে অন্য ক্যাটাগরির জবও থাকে, তাই ক্যাটাগরি Gemini ঠিক করবে (না পারলে এটাই)।"""
+    out = []
+    for p in pages:
+        u = site + slug + "/" + ("page/%d/" % p if p > 1 else "")
+        out.append({"name": "%s %s%s" % (label, cat, "" if p == 1 else "-%d" % p), "org": label, "cat": cat,
+                    "ai_cat": True, "title_from_page": True, "url": u, "link_re": rx})
+    return out
+
+
+SOURCES = (
+    # --- BD Govt Job (.net) ---
+    wp(BDG, "government-jobs-circular", "সরকারি", "BD Govt Job", BDG_RE, (1, 2))
+    + wp(BDG, "bank-jobs", "ব্যাংক", "BD Govt Job", BDG_RE)
+    + wp(BDG, "private-jobs", "বেসরকারি", "BD Govt Job", BDG_RE, (1, 2))
+    + wp(BDG, "ngo-job-circular", "এনজিও", "BD Govt Job", BDG_RE)
+    + wp(BDG, "pharmaceuticals-job-circular", "বেসরকারি", "BD Govt Job", BDG_RE)
+    + wp(BDG, "educational-institution-jobs", "শিক্ষক", "BD Govt Job", BDG_RE)
+    + wp(BDG, "university-job-circular", "শিক্ষক", "BD Govt Job", BDG_RE)
+    + wp(BDG, "defence-job-circular", "সরকারি", "BD Govt Job", BDG_RE)
+    # --- BD Govt Jobs (.com): সব চাকরির প্রথম ৪ পেজ + ব্যাংক ---
+    + wp(BDS, "all-jobs", "সরকারি", "BD Govt Jobs", BDG_RE, (1, 2, 3, 4))
+    + wp(BDS, "bank-jobs-2019", "ব্যাংক", "BD Govt Jobs", BDG_RE)
+    + wp(BDS, "ngo-jobs", "এনজিও", "BD Govt Jobs", BDG_RE)
+    # --- Jobs Notice BD ---
+    + wp(JNB, "government-job", "সরকারি", "Jobs Notice BD", JNB_RE, (1, 2))
+    + wp(JNB, "defense-jobs", "সরকারি", "Jobs Notice BD", JNB_RE)
+    + wp(JNB, "university-job-circular", "শিক্ষক", "Jobs Notice BD", JNB_RE)
+    + wp(JNB, "private-company-jobs", "বেসরকারি", "Jobs Notice BD", JNB_RE)
+    + wp(JNB, "ngo-jobs", "এনজিও", "Jobs Notice BD", JNB_RE)
+    + wp(JNB, "bank-job", "ব্যাংক", "Jobs Notice BD", JNB_RE)
+    + wp(JNB, "pharmaceutical-company-job", "বেসরকারি", "Jobs Notice BD", JNB_RE)
+    + wp(JNB, "hot-jobs", "সরকারি", "Jobs Notice BD", JNB_RE)
+    # --- BD Govt Info ---
+    + wp(BDI, "govt-job", "সরকারি", "BD Govt Info", BDI_RE, (1, 2))
+    + wp(BDI, "private-job", "বেসরকারি", "BD Govt Info", BDI_RE)
+    + wp(BDI, "ngo-job", "এনজিও", "BD Govt Info", BDI_RE)
+    + wp(BDI, "bank-job", "ব্যাংক", "BD Govt Info", BDI_RE)
+    + wp(BDI, "university-job", "শিক্ষক", "BD Govt Info", BDI_RE)
+    + wp(BDI, "educational-job", "শিক্ষক", "BD Govt Info", BDI_RE)
+    + wp(BDI, "pharmaceuticals-job-circular", "বেসরকারি", "BD Govt Info", BDI_RE)
+    + wp(BDI, "defence-job-circular", "সরকারি", "BD Govt Info", BDI_RE)
+    # --- My BD Job ---
+    + wp(MBJ, "govt-job-circular", "সরকারি", "My BD Job", BDG_RE)
+    + wp(MBJ, "private-job-circular", "বেসরকারি", "My BD Job", BDG_RE)
+    + wp(MBJ, "ngo-job-circular", "এনজিও", "My BD Job", BDG_RE)
+    + wp(MBJ, "bank-job-circular", "ব্যাংক", "My BD Job", BDG_RE)
+    + wp(MBJ, "pharmaceutical-job-circular", "বেসরকারি", "My BD Job", BDG_RE)
+    + wp(MBJ, "defence-job-circular", "সরকারি", "My BD Job", BDG_RE)
+    + wp(MBJ, "teaching-job-circular", "শিক্ষক", "My BD Job", BDG_RE)
+    + wp(MBJ, "railway-job-circular", "সরকারি", "My BD Job", BDG_RE)
+    # --- EZ Jobs ---
+    + [
+        {"name": "EZ Jobs সরকারি", "org": "EZ Jobs", "cat": "সরকারি", "title_from_page": True, "url": "https://ezjobsbangla.com/job-circular/govt-job", "link_re": EZ_RE},
+        {"name": "EZ Jobs সরকারি-২", "org": "EZ Jobs", "cat": "সরকারি", "title_from_page": True, "url": "https://ezjobsbangla.com/job-circular/govt-job?page=2", "link_re": EZ_RE},
+        {"name": "EZ Jobs ব্যাংক", "org": "EZ Jobs", "cat": "ব্যাংক", "title_from_page": True, "url": "https://ezjobsbangla.com/job-circular/bank-job", "link_re": EZ_RE},
+        {"name": "EZ Jobs এনজিও", "org": "EZ Jobs", "cat": "এনজিও", "title_from_page": True, "url": "https://ezjobsbangla.com/job-circular/ngo-job", "link_re": EZ_RE},
+    ]
+)
 
 MAX_NEW = 15           # প্রতি সোর্সে প্রতি রানে সর্বোচ্চ নতুন লিংক যাচাই
 SKIP_DAYS = 3          # তারিখ না পাওয়া/মেয়াদোত্তীর্ণ লিংক কত দিন পর আবার দেখা হবে
+SCRAPE_LIMIT = 1500    # পুরো স্ক্র্যাপিং সর্বোচ্চ ২৫ মিনিট, তারপর থামে (বাকিটা পরের রানে)
 MAX_BODY = 8000        # Gemini-কে পাঠানো লেখার সীমা
 
 MONTHS = {"জানুয়ারি": 1, "জানুয়ারী": 1, "ফেব্রুয়ারি": 2, "ফেব্রুয়ারী": 2, "মার্চ": 3, "এপ্রিল": 4, "মে": 5, "জুন": 6,
@@ -90,12 +121,18 @@ def fetch(url):
     req = urllib.request.Request(
         urllib.parse.quote(url, safe=":/?&=%#"),
         headers={"User-Agent": "Mozilla/5.0 (Linux; Android 13) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0 Mobile Safari/537.36",
+                 "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
                  "Accept-Language": "bn,en;q=0.8"})
     with urllib.request.urlopen(req, timeout=25) as r:
         ct = r.headers.get("Content-Type", "")
         if "pdf" in ct.lower() or "image" in ct.lower():
             return ""
         return r.read(3_000_000).decode("utf-8", "ignore")
+
+
+def err_name(e):
+    """HTTP ত্রুটি হলে কোড (403/404...), না হলে ত্রুটির ধরন।"""
+    return getattr(e, "code", None) or type(e).__name__
 
 
 class Links(HTMLParser):
@@ -202,7 +239,7 @@ def gemini_extract(title, body, budget):
     body = body[i:] if i > 0 else body
     prompt = (
         "তুমি বাংলাদেশের চাকরির বিজ্ঞপ্তি বিশ্লেষক। নিচের বিজ্ঞপ্তির লেখা থেকে শুধু JSON দাও, এই চারটি key সহ:\n"
-        '"org": যে প্রতিষ্ঠান লোক নিচ্ছে তার নাম (পত্রিকা বা ওয়েবসাইটের নাম নয়)। বাংলায় লেখো, না পেলে ইংরেজি নাম। না পেলে "".\n'
+        '"org": যে প্রতিষ্ঠান লোক নিচ্ছে তার পুরো নাম (পত্রিকা বা ওয়েবসাইটের নাম নয়)। বাংলায় লেখো, না পেলে ইংরেজি নাম। না পেলে "".\n'
         '"posts": মোট পদসংখ্যা, শুধু সংখ্যা (যেমন "১২০")। নিশ্চিত না হলে "".\n'
         '"grade": বেতন গ্রেড (যেমন "১০ম গ্রেড")। না থাকলে "".\n'
         '"cat": এগুলোর একটা: সরকারি, ব্যাংক, এনজিও, শিক্ষক, বেসরকারি।\n'
@@ -257,6 +294,12 @@ def gemini_extract(title, body, budget):
     return None
 
 
+def dkey(j):
+    """একই প্রতিষ্ঠান + একই শেষ তারিখ = একই জব (বিভিন্ন সাইট থেকে এলে ডুপ্লিকেট এড়াতে)।"""
+    o = (j.get("org") or "").strip().lower()
+    return None if (not o or o.startswith("সূত্র:")) else (o, j.get("deadline"))
+
+
 def apply_ai(j, ai):
     if not ai: return
     if ai.get("org") and j.get("org", "").startswith("সূত্র:"): j["org"] = ai["org"]
@@ -300,15 +343,19 @@ def main():
     skipped = {u: d for u, d in skipped.items() if d >= cutoff}
     seen = {j["link"] for j in jobs if "link" in j} | set(skipped)
     added = 0; tried_ai = set()
+    have_keys = {dkey(j) for j in jobs} - {None}
     if AI["off"]: print("GEMINI_API_KEY নেই, AI ছাড়া চলছে")
 
     for src in SOURCES:
+        if time.time() - AI["start"] > SCRAPE_LIMIT:
+            print("সময়সীমা শেষ, বাকি সোর্স পরের রানে"); break
         try: html_text = fetch(src["url"])
         except Exception as e:
-            print("লিস্ট পেজ আনা যায়নি:", src["name"], type(e).__name__); continue
+            print("লিস্ট পেজ আনা যায়নি:", src["name"], err_name(e)); continue
         cands = [(u, t) for u, t in candidates(src, html_text) if u not in seen]
         print(src["name"], "- নতুন লিংক:", len(cands))
         for url, title in cands[:MAX_NEW]:
+            if time.time() - AI["start"] > SCRAPE_LIMIT: break
             try:
                 page = fetch(url)
                 if not page: skipped[url] = today.isoformat(); continue
@@ -318,7 +365,7 @@ def main():
                     m = re.search(r'og:title"\s+content="([^"]+)"', page) or re.search(r"<title>([^<]+)</title>", page)
                     title = " ".join(html.unescape(m.group(1)).split()).split(" | ")[0] if m else ""
             except Exception as e:
-                print("স্কিপ:", url, type(e).__name__); continue
+                print("স্কিপ:", url, err_name(e)); continue
             time.sleep(1)
             if not title or not dl or dl < today:
                 skipped[url] = today.isoformat()   # মনে রাখি, যাতে প্রতি রানে স্লট নষ্ট না হয়
@@ -329,9 +376,13 @@ def main():
                 if m: posts = m.group(1)
             ai = gemini_extract(title, text, MAX_AI_NEW); tried_ai.add(url)
             job = {"title": title, "org": "সূত্র: " + src.get("org", src["name"]),
-                   "cat": src.get("cat") or (ai or {}).get("cat") or guess_cat(title), "posts": posts, "grade": "",
+                   "cat": ((ai or {}).get("cat") if src.get("ai_cat") else "") or src.get("cat") or (ai or {}).get("cat") or guess_cat(title), "posts": posts, "grade": "",
                    "deadline": dl.isoformat(), "link": url, "added": today.isoformat()}
             apply_ai(job, ai)
+            k = dkey(job)
+            if k and k in have_keys:
+                skipped[url] = today.isoformat(); continue   # অন্য সাইট থেকে আগেই এসেছে
+            if k: have_keys.add(k)
             jobs.append(job); seen.add(url); added += 1
 
     # পুরনো জবের খালি তথ্য ভরা (এই রানে যেগুলো ইতিমধ্যে চেষ্টা হয়েছে সেগুলো বাদ)
@@ -361,3 +412,9 @@ def main():
 
 if __name__ == "__main__":
     main()
+    # আলাদা সার্কুলার পেজ ও sitemap (build_pages.py রিপোতে থাকলেই চলবে)
+    try:
+        import build_pages
+        build_pages.main()
+    except ImportError:
+        pass
