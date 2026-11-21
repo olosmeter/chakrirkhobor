@@ -1,35 +1,38 @@
 name: Update jobs
+
 on:
   schedule:
-    - cron: "0 */3 * * *"
+    - cron: "0 */6 * * *"
   workflow_dispatch:
+
 permissions:
   contents: write
+
 concurrency:
   group: update-jobs
   cancel-in-progress: false
+
 jobs:
   update:
     runs-on: ubuntu-latest
-    timeout-minutes: 20
     steps:
       - uses: actions/checkout@v4
+
       - uses: actions/setup-python@v5
         with:
-          python-version: "3.12"
+          python-version: "3.11"
+
       - name: Run scraper
-        env:
-          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
-        run: python scraper.py
+        run: |
+          pip install -r requirements.txt
+          python scraper.py
+
       - name: Commit changes
         run: |
           git config user.name "jobs-bot"
-          git config user.email "bot@users.noreply.github.com"
-          git add jobs.json skipped.json
-          if git diff --cached --quiet; then
-            echo "কোনো পরিবর্তন নেই"
-          else
-            git commit -m "Update jobs"
-            git pull --rebase
-            git push
-          fi
+          git config user.email "jobs-bot@users.noreply.github.com"
+          git add -A
+          git diff --cached --quiet && exit 0
+          git commit -m "Update jobs"
+          git pull --rebase --autostash
+          git push
