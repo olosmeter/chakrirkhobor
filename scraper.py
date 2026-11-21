@@ -1,20 +1,11 @@
-# চাকরির খবর স্ক্র্যাপার (v6): জব সাইট থেকে শিরোনাম, শেষ তারিখ ও মূল লিংক নেয়।
+# চাকরির খবর স্ক্র্যাপার (v7): জব সাইট থেকে শিরোনাম, শেষ তারিখ ও মূল লিংক নেয়।
 # Gemini দিয়ে প্রতিষ্ঠান / পদসংখ্যা / গ্রেড / ক্যাটেগরি বের করে (কী না থাকলে AI ছাড়াই চলে)।
-# v4 পরিবর্তন: যেসব সাইট GitHub থেকে আটকে দেয় সেগুলো বাদ, BD Govt Job যোগ, ত্রুটির কোড (403/404) লগে দেখায়।
+# v7 পরিবর্তন: jobs.json পড়া না গেলে রান থামে (ডেটা মুছে যায় না), লগে ব্যর্থতার কারণ গোনা হয়।
 import json, re, os, time, html, urllib.request, urllib.parse, urllib.error
 from datetime import date, timedelta
 from html.parser import HTMLParser
 from urllib.parse import urljoin, urlparse
 
-# ------------------------------------------------------------------
-# সোর্স তালিকা
-#   name    : দেখানোর নাম
-#   url     : লিস্ট পেজ
-#   cat     : নির্দিষ্ট ক্যাটেগরি (না দিলে AI/অনুমান)
-#   link_re : জবের লিংকের path-এর রেজেক্স (না দিলে generic মোড)
-#   title_from_page : লিস্টের লেখা বাদ দিয়ে পেজ থেকে টাইটেল নেবে
-# নতুন সাইট যোগ করতে শুধু একটা লাইন বাড়ান। কোনো সাইটে "নতুন লিংক: 0" এলে link_re ঠিক করুন।
-# ------------------------------------------------------------------
 EZ_RE = r"^/job-circular/(?!govt-job$|bank-job$|ngo-job$)[a-z0-9\-]+$"
 
 BDG = "https://bdgovtjob.net/category/"          # BD Govt Job (.net)
@@ -28,8 +19,6 @@ JNB_RE = r"^/(?!university-job-circular/$)[a-z0-9\-]*circular[a-z0-9\-]*/$"
 
 
 def wp(site, slug, cat, label, rx, pages=(1,)):
-    """WordPress ক্যাটাগরি পেজ (এবং চাইলে পেজ ২, ৩...) থেকে জবের লিংক নেওয়ার সোর্স।
-    ai_cat: সাইডবারে অন্য ক্যাটাগরির জবও থাকে, তাই ক্যাটাগরি Gemini ঠিক করবে (না পারলে এটাই)।"""
     out = []
     for p in pages:
         u = site + slug + "/" + ("page/%d/" % p if p > 1 else "")
@@ -39,7 +28,6 @@ def wp(site, slug, cat, label, rx, pages=(1,)):
 
 
 SOURCES = (
-    # --- BD Govt Job (.net) ---
     wp(BDG, "government-jobs-circular", "সরকারি", "BD Govt Job", BDG_RE, (1, 2))
     + wp(BDG, "bank-jobs", "ব্যাংক", "BD Govt Job", BDG_RE)
     + wp(BDG, "private-jobs", "বেসরকারি", "BD Govt Job", BDG_RE, (1, 2))
@@ -48,11 +36,9 @@ SOURCES = (
     + wp(BDG, "educational-institution-jobs", "শিক্ষক", "BD Govt Job", BDG_RE)
     + wp(BDG, "university-job-circular", "শিক্ষক", "BD Govt Job", BDG_RE)
     + wp(BDG, "defence-job-circular", "সরকারি", "BD Govt Job", BDG_RE)
-    # --- BD Govt Jobs (.com): সব চাকরির প্রথম ৪ পেজ + ব্যাংক ---
     + wp(BDS, "all-jobs", "সরকারি", "BD Govt Jobs", BDG_RE, (1, 2, 3, 4))
     + wp(BDS, "bank-jobs-2019", "ব্যাংক", "BD Govt Jobs", BDG_RE)
     + wp(BDS, "ngo-jobs", "এনজিও", "BD Govt Jobs", BDG_RE)
-    # --- Jobs Notice BD ---
     + wp(JNB, "government-job", "সরকারি", "Jobs Notice BD", JNB_RE, (1, 2))
     + wp(JNB, "defense-jobs", "সরকারি", "Jobs Notice BD", JNB_RE)
     + wp(JNB, "university-job-circular", "শিক্ষক", "Jobs Notice BD", JNB_RE)
@@ -61,7 +47,6 @@ SOURCES = (
     + wp(JNB, "bank-job", "ব্যাংক", "Jobs Notice BD", JNB_RE)
     + wp(JNB, "pharmaceutical-company-job", "বেসরকারি", "Jobs Notice BD", JNB_RE)
     + wp(JNB, "hot-jobs", "সরকারি", "Jobs Notice BD", JNB_RE)
-    # --- BD Govt Info ---
     + wp(BDI, "govt-job", "সরকারি", "BD Govt Info", BDI_RE, (1, 2))
     + wp(BDI, "private-job", "বেসরকারি", "BD Govt Info", BDI_RE)
     + wp(BDI, "ngo-job", "এনজিও", "BD Govt Info", BDI_RE)
@@ -70,7 +55,6 @@ SOURCES = (
     + wp(BDI, "educational-job", "শিক্ষক", "BD Govt Info", BDI_RE)
     + wp(BDI, "pharmaceuticals-job-circular", "বেসরকারি", "BD Govt Info", BDI_RE)
     + wp(BDI, "defence-job-circular", "সরকারি", "BD Govt Info", BDI_RE)
-    # --- My BD Job ---
     + wp(MBJ, "govt-job-circular", "সরকারি", "My BD Job", BDG_RE)
     + wp(MBJ, "private-job-circular", "বেসরকারি", "My BD Job", BDG_RE)
     + wp(MBJ, "ngo-job-circular", "এনজিও", "My BD Job", BDG_RE)
@@ -79,7 +63,6 @@ SOURCES = (
     + wp(MBJ, "defence-job-circular", "সরকারি", "My BD Job", BDG_RE)
     + wp(MBJ, "teaching-job-circular", "শিক্ষক", "My BD Job", BDG_RE)
     + wp(MBJ, "railway-job-circular", "সরকারি", "My BD Job", BDG_RE)
-    # --- EZ Jobs ---
     + [
         {"name": "EZ Jobs সরকারি", "org": "EZ Jobs", "cat": "সরকারি", "title_from_page": True, "url": "https://ezjobsbangla.com/job-circular/govt-job", "link_re": EZ_RE},
         {"name": "EZ Jobs সরকারি-২", "org": "EZ Jobs", "cat": "সরকারি", "title_from_page": True, "url": "https://ezjobsbangla.com/job-circular/govt-job?page=2", "link_re": EZ_RE},
@@ -88,10 +71,10 @@ SOURCES = (
     ]
 )
 
-MAX_NEW = 15           # প্রতি সোর্সে প্রতি রানে সর্বোচ্চ নতুন লিংক যাচাই
-SKIP_DAYS = 3          # তারিখ না পাওয়া/মেয়াদোত্তীর্ণ লিংক কত দিন পর আবার দেখা হবে
-SCRAPE_LIMIT = 1500    # পুরো স্ক্র্যাপিং সর্বোচ্চ ২৫ মিনিট, তারপর থামে (বাকিটা পরের রানে)
-MAX_BODY = 8000        # Gemini-কে পাঠানো লেখার সীমা
+MAX_NEW = 15
+SKIP_DAYS = 3
+SCRAPE_LIMIT = 1500
+MAX_BODY = 8000
 
 MONTHS = {"জানুয়ারি": 1, "জানুয়ারী": 1, "ফেব্রুয়ারি": 2, "ফেব্রুয়ারী": 2, "মার্চ": 3, "এপ্রিল": 4, "মে": 5, "জুন": 6,
           "জুলাই": 7, "আগস্ট": 8, "সেপ্টেম্বর": 9, "অক্টোবর": 10, "নভেম্বর": 11, "ডিসেম্বর": 12}
@@ -99,17 +82,15 @@ EN_MONTHS = {"jan": 1, "feb": 2, "mar": 3, "apr": 4, "may": 5, "jun": 6, "jul": 
 BN = str.maketrans("০১২৩৪৫৬৭৮৯", "0123456789")
 DIG = r"[0-9০-৯]"
 
-# ---- Gemini সেটিং ----
 GEMINI_KEY = os.environ.get("GEMINI_API_KEY", "").strip()
 GEMINI_MODELS = ([os.environ["GEMINI_MODEL"]] if os.environ.get("GEMINI_MODEL") else []) + [
     "gemini-3.8-flash", "gemini-3.5-flash-lite", "gemini-3.5-flash", "gemini-2.5-flash"]
-MAX_AI_NEW = 30        # প্রতি রানে নতুন জবের জন্য সর্বোচ্চ Gemini কল
-MAX_AI_BACKFILL = 15   # পুরনো জবের তথ্য ভরার জন্য আলাদা সীমা
-AI_TIMEOUT = 30        # প্রতিবার Gemini-র উত্তরের জন্য সর্বোচ্চ অপেক্ষা (সেকেন্ড)
-AI_TIME_LIMIT = 480    # পুরো রানে Gemini-র পেছনে সর্বোচ্চ সময় (৮ মিনিট), তারপর AI বন্ধ
-AI_STREAK_LIMIT = 3    # পরপর এতবার সব মডেল ব্যর্থ হলে এই রানে AI বন্ধ
-AI_MODEL_FAILS = 2     # একটা মডেল এতবার ব্যর্থ হলে এই রানে আর সেটা চেষ্টা করা হবে না
-# calls = কতগুলো জবের জন্য Gemini ডাকা হয়েছে, tries = মোট HTTP চেষ্টা (ফলব্যাকসহ)
+MAX_AI_NEW = 30
+MAX_AI_BACKFILL = 15
+AI_TIMEOUT = 30
+AI_TIME_LIMIT = 480
+AI_STREAK_LIMIT = 3
+AI_MODEL_FAILS = 2
 AI = {"calls": 0, "tries": 0, "off": not GEMINI_KEY, "streak": 0, "start": time.time(), "mfail": {}}
 ALLOWED_CATS = {"সরকারি", "ব্যাংক", "এনজিও", "শিক্ষক", "বেসরকারি"}
 EMPTY_POSTS = ("—", "–", "", None)
@@ -131,7 +112,6 @@ def fetch(url):
 
 
 def err_name(e):
-    """HTTP ত্রুটি হলে কোড (403/404...), না হলে ত্রুটির ধরন।"""
     return getattr(e, "code", None) or type(e).__name__
 
 
@@ -154,7 +134,6 @@ def clean_text(page):
     return " ".join(html.unescape(re.sub(r"<[^>]+>", " ", page)).split())
 
 
-# ------------------------ তারিখ বের করা ------------------------
 KEY = r"(?:শেষ\s*তারিখ|আবেদনের\s*শেষ\s*(?:তারিখ|সময়)|আবেদন\s*(?:গ্রহণের\s*)?শেষ|আবেদনের\s*সময়সীমা|last\s*date|closing\s*date|application\s*deadline|deadline|apply\s*(?:by|before)|end\s*date)"
 BN_MON = "|".join(MONTHS)
 
@@ -164,21 +143,15 @@ def to_int(s):
 
 
 def dates_in(chunk):
-    """একটা ছোট টুকরোর ভেতরের সব তারিখ (date অবজেক্ট) ফেরত দেয়।"""
     found = []
-    # ১৫ ডিসেম্বর ২০২৬ / ১৫ ডিসেম্বর, ২০২৬
     for d, m, y in re.findall(r"(%s{1,2})\s*(%s)[,\s]*(%s{4})" % (DIG, BN_MON, DIG), chunk):
         found.append((to_int(y), MONTHS[m], to_int(d)))
-    # 15 December 2026 / 15th Dec, 2026
     for d, m, y in re.findall(r"(\d{1,2})(?:st|nd|rd|th)?[\s\-]*([A-Za-z]{3,9})\.?,?[\s\-]*(\d{4})", chunk):
         if m[:3].lower() in EN_MONTHS: found.append((int(y), EN_MONTHS[m[:3].lower()], int(d)))
-    # December 15, 2026
     for m, d, y in re.findall(r"([A-Za-z]{3,9})\.?\s+(\d{1,2})(?:st|nd|rd|th)?,?\s+(\d{4})", chunk):
         if m[:3].lower() in EN_MONTHS: found.append((int(y), EN_MONTHS[m[:3].lower()], int(d)))
-    # ১৫/১২/২০২৬, ১৫-১২-২০২৬, ১৫.১২.২০২৬ (দিন/মাস/বছর)
     for d, m, y in re.findall(r"(%s{1,2})\s*[/\-.]\s*(%s{1,2})\s*[/\-.]\s*(%s{4})" % (DIG, DIG, DIG), chunk):
         found.append((to_int(y), to_int(m), to_int(d)))
-    # 2026-12-15
     for y, m, d in re.findall(r"(\d{4})-(\d{1,2})-(\d{1,2})", chunk):
         found.append((int(y), int(m), int(d)))
     out = []
@@ -189,11 +162,9 @@ def dates_in(chunk):
 
 
 def find_deadline(text):
-    """শেষ তারিখ-জাতীয় শব্দের ঠিক পরের ৮০ অক্ষরের তারিখ। পেজের প্রথম মিলটাই ধরে (সাইডবারের তারিখ এড়াতে)।"""
     for m in re.finditer(KEY, text, re.I):
         ds = dates_in(text[m.end(): m.end() + 80])
         if ds: return ds[0]
-    # "... তারিখ পর্যন্ত" ধরনের লেখা: তারিখের পরে "পর্যন্ত"
     for m in re.finditer(r"পর্যন্ত|until|till", text, re.I):
         ds = dates_in(text[max(0, m.start() - 40): m.start()])
         if ds: return ds[-1]
@@ -215,26 +186,20 @@ def guess_posts(t):
     return m.group(1) if m else "—"
 
 
-# ------------------------ Gemini ------------------------
 def usable_models():
-    """এই রানে যে মডেলগুলো এখনো চেষ্টা করার মতো।"""
     return [m for m in GEMINI_MODELS if AI["mfail"].get(m, 0) < AI_MODEL_FAILS]
 
 
 def model_failed(model, hard=False):
-    """hard=True হলে (মডেল নেই / কোটা শেষ) এই রানে মডেলটা পুরোপুরি বাদ।"""
     AI["mfail"][model] = 99 if hard else AI["mfail"].get(model, 0) + 1
 
 
 def gemini_extract(title, body, budget):
-    """{org, posts, grade, cat} ফেরত দেয়। ব্যর্থ হলে None (খালি dict নয়, যাতে বোঝা যায় ব্যর্থ)।
-    একটা মডেল 503/Timeout/429 দিলে পরের মডেলে চেষ্টা করে।"""
     if AI["off"] or AI["calls"] >= budget:
         return None
     if time.time() - AI["start"] > AI_TIME_LIMIT:
         print("Gemini-র সময়সীমা শেষ, এই রানে আর AI হবে না"); AI["off"] = True
         return None
-    # টাইটেলের কাছাকাছি থেকে কেটে নিই, যাতে মেনুতেই সীমা শেষ না হয়
     i = body.find(title[:25]) if title else -1
     body = body[i:] if i > 0 else body
     prompt = (
@@ -265,7 +230,7 @@ def gemini_extract(title, body, budget):
                 print("Gemini মডেল পাওয়া যায়নি:", model); model_failed(model, hard=True)
             elif e.code in (400, 401, 403) and re.search(r"api[\s_-]*key|permission|denied|unauthenticated", msg, re.I):
                 print("Gemini key সমস্যা", e.code, msg); AI["off"] = True
-                return None   # key ভুল: মডেল বদলে লাভ নেই
+                return None
             elif e.code == 429:
                 print("Gemini কোটা শেষ (429):", model); model_failed(model, hard=True)
             else:
@@ -274,9 +239,8 @@ def gemini_extract(title, body, budget):
         except Exception as e:
             print("Gemini ত্রুটি:", type(e).__name__, model); model_failed(model)
             time.sleep(2); continue
-        # সফল
         AI["mfail"][model] = 0; AI["streak"] = 0
-        time.sleep(4)  # ফ্রি টিয়ারের প্রতি মিনিট সীমা
+        time.sleep(4)
         if isinstance(out, list) and out: out = out[0]
         if not isinstance(out, dict): return {}
         posts = str(out.get("posts", "")).strip()
@@ -285,7 +249,6 @@ def gemini_extract(title, body, budget):
                 "posts": posts if re.fullmatch(r"[0-9০-৯]{1,5}", posts) else "",
                 "grade": str(out.get("grade", "")).strip()[:40],
                 "cat": cat if cat in ALLOWED_CATS else ""}
-    # কোনো মডেলই সাড়া দেয়নি
     AI["streak"] += 1
     if not usable_models():
         print("কোনো Gemini মডেল কাজ করছে না, এই রানে AI বন্ধ"); AI["off"] = True
@@ -295,7 +258,6 @@ def gemini_extract(title, body, budget):
 
 
 def dkey(j):
-    """একই প্রতিষ্ঠান + একই শেষ তারিখ = একই জব (বিভিন্ন সাইট থেকে এলে ডুপ্লিকেট এড়াতে)।"""
     o = (j.get("org") or "").strip().lower()
     return None if (not o or o.startswith("সূত্র:")) else (o, j.get("deadline"))
 
@@ -308,7 +270,6 @@ def apply_ai(j, ai):
     j["ai"] = True
 
 
-# ------------------------ লিংক বাছাই ------------------------
 def candidates(src, html_text):
     base = src["url"]; host = urlparse(base).netloc.replace("www.", "")
     p = Links(); p.feed(html_text)
@@ -325,7 +286,6 @@ def candidates(src, html_text):
             if re.match(src["link_re"], path) and (len(text) > 12 or src.get("title_from_page")):
                 add(url, "" if src.get("title_from_page") else text)
         else:
-            # generic মোড: একই হোস্ট, লেখা/লিংকে চাকরির শব্দ, অপ্রয়োজনীয় লিংক বাদ
             same = urlparse(url).netloc.replace("www.", "").endswith(host)
             if same and len(text) > 12 and JOB_WORDS.search(text + " " + path) and not BAD_WORDS.search(url) and url.rstrip("/") != base.rstrip("/"):
                 add(url, text)
@@ -333,11 +293,19 @@ def candidates(src, html_text):
 
 
 def main():
-    try: jobs = json.load(open("jobs.json", encoding="utf-8"))
-    except Exception: jobs = []
+    # jobs.json পড়া না গেলে থামি, যাতে জমানো জব ফাঁকা ডেটা দিয়ে ওভাররাইট না হয়
+    try:
+        jobs = json.load(open("jobs.json", encoding="utf-8"))
+    except FileNotFoundError:
+        jobs = []
+    except Exception as e:
+        raise SystemExit("jobs.json পড়া যায়নি: %s" % e)
     jobs = [j for j in jobs if not j.get("demo")]
+    print("শুরুতে জব:", len(jobs))
     try: skipped = json.load(open("skipped.json", encoding="utf-8"))
     except Exception: skipped = {}
+    stat = {"fetch_err": 0, "empty": 0, "no_title": 0, "no_deadline": 0, "expired": 0, "dup": 0}
+    src_ok = 0; src_fail = 0
     today = date.today()
     cutoff = (today - timedelta(days=SKIP_DAYS)).isoformat()
     skipped = {u: d for u, d in skipped.items() if d >= cutoff}
@@ -351,24 +319,30 @@ def main():
             print("সময়সীমা শেষ, বাকি সোর্স পরের রানে"); break
         try: html_text = fetch(src["url"])
         except Exception as e:
+            src_fail += 1
             print("লিস্ট পেজ আনা যায়নি:", src["name"], err_name(e)); continue
+        src_ok += 1
         cands = [(u, t) for u, t in candidates(src, html_text) if u not in seen]
         print(src["name"], "- নতুন লিংক:", len(cands))
         for url, title in cands[:MAX_NEW]:
             if time.time() - AI["start"] > SCRAPE_LIMIT: break
             try:
                 page = fetch(url)
-                if not page: skipped[url] = today.isoformat(); continue
+                if not page:
+                    stat["empty"] += 1
+                    skipped[url] = today.isoformat(); continue
                 text = clean_text(page)
                 dl = find_deadline(text)
                 if len(title) < 13:
                     m = re.search(r'og:title"\s+content="([^"]+)"', page) or re.search(r"<title>([^<]+)</title>", page)
                     title = " ".join(html.unescape(m.group(1)).split()).split(" | ")[0] if m else ""
             except Exception as e:
+                stat["fetch_err"] += 1
                 print("স্কিপ:", url, err_name(e)); continue
             time.sleep(1)
             if not title or not dl or dl < today:
-                skipped[url] = today.isoformat()   # মনে রাখি, যাতে প্রতি রানে স্লট নষ্ট না হয়
+                stat["no_title" if not title else "no_deadline" if not dl else "expired"] += 1
+                skipped[url] = today.isoformat()
                 continue
             posts = guess_posts(title)
             if posts == "—":
@@ -381,11 +355,11 @@ def main():
             apply_ai(job, ai)
             k = dkey(job)
             if k and k in have_keys:
-                skipped[url] = today.isoformat(); continue   # অন্য সাইট থেকে আগেই এসেছে
+                stat["dup"] += 1
+                skipped[url] = today.isoformat(); continue
             if k: have_keys.add(k)
             jobs.append(job); seen.add(url); added += 1
 
-    # পুরনো জবের খালি তথ্য ভরা (এই রানে যেগুলো ইতিমধ্যে চেষ্টা হয়েছে সেগুলো বাদ)
     if not AI["off"]:
         todo = [j for j in jobs if not j.get("ai") and j.get("link") and j["link"] not in tried_ai and j.get("ai_try", 0) < 2]
         used = 0
@@ -394,14 +368,16 @@ def main():
             try: page = fetch(j["link"])
             except Exception: continue
             ai = gemini_extract(j.get("title", ""), clean_text(page), 10**6); used += 1
-            if ai is None: continue            # নেটওয়ার্ক/কোটা সমস্যা: চেষ্টা গোনা হবে না
+            if ai is None: continue
             if ai: apply_ai(j, ai)
-            else: j["ai_try"] = j.get("ai_try", 0) + 1   # সফল কিন্তু খালি উত্তর
+            else: j["ai_try"] = j.get("ai_try", 0) + 1
             time.sleep(1)
 
+    before = len(jobs)
     jobs = [j for j in jobs if j.get("deadline", "") >= today.isoformat()]
+    print("সোর্স চালু:", src_ok, "| ব্যর্থ:", src_fail)
+    print("মেয়াদোত্তীর্ণ বাদ:", before - len(jobs), "| কারণ:", stat)
     jobs.sort(key=lambda j: j.get("deadline", ""))
-    # অ্যাটমিক লেখা: মাঝপথে ক্র্যাশ করলেও আগের ডেটা অক্ষত থাকবে
     for name, obj in (("jobs.json", jobs), ("skipped.json", skipped)):
         json.dump(obj, open(name + ".tmp", "w", encoding="utf-8"), ensure_ascii=False, indent=2)
         os.replace(name + ".tmp", name)
@@ -412,7 +388,6 @@ def main():
 
 if __name__ == "__main__":
     main()
-    # আলাদা সার্কুলার পেজ ও sitemap (build_pages.py রিপোতে থাকলেই চলবে)
     try:
         import build_pages
         build_pages.main()
