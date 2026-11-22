@@ -2,7 +2,6 @@
 """চাকরির খবর - স্ক্র্যাপার
 বাংলাদেশের সরকারি/বেসরকারি সাইট থেকে নতুন বিজ্ঞপ্তি সংগ্রহ করে jobs.json আপডেট করে।
 - Gemini (GEMINI_API_KEY) থাকলে: ননজব লিংক বাদ + বাংলা শিরোনাম + ক্যাটাগরি
-- Telegram (TELEGRAM_BOT_TOKEN, TELEGRAM_CHAT_ID) থাকলে: নতুন জবের নোটিফিকেশন
 """
 import os, re, json, time, hashlib, sys
 from datetime import datetime, timezone, timedelta
@@ -174,10 +173,12 @@ def gemini_classify(items):
         return default
     result = dict(default)
     models = list(GEMINI_MODELS)
-    for n, i in enumerate(range(0, len(items), 30)):
-        if n >= MAX_GEMINI_CALLS:
+    t0 = time.time()
+    think = True  # দ্রুত উত্তরের জন্য কম 'চিন্তা'
+    for n, i in enumerate(range(0, len(items), 12)):
+        if n >= MAX_GEMINI_CALLS or time.time() - t0 > 240:
             break
-        chunk = items[i:i + 30]
+        chunk = items[i:i + 12]
         lines = "\n".join(f'{c["id"]} | {c["source"]} | {c["title"]}' for c in chunk)
         prompt = (
             "নিচে বাংলাদেশের চাকরির সাইট থেকে পাওয়া লিংকের তালিকা (id | সোর্স | শিরোনাম)।\n"
@@ -190,13 +191,18 @@ def gemini_classify(items):
         )
         text = None
         for m in list(models):
-            for attempt in range(2):
+            for attempt in range(3):
+                if time.time() - t0 > 240:
+                    break
+                gc = {"responseMimeType": "application/json"}
+                if think:
+                    gc["thinkingConfig"] = {"thinkingLevel": "low"}
                 try:
                     r = requests.post(
                         f"https://generativelanguage.googleapis.com/v1beta/models/{m}:generateContent",
-                        headers={"x-goog-api-key": key}, timeout=45,
+                        headers={"x-goog-api-key": key}, timeout=60,
                         json={"contents": [{"parts": [{"text": prompt}]}],
-                              "generationConfig": {"responseMimeType": "application/json"}},
+                              "generationConfig": gc},
                     )
                 except requests.RequestException as e:
                     print(f"[gemini] {m} -> {type(e).__name__}")
@@ -212,11 +218,14 @@ def gemini_classify(items):
                 except Exception:  # noqa
                     detail = r.text[:220].replace("\n", " ")
                 print(f"[gemini] {m} -> HTTP {r.status_code} {detail}")
-                if r.status_code == 404:
+                if r.status_code == 404 or (r.status_code == 429 and "quota" in detail.lower()):
                     models.remove(m)
                     break
+                if r.status_code == 400 and think:
+                    think = False  # এই মডেল thinkingLevel নেয় না, ছাড়া চেষ্টা
+                    continue
                 if r.status_code in (429, 500, 502, 503, 504):
-                    time.sleep(4)
+                    time.sleep(8)
                     continue
                 break
             if text:
@@ -239,23 +248,6 @@ def gemini_classify(items):
         except Exception as e:  # noqa
             print(f"[gemini] উত্তর পড়া যায়নি: {e}")
     return result
-
-
-def notify_telegram(new_jobs):
-    tok, chat = os.getenv("TELEGRAM_BOT_TOKEN"), os.getenv("TELEGRAM_CHAT_ID")
-    if not (tok and chat and new_jobs):
-        return
-    lines = [f"🆕 {len(new_jobs)}টি নতুন চাকরির বিজ্ঞপ্তি"]
-    for j in new_jobs[:15]:
-        lines.append(f"\n• {j.get('title_bn') or j['title']}\n  [{j['source']}] {j['url']}")
-    try:
-        requests.post(
-            f"https://api.telegram.org/bot{tok}/sendMessage",
-            data={"chat_id": chat, "text": "\n".join(lines)[:4000], "disable_web_page_preview": "true"},
-            timeout=20,
-        )
-    except Exception as e:  # noqa
-        print(f"[telegram] ব্যর্থ: {e}")
 
 
 def main():
@@ -334,8 +326,6 @@ def main():
     save_json("skipped.json", skipped[-3000:])
     print(f"যোগ হয়েছে: {len(added)}, মোট: {len(jobs)}, সফল সোর্স: {ok}/{len(SOURCES)}")
 
-    if known:  # প্রথম রানে স্প্যাম এড়াতে
-        notify_telegram(added)
     if ok == 0:
         print("কোনো সোর্সই কাজ করেনি!")
         sys.exit(1)
