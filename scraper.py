@@ -207,7 +207,11 @@ def gemini_classify(items):
                     except Exception:  # noqa
                         text = None
                     break
-                print(f"[gemini] {m} -> HTTP {r.status_code}")
+                try:
+                    detail = r.json().get("error", {}).get("message", "")[:220].replace("\n", " ")
+                except Exception:  # noqa
+                    detail = r.text[:220].replace("\n", " ")
+                print(f"[gemini] {m} -> HTTP {r.status_code} {detail}")
                 if r.status_code == 404:
                     models.remove(m)
                     break
