@@ -1,7 +1,27 @@
 {
- "updated": "2026-11-22T16:19:58+06:00",
- "count": 183,
+ "updated": "2026-11-22T16:40:15+06:00",
+ "count": 185,
  "jobs": [
+  {
+   "id": "2d155b3b4ebc",
+   "title": "কর্মকর্তাবৃন্দের তালিকা",
+   "url": "https://dpe.gov.bd/pages/officers",
+   "source": "প্রাথমিক শিক্ষা অধিদপ্তর",
+   "type": "govt",
+   "title_bn": "",
+   "category": "অন্যান্য",
+   "first_seen": "2026-11-22T16:40:15+06:00"
+  },
+  {
+   "id": "d4e72df1f48e",
+   "title": "প্রজ্ঞাপন/বিজ্ঞপ্তি",
+   "url": "https://dpe.gov.bd/pages/notification-circulars",
+   "source": "প্রাথমিক শিক্ষা অধিদপ্তর",
+   "type": "govt",
+   "title_bn": "",
+   "category": "অন্যান্য",
+   "first_seen": "2026-11-22T16:40:15+06:00"
+  },
   {
    "id": "403351c42759",
    "title": "ম্যানেজার ও প্ল্যানারদের অ্যাপ",
