@@ -45,6 +45,19 @@ SOURCES = [
     {"name": "Chakri.com", "type": "private", "js": True, "url": "https://www.chakri.com/"},
     {"name": "Skill.Jobs", "type": "private", "js": True, "url": "https://www.skill.jobs/"},
     {"name": "Shomvob", "type": "private", "js": True, "url": "https://shomvob.co/"},
+    # ---- সংকলন ও অন্যান্য জব সাইট (সরকারি+বেসরকারি মিশ্র) ----
+    {"name": "Job.com.bd", "type": "mixed", "feed": True, "url": "https://job.com.bd/"},
+    {"name": "BD Jobs Today", "type": "mixed", "feed": True, "url": "https://bdjobstoday.com/"},
+    {"name": "eJobs Circular", "type": "mixed", "feed": True, "url": "https://ejobscircular.com/"},
+    {"name": "AllJobsBD", "type": "mixed", "feed": True, "url": "https://alljobsbd.com/"},
+    {"name": "BDJobsFeed", "type": "mixed", "feed": True, "url": "https://bdjobsfeed.com/"},
+    {"name": "BD Career", "type": "mixed", "feed": True, "url": "https://bd-career.com/"},
+    {"name": "JobDorkar", "type": "mixed", "feed": True, "url": "https://www.jobdorkar.com/"},
+    {"name": "JagoJobs", "type": "private", "url": "https://www.jagojobs.com/"},
+    {"name": "MyJobs.com.bd", "type": "private", "url": "https://www.myjobs.com.bd/"},
+    {"name": "eJobs.com.bd", "type": "private", "url": "https://ejobs.com.bd/"},
+    {"name": "NRB Jobs", "type": "private", "url": "https://nrbjobs.com/"},
+    {"name": "RMG Jobs", "type": "private", "url": "https://rmgjobs.com/"},
 ]
 
 JOB_RE = re.compile(
@@ -96,7 +109,44 @@ def fetch(url):
     raise err
 
 
+GOVT_RE = re.compile(
+    r"সরকারি|বাংলাদেশ ব্যাংক|মন্ত্রণালয়|অধিদপ্তর|অধিদফতর|বিসিএস|পিএসসি|পুলিশ|সেনা|নৌবাহিনী|বিমান বাহিনী|রেলওয়ে|"
+    r"জেলা প্রশাসক|পরিষদ|বিশ্ববিদ্যালয়|govt|government|ministry|bpsc|\bbcs\b|teletalk|police|"
+    r"army|navy|railway|bangladesh bank|directorate|department|ntrca", re.I)
+
+
+def fix_type(src, items):
+    if src.get("type") == "mixed":
+        for it in items:
+            it["type"] = "govt" if GOVT_RE.search(it["title"]) else "private"
+    return items
+
+
+def parse_feed(src, text):
+    soup = BeautifulSoup(text, "xml")
+    out = {}
+    for it in soup.find_all(["item", "entry"]):
+        t, l = it.find("title"), it.find("link")
+        title = " ".join(t.get_text(" ", strip=True).split()) if t else ""
+        href = ((l.get("href") or l.get_text(strip=True)) if l else "").strip()
+        if len(title) < 8 or not href.startswith("http") or NAV_RE.search(title):
+            continue
+        jid = hashlib.md5(href.encode()).hexdigest()[:12]
+        out.setdefault(jid, {"id": jid, "title": title[:220], "url": href,
+                             "source": src["name"], "type": src["type"]})
+        if len(out) >= MAX_PER_SOURCE:
+            break
+    return fix_type(src, list(out.values()))
+
+
 def scrape_source(src):
+    if src.get("feed"):  # WordPress-ধরনের সাইটে RSS ফিড আগে চেষ্টা
+        try:
+            items = parse_feed(src, fetch(src["url"].rstrip("/") + "/feed/"))
+            if items:
+                return items
+        except Exception:  # noqa
+            pass
     return parse_html(src, fetch(src["url"]))
 
 
@@ -123,7 +173,66 @@ def parse_html(src, html):
         })
         if len(found) >= MAX_PER_SOURCE:
             break
-    return list(found.values())
+    return fix_type(src, list(found.values()))
+
+
+BDJOBS_API = "https://gateway.bdjobs.com/recruitment-account-test/api/JobSearch/GetJobSearch"
+
+
+def _find_rows(obj):
+    """JSON-এর ভেতরের সবচেয়ে বড় অবজেক্ট-তালিকা (জবের সারি) খুঁজে বের করে।"""
+    best = []
+    if isinstance(obj, list):
+        if obj and all(isinstance(x, dict) for x in obj):
+            best = obj
+        for x in obj:
+            r = _find_rows(x)
+            if len(r) > len(best):
+                best = r
+    elif isinstance(obj, dict):
+        for v in obj.values():
+            r = _find_rows(v)
+            if len(r) > len(best):
+                best = r
+    return best
+
+
+def _pick(d, *names):
+    low = {str(k).lower(): v for k, v in d.items()}
+    for n in names:
+        v = low.get(n.lower())
+        if v not in (None, "", 0):
+            return v
+    return None
+
+
+def bdjobs_api(pages=4):
+    """Bdjobs-এর JSON তালিকা (প্রতি পেজে ~৫০টি) থেকে সর্বশেষ জব।"""
+    out = []
+    for pg in range(1, pages + 1):
+        r = requests.get(BDJOBS_API, params={"isPro": 1, "rpp": 50, "pg": pg},
+                         headers=HEADERS, timeout=(8, 25))
+        r.raise_for_status()
+        rows = _find_rows(r.json())
+        if pg == 1:
+            print("[bdjobs-api] সারি:", len(rows), "ফিল্ড:",
+                  list(rows[0].keys())[:14] if rows else "খালি")
+        if not rows:
+            break
+        for d in rows:
+            jid = _pick(d, "jobId", "jobid", "id", "jid")
+            title = _pick(d, "jobTitle", "title", "jobtitle", "jobTitleEn")
+            if not jid or not title:
+                continue
+            comp = _pick(d, "companyName", "company", "organization", "orgName")
+            url = f"https://bdjobs.com/h/details/{jid}"
+            out.append({
+                "id": hashlib.md5(url.encode()).hexdigest()[:12],
+                "title": f"{title} - {comp}" if comp else str(title),
+                "url": url, "source": "Bdjobs", "type": "private",
+            })
+        time.sleep(0.4)
+    return out
 
 
 def browser_scrape(sources, budget=200):
@@ -260,6 +369,18 @@ def main():
 
     collected, ok = [], 0
     retry = [s for s in SOURCES if s.get("js")]
+
+    # Bdjobs: আগে JSON API, ব্যর্থ হলে নিচে ব্রাউজার ফলব্যাক
+    try:
+        api_items = bdjobs_api()
+    except Exception as e:  # noqa
+        print(f"[bdjobs-api] ব্যর্থ: {type(e).__name__}: {str(e)[:120]}")
+        api_items = []
+    if api_items:
+        collected.extend(api_items)
+        ok += 1
+        retry = [x for x in retry if x["name"] != "Bdjobs"]
+        print(f"[ok-api] Bdjobs: {len(api_items)}টি জব")
     with ThreadPoolExecutor(max_workers=8) as ex:
         futs = {ex.submit(scrape_source, s): s for s in SOURCES if not s.get("js")}
         try:
@@ -275,8 +396,11 @@ def main():
                     print(f"[ok]   {s['name']}: {len(items)}টি লিংক")
                     collected.extend(items)
                 except Exception as e:  # noqa
-                    print(f"[fail] {s['name']}: {type(e).__name__}: {str(e)[:120]} -> ব্রাউজারে আবার চেষ্টা")
-                    retry.append(s)
+                    dead = "NameResolution" in str(e) or "Failed to resolve" in str(e)
+                    print(f"[fail] {s['name']}: {type(e).__name__}: {str(e)[:120]}"
+                          + (" (ডোমেইন মেলেনি, বাদ)" if dead else " -> ব্রাউজারে আবার চেষ্টা"))
+                    if not dead:
+                        retry.append(s)
         except Exception:
             print("[warn] কিছু সোর্স সময়মতো শেষ হয়নি, যা পাওয়া গেছে তা নিয়েই এগোচ্ছি")
 
