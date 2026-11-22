@@ -18,9 +18,10 @@ urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 BD_TZ = timezone(timedelta(hours=6))
 KEEP_DAYS = 30
 MAX_PER_SOURCE = 80
-MAX_GEMINI_CALLS = 6
-GEMINI_MODELS = [m for m in [os.getenv("GEMINI_MODEL") or "gemini-3.8-flash",
-                             "gemini-3.7-flash", "gemini-2.5-flash"]]
+MAX_GEMINI_CALLS = 8
+GEMINI_MODELS = [os.getenv("GEMINI_MODEL") or "gemini-3.8-flash",
+                 "gemini-3.7-flash", "gemini-flash-latest"]
+GEMINI_DOWN = False
 HEADERS = {
     "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 "
                   "(KHTML, like Gecko) Chrome/124.0 Safari/537.36",
@@ -39,16 +40,12 @@ SOURCES = [
     {"name": "মাধ্যমিক ও উচ্চশিক্ষা", "type": "govt", "url": "https://dshe.gov.bd/site/view/notices"},
     {"name": "জনপ্রশাসন মন্ত্রণালয়", "type": "govt", "url": "https://mopa.gov.bd/site/view/notices"},
     {"name": "স্বাস্থ্য অধিদপ্তর (DGHS)", "type": "govt", "url": "https://dghs.gov.bd/site/view/notices"},
-    {"name": "বাংলাদেশ পুলিশ", "type": "govt", "url": "https://police.gov.bd/en/career"},
     {"name": "মন্ত্রিপরিষদ বিভাগ", "type": "govt", "url": "https://cabinet.gov.bd/site/view/notices"},
     # ---- বেসরকারি ----
     {"name": "Bdjobs", "type": "private", "js": True, "url": "https://www.bdjobs.com/"},
     {"name": "Chakri.com", "type": "private", "js": True, "url": "https://www.chakri.com/"},
     {"name": "Skill.Jobs", "type": "private", "js": True, "url": "https://www.skill.jobs/"},
     {"name": "Shomvob", "type": "private", "js": True, "url": "https://shomvob.co/"},
-    {"name": "Kormo", "type": "private", "js": True, "url": "https://www.kormo.jobs/"},
-    {"name": "NGO Jobs BD", "type": "private", "url": "https://www.ngojobsbd.com/"},
-    {"name": "Jobs.com.bd", "type": "private", "js": True, "url": "https://jobs.com.bd/"},
 ]
 
 JOB_RE = re.compile(
@@ -170,18 +167,17 @@ def browser_scrape(sources, budget=200):
 
 def gemini_classify(items):
     """রিটার্ন: {id: {"is_job":bool,"title_bn":str,"category":str}}"""
+    global GEMINI_DOWN
     default = {i["id"]: {"is_job": True, "title_bn": "", "category": "অন্যান্য"} for i in items}
     key = os.getenv("GEMINI_API_KEY")
-    if not key or not items:
+    if not key or not items or GEMINI_DOWN:
         return default
-    models = list(GEMINI_MODELS)
     result = dict(default)
-    calls = 0
-    for i in range(0, len(items), 40):
-        if calls >= MAX_GEMINI_CALLS:
+    models = list(GEMINI_MODELS)
+    for n, i in enumerate(range(0, len(items), 30)):
+        if n >= MAX_GEMINI_CALLS:
             break
-        calls += 1
-        chunk = items[i:i + 40]
+        chunk = items[i:i + 30]
         lines = "\n".join(f'{c["id"]} | {c["source"]} | {c["title"]}' for c in chunk)
         prompt = (
             "নিচে বাংলাদেশের চাকরির সাইট থেকে পাওয়া লিংকের তালিকা (id | সোর্স | শিরোনাম)।\n"
@@ -192,22 +188,42 @@ def gemini_classify(items):
             'category হবে এর একটি: "সরকারি","ব্যাংক","শিক্ষা","এনজিও","আইটি","প্রকৌশল","স্বাস্থ্য","অন্যান্য"।\n'
             "শুধু JSON দাও।\n\n" + lines
         )
-        try:
-            r = None
-            for m in list(models):
-                r = requests.post(
-                    f"https://generativelanguage.googleapis.com/v1beta/models/{m}:generateContent",
-                    headers={"x-goog-api-key": key}, timeout=90,
-                    json={"contents": [{"parts": [{"text": prompt}]}],
-                          "generationConfig": {"responseMimeType": "application/json"}},
-                )
-                if r.ok:
-                    models = [m]  # যে মডেল কাজ করেছে সেটাই বাকি চাংকে
-                    print(f"[gemini] মডেল: {m}")
+        text = None
+        for m in list(models):
+            for attempt in range(2):
+                try:
+                    r = requests.post(
+                        f"https://generativelanguage.googleapis.com/v1beta/models/{m}:generateContent",
+                        headers={"x-goog-api-key": key}, timeout=45,
+                        json={"contents": [{"parts": [{"text": prompt}]}],
+                              "generationConfig": {"responseMimeType": "application/json"}},
+                    )
+                except requests.RequestException as e:
+                    print(f"[gemini] {m} -> {type(e).__name__}")
                     break
-                print(f"[gemini] {m} -> HTTP {r.status_code}, পরের মডেল চেষ্টা")
-            r.raise_for_status()
-            text = r.json()["candidates"][0]["content"]["parts"][0]["text"]
+                if r.ok:
+                    try:
+                        text = r.json()["candidates"][0]["content"]["parts"][0]["text"]
+                    except Exception:  # noqa
+                        text = None
+                    break
+                print(f"[gemini] {m} -> HTTP {r.status_code}")
+                if r.status_code == 404:
+                    models.remove(m)
+                    break
+                if r.status_code in (429, 500, 502, 503, 504):
+                    time.sleep(4)
+                    continue
+                break
+            if text:
+                models = [m]
+                print(f"[gemini] মডেল: {m}")
+                break
+        if not text:
+            print("[gemini] এখন কাজ করছে না, এই রানে বাকিটা ফিল্টার ছাড়াই চলবে")
+            GEMINI_DOWN = True
+            break
+        try:
             text = re.sub(r"^```(?:json)?|```$", "", text.strip(), flags=re.M).strip()
             for row in json.loads(text):
                 if row.get("id") in result:
@@ -217,7 +233,7 @@ def gemini_classify(items):
                         "category": str(row.get("category", "অন্যান্য")),
                     }
         except Exception as e:  # noqa
-            print(f"[gemini] ব্যর্থ ({e}) - ফিল্টার ছাড়াই চালাচ্ছি")
+            print(f"[gemini] উত্তর পড়া যায়নি: {e}")
     return result
 
 
@@ -292,6 +308,21 @@ def main():
         added.append(it)
 
     jobs = added + jobs
+
+    # আগে Gemini ছাড়া যোগ হওয়া জবগুলো আবার ফিল্টার/বাংলা শিরোনাম
+    pending = [j for j in jobs if not j.get("title_bn")][:120]
+    if pending and os.getenv("GEMINI_API_KEY") and not GEMINI_DOWN:
+        old = gemini_classify(pending)
+        drop = set()
+        for j in pending:
+            meta = old.get(j["id"], {})
+            if not meta.get("is_job", True):
+                drop.add(j["id"])
+                skipped.append({"id": j["id"], "title": j["title"]})
+            elif meta.get("title_bn"):
+                j["title_bn"] = meta["title_bn"]
+                j["category"] = meta.get("category") or j.get("category", "অন্যান্য")
+        jobs = [j for j in jobs if j["id"] not in drop]
     cutoff = now() - timedelta(days=KEEP_DAYS)
     jobs = [j for j in jobs if datetime.fromisoformat(j["first_seen"]) >= cutoff]
 
