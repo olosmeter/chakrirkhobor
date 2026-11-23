@@ -1,8 +1,129 @@
 {
- "updated": "2026-11-23T20:27:04+06:00",
- "count": 823,
+ "updated": "2026-11-23T22:01:43+06:00",
+ "count": 834,
  "bdjobs_api_purged": true,
  "jobs": [
+  {
+   "id": "f257c24d81f6",
+   "title": "জেনসেন হুয়াংকে আবার সিইও পদে ফিরিয়ে আনল এনভিডিয়া",
+   "url": "https://news.google.com/rss/articles/CBMiW0FVX3lxTE9mNm5yUEhWY2NtU0NjVEVzbC1hMTJkMzV0cFBsa0poQmVlT05DTzNfWmk5dnYwN3dtTGhPUE5kQmRBV040UGU1MWRQVHJQUjJmeVp2MmZfQ1VqTVXSAWhBVV95cUxPNTZhQjZEblI1TnZWWjF6d3pPN2hwTGVkREs2dUFub2o5X2hfVDZxQUJBUkx5WUd4cHF3Y0V3SEdDODNLVkpRV0dUZ0hZYVpjNm9Tazg5VTdqbGx4X1RxdC0xMFpWLUhEdg?oc=5",
+   "source": "প্রথম আলো",
+   "type": "private",
+   "title_bn": "",
+   "category": "অন্যান্য",
+   "deadline": "",
+   "first_seen": "2026-11-23T22:01:43+06:00"
+  },
+  {
+   "id": "afa14ef38be9",
+   "title": "মিউচুয়াল ট্রাস্ট ব্যাংকের নিয়োগ বিজ্ঞপ্তি, কর্মস্থল ঢাকা",
+   "url": "https://news.google.com/rss/articles/CBMiXkFVX3lxTE9MTmdybGR5dG9WYlNlQml2YmlVcjRqUXZYVFgtV2JsMnFhVFRUYUJoM2VhSXpxWUJLa0lsQlI4bzdLZ3g0WkRaQnU2Z0VfQ3lXN1h1VHhCekZGanFXV0E?oc=5",
+   "source": "জাগো নিউজ",
+   "type": "private",
+   "title_bn": "",
+   "category": "ব্যাংক",
+   "deadline": "",
+   "first_seen": "2026-11-23T22:01:43+06:00"
+  },
+  {
+   "id": "32cbacc7f8fa",
+   "title": "৫০ জনকে নিয়োগ প্রাণ গ্রুপ, লাগবে না অভিজ্ঞতা",
+   "url": "https://news.google.com/rss/articles/CBMiXkFVX3lxTE9YYW0tQWpGYXI2NWw3Y0lEWGZkUEF2SmdvTnlyS2tvSmYtSXZBd3lKQ3ZsenFGbXM3djlreXdEV2pwVk9aQncyMkdRbVFsTlRfaVBBd2UxbVdCSm15dGc?oc=5",
+   "source": "জাগো নিউজ",
+   "type": "private",
+   "title_bn": "",
+   "category": "অন্যান্য",
+   "deadline": "",
+   "first_seen": "2026-11-23T22:01:43+06:00"
+  },
+  {
+   "id": "7513f5d20820",
+   "title": "পলমল গ্রুপে নিয়োগ, থাকতে হবে স্নাতক পাস",
+   "url": "https://news.google.com/rss/articles/CBMiXkFVX3lxTFBScXhObkNZVTUxVFZNNTdveE83YWM3em56bXhaNzZ3N0Jlc2tSTDZIRDA1RmtUOUFId1hDOVBKejl0eTVaM0dvRHJ5ZmRvSlBveVhUaVlJbjVZLU5HbHc?oc=5",
+   "source": "জাগো নিউজ",
+   "type": "private",
+   "title_bn": "",
+   "category": "অন্যান্য",
+   "deadline": "",
+   "first_seen": "2026-11-23T22:01:43+06:00"
+  },
+  {
+   "id": "f72816b2159c",
+   "title": "কারখানায় নিয়োগ দেবে এসকেএফ ফার্মা, দ্রুত আবেদন করুন",
+   "url": "https://news.google.com/rss/articles/CBMiV0FVX3lxTE5DX0hzVk9qRnBkZEFXbWVSZTBVLWFTZnRKWUtzVVRoem1OcXBCTUEzQWt0Z2cxd25nWmkta0I3YzdkUW5HZkE3RGtTQnM2RDA1aGhVcElkaw?oc=5",
+   "source": "ঢাকা পোস্ট",
+   "type": "private",
+   "title_bn": "",
+   "category": "অন্যান্য",
+   "deadline": "",
+   "first_seen": "2026-11-23T22:01:43+06:00"
+  },
+  {
+   "id": "d2271b566430",
+   "title": "বেসরকারি চাকরির খবর ও নিয়োগ বিজ্ঞপ্তি | Private Job Circular | আজকের পত্রিকা",
+   "url": "https://news.google.com/rss/articles/CBMiUkFVX3lxTFA4ejZIOFRudEk3dUs1cG9YcFR1UE1UWVpfYkdEaFVCcEVNZ2U1TUVnV2FBQVRvMm1rM21xS3UwLWttTER6enlzOVlLN3dyQkkxTnc?oc=5",
+   "source": "আজকের পত্রিকা",
+   "type": "govt",
+   "title_bn": "",
+   "category": "সরকারি",
+   "deadline": "",
+   "first_seen": "2026-11-23T22:01:43+06:00"
+  },
+  {
+   "id": "a55256f51722",
+   "title": "চাকরি হারানোর ভয় নেই বাংলাদেশ কোচের",
+   "url": "https://news.google.com/rss/articles/CBMiaEFVX3lxTE04a1JDU1NhLUxESnVyei01dzlhZktHc1NQanFtQWJBOWx6RkNKOGNxLVlVZTBvV3pibXI3d0xENnpRLWx5aFZNaW1NVnlBeGZxNUJqbkYzbEprNjk5TmpOOXU4Z09YRUpz0gFuQVVfeXFMUGl4R251Ykk4RF9rZDV4QXdTTnNOS1drNmNFeW11S0h3R0J1RnpCbnNzM0N0V3hzZnF0Q0h5dTF5ckhBQWRPdmRtVFVIZFVDaVVicWN1VncwRWxvU3ZZWlBVUEU4VzVnSE5BdXBCU1E?oc=5",
+   "source": "আজকের পত্রিকা",
+   "type": "private",
+   "title_bn": "",
+   "category": "অন্যান্য",
+   "deadline": "",
+   "first_seen": "2026-11-23T22:01:43+06:00"
+  },
+  {
+   "id": "6e815e0492e7",
+   "title": "Manager - R & D (Denim Pilot Wash) Nice Denim Mills Ltd Sreepur Deadline 23 Dec 2026 Experience At least 10 years Sreepur At least 10 years Deadline: 23 Dec 2026",
+   "url": "https://bdjobs.com/h/details/1559675?ln=1",
+   "source": "Bdjobs জব তালিকা",
+   "type": "private",
+   "title_bn": "",
+   "category": "অন্যান্য",
+   "deadline": "",
+   "first_seen": "2026-11-23T22:01:43+06:00"
+  },
+  {
+   "id": "ea9ff3cf83f6",
+   "title": "Interior Consultant PeakPoint Architects & Interior GULSHAN 1 Deadline 23 Dec 2026 Experience At least 1 years GULSHAN 1 At least 1 years Deadline: 23 Dec 2026",
+   "url": "https://bdjobs.com/h/details/1559631?ln=1",
+   "source": "Bdjobs জব তালিকা",
+   "type": "private",
+   "title_bn": "",
+   "category": "অন্যান্য",
+   "deadline": "",
+   "first_seen": "2026-11-23T22:01:43+06:00"
+  },
+  {
+   "id": "4d805f1fb35d",
+   "title": "Showroom Manager Leatherex Footwear Ind. Ltd. Dhaka, GULSHAN 1 Deadline 23 Dec 2026 Experience 2 to 5 years Dhaka, GULSHAN 1 2 to 5 years Deadline: 23 Dec 2026",
+   "url": "https://bdjobs.com/h/details/1559662?ln=1",
+   "source": "Bdjobs জব তালিকা",
+   "type": "private",
+   "title_bn": "",
+   "category": "অন্যান্য",
+   "deadline": "",
+   "first_seen": "2026-11-23T22:01:43+06:00"
+  },
+  {
+   "id": "d733159b0155",
+   "title": "Intern - Communications & Admin NextED Advisors Banani Deadline 24 Nov 2026 Experience NA Banani NA Deadline: 24 Nov 2026",
+   "url": "https://bdjobs.com/h/details/1557947?ln=1",
+   "source": "Bdjobs জব তালিকা",
+   "type": "private",
+   "title_bn": "",
+   "category": "অন্যান্য",
+   "deadline": "",
+   "first_seen": "2026-11-23T22:01:43+06:00"
+  },
   {
    "id": "a50f8d9b104c",
    "title": "২২ কর্মী নিয়োগ দেবে বিসিপিএস, এসএসসি পাসেই আবেদন",
