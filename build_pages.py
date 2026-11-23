@@ -84,7 +84,17 @@ jobs_raw = db.get("jobs", []) if isinstance(db, dict) else []
 if not isinstance(jobs_raw, list):
     jobs_raw = []
 
-jobs = [j for j in jobs_raw if isinstance(j, dict) and safe_url(j.get("url"))]
+# ডুপ্লিকেট ইউআরএল বাদ দেওয়ার ফিল্টার (যাতে মোট সংখ্যা ঠিক থাকে)
+unique_jobs = []
+seen_urls = set()
+for j in jobs_raw:
+    if isinstance(j, dict):
+        u = safe_url(j.get("url"))
+        if u and u not in seen_urls:
+            seen_urls.add(u)
+            unique_jobs.append(j)
+
+jobs = unique_jobs
 jobs.sort(key=lambda j: str(j.get("first_seen", "") or ""), reverse=True)
 updated = parse(db.get("updated", ""))
 
@@ -207,14 +217,21 @@ button,input{font:inherit}
 .iconbtn{width:36px;height:36px;display:grid;place-items:center;border:1px solid var(--line);background:var(--surface);color:var(--ink);border-radius:10px;cursor:pointer}
 .iconbtn svg{width:18px;height:18px}
 
-/* simple compact hero */
-.hero{margin-top:4px;padding:16px 18px;border-radius:var(--radius);background:var(--surface);border:1px solid var(--line);box-shadow:var(--shadow)}
+/* simple compact hero - Updated Color */
+.hero{
+    margin-top:4px;
+    padding:16px 18px;
+    border-radius:var(--radius);
+    background:linear-gradient(135deg, var(--surface) 0%, var(--green2) 100%);
+    border:1px solid var(--green2);
+    box-shadow:var(--shadow);
+}
 .hero-top{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px}
 .hero-title{font-size:1.15rem;font-weight:700;margin:0;line-height:1.4}
 .hero-sub{font-size:0.85rem;color:var(--mut);margin-top:4px}
 .stats{display:flex;gap:15px;font-size:0.85rem;color:var(--mut)}
 .stat-item strong{color:var(--green);font-size:1rem;margin-right:3px}
-.updated{font-size:.75rem;color:var(--mut);margin-top:10px;border-top:1px solid var(--line);padding-top:10px;display:block}
+.updated{font-size:.75rem;color:var(--mut);margin-top:10px;border-top:1px solid color-mix(in srgb, var(--green) 20%, transparent);padding-top:10px;display:block}
 
 /* search / filters */
 .tools{margin-top:12px;padding:12px;border:1px solid var(--line);background:var(--surface);border-radius:var(--radius);box-shadow:var(--shadow)}
