@@ -5,7 +5,7 @@
 """
 import os, re, json, time, hashlib, sys
 from datetime import datetime, timezone, timedelta
-from urllib.parse import urljoin, urlparse
+from urllib.parse import urljoin, urlparse, quote
 from concurrent.futures import ThreadPoolExecutor, as_completed
 
 import requests
@@ -18,8 +18,9 @@ BD_TZ = timezone(timedelta(hours=6))
 KEEP_DAYS = 30
 MAX_PER_SOURCE = 80
 MAX_GEMINI_CALLS = 8
-GEMINI_MODELS = [os.getenv("GEMINI_MODEL") or "gemini-3.8-flash",
-                 "gemini-3.7-flash", "gemini-flash-latest"]
+# flash-lite: সবচেয়ে দ্রুত ও হালকা, শিরোনাম/ক্যাটাগরির মতো কাজের জন্য আদর্শ; বাকিগুলো ফলব্যাক
+GEMINI_MODELS = [os.getenv("GEMINI_MODEL") or "gemini-3.5-flash-lite",
+                 "gemini-3.8-flash", "gemini-3.6-flash"]
 GEMINI_DOWN = False
 HEADERS = {
     "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 "
@@ -33,40 +34,46 @@ SOURCES = [
     # ---- সরকারি ----
     {"name": "Teletalk সরকারি চাকরি", "type": "govt", "url": "https://alljobs.teletalk.com.bd/"},
     {"name": "BPSC", "type": "govt", "url": "https://www.bpsc.gov.bd/site/view/notices"},
-    {"name": "Bangladesh Bank", "type": "govt", "url": "https://erecruitment.bb.org.bd/"},
     {"name": "NTRCA (শিক্ষক নিয়োগ)", "type": "govt", "url": "https://ntrca.gov.bd/"},
-    {"name": "প্রাথমিক শিক্ষা অধিদপ্তর", "type": "govt", "url": "https://dpe.gov.bd/site/view/notices"},
     {"name": "মাধ্যমিক ও উচ্চশিক্ষা", "type": "govt", "url": "https://dshe.gov.bd/site/view/notices"},
     {"name": "জনপ্রশাসন মন্ত্রণালয়", "type": "govt", "url": "https://mopa.gov.bd/site/view/notices"},
     {"name": "স্বাস্থ্য অধিদপ্তর (DGHS)", "type": "govt", "url": "https://dghs.gov.bd/site/view/notices"},
     {"name": "মন্ত্রিপরিষদ বিভাগ", "type": "govt", "url": "https://cabinet.gov.bd/site/view/notices"},
     # ---- বেসরকারি ----
     {"name": "Bdjobs", "type": "private", "js": True, "url": "https://www.bdjobs.com/"},
-    {"name": "Chakri.com", "type": "private", "js": True, "url": "https://www.chakri.com/"},
+    {"name": "Bdjobs জব তালিকা", "type": "private", "js": True, "url": "https://bdjobs.com/h/jobs"},
     {"name": "Skill.Jobs", "type": "private", "js": True, "url": "https://www.skill.jobs/"},
     {"name": "Shomvob", "type": "private", "js": True, "url": "https://shomvob.co/"},
     # ---- সংকলন ও অন্যান্য জব সাইট (সরকারি+বেসরকারি মিশ্র) ----
-    {"name": "Job.com.bd", "type": "mixed", "feed": True, "url": "https://job.com.bd/"},
     {"name": "BD Jobs Today", "type": "mixed", "feed": True, "url": "https://bdjobstoday.com/"},
     {"name": "eJobs Circular", "type": "mixed", "feed": True, "url": "https://ejobscircular.com/"},
-    {"name": "AllJobsBD", "type": "mixed", "feed": True, "url": "https://alljobsbd.com/"},
-    {"name": "BDJobsFeed", "type": "mixed", "feed": True, "url": "https://bdjobsfeed.com/"},
     {"name": "BD Career", "type": "mixed", "feed": True, "url": "https://bd-career.com/"},
-    {"name": "JobDorkar", "type": "mixed", "feed": True, "url": "https://www.jobdorkar.com/"},
     {"name": "JagoJobs", "type": "private", "url": "https://www.jagojobs.com/"},
-    {"name": "MyJobs.com.bd", "type": "private", "url": "https://www.myjobs.com.bd/"},
     {"name": "eJobs.com.bd", "type": "private", "url": "https://ejobs.com.bd/"},
     {"name": "NRB Jobs", "type": "private", "url": "https://nrbjobs.com/"},
     {"name": "RMG Jobs", "type": "private", "url": "https://rmgjobs.com/"},
     # ---- পত্রিকার চাকরি বিভাগ ----
-    {"name": "ইত্তেফাক চাকরি", "type": "mixed", "url": "https://www.ittefaq.com.bd/jobs"},
-    {"name": "বাংলা ট্রিবিউন চাকরি", "type": "mixed", "feed": True, "url": "https://www.banglatribune.com/jobs"},
-    {"name": "যুগান্তর (সরকারি/রাষ্ট্রীয়)", "type": "govt", "url": "https://www.jugantor.com/job-search-state-org"},
-    {"name": "যুগান্তর (এনজিও)", "type": "private", "url": "https://www.jugantor.com/job-search-ngo"},
-    {"name": "বাংলাদেশ প্রতিদিন ক্যারিয়ার", "type": "mixed", "url": "https://www.bd-pratidin.com/career"},
     # ---- আরও সংকলন ----
     {"name": "BD Govt Job", "type": "mixed", "feed": True, "url": "https://bdgovtjob.net/"},
 ]
+
+
+def _gnews(name, domain, kind="mixed"):
+    """পত্রিকার সাইট ব্লক করলেও Google News RSS দিয়ে ওই পত্রিকার নিয়োগ খবর পাওয়া যায়।"""
+    q = f"নিয়োগ বিজ্ঞপ্তি site:{domain} when:14d"
+    url = "https://news.google.com/rss/search?q=" + quote(q) + "&hl=bn&gl=BD&ceid=BD:bn"
+    return {"name": name, "type": kind, "url": url, "rss": True, "nb": True, "need_job": True}
+
+
+SOURCES += [_gnews(n, d) for n, d in [
+    ("প্রথম আলো", "prothomalo.com"), ("কালের কণ্ঠ", "kalerkantho.com"), ("যুগান্তর", "jugantor.com"),
+    ("ইত্তেফাক", "ittefaq.com.bd"), ("সমকাল", "samakal.com"), ("বাংলাদেশ প্রতিদিন", "bd-pratidin.com"),
+    ("নয়া দিগন্ত", "dailynayadiganta.com"), ("জাগো নিউজ", "jagonews24.com"),
+    ("বাংলা ট্রিবিউন", "banglatribune.com"), ("ঢাকা পোস্ট", "dhakapost.com"),
+    ("বিডিনিউজ২৪", "bangla.bdnews24.com"), ("আজকের পত্রিকা", "ajkerpatrika.com"),
+    ("মানবজমিন", "mzamin.com"), ("জনকণ্ঠ", "dailyjanakantha.com"),
+    ("আমাদের সময়", "dainikamadershomoy.com"), ("রাইজিংবিডি", "risingbd.com"), ("কালবেলা", "kalbela.com"),
+]]
 
 JOB_RE = re.compile(
     r"নিয়োগ|বিজ্ঞপ্তি|চাকরি|চাকুরি|পদে|লোকবল|আবেদন|সার্কুলার|"
@@ -130,7 +137,8 @@ NONJOB_RE = re.compile(
     r"\bresult\b|বেতন স্কেল ক্যালকুলেটর|নোটিশ বোর্ড|শিক্ষা বৃত্তি|"
     r"সনদ যাচাই|প্রত্যয়ন|যাচাই|সুপারিশকৃত|সুপারিশ বিজ্ঞপ্তি|মৌখিক পরীক্ষা|লিখিত পরীক্ষা|এমসিকিউ|\bmcq\b|"
     r"পরীক্ষার (সময়সূচি|তারিখ|ফল)|উত্তীর্ণ|প্রাথমিক বাছাই|আসন বিন্যাস|ফল প্রকাশ|নিবন্ধন পরীক্ষা|নিবন্ধন সনদ|"
-    r"প্রার্থীগণ|প্রার্থীদের তালিকা|ওয়েটিং লিস্ট|স্থগিত|বাতিল", re.I)
+    r"প্রার্থীগণ|প্রার্থীদের তালিকা|ওয়েটিং লিস্ট|স্থগিত|বাতিল|"
+    r"দুর্নীতি|গ্রেপ্তার|গ্রেফতার|মামলা|প্রতারণা|ভুয়া|সতর্ক|আন্দোলন|বিক্ষোভ|হত্যা|অনিয়ম|তদন্ত", re.I)
 
 CAT_RULES = [
     ("ব্যাংক", r"ব্যাংক|\bbank\b|বীমা|insurance|ইসলামী ব্যাংক|ক্রেডিট"),
@@ -172,7 +180,11 @@ def parse_feed(src, text):
         t, l = it.find("title"), it.find("link")
         title = " ".join(t.get_text(" ", strip=True).split()) if t else ""
         href = ((l.get("href") or l.get_text(strip=True)) if l else "").strip()
+        if "news.google.com" in src["url"]:
+            title = re.sub(r"\s+-\s+[^-]{2,40}$", "", title)
         if len(title) < 8 or not href.startswith("http") or NAV_RE.search(title):
+            continue
+        if src.get("need_job") and not JOB_RE.search(title):
             continue
         jid = hashlib.md5(href.encode()).hexdigest()[:12]
         out.setdefault(jid, {"id": jid, "title": title[:220], "url": href,
@@ -183,6 +195,8 @@ def parse_feed(src, text):
 
 
 def scrape_source(src):
+    if src.get("rss"):
+        return parse_feed(src, fetch(src["url"]))
     if src.get("feed"):  # WordPress-ধরনের সাইটে RSS ফিড আগে চেষ্টা
         try:
             items = parse_feed(src, fetch(src["url"].rstrip("/") + "/feed/"))
@@ -268,12 +282,19 @@ def bdjobs_api(pages=4):
             if not jid or not title:
                 continue
             comp = _pick(d, "companyName", "company", "organization", "orgName")
+            bng = _pick(d, "JobTitleBng")
+            dl = _pick(d, "deadline")
             url = f"https://bdjobs.com/h/details/{jid}"
-            out.append({
+            item = {
                 "id": hashlib.md5(url.encode()).hexdigest()[:12],
                 "title": f"{title} - {comp}" if comp else str(title),
                 "url": url, "source": "Bdjobs", "type": "private",
-            })
+            }
+            if bng and str(bng).strip() != str(title).strip():
+                item["title_bn"] = (f"{bng} - {comp}" if comp else str(bng))[:200]
+            if dl and len(str(dl)) < 30:
+                item["deadline"] = str(dl)
+            out.append(item)
         time.sleep(0.4)
     return out
 
@@ -289,7 +310,7 @@ def browser_scrape(sources, budget=200):
     try:
         with sync_playwright() as pw:
             browser = pw.chromium.launch(headless=True, args=["--no-sandbox"])
-            ctx = browser.new_context(user_agent=HEADERS["User-Agent"], locale="bn-BD",
+            ctx = browser.new_context(user_agent=HEADERS["User-Agent"], locale="bn-BD", ignore_https_errors=True,
                                       viewport={"width": 1280, "height": 900})
             for src in sources:
                 if time.time() - start > budget:
@@ -347,7 +368,7 @@ def gemini_classify(items):
                 if time.time() - t0 > 240:
                     break
                 gc = {"responseMimeType": "application/json"}
-                if think:
+                if think and "lite" not in m:  # flash-lite-এর ডিফল্ট minimal-ই দ্রুততম
                     gc["thinkingConfig"] = {"thinkingLevel": "low"}
                 try:
                     r = requests.post(
@@ -405,6 +426,10 @@ def gemini_classify(items):
 def main():
     db = load_json("jobs.json", {})
     jobs = db.get("jobs", []) if isinstance(db, dict) else []
+    if not (isinstance(db, dict) and db.get("bdjobs_api_purged")):
+        before = len(jobs)
+        jobs = [j for j in jobs if j.get("source") != "Bdjobs"]
+        print(f"[purge] ভাঙা Bdjobs API-লিংক মুছেছি: {before - len(jobs)}টি")
     skipped = load_json("skipped.json", [])
     if not isinstance(skipped, list):
         skipped = []
@@ -414,11 +439,12 @@ def main():
     retry = [s for s in SOURCES if s.get("js")]
 
     # Bdjobs: আগে JSON API, ব্যর্থ হলে নিচে ব্রাউজার ফলব্যাক
-    try:
-        api_items = bdjobs_api()
-    except Exception as e:  # noqa
-        print(f"[bdjobs-api] ব্যর্থ: {type(e).__name__}: {str(e)[:120]}")
-        api_items = []
+    api_items = []
+    if os.getenv("BDJOBS_API") == "1":  # ডিফল্টে বন্ধ: API-র জব-লিংক খোলে না
+        try:
+            api_items = bdjobs_api()
+        except Exception as e:  # noqa
+            print(f"[bdjobs-api] ব্যর্থ: {type(e).__name__}: {str(e)[:120]}")
     if api_items:
         collected.extend(api_items)
         ok += 1
@@ -432,8 +458,9 @@ def main():
                 try:
                     items = f.result()
                     if not items:
-                        print(f"[empty] {s['name']}: ০টি লিংক, ব্রাউজারে আবার চেষ্টা হবে")
-                        retry.append(s)
+                        print(f"[empty] {s['name']}: ০টি লিংক" + ("" if s.get("nb") else ", ব্রাউজারে আবার চেষ্টা হবে"))
+                        if not s.get("nb"):
+                            retry.append(s)
                         continue
                     ok += 1
                     print(f"[ok]   {s['name']}: {len(items)}টি লিংক")
@@ -442,7 +469,7 @@ def main():
                     dead = "NameResolution" in str(e) or "Failed to resolve" in str(e)
                     print(f"[fail] {s['name']}: {type(e).__name__}: {str(e)[:120]}"
                           + (" (ডোমেইন মেলেনি, বাদ)" if dead else " -> ব্রাউজারে আবার চেষ্টা"))
-                    if not dead:
+                    if not dead and not s.get("nb"):
                         retry.append(s)
         except Exception:
             print("[warn] কিছু সোর্স সময়মতো শেষ হয়নি, যা পাওয়া গেছে তা নিয়েই এগোচ্ছি")
@@ -472,8 +499,9 @@ def main():
             skipped.append({"id": it["id"], "title": it["title"]})
             continue
         it.update({
-            "title_bn": meta.get("title_bn", ""),
+            "title_bn": meta.get("title_bn") or it.get("title_bn", ""),
             "category": meta["category"] if meta.get("title_bn") else rule_category(it),
+            "deadline": it.get("deadline", ""),
             "first_seen": ts,
         })
         added.append(it)
@@ -508,7 +536,7 @@ def main():
     cutoff = now() - timedelta(days=KEEP_DAYS)
     jobs = [j for j in jobs if datetime.fromisoformat(j["first_seen"]) >= cutoff]
 
-    save_json("jobs.json", {"updated": ts, "count": len(jobs), "jobs": jobs})
+    save_json("jobs.json", {"updated": ts, "count": len(jobs), "bdjobs_api_purged": True, "jobs": jobs})
     save_json("skipped.json", skipped[-3000:])
     print(f"যোগ হয়েছে: {len(added)}, মোট: {len(jobs)}, সফল সোর্স: {ok}/{len(SOURCES)}")
 
