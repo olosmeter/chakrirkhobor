@@ -96,49 +96,64 @@ PAGE = """<!DOCTYPE html>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600&family=Noto+Serif+Bengali:wght@600;700&display=swap" rel="stylesheet">
 <style>
-:root{--bg:#eef3ef;--sf:#fff;--ink:#14201a;--mut:#58675f;--line:#dbe4de;--govt:#0b6b43;--pvt:#2a5db0;--sun:#d62839;--hd:#0b3d2a;--hdi:#f4faf6}
-@media(prefers-color-scheme:dark){:root{--bg:#0c1310;--sf:#131c17;--ink:#e6efe9;--mut:#92a49a;--line:#23322a;--govt:#4fd18b;--pvt:#80a9ee;--sun:#ff5d6c;--hd:#08150f;--hdi:#e6efe9}}
+:root{--bg:#eef2ee;--sf:#fff;--ink:#14201a;--mut:#5f6f66;--line:#dce4de;--govt:#0a7a4b;--pvt:#2b5bc4;--sun:#d9372b;--hd:#0b3a2a;--hdi:#f2faf5;--on:#0b3a2a;--onink:#fff}
+@media(prefers-color-scheme:dark){:root{--bg:#0b1210;--sf:#121b17;--ink:#e7f0ea;--mut:#93a69b;--line:#22322a;--govt:#4fd18b;--pvt:#82abf0;--sun:#ff5a4d;--hd:#08150f;--hdi:#e7f0ea;--on:#4fd18b;--onink:#06150d}}
 *{box-sizing:border-box}
 html{-webkit-text-size-adjust:100%}
-body{margin:0;background:var(--bg);color:var(--ink);font:400 16px/1.55 "Hind Siliguri","Noto Sans Bengali",system-ui,sans-serif}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 16px/1.6 "Hind Siliguri","Noto Sans Bengali",system-ui,sans-serif}
 a{color:inherit;text-decoration:none}
 :focus-visible{outline:3px solid var(--sun);outline-offset:2px}
-.mast{background:var(--hd);color:var(--hdi);padding:26px 16px 22px}
+
+/* Header: লাল সূর্য + গাঢ় সবুজ */
+.mast{position:relative;overflow:hidden;background:var(--hd);color:var(--hdi);padding:30px 16px 28px;border-radius:0 0 26px 26px}
+.mast::before{content:"";position:absolute;right:-60px;top:-60px;width:clamp(150px,36vw,250px);aspect-ratio:1;border-radius:50%;background:var(--sun)}
 .wrap{max-width:720px;margin:0 auto}
-.brand{display:flex;align-items:center;gap:12px}
-.sun{width:20px;height:20px;border-radius:50%;background:var(--sun);flex:none}
-h1{margin:0;font:700 1.9rem/1.2 "Noto Serif Bengali","Hind Siliguri",serif}
-.lead{margin:10px 0 0;opacity:.85;max-width:34em}
-.stat{margin:14px 0 0;font-weight:500}
-.stat span{display:block;opacity:.75;font-weight:400;font-size:.9rem}
-.bar{position:sticky;top:0;z-index:5;background:var(--bg);padding:12px 16px 10px;border-bottom:1px solid var(--line)}
-#q{width:100%;padding:12px 14px;border:1px solid var(--line);border-radius:12px;background:var(--sf);color:var(--ink);font:inherit}
+.mast .wrap{position:relative;z-index:1}
+.brand{display:flex;align-items:center}
+.sun{display:none}
+h1{margin:0;font:700 2.1rem/1.2 "Noto Serif Bengali","Hind Siliguri",serif;letter-spacing:-.01em}
+.lead{margin:10px 0 0;max-width:22em;opacity:.9}
+.stat{margin:18px 0 0;font:700 1.35rem/1.3 "Noto Serif Bengali","Hind Siliguri",serif}
+.stat span{display:block;margin-top:2px;font:400 .85rem/1.5 "Hind Siliguri",sans-serif;opacity:.78}
+
+/* Search + filters */
+.bar{position:sticky;top:0;z-index:5;padding:12px 16px 10px;background:color-mix(in srgb,var(--bg) 90%,transparent);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+#q{width:100%;padding:12px 14px 12px 42px;border:1.5px solid var(--line);border-radius:14px;background:var(--sf) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 24 24' fill='none' stroke='%238a998f' stroke-width='2.2' stroke-linecap='round'%3E%3Ccircle cx='11' cy='11' r='7'/%3E%3Cpath d='m20 20-3.5-3.5'/%3E%3C/svg%3E") no-repeat 13px 50%;color:var(--ink);font:inherit;font-size:16px}
+#q::placeholder{color:var(--mut)}
+#q:focus{outline:0;border-color:var(--govt)}
 .row{display:flex;gap:8px;overflow-x:auto;padding:10px 0 2px;scrollbar-width:none}
 .row::-webkit-scrollbar{display:none}
-.chip{flex:none;border:1px solid var(--line);background:var(--sf);color:var(--ink);padding:6px 13px;border-radius:999px;font:inherit;font-size:.92rem;cursor:pointer}
-.chip small{color:var(--mut)}
-.chip.on{background:var(--ink);color:var(--bg);border-color:var(--ink)}
-.chip.on small{color:inherit;opacity:.7}
-.sep{flex:none;width:1px;background:var(--line);margin:3px 2px}
-main{padding:6px 16px 48px}
-.grp h2{display:flex;align-items:baseline;gap:8px;margin:26px 0 10px;font:700 1.15rem/1.3 "Noto Serif Bengali","Hind Siliguri",serif}
-.grp h2 small{font:400 .85rem "Hind Siliguri",sans-serif;color:var(--mut)}
-.list{background:var(--sf);border:1px solid var(--line);border-radius:14px;overflow:hidden}
-.job{display:block;padding:13px 16px 12px 14px;border-left:4px solid var(--line);border-bottom:1px solid var(--line)}
+.chip{flex:none;min-height:36px;border:1.5px solid var(--line);background:var(--sf);color:var(--ink);padding:5px 14px;border-radius:999px;font:inherit;font-size:.92rem;cursor:pointer}
+.chip small{color:var(--mut);font-size:.8rem}
+.chip.on{background:var(--on);color:var(--onink);border-color:var(--on)}
+.chip.on small{color:inherit;opacity:.75}
+.sep{flex:none;width:1px;background:var(--line);margin:4px 2px}
+
+/* List */
+main{padding:4px 16px 48px}
+.grp h2{display:flex;align-items:center;gap:10px;margin:28px 0 12px;font:700 1.2rem/1.3 "Noto Serif Bengali","Hind Siliguri",serif}
+.grp h2::before{content:"";flex:none;width:6px;height:1.1em;border-radius:3px;background:var(--sun)}
+.grp h2 small{margin-left:auto;padding:1px 10px;border-radius:999px;background:var(--sf);border:1px solid var(--line);font:400 .82rem/1.6 "Hind Siliguri",sans-serif;color:var(--mut)}
+.list{background:var(--sf);border:1px solid var(--line);border-radius:16px;overflow:hidden}
+.job{display:block;padding:14px 16px 13px 14px;border-left:5px solid var(--line);border-bottom:1px solid var(--line);content-visibility:auto;contain-intrinsic-size:auto 84px}
 .job:last-child{border-bottom:0}
 .job.govt{border-left-color:var(--govt)}
 .job.private{border-left-color:var(--pvt)}
-.job:hover{background:color-mix(in srgb,var(--sf) 92%,var(--ink))}
-.ttl{display:block;font-weight:600;line-height:1.45}
-.dot{display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--sun);margin-left:8px;vertical-align:middle}
-.meta{display:flex;flex-wrap:wrap;gap:4px 12px;margin-top:6px;font-size:.86rem;color:var(--mut)}
-.tag{font-weight:600}
-.govt .tag{color:var(--govt)}
-.private .tag{color:var(--pvt)}
+.job:active{background:color-mix(in srgb,var(--sf) 90%,var(--ink))}
+@media(hover:hover){.job:hover{background:color-mix(in srgb,var(--sf) 93%,var(--ink))}}
+.ttl{display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:3;overflow:hidden;font-weight:600;font-size:1.02rem;line-height:1.5;overflow-wrap:anywhere}
+.dot{display:inline-block;width:8px;height:8px;margin-left:8px;border-radius:50%;background:var(--sun);vertical-align:middle}
+.meta{display:flex;flex-wrap:wrap;align-items:center;gap:4px 10px;margin-top:8px;font-size:.84rem;color:var(--mut)}
+.tag{padding:1px 10px;border-radius:999px;font-weight:600;font-size:.8rem}
+.govt .tag{color:var(--govt);background:color-mix(in srgb,var(--govt) 13%,transparent)}
+.private .tag{color:var(--pvt);background:color-mix(in srgb,var(--pvt) 13%,transparent)}
 .when{margin-left:auto}
-.none{display:none;text-align:center;color:var(--mut);padding:44px 10px}.none p{margin:0 0 14px}
-foot,footer{display:block;max-width:720px;margin:0 auto;padding:0 16px 40px;color:var(--mut);font-size:.85rem}
+
+/* Empty state + footer */
+.none{display:none;text-align:center;color:var(--mut);padding:44px 10px}
+.none p{margin:0 0 14px}
 .empty{text-align:center;color:var(--mut);padding:60px 10px}
+footer{display:block;max-width:720px;margin:0 auto;padding:0 16px 40px;color:var(--mut);font-size:.85rem}
 </style>
 </head>
 <body>
