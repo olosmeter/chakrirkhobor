@@ -64,7 +64,8 @@ for j in jobs:
         f'data-k="{kind}" data-c="{escape(cat)}" data-q="{q}">'
         f'<span class="ttl">{escape(title)}{"<i class=dot title=নতুন></i>" if fresh else ""}</span>'
         f'<span class="meta"><b class="tag">{"সরকারি" if kind == "govt" else "বেসরকারি"}</b>'
-        f'<span>{escape(cat)}</span><span>{escape(j["source"])}</span>'
+        f'<span>{escape(cat)}</span><span>{escape(j["source"])}</span>' +
+        (f'<span>শেষ: {escape(str(j["deadline"]))}</span>' if j.get("deadline") else "") +
         f'<span class="when">{ago(dt)}</span></span></a>'
     )
 
@@ -135,7 +136,7 @@ main{padding:6px 16px 48px}
 .govt .tag{color:var(--govt)}
 .private .tag{color:var(--pvt)}
 .when{margin-left:auto}
-.none{display:none;text-align:center;color:var(--mut);padding:44px 10px}
+.none{display:none;text-align:center;color:var(--mut);padding:44px 10px}.none p{margin:0 0 14px}
 foot,footer{display:block;max-width:720px;margin:0 auto;padding:0 16px 40px;color:var(--mut);font-size:.85rem}
 .empty{text-align:center;color:var(--mut);padding:60px 10px}
 </style>
@@ -152,11 +153,12 @@ foot,footer{display:block;max-width:720px;margin:0 auto;padding:0 16px 40px;colo
 <button class="chip on" data-k="all">সব</button>
 <button class="chip" data-k="govt">সরকারি</button>
 <button class="chip" data-k="private">বেসরকারি</button>
-<span class="sep"></span>__CHIPS__
-</div></div></div>
+</div>
+<div class="row" id="cats"><button class="chip on" data-c="">সব ধরন</button>__CHIPS__</div>
+</div></div>
 <main><div class="wrap" id="feed">
 __LIST__
-<p class="none" id="none">কোনো বিজ্ঞপ্তি মেলেনি। অন্য শব্দ দিয়ে খুঁজুন বা ফিল্টার বদলান।</p>
+<div class="none" id="none"><p>এই ফিল্টারে কোনো বিজ্ঞপ্তি মেলেনি।</p><button class="chip" id="reset">সব ফিল্টার মুছুন</button></div>
 </div></main>
 <footer>তথ্য সরাসরি মূল সাইট থেকে সংগৃহীত। আবেদনের আগে মূল বিজ্ঞপ্তি যাচাই করে নিন।</footer>
 <script>
@@ -165,17 +167,22 @@ var k="all",c="",q=document.getElementById("q"),
 jobs=[].slice.call(document.querySelectorAll(".job")),
 grps=[].slice.call(document.querySelectorAll(".grp")),
 none=document.getElementById("none");
+function bn(n){return String(n).replace(/[0-9]/g,function(d){return "০১২৩৪৫৬৭৮৯"[d]})}
+function mark(){
+document.querySelectorAll("[data-k]").forEach(function(x){if(x.classList.contains("chip"))x.classList.toggle("on",x.dataset.k===k)});
+document.querySelectorAll("#cats .chip").forEach(function(x){x.classList.toggle("on",x.dataset.c===c)});}
 function run(){
 var s=q.value.trim().toLowerCase(),shown=0;
 jobs.forEach(function(j){
 var ok=(k=="all"||j.dataset.k==k)&&(!c||j.dataset.c==c)&&(!s||j.dataset.q.indexOf(s)>-1);
 j.style.display=ok?"":"none";if(ok)shown++;});
-grps.forEach(function(g){g.style.display=g.querySelector('.job:not([style*="none"])')?"":"none";});
-none.style.display=(shown||!jobs.length)?"none":"block";}
-document.querySelectorAll(".chip").forEach(function(b){b.addEventListener("click",function(){
-if(b.dataset.k){k=b.dataset.k;document.querySelectorAll(".chip[data-k]").forEach(function(x){x.classList.toggle("on",x===b);});}
-else{c=(c===b.dataset.c)?"":b.dataset.c;document.querySelectorAll(".chip[data-c]").forEach(function(x){x.classList.toggle("on",x.dataset.c===c);});}
-run();});});
+grps.forEach(function(g){
+var n=0;g.querySelectorAll(".job").forEach(function(j){if(j.style.display!=="none")n++});
+g.style.display=n?"":"none";g.querySelector("small").textContent=bn(n)+"টি";});
+none.style.display=(shown||!jobs.length)?"none":"block";mark();}
+document.querySelectorAll("#kinds .chip").forEach(function(b){b.addEventListener("click",function(){k=b.dataset.k;run()})});
+document.querySelectorAll("#cats .chip").forEach(function(b){b.addEventListener("click",function(){c=b.dataset.c;run()})});
+document.getElementById("reset").addEventListener("click",function(){k="all";c="";q.value="";run()});
 q.addEventListener("input",run);
 })();
 </script>
