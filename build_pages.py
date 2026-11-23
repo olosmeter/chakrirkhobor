@@ -1,11 +1,5 @@
 #!/usr/bin/env python3
-"""jobs.json থেকে index.html ও sitemap.xml বানায়।
-
-নোট:
-- jobs.json ইনপুট স্কিমা অপরিবর্তিত — Gemini bot / scraper যা-ই লিখুক, সেটাই পড়া হবে।
-- এই ফাইলে কোনো API কল / cron নেই। শুধু স্ট্যাটিক বিল্ড।
-- অ-http(s) URL বাদ দেওয়া হয় (নিরাপত্তা)।
-"""
+"""jobs.json থেকে index.html ও sitemap.xml বানায়। (ডিজাইন আপডেট; automation/data logic অপরিবর্তিত)"""
 import json
 from html import escape
 from collections import Counter
@@ -18,13 +12,11 @@ NOW = datetime.now(BD)
 GROUPS = ["আজ", "গতকাল", "এই সপ্তাহ", "আগের"]
 
 
-# ---------- helpers ----------
 def bn(n):
     return str(n).translate(str.maketrans("0123456789", "০১২৩৪৫৬৭৮৯"))
 
 
 def parse(iso):
-    """ISO → tz-aware datetime. naive হলে BD ধরে নেয়। ব্যর্থ হলে None।"""
     try:
         if not iso:
             return None
@@ -37,7 +29,6 @@ def parse(iso):
 
 
 def safe_url(value):
-    """শুধু http(s) URL গ্রহণ; বাকি সব বাদ।"""
     if not isinstance(value, str):
         return ""
     value = value.strip()
@@ -51,17 +42,14 @@ def safe_url(value):
 
 
 def attr(s):
-    """HTML attribute-এর জন্য নিরাপদ এস্কেপ।"""
     return escape(str(s), quote=True)
 
 
 def qtext(s):
-    """data-q-এর জন্য: শুধু " এস্কেপ, বাকি raw রাখা (সার্চ ঠিক থাকবে)।"""
     return str(s).lower().replace('"', "&quot;")
 
 
 def text(s):
-    """HTML টেক্সট নোডের জন্য।"""
     return escape(str(s), quote=False)
 
 
@@ -83,7 +71,6 @@ def ago(dt):
     return f"{bn(h // 24)} দিন আগে"
 
 
-# ---------- input ----------
 try:
     with open("jobs.json", encoding="utf-8") as f:
         db = json.load(f)
@@ -97,12 +84,10 @@ jobs_raw = db.get("jobs", []) if isinstance(db, dict) else []
 if not isinstance(jobs_raw, list):
     jobs_raw = []
 
-# ভুল/অসম্পূর্ণ রেকর্ড বাদ — মূল jobs.json ছোঁয়া হয় না।
 jobs = [j for j in jobs_raw if isinstance(j, dict) and safe_url(j.get("url"))]
 jobs.sort(key=lambda j: str(j.get("first_seen", "") or ""), reverse=True)
 updated = parse(db.get("updated", ""))
 
-# ---------- build ----------
 buckets = {g: [] for g in GROUPS}
 cats = Counter()
 today_count = 0
@@ -117,7 +102,10 @@ for j in jobs:
         cat = str(j.get("category") or "অন্যান্য")
         source = str(j.get("source") or "উৎস অজানা")
         url = safe_url(j.get("url"))
+        
+        # প্রকাশের তারিখ ও মেয়াদ শেষের তারিখ চেক
         deadline = j.get("deadline")
+        publish_date = j.get("published_date") or j.get("published") or j.get("publish_date")
 
         cats[cat] += 1
         if g == "আজ":
@@ -126,9 +114,16 @@ for j in jobs:
         fresh = dt is not None and 0 <= (NOW - dt).total_seconds() < 86400
         q = qtext(f"{title} {raw_title} {source} {cat}")
         fresh_dot = '<i class="dot" title="নতুন"></i>' if fresh else ""
-        deadline_html = (
-            f'<span>শেষ: {text(deadline)}</span>' if deadline else ""
-        )
+        
+        # তারিখ ফরম্যাট ও কালার
+        deadline_html = ""
+        if deadline:
+            deadline_html = f'<span style="color:var(--red); font-weight:600; background:color-mix(in srgb, var(--red) 10%, transparent); padding:2px 6px; border-radius:4px;">শেষ: {text(deadline)}</span>'
+            
+        publish_html = ""
+        if publish_date:
+            publish_html = f'<span style="color:var(--green); font-weight:600; background:color-mix(in srgb, var(--green) 10%, transparent); padding:2px 6px; border-radius:4px;">প্রকাশ: {text(publish_date)}</span>'
+            
         kind_bn = "সরকারি" if kind == "govt" else "বেসরকারি"
 
         buckets[g].append(
@@ -140,12 +135,12 @@ for j in jobs:
             f'<b class="tag">{kind_bn}</b>'
             f'<span>{text(cat)}</span>'
             f'<span>{text(source)}</span>'
+            f'{publish_html}'
             f'{deadline_html}'
             f'<span class="when">{ago(dt)}</span>'
             f'</span></a>'
         )
     except Exception:
-        # একটা ভাঙা জব পুরো বিল্ড ভাঙবে না
         continue
 
 sections = []
@@ -162,9 +157,8 @@ chips = "".join(
 )
 
 upd = updated.strftime("%d/%m/%Y, %I:%M %p") if updated else "এখনো হয়নি"
-lastmod = (updated or NOW).strftime("%Y-%m-%d")  # আসল আপডেটের তারিখ
+lastmod = (updated or NOW).strftime("%Y-%m-%d")
 
-# ---------- template ----------
 PAGE = """<!DOCTYPE html>
 <html lang="bn">
 <head>
@@ -182,7 +176,6 @@ PAGE = """<!DOCTYPE html>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=Noto+Sans+Bengali:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <script>
-/* থিম আগেই সেট — dark মোডে সাদা ফ্ল্যাশ (FOUC) ঠেকাতে */
 (function(){try{var t=localStorage.getItem("jobsite-theme");
 if(!t&&window.matchMedia&&matchMedia("(prefers-color-scheme: dark)").matches)t="dark";
 if(t)document.documentElement.setAttribute("data-theme",t);}catch(e){}})();
@@ -191,12 +184,12 @@ if(t)document.documentElement.setAttribute("data-theme",t);}catch(e){}})();
 :root{
  --bg:#f4f7f5;--surface:#fff;--surface2:#edf4ef;--ink:#14251b;--mut:#64766b;
  --line:#e1e9e3;--green:#16804c;--green2:#dff5e7;--blue:#3868c7;--blue2:#e8efff;
- --red:#f06a53;--shadow:0 8px 26px rgba(22,55,35,.055);--radius:18px;
+ --red:#f06a53;--shadow:0 2px 10px rgba(22,55,35,.04);--radius:16px;
 }
 :root[data-theme="dark"]{
  --bg:#09120e;--surface:#111d16;--surface2:#1a2a20;--ink:#eaf5ed;--mut:#99ad9f;
  --line:#273a2e;--green:#65d995;--green2:#193d29;--blue:#91b5ff;--blue2:#1c2c48;
- --red:#ff826c;--shadow:0 8px 28px rgba(0,0,0,.22);
+ --red:#ff826c;--shadow:0 4px 12px rgba(0,0,0,.15);
 }
 *{box-sizing:border-box}
 html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
@@ -204,154 +197,132 @@ body{margin:0;background:var(--bg);color:var(--ink);font:400 16px/1.65 "Hind Sil
 a{color:inherit;text-decoration:none}
 button,input{font:inherit}
 :focus-visible{outline:3px solid var(--red);outline-offset:3px}
-.wrap{width:min(900px,calc(100% - 32px));margin:0 auto}
+.wrap{width:min(800px,calc(100% - 32px));margin:0 auto}
 
-.topbar{padding:14px 0}
-.nav{display:flex;align-items:center;justify-content:space-between;gap:12px}
-.brand{display:flex;align-items:center;gap:10px;font-weight:700;font-size:1.18rem}
-.logo{display:grid;place-items:center;width:42px;height:42px;border-radius:14px;color:#062313;background:linear-gradient(135deg,#77e5a0,#1b9a59);font-weight:800;font-size:22px;box-shadow:0 5px 15px #16804c22}
+/* top navigation */
+.topbar{padding:16px 0;display:flex;align-items:center;justify-content:space-between}
+.brand{display:flex;align-items:center;gap:8px;font-weight:700;font-size:1.1rem}
+.logo{display:grid;place-items:center;width:34px;height:34px;border-radius:10px;color:#fff;background:var(--green);font-weight:800;font-size:18px}
 .navright{display:flex;align-items:center;gap:9px}
-.navlink{color:var(--mut);font-size:.94rem}
-.iconbtn{width:40px;height:40px;display:grid;place-items:center;border:1px solid var(--line);background:var(--surface);color:var(--ink);border-radius:13px;cursor:pointer}
-.iconbtn svg{width:19px;height:19px}
+.iconbtn{width:36px;height:36px;display:grid;place-items:center;border:1px solid var(--line);background:var(--surface);color:var(--ink);border-radius:10px;cursor:pointer}
+.iconbtn svg{width:18px;height:18px}
 
-.hero{position:relative;margin-top:9px;padding:28px 28px 24px;border-radius:26px;background:linear-gradient(120deg,#0d3b26,#145b39 70%,#17804c);color:#f2fff6;overflow:hidden;box-shadow:0 14px 34px rgba(13,59,38,.15)}
-.hero:after{content:"";position:absolute;width:290px;height:290px;right:-105px;top:-130px;border-radius:50%;border:1px solid #ffffff20;box-shadow:0 0 0 35px #ffffff08,0 0 0 70px #ffffff06}
-.hero-inner{position:relative;z-index:1}
-.eyebrow{display:inline-flex;align-items:center;gap:7px;padding:5px 11px;border:1px solid #ffffff25;background:#ffffff12;border-radius:99px;font-size:.86rem;color:#c9f5d8}
-.pulse{width:7px;height:7px;background:#77efa4;border-radius:50%;box-shadow:0 0 0 4px #77efa422}
-h1{font-size:clamp(1.8rem,5vw,2.65rem);line-height:1.25;margin:13px 0 7px;font-weight:800;letter-spacing:-.4px}
-.hero p{margin:0;color:#d3eadb;font-size:1rem;max-width:34em}
-.statrow{display:flex;align-items:stretch;gap:10px;flex-wrap:wrap;margin-top:20px}
-.statbox{padding:10px 14px;border:1px solid #ffffff22;background:#ffffff0e;border-radius:14px;min-width:135px}
-.statbox strong{font-size:1.27rem;line-height:1.2;display:block;font-weight:700}
-.statbox span{display:block;font-size:.83rem;color:#d0e8d8;margin-top:3px}
-.updated{font-size:.82rem;color:#c5e1cf;align-self:center;padding-left:2px}
+/* simple compact hero */
+.hero{margin-top:4px;padding:16px 18px;border-radius:var(--radius);background:var(--surface);border:1px solid var(--line);box-shadow:var(--shadow)}
+.hero-top{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px}
+.hero-title{font-size:1.15rem;font-weight:700;margin:0;line-height:1.4}
+.hero-sub{font-size:0.85rem;color:var(--mut);margin-top:4px}
+.stats{display:flex;gap:15px;font-size:0.85rem;color:var(--mut)}
+.stat-item strong{color:var(--green);font-size:1rem;margin-right:3px}
+.updated{font-size:.75rem;color:var(--mut);margin-top:10px;border-top:1px solid var(--line);padding-top:10px;display:block}
 
-.tools{margin-top:16px;padding:14px;border:1px solid var(--line);background:var(--surface);border-radius:20px;box-shadow:var(--shadow)}
+/* search / filters */
+.tools{margin-top:12px;padding:12px;border:1px solid var(--line);background:var(--surface);border-radius:var(--radius);box-shadow:var(--shadow)}
 .searchwrap{position:relative}
-.searchicon{position:absolute;left:14px;top:50%;transform:translateY(-50%);width:19px;height:19px;color:var(--mut)}
-#q{width:100%;padding:12px 44px 12px 43px;border:1px solid var(--line);border-radius:14px;background:var(--bg);color:var(--ink);font-size:16px;outline:none}
-#q:focus{border-color:var(--green);box-shadow:0 0 0 3px color-mix(in srgb,var(--green) 15%,transparent)}
-#q::placeholder{color:var(--mut)}
-.clearsearch{position:absolute;right:9px;top:50%;transform:translateY(-50%);border:0;background:transparent;color:var(--mut);font-size:20px;cursor:pointer;padding:4px 8px;display:none}
-.filterline{display:flex;align-items:center;gap:9px;margin-top:12px}
-.filterlabel{font-size:.83rem;color:var(--mut);white-space:nowrap}
-.row{display:flex;gap:7px;overflow-x:auto;scrollbar-width:none;padding:1px 0;flex:1}
+.searchicon{position:absolute;left:12px;top:50%;transform:translateY(-50%);width:18px;height:18px;color:var(--mut)}
+#q{width:100%;padding:10px 36px 10px 38px;border:1px solid var(--line);border-radius:10px;background:var(--bg);color:var(--ink);font-size:15px;outline:none}
+#q:focus{border-color:var(--green)}
+.clearsearch{position:absolute;right:8px;top:50%;transform:translateY(-50%);border:0;background:transparent;color:var(--mut);font-size:18px;cursor:pointer;padding:4px;display:none}
+.filterline{display:flex;align-items:center;gap:8px;margin-top:10px}
+.filterlabel{font-size:.8rem;color:var(--mut);white-space:nowrap}
+.row{display:flex;gap:6px;overflow-x:auto;scrollbar-width:none;padding:2px 0;flex:1}
 .row::-webkit-scrollbar{display:none}
-.chip{flex:none;min-height:35px;padding:5px 12px;border:1px solid var(--line);border-radius:999px;background:var(--surface);color:var(--ink);font-size:.9rem;cursor:pointer;transition:.16s}
-.chip small{color:var(--mut);font-size:.78rem;margin-left:3px}
-.chip:hover{border-color:var(--green)}
+.chip{flex:none;padding:4px 10px;border:1px solid var(--line);border-radius:999px;background:var(--bg);color:var(--ink);font-size:.85rem;cursor:pointer}
+.chip small{color:var(--mut);font-size:.75rem;margin-left:3px}
 .chip.on{background:var(--green);border-color:var(--green);color:#fff}
-.chip.on small{color:inherit;opacity:.78}
-.divider{height:1px;background:var(--line);margin:12px 0}
-#cats{padding-bottom:2px}
+.chip.on small{color:inherit}
+.divider{height:1px;background:var(--line);margin:10px 0}
 
+/* jobs */
 main{padding:12px 0 40px}
-.grp{margin-top:23px}
-.grp h2{display:flex;align-items:center;gap:10px;margin:0 0 11px;font-size:1.12rem;font-weight:700}
-.grp h2:before{content:"";width:5px;height:21px;border-radius:5px;background:var(--green)}
-.grp h2 small{margin-left:auto;color:var(--mut);background:var(--surface);border:1px solid var(--line);padding:2px 10px;border-radius:999px;font-size:.8rem;font-weight:500}
-.list{display:grid;gap:10px}
-.job{position:relative;display:block;background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:15px 16px 14px 18px;box-shadow:var(--shadow);transition:transform .18s,border-color .18s,box-shadow .18s;overflow:hidden}
-.job:before{content:"";position:absolute;left:0;top:0;bottom:0;width:4px;background:var(--line)}
-.job.govt:before{background:var(--green)}
-.job.private:before{background:var(--blue)}
-.job:hover{transform:translateY(-2px);border-color:color-mix(in srgb,var(--green) 35%,var(--line));box-shadow:0 12px 28px rgba(22,55,35,.09)}
-.ttl{display:block;font-weight:700;font-size:1.03rem;line-height:1.52;overflow-wrap:anywhere}
-.dot{display:inline-block;width:7px;height:7px;margin-left:7px;border-radius:50%;background:var(--red);vertical-align:middle;box-shadow:0 0 0 4px color-mix(in srgb,var(--red) 12%,transparent)}
-.meta{display:flex;flex-wrap:wrap;align-items:center;gap:5px 9px;margin-top:9px;color:var(--mut);font-size:.83rem}
-.tag{padding:1px 9px;border-radius:999px;font-size:.78rem;font-weight:600}
+.grp{margin-top:20px}
+.grp h2{display:flex;align-items:center;gap:8px;margin:0 0 10px;font-size:1rem;font-weight:700}
+.grp h2 small{margin-left:auto;color:var(--mut);font-size:.8rem;font-weight:500}
+.list{display:grid;gap:8px}
+.job{display:block;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:12px 14px;box-shadow:var(--shadow);transition:border-color .2s}
+.job:hover{border-color:var(--green)}
+.job.govt{border-left:3px solid var(--green)}
+.job.private{border-left:3px solid var(--blue)}
+.ttl{display:block;font-weight:600;font-size:.95rem;line-height:1.5;overflow-wrap:anywhere}
+.dot{display:inline-block;width:6px;height:6px;margin-left:6px;border-radius:50%;background:var(--red);vertical-align:middle}
+.meta{display:flex;flex-wrap:wrap;align-items:center;gap:5px 8px;margin-top:6px;color:var(--mut);font-size:.78rem}
+.tag{padding:2px 8px;border-radius:6px;font-size:.75rem;font-weight:600}
 .govt .tag{color:var(--green);background:var(--green2)}
 .private .tag{color:var(--blue);background:var(--blue2)}
 .when{margin-left:auto}
-.none{display:none;text-align:center;padding:40px 12px;color:var(--mut)}
-.none p{margin:0 0 14px}
-.empty{padding:50px 15px;text-align:center;color:var(--mut);background:var(--surface);border:1px dashed var(--line);border-radius:18px}
-footer{padding:20px 0 36px;text-align:center;color:var(--mut);font-size:.84rem;border-top:1px solid var(--line)}
-.footerbrand{font-weight:600;color:var(--ink);margin-bottom:3px}
+.none{display:none;text-align:center;padding:30px 12px;color:var(--mut)}
+.empty{padding:40px 15px;text-align:center;color:var(--mut);border:1px dashed var(--line);border-radius:12px}
+footer{padding:20px 0 36px;text-align:center;color:var(--mut);font-size:.8rem;border-top:1px solid var(--line);margin-top:20px}
 .mobilebottom{display:none}
 
 @media(max-width:640px){
- .wrap{width:min(900px,calc(100% - 22px))}
- .topbar{padding:10px 0}
- .brand{font-size:1.05rem}
- .logo{width:38px;height:38px;border-radius:12px}
- .navlink{display:none}
- .hero{padding:23px 18px 20px;border-radius:21px;margin-top:4px}
- .hero:after{width:220px;height:220px;right:-115px;top:-100px}
- h1{font-size:1.8rem}
- .statrow{gap:8px;margin-top:16px}
- .statbox{min-width:calc(50% - 5px);flex:1;padding:9px 11px}
- .statbox strong{font-size:1.18rem}
- .updated{width:100%;padding:3px 0 0}
- .tools{padding:11px;border-radius:17px;margin-top:12px}
+ .wrap{width:calc(100% - 20px)}
+ .hero-top{flex-direction:column;align-items:flex-start;gap:8px}
+ .stats{width:100%;justify-content:space-between;background:var(--bg);padding:8px;border-radius:8px}
  .filterline{display:block}
- .filterlabel{display:block;margin-bottom:6px}
- .row{gap:6px}
- .chip{padding:5px 11px;min-height:34px}
- .divider{margin:10px 0}
- main{padding-top:5px;padding-bottom:80px}
- .grp{margin-top:20px}
- .job{padding:13px 13px 12px 16px;border-radius:14px}
- .ttl{font-size:1rem}
- .meta{font-size:.8rem;gap:4px 8px}
- .when{margin-left:0}
- footer{padding-bottom:95px}
- .mobilebottom{display:flex;position:fixed;z-index:8;bottom:9px;left:10px;right:10px;justify-content:space-around;gap:5px;padding:9px 7px;background:color-mix(in srgb,var(--surface) 92%,transparent);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border:1px solid var(--line);border-radius:18px;box-shadow:0 10px 28px #0002}
- .mobilebottom a{display:flex;flex-direction:column;align-items:center;gap:1px;font-size:.73rem;color:var(--mut);min-width:55px}
- .mobilebottom svg{width:19px;height:19px}
+ .filterlabel{display:block;margin-bottom:4px}
+ .job{padding:10px 12px}
+ .mobilebottom{display:flex;position:fixed;z-index:8;bottom:10px;left:10px;right:10px;justify-content:space-around;padding:8px;background:var(--surface);border:1px solid var(--line);border-radius:14px;box-shadow:0 4px 12px #0002}
+ .mobilebottom a{display:flex;flex-direction:column;align-items:center;font-size:.7rem;color:var(--mut)}
+ .mobilebottom svg{width:18px;height:18px;margin-bottom:2px}
  .mobilebottom a:first-child{color:var(--green)}
+ main{padding-bottom:80px}
+ footer{padding-bottom:90px}
 }
-@media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;transition:none!important}}
 </style>
 </head>
 <body>
 <div class="wrap">
 <header class="topbar">
- <div class="nav">
-  <a class="brand" href="__SITE__/" aria-label="চাকরির খবর হোম"><span class="logo">চ</span><span>চাকরির খবর</span></a>
-  <div class="navright"><a class="navlink" href="#feed">সাম্প্রতিক বিজ্ঞপ্তি</a><button class="iconbtn" id="theme" aria-label="থিম পরিবর্তন" title="থিম পরিবর্তন">
-   <svg id="themeIcon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M4.93 4.93l1.42 1.42m11.3 11.3 1.42 1.42M2 12h2m16 0h2M4.93 19.07l1.42-1.42m11.3-11.3 1.42-1.42"/></svg>
-  </button></div>
+ <a class="brand" href="__SITE__/"><span class="logo">চ</span><span>চাকরির খবর</span></a>
+ <div class="navright">
+  <button class="iconbtn" id="theme" aria-label="থিম পরিবর্তন">
+   <svg id="themeIcon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M4.93 4.93l1.42 1.42m11.3 11.3 1.42 1.42M2 12h2m16 0h2M4.93 19.07l1.42-1.42m11.3-11.3 1.42-1.42"/></svg>
+  </button>
  </div>
 </header>
+
 <section class="hero">
- <div class="hero-inner">
-  <span class="eyebrow"><i class="pulse"></i> প্রতিদিন নতুন চাকরির আপডেট</span>
-  <h1>আপনার ক্যারিয়ারের <br>পরবর্তী সুযোগ খুঁজুন</h1>
-  <p>বাংলাদেশের সরকারি ও বেসরকারি নিয়োগ বিজ্ঞপ্তি—সব এক জায়গায়, সহজে খুঁজুন।</p>
-  <div class="statrow">
-   <div class="statbox"><strong>__TODAY__টি</strong><span>আজকের নতুন বিজ্ঞপ্তি</span></div>
-   <div class="statbox"><strong>__COUNT__টি</strong><span>মোট চাকরির বিজ্ঞপ্তি</span></div>
-   <div class="updated">সর্বশেষ আপডেট: __UPD__</div>
+ <div class="hero-top">
+  <div>
+   <h1 class="hero-title">চাকরির খবর</h1>
+   <div class="hero-sub">সরকারি ও বেসরকারি নতুন নিয়োগ বিজ্ঞপ্তি</div>
+  </div>
+  <div class="stats">
+   <div class="stat-item"><strong>__TODAY__</strong> আজকের</div>
+   <div class="stat-item"><strong>__COUNT__</strong> মোট</div>
   </div>
  </div>
+ <span class="updated">সর্বশেষ আপডেট: __UPD__</span>
 </section>
-<section class="tools" aria-label="চাকরি খুঁজুন ও ফিল্টার করুন">
+
+<section class="tools">
  <div class="searchwrap">
-  <svg class="searchicon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
-  <input id="q" type="search" placeholder="চাকরি খুঁজুন—ব্যাংক, শিক্ষক, ইঞ্জিনিয়ার..." aria-label="চাকরি খুঁজুন">
-  <button class="clearsearch" id="clearq" type="button" aria-label="সার্চ মুছুন">×</button>
+  <svg class="searchicon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+  <input id="q" type="search" placeholder="চাকরি খুঁজুন..." aria-label="চাকরি খুঁজুন">
+  <button class="clearsearch" id="clearq" type="button">×</button>
  </div>
- <div class="filterline"><span class="filterlabel">চাকরির ধরন</span><div class="row" id="kinds">
-  <button class="chip on" data-k="all">সব চাকরি</button><button class="chip" data-k="govt">সরকারি</button><button class="chip" data-k="private">বেসরকারি</button>
+ <div class="filterline"><span class="filterlabel">ধরন:</span><div class="row" id="kinds">
+  <button class="chip on" data-k="all">সব</button><button class="chip" data-k="govt">সরকারি</button><button class="chip" data-k="private">বেসরকারি</button>
  </div></div>
  <div class="divider"></div>
- <div class="filterline"><span class="filterlabel">ক্যাটাগরি</span><div class="row" id="cats"><button class="chip on" data-c="">সব ক্যাটাগরি</button>__CHIPS__</div></div>
+ <div class="filterline"><span class="filterlabel">ক্যাটাগরি:</span><div class="row" id="cats"><button class="chip on" data-c="">সব</button>__CHIPS__</div></div>
 </section>
+
 <main><div id="feed">
 __LIST__
-<div class="none" id="none"><p>এই ফিল্টারে কোনো বিজ্ঞপ্তি মেলেনি।</p><button class="chip" id="reset">ফিল্টার মুছুন</button></div>
+<div class="none" id="none"><p>কোনো বিজ্ঞপ্তি মেলেনি।</p><button class="chip" id="reset">ফিল্টার মুছুন</button></div>
 </div></main>
-<footer><div class="footerbrand">চাকরির খবর</div>তথ্য সরাসরি মূল সাইট থেকে সংগৃহীত। আবেদনের আগে মূল বিজ্ঞপ্তি যাচাই করে নিন।</footer>
+
+<footer><div>চাকরির খবর</div>তথ্য সরাসরি মূল সাইট থেকে সংগৃহীত।</footer>
 </div>
-<nav class="mobilebottom" aria-label="দ্রুত নেভিগেশন">
-<a href="__SITE__/"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m3 10 9-7 9 7"/><path d="M5 9v11h14V9M9 20v-6h6v6"/></svg><span>হোম</span></a>
-<a href="#q" onclick="document.getElementById('q').focus();return false;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg><span>খুঁজুন</span></a>
-<a href="#kinds"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="4" width="18" height="16" rx="3"/><path d="M8 9h8M8 13h5"/></svg><span>ফিল্টার</span></a>
-<a href="#feed"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M4 5h16M4 12h16M4 19h16"/></svg><span>তালিকা</span></a>
+
+<nav class="mobilebottom" aria-label="নেভিগেশন">
+<a href="__SITE__/"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m3 10 9-7 9 7"/><path d="M5 9v11h14V9M9 20v-6h6v6"/></svg><span>হোম</span></a>
+<a href="#q" onclick="document.getElementById('q').focus();return false;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg><span>খুঁজুন</span></a>
+<a href="#feed"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 5h16M4 12h16M4 19h16"/></svg><span>তালিকা</span></a>
 </nav>
+
 <script>
 (function(){
 var k="all",c="",q=document.getElementById("q"),clearq=document.getElementById("clearq"),
@@ -381,7 +352,6 @@ if(resetBtn)resetBtn.addEventListener("click",function(){k="all";c="";q.value=""
 clearq.addEventListener("click",function(){q.value="";run();q.focus()});
 q.addEventListener("input",run);
 
-/* theme toggle — jobs collection/automation-এ কোনো প্রভাব নেই */
 var themeBtn=document.getElementById("theme"),root=document.documentElement,icon=document.getElementById("themeIcon");
 function setTheme(t){
 root.setAttribute("data-theme",t);
