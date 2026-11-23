@@ -1,8 +1,19 @@
 {
- "updated": "2026-11-23T19:53:47+06:00",
- "count": 871,
+ "updated": "2026-11-23T20:27:04+06:00",
+ "count": 823,
  "bdjobs_api_purged": true,
  "jobs": [
+  {
+   "id": "a50f8d9b104c",
+   "title": "২২ কর্মী নিয়োগ দেবে বিসিপিএস, এসএসসি পাসেই আবেদন",
+   "url": "https://news.google.com/rss/articles/CBMiXkFVX3lxTE5VUEZlSUdZVTFEM01na0drNV9OaVlhYm5xWDBHLTlBQjNoQkx0MmVmSkhnRUs3NXNfa3YyT294YXRKQ3VGUjRkS0RucWNRVzY5UTQ5TzhNUW5TUWlmTmc?oc=5",
+   "source": "জাগো নিউজ",
+   "type": "private",
+   "title_bn": "বিসিপিএসে ২২ জন কর্মী নিয়োগ",
+   "category": "সরকারি",
+   "deadline": "",
+   "first_seen": "2026-11-23T20:27:04+06:00"
+  },
   {
    "id": "dbbb29903eb0",
    "title": "প্ল্যান ইন্টারন্যাশনালে নিয়োগ, বেতন ৩ লাখ ৮৬ হাজার",
@@ -5066,373 +5077,13 @@
    "first_seen": "2026-11-22T20:10:05+06:00"
   },
   {
-   "id": "e03937e27a5d",
-   "title": "IT/Telecom/Creative Design",
-   "url": "https://bdjobstoday.com/jobsbycategory.php?cat=3 & cat_name=IT/Telecom/Creative Design",
-   "source": "BD Jobs Today",
-   "type": "private",
-   "title_bn": "",
-   "category": "আইটি",
-   "first_seen": "2026-11-22T20:10:05+06:00"
-  },
-  {
-   "id": "1638ee735c9b",
-   "title": "Education & Teaching",
-   "url": "https://bdjobstoday.com/jobsbycategory.php?cat=4 & cat_name=Education & Teaching",
-   "source": "BD Jobs Today",
-   "type": "private",
-   "title_bn": "",
-   "category": "অন্যান্য",
-   "first_seen": "2026-11-22T20:10:05+06:00"
-  },
-  {
-   "id": "55c46f98b6fd",
-   "title": "Engineer & Architects",
-   "url": "https://bdjobstoday.com/jobsbycategory.php?cat=5 & cat_name=Engineer & Architects",
-   "source": "BD Jobs Today",
-   "type": "private",
-   "title_bn": "",
-   "category": "প্রকৌশল",
-   "first_seen": "2026-11-22T20:10:05+06:00"
-  },
-  {
-   "id": "f09f361f07f0",
-   "title": "Admin/HR/Management",
-   "url": "https://bdjobstoday.com/jobsbycategory.php?cat=6 & cat_name=Admin/HR/Management",
-   "source": "BD Jobs Today",
-   "type": "private",
-   "title_bn": "",
-   "category": "অন্যান্য",
-   "first_seen": "2026-11-22T20:10:05+06:00"
-  },
-  {
-   "id": "a464e93af12a",
-   "title": "Bank/Insurance/Leasing",
-   "url": "https://bdjobstoday.com/jobsbycategory.php?cat=7 & cat_name=Bank/Insurance/Leasing",
-   "source": "BD Jobs Today",
-   "type": "private",
-   "title_bn": "",
-   "category": "ব্যাংক",
-   "first_seen": "2026-11-22T20:10:05+06:00"
-  },
-  {
-   "id": "1569b0cd9163",
-   "title": "Medical/HealthCare",
-   "url": "https://bdjobstoday.com/jobsbycategory.php?cat=8 & cat_name=Medical/HealthCare",
-   "source": "BD Jobs Today",
-   "type": "private",
-   "title_bn": "",
-   "category": "স্বাস্থ্য",
-   "first_seen": "2026-11-22T20:10:05+06:00"
-  },
-  {
-   "id": "cc8e66676c5a",
-   "title": "Social Service/Development",
-   "url": "https://bdjobstoday.com/jobsbycategory.php?cat=9 & cat_name=Social Service/Development",
-   "source": "BD Jobs Today",
-   "type": "private",
-   "title_bn": "",
-   "category": "অন্যান্য",
-   "first_seen": "2026-11-22T20:10:05+06:00"
-  },
-  {
-   "id": "61660955b0d4",
-   "title": "Agri-Fisheries/Livestock",
-   "url": "https://bdjobstoday.com/jobsbycategory.php?cat=13 & cat_name=Agri-Fisheries/Livestock",
-   "source": "BD Jobs Today",
-   "type": "private",
-   "title_bn": "",
-   "category": "অন্যান্য",
-   "first_seen": "2026-11-22T20:10:05+06:00"
-  },
-  {
-   "id": "4bcba7749d60",
-   "title": "Commercial/Supply Chain",
-   "url": "https://bdjobstoday.com/jobsbycategory.php?cat=15 & cat_name=Commercial/Supply Chain",
-   "source": "BD Jobs Today",
-   "type": "private",
-   "title_bn": "",
-   "category": "অন্যান্য",
-   "first_seen": "2026-11-22T20:10:05+06:00"
-  },
-  {
-   "id": "fec299fdf17a",
-   "title": "Pharmacist/ Chemist",
-   "url": "https://bdjobstoday.com/jobsbycategory.php?cat=17 & cat_name=Pharmacist/ Chemist",
-   "source": "BD Jobs Today",
-   "type": "private",
-   "title_bn": "",
-   "category": "স্বাস্থ্য",
-   "first_seen": "2026-11-22T20:10:05+06:00"
-  },
-  {
-   "id": "acd6b18d2791",
-   "title": "Assistant/Receptionist",
-   "url": "https://bdjobstoday.com/jobsbycategory.php?cat=18 & cat_name=Assistant/Receptionist",
-   "source": "BD Jobs Today",
-   "type": "private",
-   "title_bn": "",
-   "category": "অন্যান্য",
-   "first_seen": "2026-11-22T20:10:05+06:00"
-  },
-  {
-   "id": "0041f901ac00",
-   "title": "Others Jobs",
-   "url": "https://bdjobstoday.com/jobsbycategory.php?cat=19 & cat_name=Others Jobs",
-   "source": "BD Jobs Today",
-   "type": "private",
-   "title_bn": "",
-   "category": "অন্যান্য",
-   "first_seen": "2026-11-22T20:10:05+06:00"
-  },
-  {
-   "id": "edeb3d6335b1",
-   "title": "Blue Collar Jobs",
-   "url": "https://bdjobstoday.com/jobsbycategory.php?cat=16 & cat_name=Blue Collar Jobs",
-   "source": "BD Jobs Today",
-   "type": "private",
-   "title_bn": "",
-   "category": "অন্যান্য",
-   "first_seen": "2026-11-22T20:10:05+06:00"
-  },
-  {
-   "id": "39acb0c19cb0",
-   "title": "TODAY JOBS",
-   "url": "https://bdjobstoday.com/jobs_today.php",
-   "source": "BD Jobs Today",
-   "type": "private",
-   "title_bn": "",
-   "category": "অন্যান্য",
-   "first_seen": "2026-11-22T20:10:05+06:00"
-  },
-  {
-   "id": "3eb4f52fe7ef",
-   "title": "DEADLINE TOMORROW",
-   "url": "https://bdjobstoday.com/jobs_nextday.php",
-   "source": "BD Jobs Today",
-   "type": "private",
-   "title_bn": "",
-   "category": "অন্যান্য",
-   "first_seen": "2026-11-22T20:10:05+06:00"
-  },
-  {
-   "id": "09763ce4eb14",
-   "title": "LATEST 20 JOBS",
-   "url": "https://bdjobstoday.com/jobs_latest_20.php",
-   "source": "BD Jobs Today",
-   "type": "private",
-   "title_bn": "",
-   "category": "অন্যান্য",
-   "first_seen": "2026-11-22T20:10:05+06:00"
-  },
-  {
-   "id": "5c338ac3f04a",
-   "title": "FRESHER JOBS",
-   "url": "https://bdjobstoday.com/fresher.php?exp=0-1 year",
-   "source": "BD Jobs Today",
-   "type": "private",
-   "title_bn": "",
-   "category": "অন্যান্য",
-   "first_seen": "2026-11-22T20:10:05+06:00"
-  },
-  {
-   "id": "787485d0e0f7",
-   "title": "JOBS IN CHATTOGRAM",
-   "url": "https://bdjobstoday.com/city.php?name=Chattogram",
-   "source": "BD Jobs Today",
-   "type": "private",
-   "title_bn": "",
-   "category": "অন্যান্য",
-   "first_seen": "2026-11-22T20:10:05+06:00"
-  },
-  {
-   "id": "f08c209a2f52",
-   "title": "Govt. Jobs",
-   "url": "https://bdjobstoday.com/jobs.php?cat=1 & cat_name=Govt. Jobs",
-   "source": "BD Jobs Today",
-   "type": "govt",
-   "title_bn": "",
-   "category": "সরকারি",
-   "first_seen": "2026-11-22T20:10:05+06:00"
-  },
-  {
-   "id": "a4ea39d5d8a4",
-   "title": "Bank/Finance/Insurance",
-   "url": "https://bdjobstoday.com/jobs.php?cat=3 & cat_name=Bank/Finance/Insurance",
-   "source": "BD Jobs Today",
-   "type": "private",
-   "title_bn": "",
-   "category": "ব্যাংক",
-   "first_seen": "2026-11-22T20:10:05+06:00"
-  },
-  {
-   "id": "8d610003c0a4",
-   "title": "Housing/Real Estate",
-   "url": "https://bdjobstoday.com/jobs.php?cat=4 & cat_name=Housing/Real Estate",
-   "source": "BD Jobs Today",
-   "type": "private",
-   "title_bn": "",
-   "category": "অন্যান্য",
-   "first_seen": "2026-11-22T20:10:05+06:00"
-  },
-  {
-   "id": "ba5b3dc0a631",
-   "title": "Varsity/School/College",
-   "url": "https://bdjobstoday.com/jobs.php?cat=5 & cat_name=Varsity/School/College",
-   "source": "BD Jobs Today",
-   "type": "private",
-   "title_bn": "",
-   "category": "শিক্ষা",
-   "first_seen": "2026-11-22T20:10:05+06:00"
-  },
-  {
-   "id": "3d795f9b7d47",
-   "title": "Media/News Agency",
-   "url": "https://bdjobstoday.com/jobs.php?cat=6 & cat_name=Media/News Agency",
-   "source": "BD Jobs Today",
-   "type": "private",
-   "title_bn": "",
-   "category": "অন্যান্য",
-   "first_seen": "2026-11-22T20:10:05+06:00"
-  },
-  {
-   "id": "6db71d61a2e4",
-   "title": "Garments/Jute/Textile",
-   "url": "https://bdjobstoday.com/jobs.php?cat=7 & cat_name=Garments/Jute/Textile",
-   "source": "BD Jobs Today",
-   "type": "private",
-   "title_bn": "",
-   "category": "অন্যান্য",
-   "first_seen": "2026-11-22T20:10:05+06:00"
-  },
-  {
-   "id": "5ca0b15c2ae0",
-   "title": "UN/International Org",
-   "url": "https://bdjobstoday.com/jobs.php?cat=8 & cat_name=UN/International Org",
-   "source": "BD Jobs Today",
-   "type": "private",
-   "title_bn": "",
-   "category": "অন্যান্য",
-   "first_seen": "2026-11-22T20:10:05+06:00"
-  },
-  {
-   "id": "7554909c1910",
-   "title": "Agro & Food Products",
-   "url": "https://bdjobstoday.com/jobs.php?cat=9 & cat_name=Agro & Food Products",
-   "source": "BD Jobs Today",
-   "type": "private",
-   "title_bn": "",
-   "category": "অন্যান্য",
-   "first_seen": "2026-11-22T20:10:05+06:00"
-  },
-  {
-   "id": "e6bfc2f499f1",
-   "title": "Hospital/Clinic/Medical",
-   "url": "https://bdjobstoday.com/jobs.php?cat=10 & cat_name=Hospital/Clinic/Medical",
-   "source": "BD Jobs Today",
-   "type": "private",
-   "title_bn": "",
-   "category": "স্বাস্থ্য",
-   "first_seen": "2026-11-22T20:10:05+06:00"
-  },
-  {
-   "id": "d7b1eae7aca3",
-   "title": "ICT/Telecommunication",
-   "url": "https://bdjobstoday.com/jobs.php?cat=11 & cat_name=ICT/Telecommunication",
-   "source": "BD Jobs Today",
-   "type": "private",
-   "title_bn": "",
-   "category": "আইটি",
-   "first_seen": "2026-11-22T20:10:05+06:00"
-  },
-  {
-   "id": "03cb6246d805",
-   "title": "Factory/ Manufacturing",
-   "url": "https://bdjobstoday.com/jobs.php?cat=12 & cat_name=Factory/ Manufacturing",
-   "source": "BD Jobs Today",
-   "type": "private",
-   "title_bn": "",
-   "category": "অন্যান্য",
-   "first_seen": "2026-11-22T20:10:05+06:00"
-  },
-  {
-   "id": "fcdfc1cdf6fa",
-   "title": "Pharmaceuticals/Chemicals",
-   "url": "https://bdjobstoday.com/jobs.php?cat=15 & cat_name=Pharmaceuticals/Chemicals",
-   "source": "BD Jobs Today",
-   "type": "private",
-   "title_bn": "",
-   "category": "স্বাস্থ্য",
-   "first_seen": "2026-11-22T20:10:05+06:00"
-  },
-  {
-   "id": "79723b14ef78",
-   "title": "NGO/Development",
-   "url": "https://bdjobstoday.com/jobs.php?cat=16 & cat_name=NGO/Development",
-   "source": "BD Jobs Today",
-   "type": "private",
-   "title_bn": "",
-   "category": "এনজিও",
-   "first_seen": "2026-11-22T20:10:05+06:00"
-  },
-  {
-   "id": "fe3abd8ae12d",
-   "title": "Others Jobs",
-   "url": "https://bdjobstoday.com/jobs.php?cat=18 & cat_name=Others Jobs",
-   "source": "BD Jobs Today",
-   "type": "private",
-   "title_bn": "",
-   "category": "অন্যান্য",
-   "first_seen": "2026-11-22T20:10:05+06:00"
-  },
-  {
-   "id": "19bd7b852e6f",
-   "title": "Group of Company",
-   "url": "https://bdjobstoday.com/jobs.php?cat=19 & cat_name=Group of Company",
-   "source": "BD Jobs Today",
-   "type": "private",
-   "title_bn": "",
-   "category": "অন্যান্য",
-   "first_seen": "2026-11-22T20:10:05+06:00"
-  },
-  {
-   "id": "cf8ec6f4c172",
-   "title": "Multinational Company",
-   "url": "https://bdjobstoday.com/jobs.php?cat=20 & cat_name=Multinational Company",
-   "source": "BD Jobs Today",
-   "type": "private",
-   "title_bn": "",
-   "category": "অন্যান্য",
-   "first_seen": "2026-11-22T20:10:05+06:00"
-  },
-  {
-   "id": "f735f326f2e3",
-   "title": "Forgot Password?",
-   "url": "https://bdjobstoday.com/user/reset_pass.php",
-   "source": "BD Jobs Today",
-   "type": "private",
-   "title_bn": "",
-   "category": "অন্যান্য",
-   "first_seen": "2026-11-22T20:10:05+06:00"
-  },
-  {
-   "id": "89b57ab31460",
-   "title": "More News",
-   "url": "https://bdjobstoday.com/news.php",
-   "source": "BD Jobs Today",
-   "type": "private",
-   "title_bn": "",
-   "category": "অন্যান্য",
-   "first_seen": "2026-11-22T20:10:05+06:00"
-  },
-  {
    "id": "7895b130335e",
    "title": "Trading Corporation of Bangladesh (TCB)",
    "url": "https://bdjobstoday.com/jobs_company.php?company=Trading+Corporation+of+Bangladesh+%28TCB%29",
    "source": "BD Jobs Today",
    "type": "private",
-   "title_bn": "",
-   "category": "অন্যান্য",
+   "title_bn": "ট্রেডিং কর্পোরেশন অব বাংলাদেশ (টিসিবি) নিয়োগ বিজ্ঞপ্তি",
+   "category": "সরকারি",
    "first_seen": "2026-11-22T20:10:05+06:00"
   },
   {
@@ -5441,7 +5092,7 @@
    "url": "https://bdjobstoday.com/hotjobs_details.php?id=294072",
    "source": "BD Jobs Today",
    "type": "private",
-   "title_bn": "",
+   "title_bn": "উপ-সহকারী প্রকৌশলী (সিভিল)",
    "category": "প্রকৌশল",
    "first_seen": "2026-11-22T20:10:05+06:00"
   },
@@ -5451,7 +5102,7 @@
    "url": "https://bdjobstoday.com/hotjobs_details.php?id=294073",
    "source": "BD Jobs Today",
    "type": "private",
-   "title_bn": "",
+   "title_bn": "সাঁটমুদ্রাক্ষরিক কাম কম্পিউটার অপারেটর",
    "category": "অন্যান্য",
    "first_seen": "2026-11-22T20:10:05+06:00"
   },
@@ -5461,7 +5112,7 @@
    "url": "https://bdjobstoday.com/hotjobs_details.php?id=294074",
    "source": "BD Jobs Today",
    "type": "private",
-   "title_bn": "",
+   "title_bn": "স্টোরেজ ও সেলস অ্যাসিস্ট্যান্ট",
    "category": "অন্যান্য",
    "first_seen": "2026-11-22T20:10:05+06:00"
   },
@@ -5471,7 +5122,7 @@
    "url": "https://bdjobstoday.com/hotjobs_details.php?id=294075",
    "source": "BD Jobs Today",
    "type": "private",
-   "title_bn": "",
+   "title_bn": "টেলেক্স অপারেটর",
    "category": "অন্যান্য",
    "first_seen": "2026-11-22T20:10:05+06:00"
   },
@@ -5481,7 +5132,7 @@
    "url": "https://bdjobstoday.com/hotjobs_details.php?id=294076",
    "source": "BD Jobs Today",
    "type": "private",
-   "title_bn": "",
+   "title_bn": "অফিস সহায়ক",
    "category": "অন্যান্য",
    "first_seen": "2026-11-22T20:10:05+06:00"
   },
@@ -5491,7 +5142,7 @@
    "url": "https://bdjobstoday.com/jobs_company.php?company=Department+of+Agricultural+Marketing",
    "source": "BD Jobs Today",
    "type": "govt",
-   "title_bn": "",
+   "title_bn": "কৃষি বিপণন অধিদপ্তর নিয়োগ বিজ্ঞপ্তি",
    "category": "সরকারি",
    "first_seen": "2026-11-22T20:10:05+06:00"
   },
@@ -5501,7 +5152,7 @@
    "url": "https://bdjobstoday.com/hotjobs_details.php?id=294004",
    "source": "BD Jobs Today",
    "type": "private",
-   "title_bn": "",
+   "title_bn": "ফিল্ড অ্যান্ড মার্কেট পরিদর্শক",
    "category": "অন্যান্য",
    "first_seen": "2026-11-22T20:10:05+06:00"
   },
@@ -5511,7 +5162,7 @@
    "url": "https://bdjobstoday.com/hotjobs_details.php?id=294005",
    "source": "BD Jobs Today",
    "type": "private",
-   "title_bn": "",
+   "title_bn": "সাঁটলিপিকার কাম কম্পিউটার অপারেটর",
    "category": "অন্যান্য",
    "first_seen": "2026-11-22T20:10:05+06:00"
   },
@@ -5521,8 +5172,8 @@
    "url": "https://bdjobstoday.com/hotjobs_details.php?id=294006",
    "source": "BD Jobs Today",
    "type": "private",
-   "title_bn": "",
-   "category": "অন্যান্য",
+   "title_bn": "কম্পিউটার অপারেটর",
+   "category": "আইটি",
    "first_seen": "2026-11-22T20:10:05+06:00"
   },
   {
@@ -5531,7 +5182,7 @@
    "url": "https://bdjobstoday.com/hotjobs_details.php?id=294007",
    "source": "BD Jobs Today",
    "type": "private",
-   "title_bn": "",
+   "title_bn": "হিসাবরক্ষক",
    "category": "অন্যান্য",
    "first_seen": "2026-11-22T20:10:05+06:00"
   },
@@ -5541,7 +5192,7 @@
    "url": "https://bdjobstoday.com/hotjobs_details.php?id=294008",
    "source": "BD Jobs Today",
    "type": "private",
-   "title_bn": "",
+   "title_bn": "গাড়ি চালক (ভারী)",
    "category": "অন্যান্য",
    "first_seen": "2026-11-22T20:10:05+06:00"
   },
@@ -5551,7 +5202,7 @@
    "url": "https://bdjobstoday.com/hotjobs_details.php?id=294009",
    "source": "BD Jobs Today",
    "type": "private",
-   "title_bn": "",
+   "title_bn": "অফিস সহকারী কাম কম্পিউটার টাইপিস্ট",
    "category": "অন্যান্য",
    "first_seen": "2026-11-22T20:10:05+06:00"
   },
@@ -5561,7 +5212,7 @@
    "url": "https://bdjobstoday.com/hotjobs_details.php?id=294010",
    "source": "BD Jobs Today",
    "type": "private",
-   "title_bn": "",
+   "title_bn": "ক্যাশিয়ার",
    "category": "অন্যান্য",
    "first_seen": "2026-11-22T20:10:05+06:00"
   },
@@ -5571,7 +5222,7 @@
    "url": "https://bdjobstoday.com/hotjobs_details.php?id=294011",
    "source": "BD Jobs Today",
    "type": "private",
-   "title_bn": "",
+   "title_bn": "অফিস সহায়ক",
    "category": "অন্যান্য",
    "first_seen": "2026-11-22T20:10:05+06:00"
   },
@@ -5581,8 +5232,8 @@
    "url": "https://bdjobstoday.com/jobs_company.php?company=North-West+Power+Generation+Co.+Ltd",
    "source": "BD Jobs Today",
    "type": "private",
-   "title_bn": "",
-   "category": "অন্যান্য",
+   "title_bn": "নর্থ-ওয়েস্ট পাওয়ার জেনারেশন কোম্পানি লিমিটেড নিয়োগ বিজ্ঞপ্তি",
+   "category": "সরকারি",
    "first_seen": "2026-11-22T20:10:05+06:00"
   },
   {
@@ -5591,7 +5242,7 @@
    "url": "https://bdjobstoday.com/hotjobs_details.php?id=293943",
    "source": "BD Jobs Today",
    "type": "private",
-   "title_bn": "",
+   "title_bn": "সহকারী প্রকৌশলী (মেকানিক্যাল)",
    "category": "প্রকৌশল",
    "first_seen": "2026-11-22T20:10:05+06:00"
   },
@@ -5601,7 +5252,7 @@
    "url": "https://bdjobstoday.com/hotjobs_details.php?id=293944",
    "source": "BD Jobs Today",
    "type": "private",
-   "title_bn": "",
+   "title_bn": "সহকারী প্রকৌশলী (ইলেকট্রিক্যাল)",
    "category": "প্রকৌশল",
    "first_seen": "2026-11-22T20:10:05+06:00"
   },
@@ -5611,8 +5262,8 @@
    "url": "https://bdjobstoday.com/hotjobs_details.php?id=293945",
    "source": "BD Jobs Today",
    "type": "private",
-   "title_bn": "",
-   "category": "স্বাস্থ্য",
+   "title_bn": "জুনিয়র অ্যাসিস্ট্যান্ট ম্যানেজার (পরিবেশ, স্বাস্থ্য ও নিরাপত্তা)",
+   "category": "প্রকৌশল",
    "first_seen": "2026-11-22T20:10:05+06:00"
   },
   {
@@ -5621,8 +5272,8 @@
    "url": "https://bdjobstoday.com/jobs_company.php?company=Bangladesh+Post+Office",
    "source": "BD Jobs Today",
    "type": "private",
-   "title_bn": "",
-   "category": "অন্যান্য",
+   "title_bn": "বাংলাদেশ ডাক বিভাগ নিয়োগ বিজ্ঞপ্তি",
+   "category": "সরকারি",
    "first_seen": "2026-11-22T20:10:05+06:00"
   },
   {
@@ -5631,7 +5282,7 @@
    "url": "https://bdjobstoday.com/hotjobs_details.php?id=293817",
    "source": "BD Jobs Today",
    "type": "private",
-   "title_bn": "",
+   "title_bn": "জুনিয়র একাউন্টেন্ট",
    "category": "অন্যান্য",
    "first_seen": "2026-11-22T20:10:05+06:00"
   },
@@ -5641,8 +5292,8 @@
    "url": "https://bdjobstoday.com/hotjobs_details.php?id=293818",
    "source": "BD Jobs Today",
    "type": "private",
-   "title_bn": "",
-   "category": "অন্যান্য",
+   "title_bn": "পোস্টাল ইন্সপেক্টর/অন্যান্য",
+   "category": "সরকারি",
    "first_seen": "2026-11-22T20:10:05+06:00"
   },
   {
@@ -5651,8 +5302,8 @@
    "url": "https://bdjobstoday.com/hotjobs_details.php?id=293819",
    "source": "BD Jobs Today",
    "type": "private",
-   "title_bn": "",
-   "category": "অন্যান্য",
+   "title_bn": "উপজেলা পোস্ট মাস্টার",
+   "category": "সরকারি",
    "first_seen": "2026-11-22T20:10:05+06:00"
   },
   {
@@ -5661,7 +5312,7 @@
    "url": "https://bdjobstoday.com/hotjobs_details.php?id=293820",
    "source": "BD Jobs Today",
    "type": "govt",
-   "title_bn": "",
+   "title_bn": "সহকারী (ডাক অধিদপ্তর)",
    "category": "সরকারি",
    "first_seen": "2026-11-22T20:10:05+06:00"
   },
@@ -5671,8 +5322,8 @@
    "url": "https://bdjobstoday.com/hotjobs_details.php?id=293821",
    "source": "BD Jobs Today",
    "type": "private",
-   "title_bn": "",
-   "category": "অন্যান্য",
+   "title_bn": "সহকারী পরিদর্শক",
+   "category": "সরকারি",
    "first_seen": "2026-11-22T20:10:05+06:00"
   },
   {
@@ -5681,8 +5332,8 @@
    "url": "https://bdjobstoday.com/hotjobs_details.php?id=293822",
    "source": "BD Jobs Today",
    "type": "private",
-   "title_bn": "",
-   "category": "অন্যান্য",
+   "title_bn": "সাঁটমুদ্রাক্ষরিক কাম কম্পিউটার অপারেটর",
+   "category": "সরকারি",
    "first_seen": "2026-11-22T20:10:05+06:00"
   },
   {
@@ -5691,7 +5342,7 @@
    "url": "https://bdjobstoday.com/hotjobs_details.php?id=293823",
    "source": "BD Jobs Today",
    "type": "private",
-   "title_bn": "",
+   "title_bn": "উচ্চমান সহকারী",
    "category": "অন্যান্য",
    "first_seen": "2026-11-22T20:10:05+06:00"
   },
@@ -5701,7 +5352,7 @@
    "url": "https://bdjobstoday.com/hotjobs_details.php?id=293824",
    "source": "BD Jobs Today",
    "type": "private",
-   "title_bn": "",
+   "title_bn": "টেকনিশিয়ান",
    "category": "প্রকৌশল",
    "first_seen": "2026-11-22T20:10:05+06:00"
   },
@@ -5711,8 +5362,8 @@
    "url": "https://bdjobstoday.com/hotjobs_details.php?id=293825",
    "source": "BD Jobs Today",
    "type": "private",
-   "title_bn": "",
-   "category": "অন্যান্য",
+   "title_bn": "মেকানিক",
+   "category": "প্রকৌশল",
    "first_seen": "2026-11-22T20:10:05+06:00"
   },
   {
@@ -5721,7 +5372,7 @@
    "url": "https://bdjobstoday.com/hotjobs_details.php?id=293826",
    "source": "BD Jobs Today",
    "type": "private",
-   "title_bn": "",
+   "title_bn": "মনোটাইপ কাস্টার অপারেটর",
    "category": "অন্যান্য",
    "first_seen": "2026-11-22T20:10:05+06:00"
   },
@@ -5731,7 +5382,7 @@
    "url": "https://bdjobstoday.com/hotjobs_details.php?id=293827",
    "source": "BD Jobs Today",
    "type": "private",
-   "title_bn": "",
+   "title_bn": "মেশিন ম্যান (অফসেট প্রিন্টিং/লেটার প্রিন্টিং)",
    "category": "অন্যান্য",
    "first_seen": "2026-11-22T20:10:05+06:00"
   },
@@ -5741,7 +5392,7 @@
    "url": "https://bdjobstoday.com/hotjobs_details.php?id=293828",
    "source": "BD Jobs Today",
    "type": "private",
-   "title_bn": "",
+   "title_bn": "হিসাব সহকারী",
    "category": "অন্যান্য",
    "first_seen": "2026-11-22T20:10:05+06:00"
   },
@@ -5751,8 +5402,8 @@
    "url": "https://bdjobstoday.com/hotjobs_details.php?id=293829",
    "source": "BD Jobs Today",
    "type": "private",
-   "title_bn": "",
-   "category": "অন্যান্য",
+   "title_bn": "ড্রাফটসম্যান",
+   "category": "প্রকৌশল",
    "first_seen": "2026-11-22T20:10:05+06:00"
   },
   {
@@ -5761,7 +5412,7 @@
    "url": "https://bdjobstoday.com/hotjobs_details.php?id=293830",
    "source": "BD Jobs Today",
    "type": "private",
-   "title_bn": "",
+   "title_bn": "জুনিয়র প্রুফ রিডার",
    "category": "অন্যান্য",
    "first_seen": "2026-11-22T20:10:05+06:00"
   },
@@ -5771,7 +5422,7 @@
    "url": "https://bdjobstoday.com/hotjobs_details.php?id=293831",
    "source": "BD Jobs Today",
    "type": "private",
-   "title_bn": "",
+   "title_bn": "ড্রাইভার (হালকা)",
    "category": "অন্যান্য",
    "first_seen": "2026-11-22T20:10:05+06:00"
   },
@@ -5781,7 +5432,7 @@
    "url": "https://bdjobstoday.com/hotjobs_details.php?id=293832",
    "source": "BD Jobs Today",
    "type": "private",
-   "title_bn": "",
+   "title_bn": "কার্পেন্টার",
    "category": "অন্যান্য",
    "first_seen": "2026-11-22T20:10:05+06:00"
   },
@@ -5791,7 +5442,7 @@
    "url": "https://bdjobstoday.com/hotjobs_details.php?id=293833",
    "source": "BD Jobs Today",
    "type": "private",
-   "title_bn": "",
+   "title_bn": "মেশিনিস্ট",
    "category": "অন্যান্য",
    "first_seen": "2026-11-22T20:10:05+06:00"
   },
@@ -5801,138 +5452,8 @@
    "url": "https://bdjobstoday.com/hotjobs_details.php?id=293834",
    "source": "BD Jobs Today",
    "type": "private",
-   "title_bn": "",
+   "title_bn": "সহকারী মেশিন ম্যান",
    "category": "অন্যান্য",
-   "first_seen": "2026-11-22T20:10:05+06:00"
-  },
-  {
-   "id": "2980d97c33ed",
-   "title": "Browse by Company",
-   "url": "https://www.jagojobs.com/job-companies",
-   "source": "JagoJobs",
-   "type": "private",
-   "title_bn": "",
-   "category": "অন্যান্য",
-   "first_seen": "2026-11-22T20:10:05+06:00"
-  },
-  {
-   "id": "43a260c41653",
-   "title": "Browse by Category",
-   "url": "https://www.jagojobs.com/job-categories",
-   "source": "JagoJobs",
-   "type": "private",
-   "title_bn": "",
-   "category": "অন্যান্য",
-   "first_seen": "2026-11-22T20:10:05+06:00"
-  },
-  {
-   "id": "32e66f7338de",
-   "title": "Browse by Location",
-   "url": "https://www.jagojobs.com/job-locations",
-   "source": "JagoJobs",
-   "type": "private",
-   "title_bn": "",
-   "category": "অন্যান্য",
-   "first_seen": "2026-11-22T20:10:05+06:00"
-  },
-  {
-   "id": "9b528defb131",
-   "title": "All Jobs",
-   "url": "https://www.jagojobs.com/all-jobs",
-   "source": "JagoJobs",
-   "type": "private",
-   "title_bn": "",
-   "category": "অন্যান্য",
-   "first_seen": "2026-11-22T20:10:05+06:00"
-  },
-  {
-   "id": "8def9c97ee06",
-   "title": "Government Jobs",
-   "url": "https://www.jagojobs.com/government",
-   "source": "JagoJobs",
-   "type": "private",
-   "title_bn": "",
-   "category": "সরকারি",
-   "first_seen": "2026-11-22T20:10:05+06:00"
-  },
-  {
-   "id": "a8aece732e0b",
-   "title": "NGO Jobs",
-   "url": "https://www.jagojobs.com/ngo-jobs",
-   "source": "JagoJobs",
-   "type": "private",
-   "title_bn": "",
-   "category": "এনজিও",
-   "first_seen": "2026-11-22T20:10:05+06:00"
-  },
-  {
-   "id": "ebbddf6312d3",
-   "title": "Diploma Jobs",
-   "url": "https://www.jagojobs.com/diploma-technical-jobs",
-   "source": "JagoJobs",
-   "type": "private",
-   "title_bn": "",
-   "category": "প্রকৌশল",
-   "first_seen": "2026-11-22T20:10:05+06:00"
-  },
-  {
-   "id": "c0dbb870cbeb",
-   "title": "Female Jobs",
-   "url": "https://www.jagojobs.com/female-jobs",
-   "source": "JagoJobs",
-   "type": "private",
-   "title_bn": "",
-   "category": "অন্যান্য",
-   "first_seen": "2026-11-22T20:10:05+06:00"
-  },
-  {
-   "id": "0788be1e7a6e",
-   "title": "Bank Jobs",
-   "url": "https://www.jagojobs.com/bank",
-   "source": "JagoJobs",
-   "type": "private",
-   "title_bn": "",
-   "category": "ব্যাংক",
-   "first_seen": "2026-11-22T20:10:05+06:00"
-  },
-  {
-   "id": "dc977bf6ae1d",
-   "title": "Part Time Jobs",
-   "url": "https://www.jagojobs.com/part-time-jobs",
-   "source": "JagoJobs",
-   "type": "private",
-   "title_bn": "",
-   "category": "অন্যান্য",
-   "first_seen": "2026-11-22T20:10:05+06:00"
-  },
-  {
-   "id": "77c80aa4d26d",
-   "title": "Deadline Tonight",
-   "url": "https://www.jagojobs.com/deadline-tonight",
-   "source": "JagoJobs",
-   "type": "private",
-   "title_bn": "",
-   "category": "অন্যান্য",
-   "first_seen": "2026-11-22T20:10:05+06:00"
-  },
-  {
-   "id": "280356d7c129",
-   "title": "NGO Jobs",
-   "url": "https://www.jagojobs.com/ngo-development",
-   "source": "JagoJobs",
-   "type": "private",
-   "title_bn": "",
-   "category": "এনজিও",
-   "first_seen": "2026-11-22T20:10:05+06:00"
-  },
-  {
-   "id": "7038d6d57fbd",
-   "title": "Khulna University of Engineering and Technology",
-   "url": "https://www.jagojobs.com/company-jobs/107",
-   "source": "JagoJobs",
-   "type": "private",
-   "title_bn": "",
-   "category": "শিক্ষা",
    "first_seen": "2026-11-22T20:10:05+06:00"
   },
   {
@@ -5941,7 +5462,7 @@
    "url": "https://www.jagojobs.com/education/211194",
    "source": "JagoJobs",
    "type": "private",
-   "title_bn": "",
+   "title_bn": "প্রভাষক - ইন্ডাস্ট্রিয়াল ইঞ্জিনিয়ারিং অ্যান্ড ম্যানেজমেন্ট",
    "category": "শিক্ষা",
    "first_seen": "2026-11-22T20:10:05+06:00"
   },
@@ -5951,7 +5472,7 @@
    "url": "https://www.jagojobs.com/education/211193",
    "source": "JagoJobs",
    "type": "private",
-   "title_bn": "",
+   "title_bn": "প্রভাষক - ইলেকট্রনিক্স অ্যান্ড কমিউনিকেশন ইঞ্জিনিয়ারিং",
    "category": "শিক্ষা",
    "first_seen": "2026-11-22T20:10:05+06:00"
   },
@@ -5961,7 +5482,7 @@
    "url": "https://www.jagojobs.com/education/211192",
    "source": "JagoJobs",
    "type": "private",
-   "title_bn": "",
+   "title_bn": "প্রভাষক - কম্পিউটার সায়েন্স অ্যান্ড ইঞ্জিনিয়ারিং (চুক্তিভিত্তিক)",
    "category": "শিক্ষা",
    "first_seen": "2026-11-22T20:10:05+06:00"
   },
@@ -5971,7 +5492,7 @@
    "url": "https://www.jagojobs.com/education/211191",
    "source": "JagoJobs",
    "type": "private",
-   "title_bn": "",
+   "title_bn": "প্রভাষক - মেকানিক্যাল ইঞ্জিনিয়ারিং (চুক্তিভিত্তিক)",
    "category": "শিক্ষা",
    "first_seen": "2026-11-22T20:10:05+06:00"
   },
@@ -5981,7 +5502,7 @@
    "url": "https://www.jagojobs.com/education/211190",
    "source": "JagoJobs",
    "type": "private",
-   "title_bn": "",
+   "title_bn": "প্রভাষক - মেকানিক্যাল ইঞ্জিনিয়ারিং",
    "category": "শিক্ষা",
    "first_seen": "2026-11-22T20:10:05+06:00"
   },
@@ -5991,7 +5512,7 @@
    "url": "https://www.jagojobs.com/education/211189",
    "source": "JagoJobs",
    "type": "private",
-   "title_bn": "",
+   "title_bn": "প্রভাষক - ইলেকট্রিক্যাল অ্যান্ড ইলেকট্রনিক্স ইঞ্জিনিয়ারিং",
    "category": "শিক্ষা",
    "first_seen": "2026-11-22T20:10:05+06:00"
   },
@@ -6001,7 +5522,7 @@
    "url": "https://www.jagojobs.com/education/211188",
    "source": "JagoJobs",
    "type": "private",
-   "title_bn": "",
+   "title_bn": "প্রভাষক - সিভিল ইঞ্জিনিয়ারিং (চুক্তিভিত্তিক)",
    "category": "শিক্ষা",
    "first_seen": "2026-11-22T20:10:05+06:00"
   },
@@ -6011,7 +5532,7 @@
    "url": "https://www.jagojobs.com/education/211187",
    "source": "JagoJobs",
    "type": "private",
-   "title_bn": "",
+   "title_bn": "প্রভাষক - সিভিল ইঞ্জিনিয়ারিং",
    "category": "শিক্ষা",
    "first_seen": "2026-11-22T20:10:05+06:00"
   },
@@ -6021,7 +5542,7 @@
    "url": "https://www.jagojobs.com/education/211186",
    "source": "JagoJobs",
    "type": "private",
-   "title_bn": "",
+   "title_bn": "সহকারী অধ্যাপক - পদার্থবিজ্ঞান (চুক্তিভিত্তিক)",
    "category": "শিক্ষা",
    "first_seen": "2026-11-22T20:10:05+06:00"
   },
