@@ -22,6 +22,7 @@ MAX_GEMINI_CALLS = 8
 GEMINI_MODELS = [os.getenv("GEMINI_MODEL") or "gemini-3.5-flash-lite",
                  "gemini-3.8-flash", "gemini-3.6-flash"]
 GEMINI_DOWN = False
+GEMINI_WAITED = False  # মিনিট-সীমা (429) এলে এই রানে একবারই অপেক্ষা
 HEADERS = {
     "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 "
                   "(KHTML, like Gecko) Chrome/124.0 Safari/537.36",
@@ -47,7 +48,6 @@ SOURCES = [
     # ---- সংকলন ও অন্যান্য জব সাইট (সরকারি+বেসরকারি মিশ্র) ----
     {"name": "BD Jobs Today", "type": "mixed", "feed": True, "url": "https://bdjobstoday.com/"},
     {"name": "eJobs Circular", "type": "mixed", "feed": True, "url": "https://ejobscircular.com/"},
-    {"name": "BD Career", "type": "mixed", "feed": True, "url": "https://bd-career.com/"},
     {"name": "JagoJobs", "type": "private", "url": "https://www.jagojobs.com/"},
     {"name": "eJobs.com.bd", "type": "private", "url": "https://ejobs.com.bd/"},
     {"name": "NRB Jobs", "type": "private", "url": "https://nrbjobs.com/"},
@@ -339,7 +339,7 @@ def browser_scrape(sources, budget=200):
 
 def gemini_classify(items):
     """রিটার্ন: {id: {"is_job":bool,"title_bn":str,"category":str}}"""
-    global GEMINI_DOWN
+    global GEMINI_DOWN, GEMINI_WAITED
     default = {i["id"]: {"is_job": True, "title_bn": "", "category": "অন্যান্য"} for i in items}
     key = os.getenv("GEMINI_API_KEY")
     if not key or not items or GEMINI_DOWN:
@@ -349,8 +349,10 @@ def gemini_classify(items):
     t0 = time.time()
     think = True  # দ্রুত উত্তরের জন্য কম 'চিন্তা'
     for n, i in enumerate(range(0, len(items), 12)):
-        if n >= MAX_GEMINI_CALLS or time.time() - t0 > 240:
+        if n >= MAX_GEMINI_CALLS or time.time() - t0 > 400:
             break
+        if n > 0:
+            time.sleep(4.5)  # প্রতি মিনিটে ~১৩টির বেশি রিকোয়েস্ট নয় (ফ্রি সীমা এড়াতে)
         chunk = items[i:i + 12]
         lines = "\n".join(f'{c["id"]} | {c["source"]} | {c["title"]}' for c in chunk)
         prompt = (
@@ -365,7 +367,7 @@ def gemini_classify(items):
         text = None
         for m in list(models):
             for attempt in range(3):
-                if time.time() - t0 > 240:
+                if time.time() - t0 > 400:
                     break
                 gc = {"responseMimeType": "application/json"}
                 if think and "lite" not in m:  # flash-lite-এর ডিফল্ট minimal-ই দ্রুততম
@@ -391,7 +393,12 @@ def gemini_classify(items):
                 except Exception:  # noqa
                     detail = r.text[:220].replace("\n", " ")
                 print(f"[gemini] {m} -> HTTP {r.status_code} {detail}")
-                if r.status_code == 404 or (r.status_code == 429 and "quota" in detail.lower()):
+                if r.status_code == 429 and not GEMINI_WAITED:
+                    GEMINI_WAITED = True
+                    print("[gemini] মিনিট-সীমা ছুঁয়েছে, ৫০ সেকেন্ড অপেক্ষা করে আবার চেষ্টা")
+                    time.sleep(50)
+                    continue
+                if r.status_code in (404, 429):
                     models.remove(m)
                     break
                 if r.status_code == 400 and think:
@@ -411,8 +418,17 @@ def gemini_classify(items):
             break
         try:
             text = re.sub(r"^```(?:json)?|```$", "", text.strip(), flags=re.M).strip()
-            for row in json.loads(text):
-                if row.get("id") in result:
+            try:
+                rows = json.loads(text)
+            except Exception:  # ভাঙা JSON: সম্পূর্ণ অবজেক্টগুলো আলাদা করে বাঁচাই
+                rows = []
+                for blob in re.findall(r"\{[^{}]*\}", text):
+                    try:
+                        rows.append(json.loads(blob))
+                    except Exception:  # noqa
+                        pass
+            for row in rows:
+                if isinstance(row, dict) and row.get("id") in result:
                     result[row["id"]] = {
                         "is_job": bool(row.get("is_job", True)),
                         "title_bn": str(row.get("title_bn", ""))[:200],
