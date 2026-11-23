@@ -58,6 +58,14 @@ SOURCES = [
     {"name": "eJobs.com.bd", "type": "private", "url": "https://ejobs.com.bd/"},
     {"name": "NRB Jobs", "type": "private", "url": "https://nrbjobs.com/"},
     {"name": "RMG Jobs", "type": "private", "url": "https://rmgjobs.com/"},
+    # ---- পত্রিকার চাকরি বিভাগ ----
+    {"name": "ইত্তেফাক চাকরি", "type": "mixed", "url": "https://www.ittefaq.com.bd/jobs"},
+    {"name": "বাংলা ট্রিবিউন চাকরি", "type": "mixed", "feed": True, "url": "https://www.banglatribune.com/jobs"},
+    {"name": "যুগান্তর (সরকারি/রাষ্ট্রীয়)", "type": "govt", "url": "https://www.jugantor.com/job-search-state-org"},
+    {"name": "যুগান্তর (এনজিও)", "type": "private", "url": "https://www.jugantor.com/job-search-ngo"},
+    {"name": "বাংলাদেশ প্রতিদিন ক্যারিয়ার", "type": "mixed", "url": "https://www.bd-pratidin.com/career"},
+    # ---- আরও সংকলন ----
+    {"name": "BD Govt Job", "type": "mixed", "feed": True, "url": "https://bdgovtjob.net/"},
 ]
 
 JOB_RE = re.compile(
@@ -113,6 +121,41 @@ GOVT_RE = re.compile(
     r"সরকারি|বাংলাদেশ ব্যাংক|মন্ত্রণালয়|অধিদপ্তর|অধিদফতর|বিসিএস|পিএসসি|পুলিশ|সেনা|নৌবাহিনী|বিমান বাহিনী|রেলওয়ে|"
     r"জেলা প্রশাসক|পরিষদ|বিশ্ববিদ্যালয়|govt|government|ministry|bpsc|\bbcs\b|teletalk|police|"
     r"army|navy|railway|bangladesh bank|directorate|department|ntrca", re.I)
+
+
+NONJOB_RE = re.compile(
+    r"রেজাল্ট|ফলাফল|প্রবেশপত্র|এডমিট কার্ড|admit card|সিলেবাস|syllabus|ভর্তি বিজ্ঞপ্তি|ভর্তি পরীক্ষা|"
+    r"admission test|প্রশিক্ষণ কোর্স|অনলাইন কোর্স|online course|ওয়ার্কশপ|workshop|সেমিনার|টেন্ডার|tender|"
+    r"প্রশ্ন ?ব্যাংক|মডেল টেস্ট|সাজেশন|ক্যালকুলেটর|calculator|শুভেচ্ছা|বিজ্ঞাপন দিন|advertise with|"
+    r"\bresult\b|বেতন স্কেল ক্যালকুলেটর|নোটিশ বোর্ড|শিক্ষা বৃত্তি|"
+    r"সনদ যাচাই|প্রত্যয়ন|যাচাই|সুপারিশকৃত|সুপারিশ বিজ্ঞপ্তি|মৌখিক পরীক্ষা|লিখিত পরীক্ষা|এমসিকিউ|\bmcq\b|"
+    r"পরীক্ষার (সময়সূচি|তারিখ|ফল)|উত্তীর্ণ|প্রাথমিক বাছাই|আসন বিন্যাস|ফল প্রকাশ|নিবন্ধন পরীক্ষা|নিবন্ধন সনদ|"
+    r"প্রার্থীগণ|প্রার্থীদের তালিকা|ওয়েটিং লিস্ট|স্থগিত|বাতিল", re.I)
+
+CAT_RULES = [
+    ("ব্যাংক", r"ব্যাংক|\bbank\b|বীমা|insurance|ইসলামী ব্যাংক|ক্রেডিট"),
+    ("শিক্ষা", r"শিক্ষক|শিক্ষা|বিদ্যালয়|বিশ্ববিদ্যালয়|কলেজ|মাদ্রাসা|প্রভাষক|এনটিআরসিএ|ntrca|"
+               r"teacher|lecturer|professor|school|college|universit|instructor"),
+    ("স্বাস্থ্য", r"ডাক্তার|চিকিৎসক|নার্স|স্বাস্থ্য|হাসপাতাল|মেডিকেল|ফার্মাসিস্ট|doctor|nurse|medical|"
+                 r"hospital|health|pharma|clinic|dghs"),
+    ("আইটি", r"software|developer|programmer|\bIT\b|\bICT\b|web |data |network|devops|\bqa\b|ui/ux|"
+             r"আইটি|সফটওয়্যার|কম্পিউটার|ডেভেলপার|প্রোগ্রামার|system analyst|cyber|digital"),
+    ("প্রকৌশল", r"engineer|প্রকৌশল|ইঞ্জিনিয়ার|civil|mechanical|electrical|technician|surveyor|"
+               r"টেকনিশিয়ান|সার্ভেয়ার|ওভারসিয়ার|overseer|diploma"),
+    ("এনজিও", r"\bngo\b|এনজিও|ব্র্যাক|brac|unicef|usaid|save the children|world vision|\basa\b|grameen|"
+              r"গ্রামীণ|undp|unhcr|care bangladesh|plan international|action ?aid"),
+]
+CAT_RES = [(c, re.compile(r, re.I)) for c, r in CAT_RULES]
+
+
+def rule_category(it):
+    t = it["title"]
+    for cat, rx in CAT_RES:
+        if rx.search(t):
+            return cat
+    if it.get("type") == "govt" or GOVT_RE.search(t):
+        return "সরকারি"
+    return "অন্যান্য"
 
 
 def fix_type(src, items):
@@ -412,6 +455,14 @@ def main():
     new_items = [i for i in {c["id"]: c for c in collected}.values() if i["id"] not in known]
     print(f"নতুন লিংক: {len(new_items)}")
 
+    keep = []
+    for it in new_items:  # নিজস্ব ফিল্টার: ননজব আগেই বাদ (Gemini কোটা বাঁচে)
+        if NONJOB_RE.search(it["title"]):
+            skipped.append({"id": it["id"], "title": it["title"]})
+        else:
+            keep.append(it)
+    new_items = keep
+
     info = gemini_classify(new_items)
     added = []
     ts = now().isoformat(timespec="seconds")
@@ -422,12 +473,23 @@ def main():
             continue
         it.update({
             "title_bn": meta.get("title_bn", ""),
-            "category": meta.get("category") or ("সরকারি" if it["type"] == "govt" else "অন্যান্য"),
+            "category": meta["category"] if meta.get("title_bn") else rule_category(it),
             "first_seen": ts,
         })
         added.append(it)
 
     jobs = added + jobs
+
+    # পুরোনো জব: নিজস্ব ফিল্টার ও ক্যাটাগরি (Gemini-র শিরোনাম না থাকলে)
+    cleaned = []
+    for j in jobs:
+        if NONJOB_RE.search(j["title"]):
+            skipped.append({"id": j["id"], "title": j["title"]})
+            continue
+        if not j.get("title_bn"):
+            j["category"] = rule_category(j)
+        cleaned.append(j)
+    jobs = cleaned
 
     # আগে Gemini ছাড়া যোগ হওয়া জবগুলো আবার ফিল্টার/বাংলা শিরোনাম
     pending = [j for j in jobs if not j.get("title_bn")][:120]
