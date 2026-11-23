@@ -1,7 +1,587 @@
 {
- "updated": "2026-11-23T13:24:02+06:00",
- "count": 869,
+ "updated": "2026-11-23T14:52:56+06:00",
+ "count": 901,
  "jobs": [
+  {
+   "id": "3fa1261bdf3f",
+   "title": "Manager – Delivery & Logistics (Garments Trims & Accessories Industry) - A Leading Garments Trims & Accessories Manufacturing Company",
+   "url": "https://bdjobs.com/h/details/1559624",
+   "source": "Bdjobs",
+   "type": "private",
+   "title_bn": "",
+   "category": "অন্যান্য",
+   "first_seen": "2026-11-23T14:52:56+06:00"
+  },
+  {
+   "id": "d922b36ebe6d",
+   "title": "Residential Medical Officer (RMO)- Khokon Memorial Hospital (Sirajganj) - M & J Group",
+   "url": "https://bdjobs.com/h/details/1559625",
+   "source": "Bdjobs",
+   "type": "private",
+   "title_bn": "",
+   "category": "স্বাস্থ্য",
+   "first_seen": "2026-11-23T14:52:56+06:00"
+  },
+  {
+   "id": "01c49f4b2a76",
+   "title": "IELTS Teacher - Saint Dodo",
+   "url": "https://bdjobs.com/h/details/1559622",
+   "source": "Bdjobs",
+   "type": "private",
+   "title_bn": "",
+   "category": "শিক্ষা",
+   "first_seen": "2026-11-23T14:52:56+06:00"
+  },
+  {
+   "id": "b19fccc28f8a",
+   "title": "Japanese Language Expert - Operations - VFS Bangladesh Pvt Ltd",
+   "url": "https://bdjobs.com/h/details/1559623",
+   "source": "Bdjobs",
+   "type": "private",
+   "title_bn": "",
+   "category": "অন্যান্য",
+   "first_seen": "2026-11-23T14:52:56+06:00"
+  },
+  {
+   "id": "f371b401502a",
+   "title": "Executive/ Sr.Executive- Contract Management - Rupayan Housing Estate Ltd.",
+   "url": "https://bdjobs.com/h/details/1559620",
+   "source": "Bdjobs",
+   "type": "private",
+   "title_bn": "",
+   "category": "অন্যান্য",
+   "first_seen": "2026-11-23T14:52:56+06:00"
+  },
+  {
+   "id": "09947bb96be7",
+   "title": "অ্যাসিস্ট্যান্ট পারচেজ অফিসার - Christian Service Society (CSS)",
+   "url": "https://bdjobs.com/h/details/1559516",
+   "source": "Bdjobs",
+   "type": "private",
+   "title_bn": "",
+   "category": "অন্যান্য",
+   "first_seen": "2026-11-23T14:52:56+06:00"
+  },
+  {
+   "id": "3de6dca2e3f3",
+   "title": "Sales Executive - ABC Technology",
+   "url": "https://bdjobs.com/h/details/1559618",
+   "source": "Bdjobs",
+   "type": "private",
+   "title_bn": "",
+   "category": "অন্যান্য",
+   "first_seen": "2026-11-23T14:52:56+06:00"
+  },
+  {
+   "id": "f1fc680c27a9",
+   "title": "Front Desk Receptionist - Hotel Agrabad (Chattogram)",
+   "url": "https://bdjobs.com/h/details/1558343",
+   "source": "Bdjobs",
+   "type": "private",
+   "title_bn": "",
+   "category": "অন্যান্য",
+   "first_seen": "2026-11-23T14:52:56+06:00"
+  },
+  {
+   "id": "55455bb27894",
+   "title": "Marketing Officer (Female) - Corporate Sales - Hanzala Tours & Travels",
+   "url": "https://bdjobs.com/h/details/1559602",
+   "source": "Bdjobs",
+   "type": "private",
+   "title_bn": "",
+   "category": "অন্যান্য",
+   "first_seen": "2026-11-23T14:52:56+06:00"
+  },
+  {
+   "id": "da911035843b",
+   "title": "Assistant Manager- Production & Quality - Noman Group.",
+   "url": "https://bdjobs.com/h/details/1559615",
+   "source": "Bdjobs",
+   "type": "private",
+   "title_bn": "",
+   "category": "অন্যান্য",
+   "first_seen": "2026-11-23T14:52:56+06:00"
+  },
+  {
+   "id": "35be5c223e77",
+   "title": "সহকারী ব্যবস্থাপক (উৎপাদন) - Teamex Jute Mills Ltd",
+   "url": "https://bdjobs.com/h/details/1559613",
+   "source": "Bdjobs",
+   "type": "private",
+   "title_bn": "",
+   "category": "অন্যান্য",
+   "first_seen": "2026-11-23T14:52:56+06:00"
+  },
+  {
+   "id": "383cfbda1340",
+   "title": "Executive – Accounts - Promise Group",
+   "url": "https://bdjobs.com/h/details/1559611",
+   "source": "Bdjobs",
+   "type": "private",
+   "title_bn": "",
+   "category": "অন্যান্য",
+   "first_seen": "2026-11-23T14:52:56+06:00"
+  },
+  {
+   "id": "b7d7755ddfab",
+   "title": "Physiotherapist - Female (Hand Therapy) - SIBL Foundation Hospital & Diagnostic Center",
+   "url": "https://bdjobs.com/h/details/1559548",
+   "source": "Bdjobs",
+   "type": "private",
+   "title_bn": "",
+   "category": "স্বাস্থ্য",
+   "first_seen": "2026-11-23T14:52:56+06:00"
+  },
+  {
+   "id": "c72f2c51faf9",
+   "title": "Nurse (OT Nurse-Female) - SIBL Foundation Hospital & Diagnostic Center",
+   "url": "https://bdjobs.com/h/details/1559544",
+   "source": "Bdjobs",
+   "type": "private",
+   "title_bn": "",
+   "category": "স্বাস্থ্য",
+   "first_seen": "2026-11-23T14:52:56+06:00"
+  },
+  {
+   "id": "4fccc125ec39",
+   "title": "Management Trainee Officer - Sales Automation - PRAN Group",
+   "url": "https://bdjobs.com/h/details/1559609",
+   "source": "Bdjobs",
+   "type": "private",
+   "title_bn": "",
+   "category": "অন্যান্য",
+   "first_seen": "2026-11-23T14:52:56+06:00"
+  },
+  {
+   "id": "135b81f11cf7",
+   "title": "Inventory Officer - Data Edge Limited",
+   "url": "https://bdjobs.com/h/details/1559605",
+   "source": "Bdjobs",
+   "type": "private",
+   "title_bn": "",
+   "category": "আইটি",
+   "first_seen": "2026-11-23T14:52:56+06:00"
+  },
+  {
+   "id": "9ce020c67f79",
+   "title": "Assistant Manager – Finishing - Noman Group.",
+   "url": "https://bdjobs.com/h/details/1559608",
+   "source": "Bdjobs",
+   "type": "private",
+   "title_bn": "",
+   "category": "অন্যান্য",
+   "first_seen": "2026-11-23T14:52:56+06:00"
+  },
+  {
+   "id": "82f004f6e414",
+   "title": "Senior Merchandiser - Gears Group",
+   "url": "https://bdjobs.com/h/details/1559606",
+   "source": "Bdjobs",
+   "type": "private",
+   "title_bn": "",
+   "category": "অন্যান্য",
+   "first_seen": "2026-11-23T14:52:56+06:00"
+  },
+  {
+   "id": "7dca9e3343a3",
+   "title": "Online Sales & Support Executive - Taher store BD",
+   "url": "https://bdjobs.com/h/details/1559604",
+   "source": "Bdjobs",
+   "type": "private",
+   "title_bn": "",
+   "category": "অন্যান্য",
+   "first_seen": "2026-11-23T14:52:56+06:00"
+  },
+  {
+   "id": "1b29262d7e4f",
+   "title": "গ্রাফিক্স ডিজাইনার - A Reputed Company",
+   "url": "https://bdjobs.com/h/details/1558416",
+   "source": "Bdjobs",
+   "type": "private",
+   "title_bn": "",
+   "category": "অন্যান্য",
+   "first_seen": "2026-11-23T14:52:56+06:00"
+  },
+  {
+   "id": "1508ade6da85",
+   "title": "Area Sales Manager-FMCG Retail Distribution - Renowned FMCG/ Distribution Company",
+   "url": "https://bdjobs.com/h/details/1559288",
+   "source": "Bdjobs",
+   "type": "private",
+   "title_bn": "",
+   "category": "অন্যান্য",
+   "first_seen": "2026-11-23T14:52:56+06:00"
+  },
+  {
+   "id": "648e57eab003",
+   "title": "Territory Sales Manager- FMCG Retail Distribution - Renowned FMCG/ Distribution Company",
+   "url": "https://bdjobs.com/h/details/1559326",
+   "source": "Bdjobs",
+   "type": "private",
+   "title_bn": "",
+   "category": "অন্যান্য",
+   "first_seen": "2026-11-23T14:52:56+06:00"
+  },
+  {
+   "id": "5cc508a32bd3",
+   "title": "Admin Accounts Officer - A 100% Export Oriented leading Knit Garments Factory.",
+   "url": "https://bdjobs.com/h/details/1559593",
+   "source": "Bdjobs",
+   "type": "private",
+   "title_bn": "",
+   "category": "অন্যান্য",
+   "first_seen": "2026-11-23T14:52:56+06:00"
+  },
+  {
+   "id": "f8aadbb91852",
+   "title": "Deputy Manager–International Business - SinoHealth Pharmaceuticals Ltd",
+   "url": "https://bdjobs.com/h/details/1559150",
+   "source": "Bdjobs",
+   "type": "private",
+   "title_bn": "",
+   "category": "স্বাস্থ্য",
+   "first_seen": "2026-11-23T14:52:56+06:00"
+  },
+  {
+   "id": "29dcbd80ef91",
+   "title": "Tr. Industrial Engineer (IE) - RGR Sweater Ltd.",
+   "url": "https://bdjobs.com/h/details/1559601",
+   "source": "Bdjobs",
+   "type": "private",
+   "title_bn": "",
+   "category": "প্রকৌশল",
+   "first_seen": "2026-11-23T14:52:56+06:00"
+  },
+  {
+   "id": "80e272495109",
+   "title": "Senior Executive (Apartment Sales) - Valven Homes Ltd.",
+   "url": "https://bdjobs.com/h/details/1559595",
+   "source": "Bdjobs",
+   "type": "private",
+   "title_bn": "",
+   "category": "অন্যান্য",
+   "first_seen": "2026-11-23T14:52:56+06:00"
+  },
+  {
+   "id": "42990e804400",
+   "title": "Senior Executive Corporate Sales - Subaru Bangladesh Limited",
+   "url": "https://bdjobs.com/h/details/1559598",
+   "source": "Bdjobs",
+   "type": "private",
+   "title_bn": "",
+   "category": "অন্যান্য",
+   "first_seen": "2026-11-23T14:52:56+06:00"
+  },
+  {
+   "id": "cc84e1b88e72",
+   "title": "Chef / Cook - BHAIYA ROYAL FOOD AND BEVERAGE LIMITED",
+   "url": "https://bdjobs.com/h/details/1559576",
+   "source": "Bdjobs",
+   "type": "private",
+   "title_bn": "",
+   "category": "অন্যান্য",
+   "first_seen": "2026-11-23T14:52:56+06:00"
+  },
+  {
+   "id": "b93027a7ecba",
+   "title": "Accounts & Import Executive - Jituxpress Limited",
+   "url": "https://bdjobs.com/h/details/1559580",
+   "source": "Bdjobs",
+   "type": "private",
+   "title_bn": "",
+   "category": "অন্যান্য",
+   "first_seen": "2026-11-23T14:52:56+06:00"
+  },
+  {
+   "id": "43ab0ea5d4a3",
+   "title": "Business Development Officer – Strategic Alliance - Multidrive Services Limited",
+   "url": "https://bdjobs.com/h/details/1559518",
+   "source": "Bdjobs",
+   "type": "private",
+   "title_bn": "",
+   "category": "অন্যান্য",
+   "first_seen": "2026-11-23T14:52:56+06:00"
+  },
+  {
+   "id": "cea53403f09f",
+   "title": "Area Manager- Distribution Sales - Bata Shoe Co. (Bangladesh) Ltd.",
+   "url": "https://bdjobs.com/h/details/1559583",
+   "source": "Bdjobs",
+   "type": "private",
+   "title_bn": "",
+   "category": "অন্যান্য",
+   "first_seen": "2026-11-23T14:52:56+06:00"
+  },
+  {
+   "id": "17586b9b3627",
+   "title": "উর্ধ্বতন ব্যবস্থাপক (উৎপাদন) - Teamex Jute Mills Ltd",
+   "url": "https://bdjobs.com/h/details/1559586",
+   "source": "Bdjobs",
+   "type": "private",
+   "title_bn": "",
+   "category": "অন্যান্য",
+   "first_seen": "2026-11-23T14:52:56+06:00"
+  },
+  {
+   "id": "b0fc9c9f544f",
+   "title": "3D Designer & Visualizer - A Well known Company",
+   "url": "https://bdjobs.com/h/details/1559582",
+   "source": "Bdjobs",
+   "type": "private",
+   "title_bn": "",
+   "category": "অন্যান্য",
+   "first_seen": "2026-11-23T14:52:56+06:00"
+  },
+  {
+   "id": "e4136dba5d48",
+   "title": "Commercial Officer (LC Documentation) - Genesis Trading Co.",
+   "url": "https://bdjobs.com/h/details/1559561",
+   "source": "Bdjobs",
+   "type": "private",
+   "title_bn": "",
+   "category": "অন্যান্য",
+   "first_seen": "2026-11-23T14:52:56+06:00"
+  },
+  {
+   "id": "a202c6726dae",
+   "title": "PROGRAM MANAGER / IN-CHARGE - KK FOUNDATION (KKF)",
+   "url": "https://bdjobs.com/h/details/1559579",
+   "source": "Bdjobs",
+   "type": "private",
+   "title_bn": "",
+   "category": "অন্যান্য",
+   "first_seen": "2026-11-23T14:52:56+06:00"
+  },
+  {
+   "id": "edb0596aecff",
+   "title": "Depot In charge - AG Agro Industries Ltd.",
+   "url": "https://bdjobs.com/h/details/1559585",
+   "source": "Bdjobs",
+   "type": "private",
+   "title_bn": "",
+   "category": "অন্যান্য",
+   "first_seen": "2026-11-23T14:52:56+06:00"
+  },
+  {
+   "id": "2a479d6ca1df",
+   "title": "Tax Commissioner's Office, Dhaka",
+   "url": "https://www.jagojobs.com/company-jobs/6809",
+   "source": "JagoJobs",
+   "type": "private",
+   "title_bn": "",
+   "category": "অন্যান্য",
+   "first_seen": "2026-11-23T14:52:56+06:00"
+  },
+  {
+   "id": "74ba7b192d8f",
+   "title": "Office Support Staff",
+   "url": "https://www.jagojobs.com/security-support-service/211206",
+   "source": "JagoJobs",
+   "type": "private",
+   "title_bn": "",
+   "category": "অন্যান্য",
+   "first_seen": "2026-11-23T14:52:56+06:00"
+  },
+  {
+   "id": "822f28e8d63a",
+   "title": "Office Assistant cum Computer Typist",
+   "url": "https://www.jagojobs.com/security-support-service/211205",
+   "source": "JagoJobs",
+   "type": "private",
+   "title_bn": "",
+   "category": "অন্যান্য",
+   "first_seen": "2026-11-23T14:52:56+06:00"
+  },
+  {
+   "id": "0d0df7f8749b",
+   "title": "Steno Typist Cum Computer Operator",
+   "url": "https://www.jagojobs.com/security-support-service/211204",
+   "source": "JagoJobs",
+   "type": "private",
+   "title_bn": "",
+   "category": "অন্যান্য",
+   "first_seen": "2026-11-23T14:52:56+06:00"
+  },
+  {
+   "id": "3eb4b9bb7a20",
+   "title": "Senior Assistant",
+   "url": "https://www.jagojobs.com/security-support-service/211203",
+   "source": "JagoJobs",
+   "type": "private",
+   "title_bn": "",
+   "category": "অন্যান্য",
+   "first_seen": "2026-11-23T14:52:56+06:00"
+  },
+  {
+   "id": "f7fc3d19f2e2",
+   "title": "Head Assistant",
+   "url": "https://www.jagojobs.com/security-support-service/211202",
+   "source": "JagoJobs",
+   "type": "private",
+   "title_bn": "",
+   "category": "অন্যান্য",
+   "first_seen": "2026-11-23T14:52:56+06:00"
+  },
+  {
+   "id": "5a637fc46704",
+   "title": "Personal Assistant",
+   "url": "https://www.jagojobs.com/security-support-service/211201",
+   "source": "JagoJobs",
+   "type": "private",
+   "title_bn": "",
+   "category": "অন্যান্য",
+   "first_seen": "2026-11-23T14:52:56+06:00"
+  },
+  {
+   "id": "9c4654895151",
+   "title": "Computer Operator",
+   "url": "https://www.jagojobs.com/security-support-service/211200",
+   "source": "JagoJobs",
+   "type": "private",
+   "title_bn": "",
+   "category": "অন্যান্য",
+   "first_seen": "2026-11-23T14:52:56+06:00"
+  },
+  {
+   "id": "cae8258f78e2",
+   "title": "২২ পদে বাংলাদেশ কলেজ অব ফিজিশিয়ানস্ এন্ড সার্জনস্ (BCPS) নিয়োগ বিজ্ঞপ্তি ২০২৬",
+   "url": "https://bdgovtjob.net/bcps-job-circular/",
+   "source": "BD Govt Job",
+   "type": "private",
+   "title_bn": "",
+   "category": "শিক্ষা",
+   "first_seen": "2026-11-23T14:52:56+06:00"
+  },
+  {
+   "id": "683bade3299c",
+   "title": "পুণ্ড্র ইউনিভার্সিটি অব সায়েন্স অ্যান্ড টেকনোলজি নিয়োগ বিজ্ঞপ্তি ২০২৬",
+   "url": "https://bdgovtjob.net/pundra-university-job-circular/",
+   "source": "BD Govt Job",
+   "type": "private",
+   "title_bn": "",
+   "category": "অন্যান্য",
+   "first_seen": "2026-11-23T14:52:56+06:00"
+  },
+  {
+   "id": "86c0ee979554",
+   "title": "সকল গার্মেন্টস ও টেক্সটাইল নিয়োগ বিজ্ঞপ্তি ২০২৬",
+   "url": "https://bdgovtjob.net/garments-and-textile-job-circular/",
+   "source": "BD Govt Job",
+   "type": "private",
+   "title_bn": "",
+   "category": "অন্যান্য",
+   "first_seen": "2026-11-23T14:52:56+06:00"
+  },
+  {
+   "id": "0391a5718699",
+   "title": "সকল মেডিকেল কলেজ ও হাসপাতাল নিয়োগ বিজ্ঞপ্তি ২০২৬",
+   "url": "https://bdgovtjob.net/medical-college-and-hospital-job-circular/",
+   "source": "BD Govt Job",
+   "type": "private",
+   "title_bn": "",
+   "category": "শিক্ষা",
+   "first_seen": "2026-11-23T14:52:56+06:00"
+  },
+  {
+   "id": "2f9b4d1aecdb",
+   "title": "৩৩ পদে বাংলাদেশ অভ্যন্তরীণ নৌপরিবহন কর্পোরেশন নিয়োগ বিজ্ঞপ্তি ২০২৬ BIWTC Job Circular 2026",
+   "url": "https://bdgovtjob.net/biwtc-job-circular/",
+   "source": "BD Govt Job",
+   "type": "private",
+   "title_bn": "",
+   "category": "অন্যান্য",
+   "first_seen": "2026-11-23T14:52:56+06:00"
+  },
+  {
+   "id": "46e81f2fc7c8",
+   "title": "বাংলাদেশ সড়ক পরিবহন কর্তৃপক্ষ (BRTA) ইন্টার্নশিপ বিজ্ঞপ্তি ২০২৬",
+   "url": "https://bdgovtjob.net/bangladesh-road-transport-authority-brta-job-circular/",
+   "source": "BD Govt Job",
+   "type": "private",
+   "title_bn": "",
+   "category": "অন্যান্য",
+   "first_seen": "2026-11-23T14:52:56+06:00"
+  },
+  {
+   "id": "d5905b2c012d",
+   "title": "সকল জেলা পরিষদ নিয়োগ বিজ্ঞপ্তি ২০২৬ Zila Parishad Job Circular 2026",
+   "url": "https://bdgovtjob.net/zilla-parishad-office-job-circular/",
+   "source": "BD Govt Job",
+   "type": "govt",
+   "title_bn": "",
+   "category": "সরকারি",
+   "first_seen": "2026-11-23T14:52:56+06:00"
+  },
+  {
+   "id": "ef755bb85b6b",
+   "title": "বিকন ফার্মাসিউটিক্যালস নিয়োগ বিজ্ঞপ্তি ২০২৬",
+   "url": "https://bdgovtjob.net/beacon-pharmaceuticals-job-circular/",
+   "source": "BD Govt Job",
+   "type": "private",
+   "title_bn": "",
+   "category": "অন্যান্য",
+   "first_seen": "2026-11-23T14:52:56+06:00"
+  },
+  {
+   "id": "518a82d0e02e",
+   "title": "নুভিস্তা ফার্মা নিয়োগ বিজ্ঞপ্তি ২০২৬ Nuvista Pharma Job Circular 2026",
+   "url": "https://bdgovtjob.net/nuvista-pharma-limited-job-circular/",
+   "source": "BD Govt Job",
+   "type": "private",
+   "title_bn": "",
+   "category": "স্বাস্থ্য",
+   "first_seen": "2026-11-23T14:52:56+06:00"
+  },
+  {
+   "id": "40d533b6d261",
+   "title": "৪৯৫ পদে প্রাণিসম্পদ অধিদপ্তর নিয়োগ বিজ্ঞপ্তি ২০২৬ DLS Job Circular 2026",
+   "url": "https://bdgovtjob.net/dls-job-circular/",
+   "source": "BD Govt Job",
+   "type": "govt",
+   "title_bn": "",
+   "category": "সরকারি",
+   "first_seen": "2026-11-23T14:52:56+06:00"
+  },
+  {
+   "id": "06b3d513d79f",
+   "title": "Career Development Center(CDC-DIU) Data Analyst – Intern (ATI Limited) ATI Centre, House-07, Gareeb-E-Nawaz Avenue, Sector-11, Uttara, Dhaka-1230 Nov 23, 2026 Internship Work From Office Salary Negotiable",
+   "url": "https://www.skill.jobs/jobs/data-analyst-intern-ati-limited-7EZsBKoB",
+   "source": "Skill.Jobs",
+   "type": "private",
+   "title_bn": "",
+   "category": "আইটি",
+   "first_seen": "2026-11-23T14:52:56+06:00"
+  },
+  {
+   "id": "7de236c77258",
+   "title": "Career Development Center(CDC-DIU) Quality Assurance (QA) – Junior (ATI Limited) ATI Centre, House-07, Gareeb-E-Nawaz Avenue, Sector-11, Uttara, Dhaka-1230 Nov 23, 2026 Full Time Work From Office Salary Negotiable",
+   "url": "https://www.skill.jobs/jobs/quality-assurance-qa-junior-ati-limited-5e6yp7vg",
+   "source": "Skill.Jobs",
+   "type": "private",
+   "title_bn": "",
+   "category": "আইটি",
+   "first_seen": "2026-11-23T14:52:56+06:00"
+  },
+  {
+   "id": "07f4e77e8e68",
+   "title": "Career Development Center(CDC-DIU) Python Development – Trainee (ATI Limited) ATI Centre, House-07, Gareeb-E-Nawaz Avenue, Sector-11, Uttara, Dhaka-1230 Nov 23, 2026 Full Time Work From Office Salary Negotiable",
+   "url": "https://www.skill.jobs/jobs/python-development-trainee-ati-limited-WJhNjq78",
+   "source": "Skill.Jobs",
+   "type": "private",
+   "title_bn": "",
+   "category": "অন্যান্য",
+   "first_seen": "2026-11-23T14:52:56+06:00"
+  },
+  {
+   "id": "2667bd983231",
+   "title": "Career Development Center(CDC-DIU) Java Development – Intern (ATI Limited) ATI Centre, House-07, Gareeb-E-Nawaz Avenue, Sector-11, Uttara, Dhaka-1230 Nov 23, 2026 Internship Work From Office Salary Negotiable",
+   "url": "https://www.skill.jobs/jobs/java-development-intern-ati-limited-mTKEcOJi",
+   "source": "Skill.Jobs",
+   "type": "private",
+   "title_bn": "",
+   "category": "অন্যান্য",
+   "first_seen": "2026-11-23T14:52:56+06:00"
+  },
   {
    "id": "02623f045f8c",
    "title": "Zonal Manager, Skills Development Programme - BRAC",
@@ -9,7 +589,7 @@
    "source": "Bdjobs",
    "type": "private",
    "title_bn": "",
-   "category": "অন্যান্য",
+   "category": "এনজিও",
    "first_seen": "2026-11-23T13:24:02+06:00"
   },
   {
@@ -19,7 +599,7 @@
    "source": "Bdjobs",
    "type": "private",
    "title_bn": "",
-   "category": "অন্যান্য",
+   "category": "স্বাস্থ্য",
    "first_seen": "2026-11-23T13:24:02+06:00"
   },
   {
@@ -49,7 +629,7 @@
    "source": "Bdjobs",
    "type": "private",
    "title_bn": "",
-   "category": "অন্যান্য",
+   "category": "আইটি",
    "first_seen": "2026-11-23T13:24:02+06:00"
   },
   {
@@ -79,7 +659,7 @@
    "source": "Bdjobs",
    "type": "private",
    "title_bn": "",
-   "category": "অন্যান্য",
+   "category": "প্রকৌশল",
    "first_seen": "2026-11-23T13:24:02+06:00"
   },
   {
@@ -89,7 +669,7 @@
    "source": "Bdjobs",
    "type": "private",
    "title_bn": "",
-   "category": "অন্যান্য",
+   "category": "স্বাস্থ্য",
    "first_seen": "2026-11-23T13:24:02+06:00"
   },
   {
@@ -99,7 +679,7 @@
    "source": "Bdjobs",
    "type": "private",
    "title_bn": "",
-   "category": "অন্যান্য",
+   "category": "স্বাস্থ্য",
    "first_seen": "2026-11-23T13:24:02+06:00"
   },
   {
@@ -119,7 +699,7 @@
    "source": "Bdjobs",
    "type": "private",
    "title_bn": "",
-   "category": "অন্যান্য",
+   "category": "স্বাস্থ্য",
    "first_seen": "2026-11-23T13:24:02+06:00"
   },
   {
@@ -199,7 +779,7 @@
    "source": "Bdjobs",
    "type": "private",
    "title_bn": "",
-   "category": "অন্যান্য",
+   "category": "আইটি",
    "first_seen": "2026-11-23T13:24:02+06:00"
   },
   {
@@ -209,7 +789,7 @@
    "source": "Bdjobs",
    "type": "private",
    "title_bn": "",
-   "category": "অন্যান্য",
+   "category": "শিক্ষা",
    "first_seen": "2026-11-23T13:24:02+06:00"
   },
   {
@@ -219,7 +799,7 @@
    "source": "Bdjobs",
    "type": "private",
    "title_bn": "",
-   "category": "অন্যান্য",
+   "category": "আইটি",
    "first_seen": "2026-11-23T13:24:02+06:00"
   },
   {
@@ -259,7 +839,7 @@
    "source": "Bdjobs",
    "type": "private",
    "title_bn": "",
-   "category": "অন্যান্য",
+   "category": "আইটি",
    "first_seen": "2026-11-23T13:24:02+06:00"
   },
   {
@@ -269,7 +849,7 @@
    "source": "Bdjobs",
    "type": "private",
    "title_bn": "",
-   "category": "অন্যান্য",
+   "category": "আইটি",
    "first_seen": "2026-11-23T13:24:02+06:00"
   },
   {
@@ -319,7 +899,7 @@
    "source": "Bdjobs",
    "type": "private",
    "title_bn": "",
-   "category": "অন্যান্য",
+   "category": "প্রকৌশল",
    "first_seen": "2026-11-23T13:24:02+06:00"
   },
   {
@@ -329,7 +909,7 @@
    "source": "Bdjobs",
    "type": "private",
    "title_bn": "",
-   "category": "অন্যান্য",
+   "category": "শিক্ষা",
    "first_seen": "2026-11-23T13:24:02+06:00"
   },
   {
@@ -339,7 +919,7 @@
    "source": "Bdjobs",
    "type": "private",
    "title_bn": "",
-   "category": "অন্যান্য",
+   "category": "প্রকৌশল",
    "first_seen": "2026-11-23T13:24:02+06:00"
   },
   {
@@ -349,7 +929,7 @@
    "source": "Bdjobs",
    "type": "private",
    "title_bn": "",
-   "category": "অন্যান্য",
+   "category": "প্রকৌশল",
    "first_seen": "2026-11-23T13:24:02+06:00"
   },
   {
@@ -359,7 +939,7 @@
    "source": "Bdjobs",
    "type": "private",
    "title_bn": "",
-   "category": "অন্যান্য",
+   "category": "শিক্ষা",
    "first_seen": "2026-11-23T13:24:02+06:00"
   },
   {
@@ -399,7 +979,7 @@
    "source": "Bdjobs",
    "type": "private",
    "title_bn": "",
-   "category": "অন্যান্য",
+   "category": "স্বাস্থ্য",
    "first_seen": "2026-11-23T13:24:02+06:00"
   },
   {
@@ -439,7 +1019,7 @@
    "source": "Bdjobs",
    "type": "private",
    "title_bn": "",
-   "category": "অন্যান্য",
+   "category": "প্রকৌশল",
    "first_seen": "2026-11-23T13:24:02+06:00"
   },
   {
@@ -479,7 +1059,7 @@
    "source": "Bdjobs",
    "type": "private",
    "title_bn": "",
-   "category": "অন্যান্য",
+   "category": "আইটি",
    "first_seen": "2026-11-23T13:24:02+06:00"
   },
   {
@@ -569,7 +1149,7 @@
    "source": "Bdjobs",
    "type": "private",
    "title_bn": "",
-   "category": "অন্যান্য",
+   "category": "স্বাস্থ্য",
    "first_seen": "2026-11-23T13:24:02+06:00"
   },
   {
@@ -629,7 +1209,7 @@
    "source": "Bdjobs",
    "type": "private",
    "title_bn": "",
-   "category": "অন্যান্য",
+   "category": "ব্যাংক",
    "first_seen": "2026-11-23T13:24:02+06:00"
   },
   {
@@ -659,7 +1239,7 @@
    "source": "Bdjobs",
    "type": "private",
    "title_bn": "",
-   "category": "অন্যান্য",
+   "category": "প্রকৌশল",
    "first_seen": "2026-11-23T13:24:02+06:00"
   },
   {
@@ -669,7 +1249,7 @@
    "source": "Bdjobs",
    "type": "private",
    "title_bn": "",
-   "category": "অন্যান্য",
+   "category": "স্বাস্থ্য",
    "first_seen": "2026-11-23T13:24:02+06:00"
   },
   {
@@ -689,7 +1269,7 @@
    "source": "Bdjobs",
    "type": "private",
    "title_bn": "",
-   "category": "অন্যান্য",
+   "category": "প্রকৌশল",
    "first_seen": "2026-11-23T13:24:02+06:00"
   },
   {
@@ -699,7 +1279,7 @@
    "source": "Bdjobs",
    "type": "private",
    "title_bn": "",
-   "category": "অন্যান্য",
+   "category": "স্বাস্থ্য",
    "first_seen": "2026-11-23T13:24:02+06:00"
   },
   {
@@ -749,7 +1329,7 @@
    "source": "Bdjobs",
    "type": "private",
    "title_bn": "",
-   "category": "অন্যান্য",
+   "category": "সরকারি",
    "first_seen": "2026-11-23T13:24:02+06:00"
   },
   {
@@ -789,7 +1369,7 @@
    "source": "Bdjobs",
    "type": "private",
    "title_bn": "",
-   "category": "অন্যান্য",
+   "category": "আইটি",
    "first_seen": "2026-11-23T13:24:02+06:00"
   },
   {
@@ -819,7 +1399,7 @@
    "source": "Bdjobs",
    "type": "private",
    "title_bn": "",
-   "category": "অন্যান্য",
+   "category": "প্রকৌশল",
    "first_seen": "2026-11-23T13:24:02+06:00"
   },
   {
@@ -899,7 +1479,7 @@
    "source": "Bdjobs",
    "type": "private",
    "title_bn": "",
-   "category": "অন্যান্য",
+   "category": "শিক্ষা",
    "first_seen": "2026-11-23T13:24:02+06:00"
   },
   {
@@ -929,7 +1509,7 @@
    "source": "Bdjobs",
    "type": "private",
    "title_bn": "",
-   "category": "অন্যান্য",
+   "category": "আইটি",
    "first_seen": "2026-11-23T13:24:02+06:00"
   },
   {
@@ -1029,7 +1609,7 @@
    "source": "JagoJobs",
    "type": "private",
    "title_bn": "",
-   "category": "অন্যান্য",
+   "category": "শিক্ষা",
    "first_seen": "2026-11-23T13:24:02+06:00"
   },
   {
@@ -1039,7 +1619,7 @@
    "source": "JagoJobs",
    "type": "private",
    "title_bn": "",
-   "category": "অন্যান্য",
+   "category": "শিক্ষা",
    "first_seen": "2026-11-23T13:24:02+06:00"
   },
   {
@@ -1049,7 +1629,7 @@
    "source": "Skill.Jobs",
    "type": "private",
    "title_bn": "",
-   "category": "অন্যান্য",
+   "category": "স্বাস্থ্য",
    "first_seen": "2026-11-23T13:24:02+06:00"
   },
   {
@@ -1059,7 +1639,7 @@
    "source": "Bdjobs",
    "type": "private",
    "title_bn": "",
-   "category": "অন্যান্য",
+   "category": "শিক্ষা",
    "first_seen": "2026-11-23T10:01:46+06:00"
   },
   {
@@ -1099,7 +1679,7 @@
    "source": "Bdjobs",
    "type": "private",
    "title_bn": "",
-   "category": "অন্যান্য",
+   "category": "স্বাস্থ্য",
    "first_seen": "2026-11-23T10:01:46+06:00"
   },
   {
@@ -1129,7 +1709,7 @@
    "source": "Bdjobs",
    "type": "private",
    "title_bn": "",
-   "category": "অন্যান্য",
+   "category": "আইটি",
    "first_seen": "2026-11-23T10:01:46+06:00"
   },
   {
@@ -1139,7 +1719,7 @@
    "source": "Bdjobs",
    "type": "private",
    "title_bn": "",
-   "category": "অন্যান্য",
+   "category": "শিক্ষা",
    "first_seen": "2026-11-23T10:01:46+06:00"
   },
   {
@@ -1149,7 +1729,7 @@
    "source": "Bdjobs",
    "type": "private",
    "title_bn": "",
-   "category": "অন্যান্য",
+   "category": "শিক্ষা",
    "first_seen": "2026-11-23T10:01:46+06:00"
   },
   {
@@ -1159,7 +1739,7 @@
    "source": "Bdjobs",
    "type": "private",
    "title_bn": "",
-   "category": "অন্যান্য",
+   "category": "প্রকৌশল",
    "first_seen": "2026-11-23T10:01:46+06:00"
   },
   {
@@ -1179,7 +1759,7 @@
    "source": "Bdjobs",
    "type": "private",
    "title_bn": "",
-   "category": "অন্যান্য",
+   "category": "স্বাস্থ্য",
    "first_seen": "2026-11-23T00:43:09+06:00"
   },
   {
@@ -1189,7 +1769,7 @@
    "source": "Bdjobs",
    "type": "private",
    "title_bn": "",
-   "category": "অন্যান্য",
+   "category": "স্বাস্থ্য",
    "first_seen": "2026-11-23T00:43:09+06:00"
   },
   {
@@ -1199,7 +1779,7 @@
    "source": "Bdjobs",
    "type": "private",
    "title_bn": "",
-   "category": "অন্যান্য",
+   "category": "স্বাস্থ্য",
    "first_seen": "2026-11-23T00:43:09+06:00"
   },
   {
@@ -1219,7 +1799,7 @@
    "source": "Bdjobs",
    "type": "private",
    "title_bn": "",
-   "category": "অন্যান্য",
+   "category": "প্রকৌশল",
    "first_seen": "2026-11-23T00:43:09+06:00"
   },
   {
@@ -1409,7 +1989,7 @@
    "source": "Bdjobs",
    "type": "private",
    "title_bn": "",
-   "category": "অন্যান্য",
+   "category": "প্রকৌশল",
    "first_seen": "2026-11-22T20:10:05+06:00"
   },
   {
@@ -1449,7 +2029,7 @@
    "source": "Bdjobs",
    "type": "private",
    "title_bn": "",
-   "category": "অন্যান্য",
+   "category": "প্রকৌশল",
    "first_seen": "2026-11-22T20:10:05+06:00"
   },
   {
@@ -1539,7 +2119,7 @@
    "source": "Bdjobs",
    "type": "private",
    "title_bn": "",
-   "category": "অন্যান্য",
+   "category": "প্রকৌশল",
    "first_seen": "2026-11-22T20:10:05+06:00"
   },
   {
@@ -1599,7 +2179,7 @@
    "source": "Bdjobs",
    "type": "private",
    "title_bn": "",
-   "category": "অন্যান্য",
+   "category": "প্রকৌশল",
    "first_seen": "2026-11-22T20:10:05+06:00"
   },
   {
@@ -1629,7 +2209,7 @@
    "source": "Bdjobs",
    "type": "private",
    "title_bn": "",
-   "category": "অন্যান্য",
+   "category": "প্রকৌশল",
    "first_seen": "2026-11-22T20:10:05+06:00"
   },
   {
@@ -1639,7 +2219,7 @@
    "source": "Bdjobs",
    "type": "private",
    "title_bn": "",
-   "category": "অন্যান্য",
+   "category": "স্বাস্থ্য",
    "first_seen": "2026-11-22T20:10:05+06:00"
   },
   {
@@ -1649,7 +2229,7 @@
    "source": "Bdjobs",
    "type": "private",
    "title_bn": "",
-   "category": "অন্যান্য",
+   "category": "প্রকৌশল",
    "first_seen": "2026-11-22T20:10:05+06:00"
   },
   {
@@ -1669,7 +2249,7 @@
    "source": "Bdjobs",
    "type": "private",
    "title_bn": "",
-   "category": "অন্যান্য",
+   "category": "আইটি",
    "first_seen": "2026-11-22T20:10:05+06:00"
   },
   {
@@ -1679,7 +2259,7 @@
    "source": "Bdjobs",
    "type": "private",
    "title_bn": "",
-   "category": "অন্যান্য",
+   "category": "প্রকৌশল",
    "first_seen": "2026-11-22T20:10:05+06:00"
   },
   {
@@ -1689,7 +2269,7 @@
    "source": "Bdjobs",
    "type": "private",
    "title_bn": "",
-   "category": "অন্যান্য",
+   "category": "প্রকৌশল",
    "first_seen": "2026-11-22T20:10:05+06:00"
   },
   {
@@ -1699,7 +2279,7 @@
    "source": "Bdjobs",
    "type": "private",
    "title_bn": "",
-   "category": "অন্যান্য",
+   "category": "প্রকৌশল",
    "first_seen": "2026-11-22T20:10:05+06:00"
   },
   {
@@ -1733,23 +2313,13 @@
    "first_seen": "2026-11-22T20:10:05+06:00"
   },
   {
-   "id": "ed36bfe5e472",
-   "title": "Diploma Engineer (Computer) – Field Service, Technical Support & Tender - Global Technology",
-   "url": "https://bdjobs.com/h/details/1559352",
-   "source": "Bdjobs",
-   "type": "private",
-   "title_bn": "",
-   "category": "অন্যান্য",
-   "first_seen": "2026-11-22T20:10:05+06:00"
-  },
-  {
    "id": "9869a7230274",
    "title": "Lecturer (Mathematics, English) - MH Academy",
    "url": "https://bdjobs.com/h/details/1559333",
    "source": "Bdjobs",
    "type": "private",
    "title_bn": "",
-   "category": "অন্যান্য",
+   "category": "শিক্ষা",
    "first_seen": "2026-11-22T20:10:05+06:00"
   },
   {
@@ -1779,7 +2349,7 @@
    "source": "Bdjobs",
    "type": "private",
    "title_bn": "",
-   "category": "অন্যান্য",
+   "category": "আইটি",
    "first_seen": "2026-11-22T20:10:05+06:00"
   },
   {
@@ -1789,7 +2359,7 @@
    "source": "Bdjobs",
    "type": "private",
    "title_bn": "",
-   "category": "অন্যান্য",
+   "category": "প্রকৌশল",
    "first_seen": "2026-11-22T20:10:05+06:00"
   },
   {
@@ -1799,7 +2369,7 @@
    "source": "Bdjobs",
    "type": "private",
    "title_bn": "",
-   "category": "অন্যান্য",
+   "category": "প্রকৌশল",
    "first_seen": "2026-11-22T20:10:05+06:00"
   },
   {
@@ -1889,7 +2459,7 @@
    "source": "Bdjobs",
    "type": "private",
    "title_bn": "",
-   "category": "অন্যান্য",
+   "category": "আইটি",
    "first_seen": "2026-11-22T20:10:05+06:00"
   },
   {
@@ -1899,7 +2469,7 @@
    "source": "Bdjobs",
    "type": "private",
    "title_bn": "",
-   "category": "অন্যান্য",
+   "category": "ব্যাংক",
    "first_seen": "2026-11-22T20:10:05+06:00"
   },
   {
@@ -1909,7 +2479,7 @@
    "source": "Bdjobs",
    "type": "private",
    "title_bn": "",
-   "category": "অন্যান্য",
+   "category": "আইটি",
    "first_seen": "2026-11-22T20:10:05+06:00"
   },
   {
@@ -1919,7 +2489,7 @@
    "source": "Bdjobs",
    "type": "private",
    "title_bn": "",
-   "category": "অন্যান্য",
+   "category": "আইটি",
    "first_seen": "2026-11-22T20:10:05+06:00"
   },
   {
@@ -1949,7 +2519,7 @@
    "source": "Bdjobs",
    "type": "private",
    "title_bn": "",
-   "category": "অন্যান্য",
+   "category": "প্রকৌশল",
    "first_seen": "2026-11-22T20:10:05+06:00"
   },
   {
@@ -1989,7 +2559,7 @@
    "source": "Bdjobs",
    "type": "private",
    "title_bn": "",
-   "category": "অন্যান্য",
+   "category": "প্রকৌশল",
    "first_seen": "2026-11-22T20:10:05+06:00"
   },
   {
@@ -2029,7 +2599,7 @@
    "source": "Bdjobs",
    "type": "private",
    "title_bn": "",
-   "category": "অন্যান্য",
+   "category": "স্বাস্থ্য",
    "first_seen": "2026-11-22T20:10:05+06:00"
   },
   {
@@ -2039,7 +2609,7 @@
    "source": "Bdjobs",
    "type": "private",
    "title_bn": "",
-   "category": "অন্যান্য",
+   "category": "আইটি",
    "first_seen": "2026-11-22T20:10:05+06:00"
   },
   {
@@ -2079,7 +2649,7 @@
    "source": "Bdjobs",
    "type": "private",
    "title_bn": "",
-   "category": "অন্যান্য",
+   "category": "স্বাস্থ্য",
    "first_seen": "2026-11-22T20:10:05+06:00"
   },
   {
@@ -2099,7 +2669,7 @@
    "source": "Bdjobs",
    "type": "private",
    "title_bn": "",
-   "category": "অন্যান্য",
+   "category": "ব্যাংক",
    "first_seen": "2026-11-22T20:10:05+06:00"
   },
   {
@@ -2139,7 +2709,7 @@
    "source": "Bdjobs",
    "type": "private",
    "title_bn": "",
-   "category": "অন্যান্য",
+   "category": "প্রকৌশল",
    "first_seen": "2026-11-22T20:10:05+06:00"
   },
   {
@@ -2149,7 +2719,7 @@
    "source": "Bdjobs",
    "type": "private",
    "title_bn": "",
-   "category": "অন্যান্য",
+   "category": "স্বাস্থ্য",
    "first_seen": "2026-11-22T20:10:05+06:00"
   },
   {
@@ -2179,7 +2749,7 @@
    "source": "Bdjobs",
    "type": "private",
    "title_bn": "",
-   "category": "অন্যান্য",
+   "category": "আইটি",
    "first_seen": "2026-11-22T20:10:05+06:00"
   },
   {
@@ -2219,7 +2789,7 @@
    "source": "Bdjobs",
    "type": "private",
    "title_bn": "",
-   "category": "অন্যান্য",
+   "category": "স্বাস্থ্য",
    "first_seen": "2026-11-22T20:10:05+06:00"
   },
   {
@@ -2229,7 +2799,7 @@
    "source": "Bdjobs",
    "type": "private",
    "title_bn": "",
-   "category": "অন্যান্য",
+   "category": "স্বাস্থ্য",
    "first_seen": "2026-11-22T20:10:05+06:00"
   },
   {
@@ -2249,7 +2819,7 @@
    "source": "Bdjobs",
    "type": "private",
    "title_bn": "",
-   "category": "অন্যান্য",
+   "category": "স্বাস্থ্য",
    "first_seen": "2026-11-22T20:10:05+06:00"
   },
   {
@@ -2269,7 +2839,7 @@
    "source": "Bdjobs",
    "type": "private",
    "title_bn": "",
-   "category": "অন্যান্য",
+   "category": "প্রকৌশল",
    "first_seen": "2026-11-22T20:10:05+06:00"
   },
   {
@@ -2279,7 +2849,7 @@
    "source": "Bdjobs",
    "type": "private",
    "title_bn": "",
-   "category": "অন্যান্য",
+   "category": "প্রকৌশল",
    "first_seen": "2026-11-22T20:10:05+06:00"
   },
   {
@@ -2319,7 +2889,7 @@
    "source": "Bdjobs",
    "type": "private",
    "title_bn": "",
-   "category": "অন্যান্য",
+   "category": "প্রকৌশল",
    "first_seen": "2026-11-22T20:10:05+06:00"
   },
   {
@@ -2329,7 +2899,7 @@
    "source": "Bdjobs",
    "type": "private",
    "title_bn": "",
-   "category": "অন্যান্য",
+   "category": "স্বাস্থ্য",
    "first_seen": "2026-11-22T20:10:05+06:00"
   },
   {
@@ -2339,7 +2909,7 @@
    "source": "Bdjobs",
    "type": "private",
    "title_bn": "",
-   "category": "অন্যান্য",
+   "category": "আইটি",
    "first_seen": "2026-11-22T20:10:05+06:00"
   },
   {
@@ -2379,7 +2949,7 @@
    "source": "Bdjobs",
    "type": "private",
    "title_bn": "",
-   "category": "অন্যান্য",
+   "category": "প্রকৌশল",
    "first_seen": "2026-11-22T20:10:05+06:00"
   },
   {
@@ -2399,7 +2969,7 @@
    "source": "Bdjobs",
    "type": "private",
    "title_bn": "",
-   "category": "অন্যান্য",
+   "category": "আইটি",
    "first_seen": "2026-11-22T20:10:05+06:00"
   },
   {
@@ -2439,7 +3009,7 @@
    "source": "Bdjobs",
    "type": "private",
    "title_bn": "",
-   "category": "অন্যান্য",
+   "category": "স্বাস্থ্য",
    "first_seen": "2026-11-22T20:10:05+06:00"
   },
   {
@@ -2459,7 +3029,7 @@
    "source": "Bdjobs",
    "type": "private",
    "title_bn": "",
-   "category": "অন্যান্য",
+   "category": "শিক্ষা",
    "first_seen": "2026-11-22T20:10:05+06:00"
   },
   {
@@ -2499,7 +3069,7 @@
    "source": "Bdjobs",
    "type": "private",
    "title_bn": "",
-   "category": "অন্যান্য",
+   "category": "প্রকৌশল",
    "first_seen": "2026-11-22T20:10:05+06:00"
   },
   {
@@ -2519,7 +3089,7 @@
    "source": "Bdjobs",
    "type": "private",
    "title_bn": "",
-   "category": "অন্যান্য",
+   "category": "প্রকৌশল",
    "first_seen": "2026-11-22T20:10:05+06:00"
   },
   {
@@ -2549,7 +3119,7 @@
    "source": "Bdjobs",
    "type": "private",
    "title_bn": "",
-   "category": "অন্যান্য",
+   "category": "প্রকৌশল",
    "first_seen": "2026-11-22T20:10:05+06:00"
   },
   {
@@ -2589,7 +3159,7 @@
    "source": "Bdjobs",
    "type": "private",
    "title_bn": "",
-   "category": "অন্যান্য",
+   "category": "প্রকৌশল",
    "first_seen": "2026-11-22T20:10:05+06:00"
   },
   {
@@ -2649,7 +3219,7 @@
    "source": "Bdjobs",
    "type": "private",
    "title_bn": "",
-   "category": "অন্যান্য",
+   "category": "প্রকৌশল",
    "first_seen": "2026-11-22T20:10:05+06:00"
   },
   {
@@ -2669,7 +3239,7 @@
    "source": "Bdjobs",
    "type": "private",
    "title_bn": "",
-   "category": "অন্যান্য",
+   "category": "আইটি",
    "first_seen": "2026-11-22T20:10:05+06:00"
   },
   {
@@ -2689,7 +3259,7 @@
    "source": "Bdjobs",
    "type": "private",
    "title_bn": "",
-   "category": "অন্যান্য",
+   "category": "প্রকৌশল",
    "first_seen": "2026-11-22T20:10:05+06:00"
   },
   {
@@ -2719,7 +3289,7 @@
    "source": "Bdjobs",
    "type": "private",
    "title_bn": "",
-   "category": "অন্যান্য",
+   "category": "আইটি",
    "first_seen": "2026-11-22T20:10:05+06:00"
   },
   {
@@ -2739,7 +3309,7 @@
    "source": "Bdjobs",
    "type": "private",
    "title_bn": "",
-   "category": "অন্যান্য",
+   "category": "এনজিও",
    "first_seen": "2026-11-22T20:10:05+06:00"
   },
   {
@@ -2749,7 +3319,7 @@
    "source": "Bdjobs",
    "type": "private",
    "title_bn": "",
-   "category": "অন্যান্য",
+   "category": "শিক্ষা",
    "first_seen": "2026-11-22T20:10:05+06:00"
   },
   {
@@ -2759,7 +3329,7 @@
    "source": "Bdjobs",
    "type": "private",
    "title_bn": "",
-   "category": "অন্যান্য",
+   "category": "এনজিও",
    "first_seen": "2026-11-22T20:10:05+06:00"
   },
   {
@@ -2769,7 +3339,7 @@
    "source": "Bdjobs",
    "type": "private",
    "title_bn": "",
-   "category": "অন্যান্য",
+   "category": "স্বাস্থ্য",
    "first_seen": "2026-11-22T20:10:05+06:00"
   },
   {
@@ -2819,7 +3389,7 @@
    "source": "Bdjobs",
    "type": "private",
    "title_bn": "",
-   "category": "অন্যান্য",
+   "category": "আইটি",
    "first_seen": "2026-11-22T20:10:05+06:00"
   },
   {
@@ -2919,7 +3489,7 @@
    "source": "Bdjobs",
    "type": "private",
    "title_bn": "",
-   "category": "অন্যান্য",
+   "category": "স্বাস্থ্য",
    "first_seen": "2026-11-22T20:10:05+06:00"
   },
   {
@@ -2989,7 +3559,7 @@
    "source": "Bdjobs",
    "type": "private",
    "title_bn": "",
-   "category": "অন্যান্য",
+   "category": "শিক্ষা",
    "first_seen": "2026-11-22T20:10:05+06:00"
   },
   {
@@ -2999,7 +3569,7 @@
    "source": "Bdjobs",
    "type": "private",
    "title_bn": "",
-   "category": "অন্যান্য",
+   "category": "প্রকৌশল",
    "first_seen": "2026-11-22T20:10:05+06:00"
   },
   {
@@ -3029,7 +3599,7 @@
    "source": "Bdjobs",
    "type": "private",
    "title_bn": "",
-   "category": "অন্যান্য",
+   "category": "প্রকৌশল",
    "first_seen": "2026-11-22T20:10:05+06:00"
   },
   {
@@ -3069,7 +3639,7 @@
    "source": "Bdjobs",
    "type": "private",
    "title_bn": "",
-   "category": "অন্যান্য",
+   "category": "প্রকৌশল",
    "first_seen": "2026-11-22T20:10:05+06:00"
   },
   {
@@ -3099,7 +3669,7 @@
    "source": "Bdjobs",
    "type": "private",
    "title_bn": "",
-   "category": "অন্যান্য",
+   "category": "প্রকৌশল",
    "first_seen": "2026-11-22T20:10:05+06:00"
   },
   {
@@ -3149,7 +3719,7 @@
    "source": "Bdjobs",
    "type": "private",
    "title_bn": "",
-   "category": "অন্যান্য",
+   "category": "শিক্ষা",
    "first_seen": "2026-11-22T20:10:05+06:00"
   },
   {
@@ -3179,7 +3749,7 @@
    "source": "Bdjobs",
    "type": "private",
    "title_bn": "",
-   "category": "অন্যান্য",
+   "category": "প্রকৌশল",
    "first_seen": "2026-11-22T20:10:05+06:00"
   },
   {
@@ -3259,7 +3829,7 @@
    "source": "Bdjobs",
    "type": "private",
    "title_bn": "",
-   "category": "অন্যান্য",
+   "category": "প্রকৌশল",
    "first_seen": "2026-11-22T20:10:05+06:00"
   },
   {
@@ -3269,7 +3839,7 @@
    "source": "Bdjobs",
    "type": "private",
    "title_bn": "",
-   "category": "অন্যান্য",
+   "category": "স্বাস্থ্য",
    "first_seen": "2026-11-22T20:10:05+06:00"
   },
   {
@@ -3279,7 +3849,7 @@
    "source": "Bdjobs",
    "type": "private",
    "title_bn": "",
-   "category": "অন্যান্য",
+   "category": "স্বাস্থ্য",
    "first_seen": "2026-11-22T20:10:05+06:00"
   },
   {
@@ -3319,7 +3889,7 @@
    "source": "Bdjobs",
    "type": "private",
    "title_bn": "",
-   "category": "অন্যান্য",
+   "category": "স্বাস্থ্য",
    "first_seen": "2026-11-22T20:10:05+06:00"
   },
   {
@@ -3339,7 +3909,7 @@
    "source": "Bdjobs",
    "type": "private",
    "title_bn": "",
-   "category": "অন্যান্য",
+   "category": "প্রকৌশল",
    "first_seen": "2026-11-22T20:10:05+06:00"
   },
   {
@@ -3349,7 +3919,7 @@
    "source": "Bdjobs",
    "type": "private",
    "title_bn": "",
-   "category": "অন্যান্য",
+   "category": "শিক্ষা",
    "first_seen": "2026-11-22T20:10:05+06:00"
   },
   {
@@ -3399,7 +3969,7 @@
    "source": "eJobs Circular",
    "type": "govt",
    "title_bn": "",
-   "category": "অন্যান্য",
+   "category": "শিক্ষা",
    "first_seen": "2026-11-22T20:10:05+06:00"
   },
   {
@@ -3409,7 +3979,7 @@
    "source": "eJobs Circular",
    "type": "govt",
    "title_bn": "",
-   "category": "অন্যান্য",
+   "category": "শিক্ষা",
    "first_seen": "2026-11-22T20:10:05+06:00"
   },
   {
@@ -3419,7 +3989,7 @@
    "source": "eJobs Circular",
    "type": "govt",
    "title_bn": "",
-   "category": "অন্যান্য",
+   "category": "ব্যাংক",
    "first_seen": "2026-11-22T20:10:05+06:00"
   },
   {
@@ -3449,7 +4019,7 @@
    "source": "BD Jobs Today",
    "type": "private",
    "title_bn": "",
-   "category": "অন্যান্য",
+   "category": "আইটি",
    "first_seen": "2026-11-22T20:10:05+06:00"
   },
   {
@@ -3469,7 +4039,7 @@
    "source": "BD Jobs Today",
    "type": "private",
    "title_bn": "",
-   "category": "অন্যান্য",
+   "category": "প্রকৌশল",
    "first_seen": "2026-11-22T20:10:05+06:00"
   },
   {
@@ -3489,7 +4059,7 @@
    "source": "BD Jobs Today",
    "type": "private",
    "title_bn": "",
-   "category": "অন্যান্য",
+   "category": "ব্যাংক",
    "first_seen": "2026-11-22T20:10:05+06:00"
   },
   {
@@ -3499,7 +4069,7 @@
    "source": "BD Jobs Today",
    "type": "private",
    "title_bn": "",
-   "category": "অন্যান্য",
+   "category": "স্বাস্থ্য",
    "first_seen": "2026-11-22T20:10:05+06:00"
   },
   {
@@ -3539,7 +4109,7 @@
    "source": "BD Jobs Today",
    "type": "private",
    "title_bn": "",
-   "category": "অন্যান্য",
+   "category": "স্বাস্থ্য",
    "first_seen": "2026-11-22T20:10:05+06:00"
   },
   {
@@ -3629,7 +4199,7 @@
    "source": "BD Jobs Today",
    "type": "govt",
    "title_bn": "",
-   "category": "অন্যান্য",
+   "category": "সরকারি",
    "first_seen": "2026-11-22T20:10:05+06:00"
   },
   {
@@ -3639,7 +4209,7 @@
    "source": "BD Jobs Today",
    "type": "private",
    "title_bn": "",
-   "category": "অন্যান্য",
+   "category": "ব্যাংক",
    "first_seen": "2026-11-22T20:10:05+06:00"
   },
   {
@@ -3659,7 +4229,7 @@
    "source": "BD Jobs Today",
    "type": "private",
    "title_bn": "",
-   "category": "অন্যান্য",
+   "category": "শিক্ষা",
    "first_seen": "2026-11-22T20:10:05+06:00"
   },
   {
@@ -3709,7 +4279,7 @@
    "source": "BD Jobs Today",
    "type": "private",
    "title_bn": "",
-   "category": "অন্যান্য",
+   "category": "স্বাস্থ্য",
    "first_seen": "2026-11-22T20:10:05+06:00"
   },
   {
@@ -3719,7 +4289,7 @@
    "source": "BD Jobs Today",
    "type": "private",
    "title_bn": "",
-   "category": "অন্যান্য",
+   "category": "আইটি",
    "first_seen": "2026-11-22T20:10:05+06:00"
   },
   {
@@ -3739,7 +4309,7 @@
    "source": "BD Jobs Today",
    "type": "private",
    "title_bn": "",
-   "category": "অন্যান্য",
+   "category": "স্বাস্থ্য",
    "first_seen": "2026-11-22T20:10:05+06:00"
   },
   {
@@ -3749,7 +4319,7 @@
    "source": "BD Jobs Today",
    "type": "private",
    "title_bn": "",
-   "category": "অন্যান্য",
+   "category": "এনজিও",
    "first_seen": "2026-11-22T20:10:05+06:00"
   },
   {
@@ -3793,46 +4363,6 @@
    "first_seen": "2026-11-22T20:10:05+06:00"
   },
   {
-   "id": "dc538599c3c5",
-   "title": "১৮শ বাংলাদেশ জুডিশিয়াল সার্ভিস (১৮শ বিজেএস) প্রাথমিক পরীক্ষার ফলাফল",
-   "url": "https://bdjobstoday.com/news_details.php?id=5445",
-   "source": "BD Jobs Today",
-   "type": "private",
-   "title_bn": "",
-   "category": "অন্যান্য",
-   "first_seen": "2026-11-22T20:10:05+06:00"
-  },
-  {
-   "id": "7b5a59861471",
-   "title": "বাংলাদেশ ব্যাংকের সরকারি পরিচালক (এক্স ক্যাডার-আইন) পদে উত্তীর্ণ প্রার্থীদের লিখিত পরীক্ষার ফলাফল এবং মৌখিক পরীক্ষ\u0018",
-   "url": "https://bdjobstoday.com/news_details.php?id=5444",
-   "source": "BD Jobs Today",
-   "type": "govt",
-   "title_bn": "",
-   "category": "অন্যান্য",
-   "first_seen": "2026-11-22T20:10:05+06:00"
-  },
-  {
-   "id": "c16c78171b5f",
-   "title": "৯ম ও ১০ম গ্রেডের বিভিন্ন পদের চাকুরীতে নিয়োগের জন্য মনোনীত প্রার্থীদের তালিকা",
-   "url": "https://bdjobstoday.com/news_details.php?id=5443",
-   "source": "BD Jobs Today",
-   "type": "private",
-   "title_bn": "",
-   "category": "অন্যান্য",
-   "first_seen": "2026-11-22T20:10:05+06:00"
-  },
-  {
-   "id": "d1b236fa7cde",
-   "title": "Petroleum Transmission Company PLC এর মৌখিক পরীক্ষার সময়সূচী",
-   "url": "https://bdjobstoday.com/news_details.php?id=5442",
-   "source": "BD Jobs Today",
-   "type": "private",
-   "title_bn": "",
-   "category": "অন্যান্য",
-   "first_seen": "2026-11-22T20:10:05+06:00"
-  },
-  {
    "id": "89b57ab31460",
    "title": "More News",
    "url": "https://bdjobstoday.com/news.php",
@@ -3859,7 +4389,7 @@
    "source": "BD Jobs Today",
    "type": "private",
    "title_bn": "",
-   "category": "অন্যান্য",
+   "category": "প্রকৌশল",
    "first_seen": "2026-11-22T20:10:05+06:00"
   },
   {
@@ -3909,7 +4439,7 @@
    "source": "BD Jobs Today",
    "type": "govt",
    "title_bn": "",
-   "category": "অন্যান্য",
+   "category": "সরকারি",
    "first_seen": "2026-11-22T20:10:05+06:00"
   },
   {
@@ -4009,7 +4539,7 @@
    "source": "BD Jobs Today",
    "type": "private",
    "title_bn": "",
-   "category": "অন্যান্য",
+   "category": "প্রকৌশল",
    "first_seen": "2026-11-22T20:10:05+06:00"
   },
   {
@@ -4019,7 +4549,7 @@
    "source": "BD Jobs Today",
    "type": "private",
    "title_bn": "",
-   "category": "অন্যান্য",
+   "category": "প্রকৌশল",
    "first_seen": "2026-11-22T20:10:05+06:00"
   },
   {
@@ -4029,7 +4559,7 @@
    "source": "BD Jobs Today",
    "type": "private",
    "title_bn": "",
-   "category": "অন্যান্য",
+   "category": "স্বাস্থ্য",
    "first_seen": "2026-11-22T20:10:05+06:00"
   },
   {
@@ -4079,7 +4609,7 @@
    "source": "BD Jobs Today",
    "type": "govt",
    "title_bn": "",
-   "category": "অন্যান্য",
+   "category": "সরকারি",
    "first_seen": "2026-11-22T20:10:05+06:00"
   },
   {
@@ -4119,7 +4649,7 @@
    "source": "BD Jobs Today",
    "type": "private",
    "title_bn": "",
-   "category": "অন্যান্য",
+   "category": "প্রকৌশল",
    "first_seen": "2026-11-22T20:10:05+06:00"
   },
   {
@@ -4269,7 +4799,7 @@
    "source": "JagoJobs",
    "type": "private",
    "title_bn": "",
-   "category": "অন্যান্য",
+   "category": "সরকারি",
    "first_seen": "2026-11-22T20:10:05+06:00"
   },
   {
@@ -4279,7 +4809,7 @@
    "source": "JagoJobs",
    "type": "private",
    "title_bn": "",
-   "category": "অন্যান্য",
+   "category": "এনজিও",
    "first_seen": "2026-11-22T20:10:05+06:00"
   },
   {
@@ -4289,7 +4819,7 @@
    "source": "JagoJobs",
    "type": "private",
    "title_bn": "",
-   "category": "অন্যান্য",
+   "category": "প্রকৌশল",
    "first_seen": "2026-11-22T20:10:05+06:00"
   },
   {
@@ -4309,7 +4839,7 @@
    "source": "JagoJobs",
    "type": "private",
    "title_bn": "",
-   "category": "অন্যান্য",
+   "category": "ব্যাংক",
    "first_seen": "2026-11-22T20:10:05+06:00"
   },
   {
@@ -4339,7 +4869,7 @@
    "source": "JagoJobs",
    "type": "private",
    "title_bn": "",
-   "category": "অন্যান্য",
+   "category": "এনজিও",
    "first_seen": "2026-11-22T20:10:05+06:00"
   },
   {
@@ -4349,7 +4879,7 @@
    "source": "JagoJobs",
    "type": "private",
    "title_bn": "",
-   "category": "অন্যান্য",
+   "category": "শিক্ষা",
    "first_seen": "2026-11-22T20:10:05+06:00"
   },
   {
@@ -4359,7 +4889,7 @@
    "source": "JagoJobs",
    "type": "private",
    "title_bn": "",
-   "category": "অন্যান্য",
+   "category": "শিক্ষা",
    "first_seen": "2026-11-22T20:10:05+06:00"
   },
   {
@@ -4369,7 +4899,7 @@
    "source": "JagoJobs",
    "type": "private",
    "title_bn": "",
-   "category": "অন্যান্য",
+   "category": "শিক্ষা",
    "first_seen": "2026-11-22T20:10:05+06:00"
   },
   {
@@ -4379,7 +4909,7 @@
    "source": "JagoJobs",
    "type": "private",
    "title_bn": "",
-   "category": "অন্যান্য",
+   "category": "শিক্ষা",
    "first_seen": "2026-11-22T20:10:05+06:00"
   },
   {
@@ -4389,7 +4919,7 @@
    "source": "JagoJobs",
    "type": "private",
    "title_bn": "",
-   "category": "অন্যান্য",
+   "category": "শিক্ষা",
    "first_seen": "2026-11-22T20:10:05+06:00"
   },
   {
@@ -4399,7 +4929,7 @@
    "source": "JagoJobs",
    "type": "private",
    "title_bn": "",
-   "category": "অন্যান্য",
+   "category": "শিক্ষা",
    "first_seen": "2026-11-22T20:10:05+06:00"
   },
   {
@@ -4409,7 +4939,7 @@
    "source": "JagoJobs",
    "type": "private",
    "title_bn": "",
-   "category": "অন্যান্য",
+   "category": "শিক্ষা",
    "first_seen": "2026-11-22T20:10:05+06:00"
   },
   {
@@ -4419,7 +4949,7 @@
    "source": "JagoJobs",
    "type": "private",
    "title_bn": "",
-   "category": "অন্যান্য",
+   "category": "শিক্ষা",
    "first_seen": "2026-11-22T20:10:05+06:00"
   },
   {
@@ -4429,7 +4959,7 @@
    "source": "JagoJobs",
    "type": "private",
    "title_bn": "",
-   "category": "অন্যান্য",
+   "category": "শিক্ষা",
    "first_seen": "2026-11-22T20:10:05+06:00"
   },
   {
@@ -4439,7 +4969,7 @@
    "source": "JagoJobs",
    "type": "private",
    "title_bn": "",
-   "category": "অন্যান্য",
+   "category": "শিক্ষা",
    "first_seen": "2026-11-22T20:10:05+06:00"
   },
   {
@@ -4449,7 +4979,7 @@
    "source": "JagoJobs",
    "type": "private",
    "title_bn": "",
-   "category": "অন্যান্য",
+   "category": "শিক্ষা",
    "first_seen": "2026-11-22T20:10:05+06:00"
   },
   {
@@ -4459,7 +4989,7 @@
    "source": "JagoJobs",
    "type": "private",
    "title_bn": "",
-   "category": "অন্যান্য",
+   "category": "শিক্ষা",
    "first_seen": "2026-11-22T20:10:05+06:00"
   },
   {
@@ -4469,7 +4999,7 @@
    "source": "JagoJobs",
    "type": "private",
    "title_bn": "",
-   "category": "অন্যান্য",
+   "category": "শিক্ষা",
    "first_seen": "2026-11-22T20:10:05+06:00"
   },
   {
@@ -4479,7 +5009,7 @@
    "source": "JagoJobs",
    "type": "private",
    "title_bn": "",
-   "category": "অন্যান্য",
+   "category": "শিক্ষা",
    "first_seen": "2026-11-22T20:10:05+06:00"
   },
   {
@@ -4489,7 +5019,7 @@
    "source": "JagoJobs",
    "type": "private",
    "title_bn": "",
-   "category": "অন্যান্য",
+   "category": "শিক্ষা",
    "first_seen": "2026-11-22T20:10:05+06:00"
   },
   {
@@ -4499,7 +5029,7 @@
    "source": "JagoJobs",
    "type": "private",
    "title_bn": "",
-   "category": "অন্যান্য",
+   "category": "শিক্ষা",
    "first_seen": "2026-11-22T20:10:05+06:00"
   },
   {
@@ -4509,7 +5039,7 @@
    "source": "JagoJobs",
    "type": "private",
    "title_bn": "",
-   "category": "অন্যান্য",
+   "category": "শিক্ষা",
    "first_seen": "2026-11-22T20:10:05+06:00"
   },
   {
@@ -4519,7 +5049,7 @@
    "source": "JagoJobs",
    "type": "private",
    "title_bn": "",
-   "category": "অন্যান্য",
+   "category": "শিক্ষা",
    "first_seen": "2026-11-22T20:10:05+06:00"
   },
   {
@@ -4559,7 +5089,7 @@
    "source": "JagoJobs",
    "type": "private",
    "title_bn": "",
-   "category": "অন্যান্য",
+   "category": "প্রকৌশল",
    "first_seen": "2026-11-22T20:10:05+06:00"
   },
   {
@@ -4629,7 +5159,7 @@
    "source": "JagoJobs",
    "type": "private",
    "title_bn": "",
-   "category": "অন্যান্য",
+   "category": "প্রকৌশল",
    "first_seen": "2026-11-22T20:10:05+06:00"
   },
   {
@@ -4719,7 +5249,7 @@
    "source": "JagoJobs",
    "type": "private",
    "title_bn": "",
-   "category": "অন্যান্য",
+   "category": "প্রকৌশল",
    "first_seen": "2026-11-22T20:10:05+06:00"
   },
   {
@@ -4729,7 +5259,7 @@
    "source": "JagoJobs",
    "type": "private",
    "title_bn": "",
-   "category": "অন্যান্য",
+   "category": "প্রকৌশল",
    "first_seen": "2026-11-22T20:10:05+06:00"
   },
   {
@@ -4739,7 +5269,7 @@
    "source": "JagoJobs",
    "type": "private",
    "title_bn": "",
-   "category": "অন্যান্য",
+   "category": "প্রকৌশল",
    "first_seen": "2026-11-22T20:10:05+06:00"
   },
   {
@@ -4749,7 +5279,7 @@
    "source": "JagoJobs",
    "type": "private",
    "title_bn": "",
-   "category": "অন্যান্য",
+   "category": "প্রকৌশল",
    "first_seen": "2026-11-22T20:10:05+06:00"
   },
   {
@@ -4759,7 +5289,7 @@
    "source": "JagoJobs",
    "type": "private",
    "title_bn": "",
-   "category": "অন্যান্য",
+   "category": "প্রকৌশল",
    "first_seen": "2026-11-22T20:10:05+06:00"
   },
   {
@@ -4769,7 +5299,7 @@
    "source": "JagoJobs",
    "type": "private",
    "title_bn": "",
-   "category": "অন্যান্য",
+   "category": "প্রকৌশল",
    "first_seen": "2026-11-22T20:10:05+06:00"
   },
   {
@@ -4779,7 +5309,7 @@
    "source": "JagoJobs",
    "type": "private",
    "title_bn": "",
-   "category": "অন্যান্য",
+   "category": "সরকারি",
    "first_seen": "2026-11-22T20:10:05+06:00"
   },
   {
@@ -4799,7 +5329,7 @@
    "source": "JagoJobs",
    "type": "private",
    "title_bn": "",
-   "category": "অন্যান্য",
+   "category": "আইটি",
    "first_seen": "2026-11-22T20:10:05+06:00"
   },
   {
@@ -4859,7 +5389,7 @@
    "source": "JagoJobs",
    "type": "private",
    "title_bn": "",
-   "category": "অন্যান্য",
+   "category": "সরকারি",
    "first_seen": "2026-11-22T20:10:05+06:00"
   },
   {
@@ -4899,7 +5429,7 @@
    "source": "JagoJobs",
    "type": "private",
    "title_bn": "",
-   "category": "অন্যান্য",
+   "category": "শিক্ষা",
    "first_seen": "2026-11-22T20:10:05+06:00"
   },
   {
@@ -4929,7 +5459,7 @@
    "source": "JagoJobs",
    "type": "private",
    "title_bn": "",
-   "category": "অন্যান্য",
+   "category": "শিক্ষা",
    "first_seen": "2026-11-22T20:10:05+06:00"
   },
   {
@@ -4939,7 +5469,7 @@
    "source": "JagoJobs",
    "type": "private",
    "title_bn": "",
-   "category": "অন্যান্য",
+   "category": "শিক্ষা",
    "first_seen": "2026-11-22T20:10:05+06:00"
   },
   {
@@ -4949,7 +5479,7 @@
    "source": "JagoJobs",
    "type": "private",
    "title_bn": "",
-   "category": "অন্যান্য",
+   "category": "শিক্ষা",
    "first_seen": "2026-11-22T20:10:05+06:00"
   },
   {
@@ -4959,7 +5489,7 @@
    "source": "JagoJobs",
    "type": "private",
    "title_bn": "",
-   "category": "অন্যান্য",
+   "category": "শিক্ষা",
    "first_seen": "2026-11-22T20:10:05+06:00"
   },
   {
@@ -4969,7 +5499,7 @@
    "source": "JagoJobs",
    "type": "private",
    "title_bn": "",
-   "category": "অন্যান্য",
+   "category": "শিক্ষা",
    "first_seen": "2026-11-22T20:10:05+06:00"
   },
   {
@@ -4989,7 +5519,7 @@
    "source": "JagoJobs",
    "type": "private",
    "title_bn": "",
-   "category": "অন্যান্য",
+   "category": "শিক্ষা",
    "first_seen": "2026-11-22T20:10:05+06:00"
   },
   {
@@ -4999,7 +5529,7 @@
    "source": "JagoJobs",
    "type": "private",
    "title_bn": "",
-   "category": "অন্যান্য",
+   "category": "শিক্ষা",
    "first_seen": "2026-11-22T20:10:05+06:00"
   },
   {
@@ -5009,7 +5539,7 @@
    "source": "JagoJobs",
    "type": "private",
    "title_bn": "",
-   "category": "অন্যান্য",
+   "category": "শিক্ষা",
    "first_seen": "2026-11-22T20:10:05+06:00"
   },
   {
@@ -5019,7 +5549,7 @@
    "source": "JagoJobs",
    "type": "private",
    "title_bn": "",
-   "category": "অন্যান্য",
+   "category": "শিক্ষা",
    "first_seen": "2026-11-22T20:10:05+06:00"
   },
   {
@@ -5189,7 +5719,7 @@
    "source": "eJobs.com.bd",
    "type": "private",
    "title_bn": "",
-   "category": "অন্যান্য",
+   "category": "আইটি",
    "first_seen": "2026-11-22T20:10:05+06:00"
   },
   {
@@ -5239,7 +5769,7 @@
    "source": "eJobs.com.bd",
    "type": "private",
    "title_bn": "",
-   "category": "অন্যান্য",
+   "category": "আইটি",
    "first_seen": "2026-11-22T20:10:05+06:00"
   },
   {
@@ -5279,7 +5809,7 @@
    "source": "eJobs.com.bd",
    "type": "private",
    "title_bn": "",
-   "category": "অন্যান্য",
+   "category": "আইটি",
    "first_seen": "2026-11-22T20:10:05+06:00"
   },
   {
@@ -5289,7 +5819,7 @@
    "source": "eJobs.com.bd",
    "type": "private",
    "title_bn": "",
-   "category": "অন্যান্য",
+   "category": "আইটি",
    "first_seen": "2026-11-22T20:10:05+06:00"
   },
   {
@@ -5309,7 +5839,7 @@
    "source": "eJobs.com.bd",
    "type": "private",
    "title_bn": "",
-   "category": "অন্যান্য",
+   "category": "আইটি",
    "first_seen": "2026-11-22T20:10:05+06:00"
   },
   {
@@ -5523,16 +6053,6 @@
    "first_seen": "2026-11-22T20:10:05+06:00"
   },
   {
-   "id": "c5d30db23e80",
-   "title": "Tender/ EOI/ RFP Posting",
-   "url": "https://nrbjobs.com/tender",
-   "source": "NRB Jobs",
-   "type": "private",
-   "title_bn": "",
-   "category": "অন্যান্য",
-   "first_seen": "2026-11-22T20:10:05+06:00"
-  },
-  {
    "id": "e5a4b38f556f",
    "title": "Training",
    "url": "http://www.nrbjobstraining.com",
@@ -5569,7 +6089,7 @@
    "source": "NRB Jobs",
    "type": "private",
    "title_bn": "",
-   "category": "অন্যান্য",
+   "category": "ব্যাংক",
    "first_seen": "2026-11-22T20:10:05+06:00"
   },
   {
@@ -5579,7 +6099,7 @@
    "source": "NRB Jobs",
    "type": "private",
    "title_bn": "",
-   "category": "অন্যান্য",
+   "category": "স্বাস্থ্য",
    "first_seen": "2026-11-22T20:10:05+06:00"
   },
   {
@@ -5609,7 +6129,7 @@
    "source": "NRB Jobs",
    "type": "private",
    "title_bn": "",
-   "category": "অন্যান্য",
+   "category": "আইটি",
    "first_seen": "2026-11-22T20:10:05+06:00"
   },
   {
@@ -5629,7 +6149,7 @@
    "source": "NRB Jobs",
    "type": "private",
    "title_bn": "",
-   "category": "অন্যান্য",
+   "category": "প্রকৌশল",
    "first_seen": "2026-11-22T20:10:05+06:00"
   },
   {
@@ -5659,7 +6179,7 @@
    "source": "NRB Jobs",
    "type": "private",
    "title_bn": "",
-   "category": "অন্যান্য",
+   "category": "প্রকৌশল",
    "first_seen": "2026-11-22T20:10:05+06:00"
   },
   {
@@ -5689,7 +6209,7 @@
    "source": "NRB Jobs",
    "type": "private",
    "title_bn": "",
-   "category": "অন্যান্য",
+   "category": "স্বাস্থ্য",
    "first_seen": "2026-11-22T20:10:05+06:00"
   },
   {
@@ -5709,7 +6229,7 @@
    "source": "NRB Jobs",
    "type": "private",
    "title_bn": "",
-   "category": "অন্যান্য",
+   "category": "আইটি",
    "first_seen": "2026-11-22T20:10:05+06:00"
   },
   {
@@ -5739,7 +6259,7 @@
    "source": "NRB Jobs",
    "type": "private",
    "title_bn": "",
-   "category": "অন্যান্য",
+   "category": "স্বাস্থ্য",
    "first_seen": "2026-11-22T20:10:05+06:00"
   },
   {
@@ -5749,7 +6269,7 @@
    "source": "NRB Jobs",
    "type": "private",
    "title_bn": "",
-   "category": "অন্যান্য",
+   "category": "এনজিও",
    "first_seen": "2026-11-22T20:10:05+06:00"
   },
   {
@@ -5819,7 +6339,7 @@
    "source": "NRB Jobs",
    "type": "private",
    "title_bn": "",
-   "category": "অন্যান্য",
+   "category": "প্রকৌশল",
    "first_seen": "2026-11-22T20:10:05+06:00"
   },
   {
@@ -5839,7 +6359,7 @@
    "source": "NRB Jobs",
    "type": "private",
    "title_bn": "",
-   "category": "অন্যান্য",
+   "category": "ব্যাংক",
    "first_seen": "2026-11-22T20:10:05+06:00"
   },
   {
@@ -5889,7 +6409,7 @@
    "source": "NRB Jobs",
    "type": "private",
    "title_bn": "",
-   "category": "অন্যান্য",
+   "category": "সরকারি",
    "first_seen": "2026-11-22T20:10:05+06:00"
   },
   {
@@ -5899,7 +6419,7 @@
    "source": "NRB Jobs",
    "type": "private",
    "title_bn": "",
-   "category": "অন্যান্য",
+   "category": "স্বাস্থ্য",
    "first_seen": "2026-11-22T20:10:05+06:00"
   },
   {
@@ -5909,7 +6429,7 @@
    "source": "NRB Jobs",
    "type": "private",
    "title_bn": "",
-   "category": "অন্যান্য",
+   "category": "স্বাস্থ্য",
    "first_seen": "2026-11-22T20:10:05+06:00"
   },
   {
@@ -5919,7 +6439,7 @@
    "source": "NRB Jobs",
    "type": "private",
    "title_bn": "",
-   "category": "অন্যান্য",
+   "category": "স্বাস্থ্য",
    "first_seen": "2026-11-22T20:10:05+06:00"
   },
   {
@@ -5959,7 +6479,7 @@
    "source": "NRB Jobs",
    "type": "private",
    "title_bn": "",
-   "category": "অন্যান্য",
+   "category": "আইটি",
    "first_seen": "2026-11-22T20:10:05+06:00"
   },
   {
@@ -5989,7 +6509,7 @@
    "source": "NRB Jobs",
    "type": "private",
    "title_bn": "",
-   "category": "অন্যান্য",
+   "category": "এনজিও",
    "first_seen": "2026-11-22T20:10:05+06:00"
   },
   {
@@ -5999,7 +6519,7 @@
    "source": "NRB Jobs",
    "type": "private",
    "title_bn": "",
-   "category": "অন্যান্য",
+   "category": "আইটি",
    "first_seen": "2026-11-22T20:10:05+06:00"
   },
   {
@@ -6109,7 +6629,7 @@
    "source": "NRB Jobs",
    "type": "private",
    "title_bn": "",
-   "category": "অন্যান্য",
+   "category": "সরকারি",
    "first_seen": "2026-11-22T20:10:05+06:00"
   },
   {
@@ -6589,7 +7109,7 @@
    "source": "BD Career",
    "type": "private",
    "title_bn": "",
-   "category": "অন্যান্য",
+   "category": "ব্যাংক",
    "first_seen": "2026-11-22T20:10:05+06:00"
   },
   {
@@ -6599,7 +7119,7 @@
    "source": "BD Career",
    "type": "govt",
    "title_bn": "",
-   "category": "অন্যান্য",
+   "category": "সরকারি",
    "first_seen": "2026-11-22T20:10:05+06:00"
   },
   {
@@ -6609,17 +7129,7 @@
    "source": "BD Career",
    "type": "private",
    "title_bn": "",
-   "category": "অন্যান্য",
-   "first_seen": "2026-11-22T20:10:05+06:00"
-  },
-  {
-   "id": "83d20b7edf53",
-   "title": "Exam Result",
-   "url": "https://bd-career.com/category/exam-result/",
-   "source": "BD Career",
-   "type": "private",
-   "title_bn": "",
-   "category": "অন্যান্য",
+   "category": "এনজিও",
    "first_seen": "2026-11-22T20:10:05+06:00"
   },
   {
@@ -6639,17 +7149,7 @@
    "source": "BD Career",
    "type": "govt",
    "title_bn": "",
-   "category": "অন্যান্য",
-   "first_seen": "2026-11-22T20:10:05+06:00"
-  },
-  {
-   "id": "d5ed8f8bfca5",
-   "title": "SSC Vocational Result 2026: কারিগরি বোর্ডের মার্কশিটসহ ফলাফল দেখুন",
-   "url": "https://bd-career.com/ssc-vocational-result-technical-board/",
-   "source": "BD Career",
-   "type": "private",
-   "title_bn": "",
-   "category": "অন্যান্য",
+   "category": "সরকারি",
    "first_seen": "2026-11-22T20:10:05+06:00"
   },
   {
@@ -6666,26 +7166,6 @@
    "id": "b2989fe68e1d",
    "title": "SSC exam Routine Pdf 2027 All education board Bangladesh",
    "url": "https://bd-career.com/ssc-exam-routine/",
-   "source": "BD Career",
-   "type": "private",
-   "title_bn": "",
-   "category": "অন্যান্য",
-   "first_seen": "2026-11-22T20:10:05+06:00"
-  },
-  {
-   "id": "8f17b3d6ddf6",
-   "title": "SSC Result 2026 With Full Marksheet Result 10 August 2026",
-   "url": "https://bd-career.com/web-based-ssc-result/",
-   "source": "BD Career",
-   "type": "private",
-   "title_bn": "",
-   "category": "অন্যান্য",
-   "first_seen": "2026-11-22T20:10:05+06:00"
-  },
-  {
-   "id": "74ec02de0383",
-   "title": "NU Degree 2nd Year Result 2026 ডিগ্রি ২য় বর্ষের পরীক্ষার রেজাল্ট",
-   "url": "https://bd-career.com/nu-degree-2nd-year-result/",
    "source": "BD Career",
    "type": "private",
    "title_bn": "",
@@ -6729,7 +7209,7 @@
    "source": "Bdjobs",
    "type": "private",
    "title_bn": "",
-   "category": "অন্যান্য",
+   "category": "প্রকৌশল",
    "first_seen": "2026-11-22T19:28:27+06:00"
   },
   {
@@ -6749,7 +7229,7 @@
    "source": "Bdjobs",
    "type": "private",
    "title_bn": "",
-   "category": "অন্যান্য",
+   "category": "প্রকৌশল",
    "first_seen": "2026-11-22T19:28:27+06:00"
   },
   {
@@ -6819,7 +7299,7 @@
    "source": "Bdjobs",
    "type": "private",
    "title_bn": "",
-   "category": "অন্যান্য",
+   "category": "প্রকৌশল",
    "first_seen": "2026-11-22T18:48:12+06:00"
   },
   {
@@ -6839,7 +7319,7 @@
    "source": "Bdjobs",
    "type": "private",
    "title_bn": "",
-   "category": "অন্যান্য",
+   "category": "প্রকৌশল",
    "first_seen": "2026-11-22T18:48:12+06:00"
   },
   {
@@ -6849,7 +7329,7 @@
    "source": "প্রাথমিক শিক্ষা অধিদপ্তর",
    "type": "govt",
    "title_bn": "",
-   "category": "অন্যান্য",
+   "category": "সরকারি",
    "first_seen": "2026-11-22T16:40:15+06:00"
   },
   {
@@ -6859,7 +7339,7 @@
    "source": "প্রাথমিক শিক্ষা অধিদপ্তর",
    "type": "govt",
    "title_bn": "",
-   "category": "অন্যান্য",
+   "category": "সরকারি",
    "first_seen": "2026-11-22T16:40:15+06:00"
   },
   {
@@ -6869,7 +7349,7 @@
    "source": "স্বাস্থ্য অধিদপ্তর (DGHS)",
    "type": "govt",
    "title_bn": "",
-   "category": "অন্যান্য",
+   "category": "সরকারি",
    "first_seen": "2026-11-22T16:19:58+06:00"
   },
   {
@@ -6879,7 +7359,7 @@
    "source": "মাধ্যমিক ও উচ্চশিক্ষা",
    "type": "govt",
    "title_bn": "",
-   "category": "অন্যান্য",
+   "category": "সরকারি",
    "first_seen": "2026-11-22T16:19:58+06:00"
   },
   {
@@ -6889,7 +7369,7 @@
    "source": "মাধ্যমিক ও উচ্চশিক্ষা",
    "type": "govt",
    "title_bn": "",
-   "category": "অন্যান্য",
+   "category": "সরকারি",
    "first_seen": "2026-11-22T16:19:58+06:00"
   },
   {
@@ -6899,7 +7379,7 @@
    "source": "মাধ্যমিক ও উচ্চশিক্ষা",
    "type": "govt",
    "title_bn": "",
-   "category": "অন্যান্য",
+   "category": "সরকারি",
    "first_seen": "2026-11-22T16:19:58+06:00"
   },
   {
@@ -6909,7 +7389,7 @@
    "source": "মাধ্যমিক ও উচ্চশিক্ষা",
    "type": "govt",
    "title_bn": "",
-   "category": "অন্যান্য",
+   "category": "সরকারি",
    "first_seen": "2026-11-22T16:19:58+06:00"
   },
   {
@@ -6919,7 +7399,7 @@
    "source": "মাধ্যমিক ও উচ্চশিক্ষা",
    "type": "govt",
    "title_bn": "",
-   "category": "অন্যান্য",
+   "category": "সরকারি",
    "first_seen": "2026-11-22T16:19:58+06:00"
   },
   {
@@ -6929,7 +7409,7 @@
    "source": "মাধ্যমিক ও উচ্চশিক্ষা",
    "type": "govt",
    "title_bn": "",
-   "category": "অন্যান্য",
+   "category": "শিক্ষা",
    "first_seen": "2026-11-22T16:19:58+06:00"
   },
   {
@@ -6939,7 +7419,7 @@
    "source": "মাধ্যমিক ও উচ্চশিক্ষা",
    "type": "govt",
    "title_bn": "",
-   "category": "অন্যান্য",
+   "category": "সরকারি",
    "first_seen": "2026-11-22T16:19:58+06:00"
   },
   {
@@ -6949,7 +7429,7 @@
    "source": "মাধ্যমিক ও উচ্চশিক্ষা",
    "type": "govt",
    "title_bn": "",
-   "category": "অন্যান্য",
+   "category": "সরকারি",
    "first_seen": "2026-11-22T16:19:58+06:00"
   },
   {
@@ -6959,7 +7439,7 @@
    "source": "মাধ্যমিক ও উচ্চশিক্ষা",
    "type": "govt",
    "title_bn": "",
-   "category": "অন্যান্য",
+   "category": "সরকারি",
    "first_seen": "2026-11-22T16:19:58+06:00"
   },
   {
@@ -6969,17 +7449,7 @@
    "source": "NTRCA (শিক্ষক নিয়োগ)",
    "type": "govt",
    "title_bn": "",
-   "category": "অন্যান্য",
-   "first_seen": "2026-11-22T16:19:58+06:00"
-  },
-  {
-   "id": "dbec3449f3a8",
-   "title": "নিবন্ধন পরীক্ষার বিজ্ঞপ্তিসমূহ",
-   "url": "https://ntrca.gov.bd/pages/static-pages/6922e058933eb65569e269bf",
-   "source": "NTRCA (শিক্ষক নিয়োগ)",
-   "type": "govt",
-   "title_bn": "",
-   "category": "অন্যান্য",
+   "category": "সরকারি",
    "first_seen": "2026-11-22T16:19:58+06:00"
   },
   {
@@ -6989,117 +7459,7 @@
    "source": "NTRCA (শিক্ষক নিয়োগ)",
    "type": "govt",
    "title_bn": "",
-   "category": "অন্যান্য",
-   "first_seen": "2026-11-22T16:19:58+06:00"
-  },
-  {
-   "id": "c2eefea388e7",
-   "title": "৮ম এনটিআরসিএ নিয়োগ (প্রতিষ্ঠান প্রধান ও সহকারী প্রধান) পরীক্ষা-২০২৬ এর MCQ পরীক্ষায় উত্তীর্ণ প্রার্থীগণের মৌখিক পরীক্ষা গ্রহণের সংশোধিত বিজ্ঞপ্তি",
-   "url": "https://ntrca.gov.bd/pages/static-pages/6ac224445f8380a72a53479b",
-   "source": "NTRCA (শিক্ষক নিয়োগ)",
-   "type": "govt",
-   "title_bn": "",
-   "category": "অন্যান্য",
-   "first_seen": "2026-11-22T16:19:58+06:00"
-  },
-  {
-   "id": "26721f787eea",
-   "title": "মৌখিক পরীক্ষার প্রার্থীদের জন্য এনটিআরসিএ অফিসের Google Map link",
-   "url": "https://www.google.com/maps/place/Non+Government+Teachers+Registration+and+Certification+Authority/@23.7445001,90.4013071,798m/data=!3m2!1e3!4b1!4m6!3m5!1s0x3755b8c99c26391f:0x7fed38ed6d74c085!8m2!3d23.7445001!4d90.4013071!16s%2Fg%2F11c1nqpz75?entry=ttu&g_ep=EgoyMDI2MDkyMC4wIKXMDSoASAFQAw%3D%3D",
-   "source": "NTRCA (শিক্ষক নিয়োগ)",
-   "type": "govt",
-   "title_bn": "",
-   "category": "অন্যান্য",
-   "first_seen": "2026-11-22T16:19:58+06:00"
-  },
-  {
-   "id": "1f0779ac7237",
-   "title": "৬ষ্ঠ নিয়োগ সুপারিশ বিজ্ঞপ্তি-২০২৫ ও ৭ম নিয়োগ বিজ্ঞপ্তি (বিশেষ)-২০২৬ এর আওতায় প্রতিস্থাপন সংক্রান্ত বিজ্ঞপ্তি",
-   "url": "https://objectstorage.ap-dcc-gazipur-1.oraclecloud15.com/n/axvjbnqprylg/b/V2Ministry/o/office-ntrca/2026/8/b78b9c81-8e2c-4f5c-b48b-064639694899.pdf",
-   "source": "NTRCA (শিক্ষক নিয়োগ)",
-   "type": "govt",
-   "title_bn": "",
-   "category": "অন্যান্য",
-   "first_seen": "2026-11-22T16:19:58+06:00"
-  },
-  {
-   "id": "39f16acdc352",
-   "title": "৮ম এনটিআরসিএ নিয়োগ (প্রতিষ্ঠান প্রধান ও সহকারী প্রধান) পরীক্ষা-২০২৬ এর MCQ পরীক্ষায় উত্তীর্ণ প্রার্থীগণের মৌখিক পরীক্ষা গ্রহণের সংশোধিত বিজ্ঞপ্তি।",
-   "url": "https://ntrca.gov.bd/pages/news/6ab89b2a390327d37a2ae589",
-   "source": "NTRCA (শিক্ষক নিয়োগ)",
-   "type": "govt",
-   "title_bn": "",
-   "category": "অন্যান্য",
-   "first_seen": "2026-11-22T16:19:58+06:00"
-  },
-  {
-   "id": "a2d3eab0214f",
-   "title": "৭ম শিক্ষক নিয়োগ বিজ্ঞপ্তি (বিশেষ)-২০২৬ এর ফলাফল প্রকাশ। (৪৩)",
-   "url": "https://ntrca.gov.bd/pages/news/6979c9537a3de82d5111d99c",
-   "source": "NTRCA (শিক্ষক নিয়োগ)",
-   "type": "govt",
-   "title_bn": "",
-   "category": "অন্যান্য",
-   "first_seen": "2026-11-22T16:19:58+06:00"
-  },
-  {
-   "id": "37b700f3e814",
-   "title": "শিক্ষক নিবন্ধন পরীক্ষার সনদ যাচাই প্রতিবেদন সংক্রান্ত বিজ্ঞপ্তি। (১১৬৪)",
-   "url": "https://ntrca.gov.bd/pages/notices/6922e570dbfbab28ce090093",
-   "source": "NTRCA (শিক্ষক নিয়োগ)",
-   "type": "govt",
-   "title_bn": "",
-   "category": "অন্যান্য",
-   "first_seen": "2026-11-22T16:19:58+06:00"
-  },
-  {
-   "id": "346117cf7a57",
-   "title": "৬ষ্ঠ নিয়োগ সুপারিশ বিজ্ঞপ্তি-২০২৫ এর আওতায় সুপারিশকৃত প্রার্থীর ই-প্রত্যয়নপত্র যাচাই সংক্রান্ত বিজ্ঞপ্তি।",
-   "url": "https://ntrca.gov.bd/pages/miscellaneous-infos/6922f67b933eb65569e3c7f0",
-   "source": "NTRCA (শিক্ষক নিয়োগ)",
-   "type": "govt",
-   "title_bn": "",
-   "category": "অন্যান্য",
-   "first_seen": "2026-11-22T16:19:58+06:00"
-  },
-  {
-   "id": "a6dab5829737",
-   "title": "৬ষ্ঠ নিয়োগ সুপারিশ বিজ্ঞপ্তি-২০২৫ এর ফলাফল",
-   "url": "https://ntrca.gov.bd/pages/news/6922dc2c933eb65569e0ec9e",
-   "source": "NTRCA (শিক্ষক নিয়োগ)",
-   "type": "govt",
-   "title_bn": "",
-   "category": "অন্যান্য",
-   "first_seen": "2026-11-22T16:19:58+06:00"
-  },
-  {
-   "id": "4a1d07628ab5",
-   "title": "সনদ যাচাই প্রতিবেদন সংক্রান্ত বিজ্ঞপ্তি।",
-   "url": "https://ntrca.gov.bd/pages/news/6922d9cb933eb65569e00359",
-   "source": "NTRCA (শিক্ষক নিয়োগ)",
-   "type": "govt",
-   "title_bn": "",
-   "category": "অন্যান্য",
-   "first_seen": "2026-11-22T16:19:58+06:00"
-  },
-  {
-   "id": "891e16e74eea",
-   "title": "৮ম এনটিআরসিএ নিয়োগ (প্রতিষ্ঠান প্রধান ও সহকারী প্রধান) পরীক্ষা-২০২৬ এর MCQ পরীক্ষায় উত্তীর্ণ প্রার্থীগণের মৌখিক পরীক্ষা গ্রহণের সংশোধিত বিজ্ঞপ্তি।",
-   "url": "https://ntrca.gov.bd/pages/news/৮ম-এনটিআরসিএ-নিয়োগ-প্রতিষ্ঠান-প্রধান-ও-সহকারী-প্রধান-পরীক্ষা-২০২৬-এর-mcq-পরীক্ষায়-উত্তীর্ণ-প্রার্থীগণের-মৌখিক-পরীক্ষার-তারিখ-পুনঃনির্ধারণ-প্রসঙ্গে-f99dpq-6ab89b2a390327d37a2ae589",
-   "source": "NTRCA (শিক্ষক নিয়োগ)",
-   "type": "govt",
-   "title_bn": "",
-   "category": "অন্যান্য",
-   "first_seen": "2026-11-22T16:19:58+06:00"
-  },
-  {
-   "id": "be877a44ac5e",
-   "title": "৭ম শিক্ষক নিয়োগ বিজ্ঞপ্তি (বিশেষ)-২০২৬ এর ফলাফল প্রকাশ। (৪৩)",
-   "url": "https://ntrca.gov.bd/pages/news/৭ম-শিক্ষক-নিয়োগ-বিজ্ঞপ্তি-বিশেষ-২০২৬-এর-ফলাফল-প্রকাশ-৪৩-wo8gu8-6979c9537a3de82d5111d99c",
-   "source": "NTRCA (শিক্ষক নিয়োগ)",
-   "type": "govt",
-   "title_bn": "",
-   "category": "অন্যান্য",
+   "category": "সরকারি",
    "first_seen": "2026-11-22T16:19:58+06:00"
   },
   {
@@ -7109,7 +7469,7 @@
    "source": "NTRCA (শিক্ষক নিয়োগ)",
    "type": "govt",
    "title_bn": "",
-   "category": "অন্যান্য",
+   "category": "সরকারি",
    "first_seen": "2026-11-22T16:19:58+06:00"
   },
   {
@@ -7119,7 +7479,7 @@
    "source": "NTRCA (শিক্ষক নিয়োগ)",
    "type": "govt",
    "title_bn": "",
-   "category": "অন্যান্য",
+   "category": "সরকারি",
    "first_seen": "2026-11-22T16:19:58+06:00"
   },
   {
@@ -7129,7 +7489,7 @@
    "source": "NTRCA (শিক্ষক নিয়োগ)",
    "type": "govt",
    "title_bn": "",
-   "category": "অন্যান্য",
+   "category": "সরকারি",
    "first_seen": "2026-11-22T16:19:58+06:00"
   },
   {
@@ -7139,7 +7499,7 @@
    "source": "NTRCA (শিক্ষক নিয়োগ)",
    "type": "govt",
    "title_bn": "",
-   "category": "অন্যান্য",
+   "category": "সরকারি",
    "first_seen": "2026-11-22T16:19:58+06:00"
   },
   {
@@ -7149,7 +7509,7 @@
    "source": "NTRCA (শিক্ষক নিয়োগ)",
    "type": "govt",
    "title_bn": "",
-   "category": "অন্যান্য",
+   "category": "সরকারি",
    "first_seen": "2026-11-22T16:19:58+06:00"
   },
   {
@@ -7159,7 +7519,7 @@
    "source": "NTRCA (শিক্ষক নিয়োগ)",
    "type": "govt",
    "title_bn": "",
-   "category": "অন্যান্য",
+   "category": "সরকারি",
    "first_seen": "2026-11-22T16:19:58+06:00"
   },
   {
@@ -7169,7 +7529,7 @@
    "source": "NTRCA (শিক্ষক নিয়োগ)",
    "type": "govt",
    "title_bn": "",
-   "category": "অন্যান্য",
+   "category": "সরকারি",
    "first_seen": "2026-11-22T16:19:58+06:00"
   },
   {
@@ -7179,27 +7539,7 @@
    "source": "NTRCA (শিক্ষক নিয়োগ)",
    "type": "govt",
    "title_bn": "",
-   "category": "অন্যান্য",
-   "first_seen": "2026-11-22T16:19:58+06:00"
-  },
-  {
-   "id": "30ea801b490b",
-   "title": "৮ম এনটিআরসিএ নিয়োগ (প্রতিষ্ঠান প্রধান ও সহকারী প্রধান) পরীক্ষা-২০২৬ এর সিলেবাসসমূহ",
-   "url": "https://objectstorage.ap-dcc-gazipur-1.oraclecloud15.com/n/axvjbnqprylg/b/V2Ministry/o/office-ntrca/2026/2/a4bbdcec-c8a9-4255-a300-68568c5ba33c.pdf",
-   "source": "NTRCA (শিক্ষক নিয়োগ)",
-   "type": "govt",
-   "title_bn": "",
-   "category": "অন্যান্য",
-   "first_seen": "2026-11-22T16:19:58+06:00"
-  },
-  {
-   "id": "1e7a368eed95",
-   "title": "প্রত্যয়নপত্র যাচাই সংক্রান্ত বিজ্ঞপ্তি",
-   "url": "https://ntrca.gov.bd/pages/static-pages/6922dc31933eb65569e0ee50",
-   "source": "NTRCA (শিক্ষক নিয়োগ)",
-   "type": "govt",
-   "title_bn": "",
-   "category": "অন্যান্য",
+   "category": "সরকারি",
    "first_seen": "2026-11-22T16:19:58+06:00"
   },
   {
@@ -7209,7 +7549,7 @@
    "source": "NTRCA (শিক্ষক নিয়োগ)",
    "type": "govt",
    "title_bn": "",
-   "category": "অন্যান্য",
+   "category": "সরকারি",
    "first_seen": "2026-11-22T16:19:58+06:00"
   },
   {
@@ -7219,17 +7559,7 @@
    "source": "NTRCA (শিক্ষক নিয়োগ)",
    "type": "govt",
    "title_bn": "",
-   "category": "অন্যান্য",
-   "first_seen": "2026-11-22T16:19:58+06:00"
-  },
-  {
-   "id": "cf5a35a8f79d",
-   "title": "আবেদনকারীর ছবি ও স্বাক্ষর যাচাই",
-   "url": "http://ntrca.teletalk.com.bd/imsize.php",
-   "source": "NTRCA (শিক্ষক নিয়োগ)",
-   "type": "govt",
-   "title_bn": "",
-   "category": "অন্যান্য",
+   "category": "সরকারি",
    "first_seen": "2026-11-22T16:19:58+06:00"
   },
   {
@@ -7239,7 +7569,7 @@
    "source": "NTRCA (শিক্ষক নিয়োগ)",
    "type": "govt",
    "title_bn": "",
-   "category": "অন্যান্য",
+   "category": "সরকারি",
    "first_seen": "2026-11-22T16:19:58+06:00"
   },
   {
@@ -7249,7 +7579,7 @@
    "source": "মন্ত্রিপরিষদ বিভাগ",
    "type": "govt",
    "title_bn": "",
-   "category": "অন্যান্য",
+   "category": "সরকারি",
    "first_seen": "2026-11-22T16:19:58+06:00"
   },
   {
@@ -7259,7 +7589,7 @@
    "source": "মন্ত্রিপরিষদ বিভাগ",
    "type": "govt",
    "title_bn": "",
-   "category": "অন্যান্য",
+   "category": "সরকারি",
    "first_seen": "2026-11-22T16:19:58+06:00"
   },
   {
@@ -7269,7 +7599,7 @@
    "source": "মন্ত্রিপরিষদ বিভাগ",
    "type": "govt",
    "title_bn": "",
-   "category": "অন্যান্য",
+   "category": "সরকারি",
    "first_seen": "2026-11-22T16:19:58+06:00"
   },
   {
@@ -7279,7 +7609,7 @@
    "source": "মন্ত্রিপরিষদ বিভাগ",
    "type": "govt",
    "title_bn": "",
-   "category": "অন্যান্য",
+   "category": "সরকারি",
    "first_seen": "2026-11-22T16:19:58+06:00"
   },
   {
@@ -7289,7 +7619,7 @@
    "source": "মন্ত্রিপরিষদ বিভাগ",
    "type": "govt",
    "title_bn": "",
-   "category": "অন্যান্য",
+   "category": "সরকারি",
    "first_seen": "2026-11-22T16:19:58+06:00"
   },
   {
@@ -7299,7 +7629,7 @@
    "source": "মন্ত্রিপরিষদ বিভাগ",
    "type": "govt",
    "title_bn": "",
-   "category": "অন্যান্য",
+   "category": "সরকারি",
    "first_seen": "2026-11-22T16:19:58+06:00"
   },
   {
@@ -7309,7 +7639,7 @@
    "source": "মন্ত্রিপরিষদ বিভাগ",
    "type": "govt",
    "title_bn": "",
-   "category": "অন্যান্য",
+   "category": "সরকারি",
    "first_seen": "2026-11-22T16:19:58+06:00"
   },
   {
@@ -7319,7 +7649,7 @@
    "source": "BPSC",
    "type": "govt",
    "title_bn": "",
-   "category": "অন্যান্য",
+   "category": "সরকারি",
    "first_seen": "2026-11-22T16:19:58+06:00"
   },
   {
@@ -7329,7 +7659,7 @@
    "source": "জনপ্রশাসন মন্ত্রণালয়",
    "type": "govt",
    "title_bn": "",
-   "category": "অন্যান্য",
+   "category": "সরকারি",
    "first_seen": "2026-11-22T16:19:58+06:00"
   },
   {
@@ -7339,7 +7669,7 @@
    "source": "জনপ্রশাসন মন্ত্রণালয়",
    "type": "govt",
    "title_bn": "",
-   "category": "অন্যান্য",
+   "category": "সরকারি",
    "first_seen": "2026-11-22T16:19:58+06:00"
   },
   {
@@ -7349,7 +7679,7 @@
    "source": "জনপ্রশাসন মন্ত্রণালয়",
    "type": "govt",
    "title_bn": "",
-   "category": "অন্যান্য",
+   "category": "সরকারি",
    "first_seen": "2026-11-22T16:19:58+06:00"
   },
   {
@@ -7359,7 +7689,7 @@
    "source": "জনপ্রশাসন মন্ত্রণালয়",
    "type": "govt",
    "title_bn": "",
-   "category": "অন্যান্য",
+   "category": "সরকারি",
    "first_seen": "2026-11-22T16:19:58+06:00"
   },
   {
@@ -7369,7 +7699,7 @@
    "source": "জনপ্রশাসন মন্ত্রণালয়",
    "type": "govt",
    "title_bn": "",
-   "category": "অন্যান্য",
+   "category": "সরকারি",
    "first_seen": "2026-11-22T16:19:58+06:00"
   },
   {
@@ -7379,7 +7709,7 @@
    "source": "জনপ্রশাসন মন্ত্রণালয়",
    "type": "govt",
    "title_bn": "",
-   "category": "অন্যান্য",
+   "category": "সরকারি",
    "first_seen": "2026-11-22T16:19:58+06:00"
   },
   {
@@ -7589,7 +7919,7 @@
    "source": "Bdjobs",
    "type": "private",
    "title_bn": "",
-   "category": "অন্যান্য",
+   "category": "স্বাস্থ্য",
    "first_seen": "2026-11-22T16:19:58+06:00"
   },
   {
@@ -7599,7 +7929,7 @@
    "source": "Bdjobs",
    "type": "private",
    "title_bn": "",
-   "category": "অন্যান্য",
+   "category": "প্রকৌশল",
    "first_seen": "2026-11-22T16:19:58+06:00"
   },
   {
@@ -7669,7 +7999,7 @@
    "source": "Bdjobs",
    "type": "private",
    "title_bn": "",
-   "category": "অন্যান্য",
+   "category": "আইটি",
    "first_seen": "2026-11-22T16:19:58+06:00"
   },
   {
@@ -7709,7 +8039,7 @@
    "source": "Bdjobs",
    "type": "private",
    "title_bn": "",
-   "category": "অন্যান্য",
+   "category": "শিক্ষা",
    "first_seen": "2026-11-22T16:19:58+06:00"
   },
   {
@@ -7789,7 +8119,7 @@
    "source": "Bdjobs",
    "type": "private",
    "title_bn": "",
-   "category": "অন্যান্য",
+   "category": "স্বাস্থ্য",
    "first_seen": "2026-11-22T16:19:58+06:00"
   },
   {
@@ -7849,7 +8179,7 @@
    "source": "Bdjobs",
    "type": "private",
    "title_bn": "",
-   "category": "অন্যান্য",
+   "category": "স্বাস্থ্য",
    "first_seen": "2026-11-22T16:19:58+06:00"
   },
   {
@@ -7909,7 +8239,7 @@
    "source": "Bdjobs",
    "type": "private",
    "title_bn": "",
-   "category": "অন্যান্য",
+   "category": "প্রকৌশল",
    "first_seen": "2026-11-22T16:19:58+06:00"
   },
   {
@@ -7919,7 +8249,7 @@
    "source": "Bdjobs",
    "type": "private",
    "title_bn": "",
-   "category": "অন্যান্য",
+   "category": "স্বাস্থ্য",
    "first_seen": "2026-11-22T16:19:58+06:00"
   },
   {
@@ -7939,7 +8269,7 @@
    "source": "Bdjobs",
    "type": "private",
    "title_bn": "",
-   "category": "অন্যান্য",
+   "category": "প্রকৌশল",
    "first_seen": "2026-11-22T16:19:58+06:00"
   },
   {
@@ -8119,7 +8449,7 @@
    "source": "Bdjobs",
    "type": "private",
    "title_bn": "",
-   "category": "অন্যান্য",
+   "category": "আইটি",
    "first_seen": "2026-11-22T16:19:58+06:00"
   },
   {
@@ -8129,7 +8459,7 @@
    "source": "Bdjobs",
    "type": "private",
    "title_bn": "",
-   "category": "অন্যান্য",
+   "category": "আইটি",
    "first_seen": "2026-11-22T16:19:58+06:00"
   },
   {
@@ -8139,7 +8469,7 @@
    "source": "Bdjobs",
    "type": "private",
    "title_bn": "",
-   "category": "অন্যান্য",
+   "category": "আইটি",
    "first_seen": "2026-11-22T16:19:58+06:00"
   },
   {
@@ -8159,7 +8489,7 @@
    "source": "Bdjobs",
    "type": "private",
    "title_bn": "",
-   "category": "অন্যান্য",
+   "category": "আইটি",
    "first_seen": "2026-11-22T16:19:58+06:00"
   },
   {
@@ -8249,7 +8579,7 @@
    "source": "Skill.Jobs",
    "type": "private",
    "title_bn": "",
-   "category": "অন্যান্য",
+   "category": "শিক্ষা",
    "first_seen": "2026-11-22T16:19:58+06:00"
   },
   {
@@ -8259,7 +8589,7 @@
    "source": "Skill.Jobs",
    "type": "private",
    "title_bn": "",
-   "category": "অন্যান্য",
+   "category": "শিক্ষা",
    "first_seen": "2026-11-22T16:19:58+06:00"
   },
   {
@@ -8279,7 +8609,7 @@
    "source": "Skill.Jobs",
    "type": "private",
    "title_bn": "",
-   "category": "অন্যান্য",
+   "category": "আইটি",
    "first_seen": "2026-11-22T16:19:58+06:00"
   },
   {
@@ -8329,7 +8659,7 @@
    "source": "Skill.Jobs",
    "type": "private",
    "title_bn": "",
-   "category": "অন্যান্য",
+   "category": "প্রকৌশল",
    "first_seen": "2026-11-22T16:19:58+06:00"
   },
   {
@@ -8339,7 +8669,7 @@
    "source": "Skill.Jobs",
    "type": "private",
    "title_bn": "",
-   "category": "অন্যান্য",
+   "category": "আইটি",
    "first_seen": "2026-11-22T16:19:58+06:00"
   },
   {
@@ -8369,7 +8699,7 @@
    "source": "Skill.Jobs",
    "type": "private",
    "title_bn": "",
-   "category": "অন্যান্য",
+   "category": "স্বাস্থ্য",
    "first_seen": "2026-11-22T16:19:58+06:00"
   },
   {
@@ -8379,7 +8709,7 @@
    "source": "Skill.Jobs",
    "type": "private",
    "title_bn": "",
-   "category": "অন্যান্য",
+   "category": "আইটি",
    "first_seen": "2026-11-22T16:19:58+06:00"
   },
   {
@@ -8419,7 +8749,7 @@
    "source": "Skill.Jobs",
    "type": "private",
    "title_bn": "",
-   "category": "অন্যান্য",
+   "category": "আইটি",
    "first_seen": "2026-11-22T16:19:58+06:00"
   },
   {
@@ -8439,7 +8769,7 @@
    "source": "Skill.Jobs",
    "type": "private",
    "title_bn": "",
-   "category": "অন্যান্য",
+   "category": "আইটি",
    "first_seen": "2026-11-22T16:19:58+06:00"
   },
   {
@@ -8519,7 +8849,7 @@
    "source": "Skill.Jobs",
    "type": "private",
    "title_bn": "",
-   "category": "অন্যান্য",
+   "category": "সরকারি",
    "first_seen": "2026-11-22T16:19:58+06:00"
   },
   {
@@ -8529,7 +8859,7 @@
    "source": "Skill.Jobs",
    "type": "private",
    "title_bn": "",
-   "category": "অন্যান্য",
+   "category": "স্বাস্থ্য",
    "first_seen": "2026-11-22T16:19:58+06:00"
   },
   {
@@ -8589,7 +8919,7 @@
    "source": "Skill.Jobs",
    "type": "private",
    "title_bn": "",
-   "category": "অন্যান্য",
+   "category": "আইটি",
    "first_seen": "2026-11-22T16:19:58+06:00"
   },
   {
@@ -8609,7 +8939,7 @@
    "source": "Skill.Jobs",
    "type": "private",
    "title_bn": "",
-   "category": "অন্যান্য",
+   "category": "আইটি",
    "first_seen": "2026-11-22T16:19:58+06:00"
   },
   {
@@ -8659,7 +8989,7 @@
    "source": "Teletalk সরকারি চাকরি",
    "type": "govt",
    "title_bn": "",
-   "category": "অন্যান্য",
+   "category": "সরকারি",
    "first_seen": "2026-11-22T16:19:58+06:00"
   },
   {
@@ -8669,17 +8999,7 @@
    "source": "Teletalk সরকারি চাকরি",
    "type": "govt",
    "title_bn": "",
-   "category": "অন্যান্য",
-   "first_seen": "2026-11-22T16:19:58+06:00"
-  },
-  {
-   "id": "8bb073a171a5",
-   "title": "Admit Card",
-   "url": "https://alljobs.teletalk.com.bd/admit-cards",
-   "source": "Teletalk সরকারি চাকরি",
-   "type": "govt",
-   "title_bn": "",
-   "category": "অন্যান্য",
+   "category": "সরকারি",
    "first_seen": "2026-11-22T16:19:58+06:00"
   },
   {
@@ -8689,7 +9009,7 @@
    "source": "Teletalk সরকারি চাকরি",
    "type": "govt",
    "title_bn": "",
-   "category": "অন্যান্য",
+   "category": "সরকারি",
    "first_seen": "2026-11-22T16:19:58+06:00"
   }
  ]
