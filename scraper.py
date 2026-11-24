@@ -81,6 +81,9 @@ JOB_RE = re.compile(
     r"manager|officer|engineer|executive|assistant|teacher|lecturer",
     re.I,
 )
+# সরকারি (gov.bd) নোটিশ পেজের জন্য কড়া নিয়ম: শিরোনামেই নিয়োগের শব্দ থাকতে হবে
+STRICT_RE = re.compile(
+    r"নিয়োগ|পদে|লোকবল|জনবল|চাকরি|চাকুরি|recruit|vacanc|career|hiring", re.I)
 NAV_RE = re.compile(
     r"login|log in|sign ?up|sign ?in|register|about|contact|privacy|terms|cookie|"
     r"facebook|twitter|youtube|linkedin|instagram|whatsapp|\bfaq\b|\bhelp\b|\bcv\b|"
@@ -138,7 +141,13 @@ NONJOB_RE = re.compile(
     r"সনদ যাচাই|প্রত্যয়ন|যাচাই|সুপারিশকৃত|সুপারিশ বিজ্ঞপ্তি|মৌখিক পরীক্ষা|লিখিত পরীক্ষা|এমসিকিউ|\bmcq\b|"
     r"পরীক্ষার (সময়সূচি|তারিখ|ফল)|উত্তীর্ণ|প্রাথমিক বাছাই|আসন বিন্যাস|ফল প্রকাশ|নিবন্ধন পরীক্ষা|নিবন্ধন সনদ|"
     r"প্রার্থীগণ|প্রার্থীদের তালিকা|ওয়েটিং লিস্ট|স্থগিত|বাতিল|"
-    r"দুর্নীতি|গ্রেপ্তার|গ্রেফতার|মামলা|প্রতারণা|ভুয়া|সতর্ক|আন্দোলন|বিক্ষোভ|হত্যা|অনিয়ম|তদন্ত", re.I)
+    r"দুর্নীতি|গ্রেপ্তার|গ্রেফতার|মামলা|প্রতারণা|ভুয়া|সতর্ক|আন্দোলন|বিক্ষোভ|হত্যা|অনিয়ম|তদন্ত|"
+    # --- নতুন: সরকারি অফিসের মেনু/নোটিশ (চাকরি নয়) ---
+    r"তথ্য প্রদানকারী|আপিল কর্মকর্তা|অভিযোগ নিষ্পত্তি|ফোকাল পয়েন্ট|নিয়োগ বিধি|নিয়োগ বিধিমালা|"
+    r"উপদেষ্টাগণ|পদমর্যাদা|ওয়েবসাইটের|বেতন ভাতা|বেতন বৃদ্ধি|বেতন বাড়|বেতন স্কেল|ভাতা বৃদ্ধি|ভাতা বাড়|"
+    r"নবায়ন|হালনাগাদ|প্রজ্ঞাপন|পরিপত্র|তথ্য অধিকার|বার্ষিক কর্মসম্পাদন|"
+    r"trust ?& ?safety|^\s*(?:government jobs|private jobs|jobs|careers)\s*$|"
+    r"^\s*(?:কর্মকর্তাবৃন্দ|কর্মকর্তা|কর্মচারীবৃন্দ|সার্কুলার|নোটিশ|নিয়োগ বিধি|আদেশ|সংবাদ)\s*$", re.I)
 
 CAT_RULES = [
     ("ব্যাংক", r"ব্যাংক|\bbank\b|বীমা|insurance|ইসলামী ব্যাংক|ক্রেডিট"),
@@ -221,7 +230,10 @@ def parse_html(src, html):
         path = urlparse(href).path
         if NAV_RE.search(text) or NAV_RE.search(path):
             continue
-        if not (JOB_RE.search(text) or JOB_RE.search(href)):
+        if ".gov.bd" in src["url"]:  # সরকারি সাইটে শুধু শিরোনামে নিয়োগের শব্দ থাকলেই
+            if not STRICT_RE.search(text):
+                continue
+        elif not (JOB_RE.search(text) or JOB_RE.search(href)):
             continue
         jid = hashlib.md5(href.encode()).hexdigest()[:12]
         found.setdefault(jid, {
@@ -527,7 +539,7 @@ def main():
     # পুরোনো জব: নিজস্ব ফিল্টার ও ক্যাটাগরি (Gemini-র শিরোনাম না থাকলে)
     cleaned = []
     for j in jobs:
-        if NONJOB_RE.search(j["title"]):
+        if NONJOB_RE.search(j["title"]) or NONJOB_RE.search(j.get("title_bn", "")):
             skipped.append({"id": j["id"], "title": j["title"]})
             continue
         if not j.get("title_bn"):
