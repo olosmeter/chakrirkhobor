@@ -1,8 +1,459 @@
 {
- "updated": "2026-11-24T16:02:32+06:00",
- "count": 909,
+ "updated": "2026-11-24T16:43:40+06:00",
+ "count": 849,
  "bdjobs_api_purged": true,
  "jobs": [
+  {
+   "id": "d4d3a0e91fb4",
+   "title": "প্রাণিসম্পদ অধিদপ্তরে ২২১ পদে চাকরি, অষ্টম পাসেই আবেদন",
+   "url": "https://news.google.com/rss/articles/CBMiakFVX3lxTE00eUpaQ2trVjh1dXotOFhDZjdyNnVhT09icWdrcHEyZENjcWVOSkRfZEZHYXhmVGlETnZhRlN4RUNGTnZGUUhoY3o3bHVpaldBSjQwSk5JazZDZzJlOW1CXzgzcE5Ha2VNQmc?oc=5",
+   "source": "কালের কণ্ঠ",
+   "type": "govt",
+   "title_bn": "প্রাণিসম্পদ অধিদপ্তরে ২২১ পদে চাকরি",
+   "category": "সরকারি",
+   "deadline": "",
+   "first_seen": "2026-11-24T16:43:40+06:00"
+  },
+  {
+   "id": "456e384401f2",
+   "title": "চট্টগ্রাম সিটি করপোরেশনে ৭ম ও ৯ম গ্রেডে চাকরির সুযোগ",
+   "url": "https://news.google.com/rss/articles/CBMiZkFVX3lxTE1nVVVUeG9feVRlMGxHa1RFQWx1TzV1WVlrMlFCYjl2a2ZzRm4zYlpUUVpJXzZvOFBRa1ZsOXRpeXlFalMyS3l3UFdrdG5pSDljRVNfRmhCTzRyMWJuYi1OM1AxNHNUZw?oc=5",
+   "source": "প্রথম আলো",
+   "type": "private",
+   "title_bn": "চট্টগ্রাম সিটি করপোরেশনে চাকরির সুযোগ",
+   "category": "সরকারি",
+   "deadline": "",
+   "first_seen": "2026-11-24T16:43:40+06:00"
+  },
+  {
+   "id": "4ac1a4afd210",
+   "title": "Assistant Teacher - Islam (Secondary Branch)",
+   "url": "https://www.jagojobs.com/education/211306",
+   "source": "JagoJobs",
+   "type": "private",
+   "title_bn": "সহকারী শিক্ষক (ইসলাম) নিয়োগ",
+   "category": "শিক্ষা",
+   "deadline": "",
+   "first_seen": "2026-11-24T16:43:40+06:00"
+  },
+  {
+   "id": "5bfb21521a11",
+   "title": "Assistant Teacher - Islam (Primary Branch)",
+   "url": "https://www.jagojobs.com/education/211305",
+   "source": "JagoJobs",
+   "type": "private",
+   "title_bn": "সহকারী শিক্ষক (ইসলাম) নিয়োগ",
+   "category": "শিক্ষা",
+   "deadline": "",
+   "first_seen": "2026-11-24T16:43:40+06:00"
+  },
+  {
+   "id": "d9eb4a86e1da",
+   "title": "Assistant Teacher - Math(Primary Branch)",
+   "url": "https://www.jagojobs.com/education/211304",
+   "source": "JagoJobs",
+   "type": "private",
+   "title_bn": "সহকারী শিক্ষক (গণিত) নিয়োগ",
+   "category": "শিক্ষা",
+   "deadline": "",
+   "first_seen": "2026-11-24T16:43:40+06:00"
+  },
+  {
+   "id": "79230cb0ed28",
+   "title": "Assistant Teacher - Bangla (Primary Branch)",
+   "url": "https://www.jagojobs.com/education/211303",
+   "source": "JagoJobs",
+   "type": "private",
+   "title_bn": "সহকারী শিক্ষক (বাংলা) নিয়োগ",
+   "category": "শিক্ষা",
+   "deadline": "",
+   "first_seen": "2026-11-24T16:43:40+06:00"
+  },
+  {
+   "id": "e01ab243fa7f",
+   "title": "Inspector - Physics",
+   "url": "https://www.jagojobs.com/education/211302",
+   "source": "JagoJobs",
+   "type": "private",
+   "title_bn": "পদার্থবিজ্ঞানের পরিদর্শক নিয়োগ",
+   "category": "শিক্ষা",
+   "deadline": "",
+   "first_seen": "2026-11-24T16:43:40+06:00"
+  },
+  {
+   "id": "7666b8d27b87",
+   "title": "Shift Incharge (Morning)",
+   "url": "https://www.jagojobs.com/education/211301",
+   "source": "JagoJobs",
+   "type": "private",
+   "title_bn": "শিফট ইনচার্জ (সকাল) পদে চাকরি",
+   "category": "অন্যান্য",
+   "deadline": "",
+   "first_seen": "2026-11-24T16:43:40+06:00"
+  },
+  {
+   "id": "06aa753d0eaf",
+   "title": "Principal",
+   "url": "https://www.jagojobs.com/education/211300",
+   "source": "JagoJobs",
+   "type": "private",
+   "title_bn": "প্রধান শিক্ষক পদে চাকরি",
+   "category": "শিক্ষা",
+   "deadline": "",
+   "first_seen": "2026-11-24T16:43:40+06:00"
+  },
+  {
+   "id": "654f3c89b300",
+   "title": "Assistant Community Development Officer - ACDO",
+   "url": "https://www.jagojobs.com/ngo-development/211299",
+   "source": "JagoJobs",
+   "type": "private",
+   "title_bn": "অ্যাসিস্ট্যান্ট কমিউনিটি ডেভেলপমেন্ট অফিসার",
+   "category": "এনজিও",
+   "deadline": "",
+   "first_seen": "2026-11-24T16:43:40+06:00"
+  },
+  {
+   "id": "5a58788d31b9",
+   "title": "Unit Manager",
+   "url": "https://www.jagojobs.com/ngo-development/211298",
+   "source": "JagoJobs",
+   "type": "private",
+   "title_bn": "ইউনিট ম্যানেজার",
+   "category": "এনজিও",
+   "deadline": "",
+   "first_seen": "2026-11-24T16:43:40+06:00"
+  },
+  {
+   "id": "e834176c5fb2",
+   "title": "Area Manager",
+   "url": "https://www.jagojobs.com/ngo-development/211297",
+   "source": "JagoJobs",
+   "type": "private",
+   "title_bn": "এরিয়া ম্যানেজার",
+   "category": "এনজিও",
+   "deadline": "",
+   "first_seen": "2026-11-24T16:43:40+06:00"
+  },
+  {
+   "id": "28ef63068ce2",
+   "title": "Army Medical College, Bogra",
+   "url": "https://www.jagojobs.com/company-jobs/691",
+   "source": "JagoJobs",
+   "type": "private",
+   "title_bn": "আর্মি মেডিকেল কলেজ, বগুড়া - নিয়োগ",
+   "category": "স্বাস্থ্য",
+   "deadline": "",
+   "first_seen": "2026-11-24T16:43:40+06:00"
+  },
+  {
+   "id": "d5f754c1fee4",
+   "title": "Office Support Staff",
+   "url": "https://www.jagojobs.com/medical-pharmaceuticals/211296",
+   "source": "JagoJobs",
+   "type": "private",
+   "title_bn": "অফিস সাপোর্ট স্টাফ",
+   "category": "অন্যান্য",
+   "deadline": "",
+   "first_seen": "2026-11-24T16:43:40+06:00"
+  },
+  {
+   "id": "d3f152683529",
+   "title": "Assistant Registrar (Pediatrics)",
+   "url": "https://www.jagojobs.com/medical-pharmaceuticals/211295",
+   "source": "JagoJobs",
+   "type": "private",
+   "title_bn": "সহকারী রেজিস্টার (শিশুরোগ)",
+   "category": "স্বাস্থ্য",
+   "deadline": "",
+   "first_seen": "2026-11-24T16:43:40+06:00"
+  },
+  {
+   "id": "e68d52542694",
+   "title": "Assistant Registrar - Medicine",
+   "url": "https://www.jagojobs.com/medical-pharmaceuticals/211294",
+   "source": "JagoJobs",
+   "type": "private",
+   "title_bn": "সহকারী রেজিস্টার - মেডিসিন",
+   "category": "স্বাস্থ্য",
+   "deadline": "",
+   "first_seen": "2026-11-24T16:43:40+06:00"
+  },
+  {
+   "id": "25e41d19e0d2",
+   "title": "Registrar - Surgery",
+   "url": "https://www.jagojobs.com/medical-pharmaceuticals/211293",
+   "source": "JagoJobs",
+   "type": "private",
+   "title_bn": "রেজিস্টার - সার্জারি",
+   "category": "স্বাস্থ্য",
+   "deadline": "",
+   "first_seen": "2026-11-24T16:43:40+06:00"
+  },
+  {
+   "id": "235360921e68",
+   "title": "Assistant Professor (Medicine)",
+   "url": "https://www.jagojobs.com/medical-pharmaceuticals/211292",
+   "source": "JagoJobs",
+   "type": "private",
+   "title_bn": "সহকারী অধ্যাপক (মেডিসিন)",
+   "category": "স্বাস্থ্য",
+   "deadline": "",
+   "first_seen": "2026-11-24T16:43:40+06:00"
+  },
+  {
+   "id": "e071c5744813",
+   "title": "Assistant Professor (General Surgery)",
+   "url": "https://www.jagojobs.com/medical-pharmaceuticals/211291",
+   "source": "JagoJobs",
+   "type": "private",
+   "title_bn": "সহকারী অধ্যাপক (সাধারণ সার্জারি)",
+   "category": "স্বাস্থ্য",
+   "deadline": "",
+   "first_seen": "2026-11-24T16:43:40+06:00"
+  },
+  {
+   "id": "898be7959d57",
+   "title": "Assistant Professor (Pathology)",
+   "url": "https://www.jagojobs.com/medical-pharmaceuticals/211290",
+   "source": "JagoJobs",
+   "type": "private",
+   "title_bn": "সহকারী অধ্যাপক (প্যাথোলজি)",
+   "category": "স্বাস্থ্য",
+   "deadline": "",
+   "first_seen": "2026-11-24T16:43:40+06:00"
+  },
+  {
+   "id": "0fb6b5c289c3",
+   "title": "Professor (Pathology)",
+   "url": "https://www.jagojobs.com/medical-pharmaceuticals/211289",
+   "source": "JagoJobs",
+   "type": "private",
+   "title_bn": "অধ্যাপক (প্যাথোলজি)",
+   "category": "স্বাস্থ্য",
+   "deadline": "",
+   "first_seen": "2026-11-24T16:43:40+06:00"
+  },
+  {
+   "id": "8f9f4433c6be",
+   "title": "Professor (Medicine)",
+   "url": "https://www.jagojobs.com/medical-pharmaceuticals/211288",
+   "source": "JagoJobs",
+   "type": "private",
+   "title_bn": "মেডিসিন বিভাগে অধ্যাপক নিয়োগ",
+   "category": "স্বাস্থ্য",
+   "deadline": "",
+   "first_seen": "2026-11-24T16:43:40+06:00"
+  },
+  {
+   "id": "e0e200393f08",
+   "title": "Professor (General Surgery)",
+   "url": "https://www.jagojobs.com/medical-pharmaceuticals/211287",
+   "source": "JagoJobs",
+   "type": "private",
+   "title_bn": "জেনারেল সার্জারি বিভাগে অধ্যাপক নিয়োগ",
+   "category": "স্বাস্থ্য",
+   "deadline": "",
+   "first_seen": "2026-11-24T16:43:40+06:00"
+  },
+  {
+   "id": "87cb13add553",
+   "title": "Professor (General Surgery)",
+   "url": "https://www.jagojobs.com/medical-pharmaceuticals/211286",
+   "source": "JagoJobs",
+   "type": "private",
+   "title_bn": "জেনারেল সার্জারি বিভাগে অধ্যাপক নিয়োগ",
+   "category": "স্বাস্থ্য",
+   "deadline": "",
+   "first_seen": "2026-11-24T16:43:40+06:00"
+  },
+  {
+   "id": "7e6c1cb59205",
+   "title": "Associate Professor (General Surgery)",
+   "url": "https://www.jagojobs.com/medical-pharmaceuticals/211285",
+   "source": "JagoJobs",
+   "type": "private",
+   "title_bn": "জেনারেল সার্জারি বিভাগে সহযোগী অধ্যাপক নিয়োগ",
+   "category": "স্বাস্থ্য",
+   "deadline": "",
+   "first_seen": "2026-11-24T16:43:40+06:00"
+  },
+  {
+   "id": "529183764730",
+   "title": "Associate Professor (Medicine)",
+   "url": "https://www.jagojobs.com/medical-pharmaceuticals/211284",
+   "source": "JagoJobs",
+   "type": "private",
+   "title_bn": "মেডিসিন বিভাগে সহযোগী অধ্যাপক নিয়োগ",
+   "category": "স্বাস্থ্য",
+   "deadline": "",
+   "first_seen": "2026-11-24T16:43:40+06:00"
+  },
+  {
+   "id": "8edb3ee2f391",
+   "title": "Associate Professor (Medicine)",
+   "url": "https://www.jagojobs.com/medical-pharmaceuticals/211283",
+   "source": "JagoJobs",
+   "type": "private",
+   "title_bn": "মেডিসিন বিভাগে সহযোগী অধ্যাপক নিয়োগ",
+   "category": "স্বাস্থ্য",
+   "deadline": "",
+   "first_seen": "2026-11-24T16:43:40+06:00"
+  },
+  {
+   "id": "d1865347fc41",
+   "title": "Associate Professor (Pathology)",
+   "url": "https://www.jagojobs.com/medical-pharmaceuticals/211282",
+   "source": "JagoJobs",
+   "type": "private",
+   "title_bn": "প্যাথোলজি বিভাগে সহযোগী অধ্যাপক নিয়োগ",
+   "category": "স্বাস্থ্য",
+   "deadline": "",
+   "first_seen": "2026-11-24T16:43:40+06:00"
+  },
+  {
+   "id": "4307ca2b270d",
+   "title": "এইচআর বিভাগে নিয়োগ দেবে পলমল গ্রুপ, আবেদন অনলাইনে",
+   "url": "https://news.google.com/rss/articles/CBMiXkFVX3lxTE1WY0REREE3QTMtX1dHSlhuZkFqVjU1d0NzMER2SGtkZzNEenNKWXVIeHdZUXdGRHZvMDlsaF9kVkJPemVWZ3Nkdzc3dzFlc0lET2dFMnpCZkxvQUkxbXc?oc=5",
+   "source": "জাগো নিউজ",
+   "type": "private",
+   "title_bn": "পলমল গ্রুপে এইচআর বিভাগে নিয়োগ",
+   "category": "অন্যান্য",
+   "deadline": "",
+   "first_seen": "2026-11-24T16:43:40+06:00"
+  },
+  {
+   "id": "f2506acd9efd",
+   "title": "৩০০ কর্মী নিয়োগ দেবে ইজি ফ্যাশন, অভিজ্ঞতা ছাড়াও আবেদন",
+   "url": "https://news.google.com/rss/articles/CBMiXkFVX3lxTE00MzU1Tm9ZSlpXak9NbXlocnY0Z3Ywdlo1cW9XMlh1bGxjYzNrTGt4cVNGZUFwRlhaWDZkZDlEcmdHYlNYV0d6N3R0OC14VkloU19QOGtBYVdLYVViS3c?oc=5",
+   "source": "জাগো নিউজ",
+   "type": "private",
+   "title_bn": "ইজি ফ্যাশনে ৩০০ কর্মী নিয়োগ",
+   "category": "অন্যান্য",
+   "deadline": "",
+   "first_seen": "2026-11-24T16:43:40+06:00"
+  },
+  {
+   "id": "5f09df9babf0",
+   "title": "পেট্রোলিয়াম করপোরেশনে ৬ থেকে ১৬তম গ্রেডে চাকরি",
+   "url": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTFBFTlhCUlRrWlhIbWR3aXJESHN0eTVobktYR3hUcjNyNUF6Y1NaQW9OVW43TUNRN3UyRDgwYTNmUGxLS2pYcVFIZkp1bjctWjdFZUFRZFNwZ0l3Y25VSF8zRVM1cXlwRWvSAWxBVV95cUxOdEdrVWw1dFY1Y0FKZEV5ZXFsS3BuSlVVQ1ktc080QmNrc3JRWmVFcWtiQV9XdS1KM1piUEVqU0pfU3dqSUxxd05GRDBHdzB0SWpwd2I2S2g0R0NFcTVTN3ZVOUlIbnZ0enF6Mmk?oc=5",
+   "source": "আজকের পত্রিকা",
+   "type": "private",
+   "title_bn": "পেট্রোলিয়াম করপোরেশনে চাকরি",
+   "category": "সরকারি",
+   "deadline": "",
+   "first_seen": "2026-11-24T16:43:40+06:00"
+  },
+  {
+   "id": "978d052b8667",
+   "title": "সহকারী ব্রাঞ্চ ম্যানেজার (হিসাব)",
+   "url": "https://hotjobs1.bdjobs.com/padakhep-manabik-unnayan-kendra/padakhep64.html",
+   "source": "Bdjobs",
+   "type": "private",
+   "title_bn": "সহকারী ব্রাঞ্চ ম্যানেজার (হিসাব) নিয়োগ",
+   "category": "অন্যান্য",
+   "deadline": "",
+   "first_seen": "2026-11-24T16:43:40+06:00"
+  },
+  {
+   "id": "1b518cf10892",
+   "title": "Head of Operations (Manpower Recruiting)",
+   "url": "https://hotjobs1.bdjobs.com/munshi-hr-solutions-ltd/munshiHR3b.html",
+   "source": "Bdjobs",
+   "type": "private",
+   "title_bn": "হেড অব অপারেশনস (ম্যানপাওয়ার রিক্রুটিং)",
+   "category": "অন্যান্য",
+   "deadline": "",
+   "first_seen": "2026-11-24T16:43:40+06:00"
+  },
+  {
+   "id": "0958a5fb6f94",
+   "title": "Executive / Senior Executive - Sales & Marketing",
+   "url": "https://hotjobs1.bdjobs.com/mjl-bangladesh-plc-/mobil171a.html",
+   "source": "Bdjobs",
+   "type": "private",
+   "title_bn": "এক্সিকিউটিভ / সিনিয়র এক্সিকিউটিভ - সেলস অ্যান্ড মার্কেটিং",
+   "category": "অন্যান্য",
+   "deadline": "",
+   "first_seen": "2026-11-24T16:43:40+06:00"
+  },
+  {
+   "id": "8f4ab6213a7c",
+   "title": "Risk Manager, Wholesale Unde...",
+   "url": "https://hotjobs1.bdjobs.com/brac-bank-plc/bracbank957.html",
+   "source": "Bdjobs",
+   "type": "private",
+   "title_bn": "রিস্ক ম্যানেজার, হোলসেলের আন্ডাররাইটিং",
+   "category": "ব্যাংক",
+   "deadline": "",
+   "first_seen": "2026-11-24T16:43:40+06:00"
+  },
+  {
+   "id": "e86f92794e1e",
+   "title": "Manager / Senior Manager, Tr...",
+   "url": "https://hotjobs1.bdjobs.com/brac-bank-plc/bracbank958.html",
+   "source": "Bdjobs",
+   "type": "private",
+   "title_bn": "ম্যানেজার / সিনিয়র ম্যানেজার",
+   "category": "অন্যান্য",
+   "deadline": "",
+   "first_seen": "2026-11-24T16:43:40+06:00"
+  },
+  {
+   "id": "00d3f11e3d0a",
+   "title": "Lecturer in Statistics- Department of Business Administration Uttara University Uttara West Deadline 07 Dec 2026 Experience NA Uttara West NA Deadline: 07 Dec 2026",
+   "url": "https://bdjobs.com/h/details/1560086?ln=1",
+   "source": "Bdjobs জব তালিকা",
+   "type": "private",
+   "title_bn": "লেকচারার ইন স্ট্যাটিস্টিক্স - উত্তরা ইউনিভার্সিটি",
+   "category": "শিক্ষা",
+   "deadline": "",
+   "first_seen": "2026-11-24T16:43:40+06:00"
+  },
+  {
+   "id": "9450403e76ae",
+   "title": "Executive - Senior Executive TRANSPACIFIC Logistics Ltd Dhanmondi 27 Deadline 10 Dec 2026 Experience NA Dhanmondi 27 NA Deadline: 10 Dec 2026",
+   "url": "https://bdjobs.com/h/details/1543777?ln=1",
+   "source": "Bdjobs জব তালিকা",
+   "type": "private",
+   "title_bn": "এক্সিকিউটিভ - সিনিয়র এক্সিকিউটিভ - ট্রান্সপ্যাসিফিক লজিস্টিকস লি.",
+   "category": "অন্যান্য",
+   "deadline": "",
+   "first_seen": "2026-11-24T16:43:40+06:00"
+  },
+  {
+   "id": "3d78c62ff9e6",
+   "title": "Assistant Professor in Statistics- Department of Business Administration Uttara University Uttara West Deadline 07 Dec 2026 Experience NA Uttara West NA Deadline: 07 Dec 2026",
+   "url": "https://bdjobs.com/h/details/1560062?ln=1",
+   "source": "Bdjobs জব তালিকা",
+   "type": "private",
+   "title_bn": "অ্যাসিস্ট্যান্ট প্রফেসর ইন স্ট্যাটিস্টিক্স - উত্তরা ইউনিভার্সিটি",
+   "category": "শিক্ষা",
+   "deadline": "",
+   "first_seen": "2026-11-24T16:43:40+06:00"
+  },
+  {
+   "id": "24785c497c3b",
+   "title": "Daffodil Group Intern – Telesales For i2i - Skill Jobs Dhanmondi, Dhaka Nov 24, 2026 Internship Work From Office Salary Negotiable",
+   "url": "https://www.skill.jobs/jobs/intern-telesales-for-i2i-skill-jobs-h5kEiy1B",
+   "source": "Skill.Jobs",
+   "type": "private",
+   "title_bn": "ইন্টার্ন – টেলিসেলস (আইটুআই) - ড্যাফোডিল গ্রুপ",
+   "category": "অন্যান্য",
+   "deadline": "",
+   "first_seen": "2026-11-24T16:43:40+06:00"
+  },
+  {
+   "id": "4d7eff232b75",
+   "title": "Daffodil Group Intern – Telesales for Training Sales - Skill Jobs Dhanmondi 32, Dhaka Nov 24, 2026 Internship Work From Office Salary Negotiable",
+   "url": "https://www.skill.jobs/jobs/intern-telesales-for-training-sales-ufkJBbxI",
+   "source": "Skill.Jobs",
+   "type": "private",
+   "title_bn": "ইন্টার্ন – টেলিসেলস ফর ট্রেনিং সেলস - ড্যাফোডিল গ্রুপ",
+   "category": "অন্যান্য",
+   "deadline": "",
+   "first_seen": "2026-11-24T16:43:40+06:00"
+  },
   {
    "id": "e97fe2362422",
    "title": "Office Support Staff",
@@ -3458,17 +3909,6 @@
    "first_seen": "2026-11-23T15:09:39+06:00"
   },
   {
-   "id": "399c1147af3f",
-   "title": "বিআইডব্লিউটিসিতে ৩৩ পদে সরকারি চাকরি, বেতন স্কেল ২০,০০০– ১,০০,০০০ টাকা",
-   "url": "https://news.google.com/rss/articles/CBMiZkFVX3lxTFBUSkgyNVVNZ28xRzBVbTZxS2Fha1ZfNmlNZ3FGQU9vd2xvWEdfSEZZelJqdkZPNkx2Nl9laXNFcDB3TjEya0dLakRmU05hODl2QklvRkxLWFRDUE84V2FLRFJrWUN0QdIBc0FVX3lxTE9yZ3owNFNWeWtjOFhna3VJS2VfaG9pa2VreUlITEpLajVIa3paMzlPemVaMkl3MzFQWkpROGxvdFNNRGpaekp5d3czWXh0UFV6ZWpTdFZlbmVzNTIwS0paN2RZamxZMTc5TmFvbC1mVHZJZE0?oc=5",
-   "source": "প্রথম আলো",
-   "type": "govt",
-   "title_bn": "বিআইডব্লিউটিসিতে ৩৩ পদে সরকারি চাকরি",
-   "category": "সরকারি",
-   "deadline": "",
-   "first_seen": "2026-11-23T15:09:39+06:00"
-  },
-  {
    "id": "e6d758652c6e",
    "title": "ঢাকা কর অঞ্চল-১০ এর অধীনে চাকরি, পদ ৫৪",
    "url": "https://news.google.com/rss/articles/CBMiZkFVX3lxTE04bnphMUxxMEs3T2hTUE9venZhYlM5NS1Va0VrOTdtc0lvay1LVkpqT0thUkl2d2F2VVJLUEFiS3l2OHlGVHZQM3h1d0ZWcWhLMW9mcFZVbUNnUzhkWEJvM1Joa2NkZ9IBc0FVX3lxTE5tYjV0ZXQwTTRadU4zVW01TlFZalh3UjhUbFZHcVBYeVZYQlRzeE5UbWtjcjJ0M0NBd3JOQnh5ZDU2VmNuRENYY2ZkcEl4eTVHWlNiWi01Y3JnWUhpTV9JclBGVXBMcUtILXJuek00aHIwMGs?oc=5",
@@ -3509,17 +3949,6 @@
    "type": "private",
    "title_bn": "বাংলাদেশ প্রতিযোগিতা কমিশনে চাকরির সুযোগ",
    "category": "সরকারি",
-   "deadline": "",
-   "first_seen": "2026-11-23T15:09:39+06:00"
-  },
-  {
-   "id": "82aad7d32b65",
-   "title": "অফিসার গ্রেড-২ পদমর্যাদায় চাকরি দেবে ব্র্যাক ব্যাংক, আবেদন ৩০ নভেম্বর পর্যন্ত",
-   "url": "https://news.google.com/rss/articles/CBMiZkFVX3lxTFBOalNEQjNPOExvcUd6ZmpQT2tWUE5Hb2ZsaExBUWZDb1djelpSYjBuSXdsRGp2UWZLTTN2OXJlTUhQYXQ3VnZpQ01GTkVJZ2RNSVBiaDdrZDVDRk5Kd2pTZVRSVllDZ9IBc0FVX3lxTE5aXy15Y20yZ2dpam9wNlk3Znlid1E3bFZ3QjBDT0Z2Y3AwZFRXUmN4VWFRTVhfbTlNcU5oeG1VRXo1RUR6X0xTdU1menN4eXFkQ2Z5ZTMtcTl4dXNfS1RsVk9YeTlSZjlYa0JSMDd3T2QxZ1k?oc=5",
-   "source": "প্রথম আলো",
-   "type": "private",
-   "title_bn": "ব্র্যাক ব্যাংকে অফিসার গ্রেড-২ পদে চাকরি",
-   "category": "ব্যাংক",
    "deadline": "",
    "first_seen": "2026-11-23T15:09:39+06:00"
   },
@@ -8332,52 +8761,12 @@
    "first_seen": "2026-11-22T20:10:05+06:00"
   },
   {
-   "id": "0586a217dde7",
-   "title": "Deadline Tomorrow",
-   "url": "https://nrbjobs.com/users/searchjob?deadTomorrow=tomorrow-deadline",
-   "source": "NRB Jobs",
-   "type": "private",
-   "title_bn": "",
-   "category": "অন্যান্য",
-   "first_seen": "2026-11-22T20:10:05+06:00"
-  },
-  {
-   "id": "c24eca312d89",
-   "title": "Contractual Jobs",
-   "url": "https://nrbjobs.com/users/searchjob?jobType=Contractual",
-   "source": "NRB Jobs",
-   "type": "private",
-   "title_bn": "",
-   "category": "অন্যান্য",
-   "first_seen": "2026-11-22T20:10:05+06:00"
-  },
-  {
-   "id": "7aed76f83ec1",
-   "title": "Part Time Jobs",
-   "url": "https://nrbjobs.com/users/searchjob?jobType=Part+Time",
-   "source": "NRB Jobs",
-   "type": "private",
-   "title_bn": "",
-   "category": "অন্যান্য",
-   "first_seen": "2026-11-22T20:10:05+06:00"
-  },
-  {
-   "id": "4d69b1591790",
-   "title": "23 Posted Jobs",
-   "url": "https://nrbjobs.com/users/searchjob?jobfor=&category=&searchwhat=",
-   "source": "NRB Jobs",
-   "type": "private",
-   "title_bn": "",
-   "category": "অন্যান্য",
-   "first_seen": "2026-11-22T20:10:05+06:00"
-  },
-  {
    "id": "3e411f17f634",
    "title": "Assistant Chef (Yemeni & Tunisian Food)",
    "url": "https://nrbjobs.com/files/jobad/kafa1.html",
    "source": "NRB Jobs",
    "type": "private",
-   "title_bn": "",
+   "title_bn": "সহকারী শেফ",
    "category": "অন্যান্য",
    "first_seen": "2026-11-22T20:10:05+06:00"
   },
@@ -8387,428 +8776,8 @@
    "url": "https://nrbjobs.com/users/viewCompanyJobList/%E0%A6%B8%E0%A6%BE%E0%A6%AE%E0%A6%B0%E0%A6%BF%E0%A6%95%7E%E0%A6%9A%E0%A6%BF%E0%A6%95%E0%A6%BF%E0%A7%8E%E0%A6%B8%E0%A6%BE%7E%E0%A6%B8%E0%A6%BE%E0%A6%B0%E0%A7%8D%E0%A6%AD%E0%A6%BF%E0%A6%B8%7E%E0%A6%AE%E0%A6%B9%E0%A6%BE%E0%A6%AA%E0%A6%B0%E0%A6%BF%E0%A6%A6%E0%A6%AA%E0%A7%8D%E0%A6%A4%E0%A6%B0%7E%28%E0%A6%AA%E0%A7%8D%E0%A6%B0%E0%A6%A4%E0%A6%BF%E0%A6%B0%E0%A6%95%E0%A7%8D%E0%A6%B7%E0%A6%BE%7E%E0%A6%AE%E0%A6%A8%E0%A7%8D%E0%A6%A4%E0%A7%8D%E0%A6%B0%E0%A6%A3%E0%A6%BE%E0%A6%B2%E0%A7%9F%29",
    "source": "NRB Jobs",
    "type": "private",
-   "title_bn": "",
-   "category": "অন্যান্য",
-   "first_seen": "2026-11-22T20:10:05+06:00"
-  },
-  {
-   "id": "ffb7144f6e33",
-   "title": "Jamuna Group",
-   "url": "https://nrbjobs.com/users/viewCompanyJobList/Jamuna~Group",
-   "source": "NRB Jobs",
-   "type": "private",
-   "title_bn": "",
-   "category": "অন্যান্য",
-   "first_seen": "2026-11-22T20:10:05+06:00"
-  },
-  {
-   "id": "c91c825424fc",
-   "title": "Read more",
-   "url": "https://nrbjobs.com/articleArchives/view/1",
-   "source": "NRB Jobs",
-   "type": "private",
-   "title_bn": "",
-   "category": "অন্যান্য",
-   "first_seen": "2026-11-22T20:10:05+06:00"
-  },
-  {
-   "id": "2d6501053a60",
-   "title": "Read more",
-   "url": "https://nrbjobs.com/articleArchives/view/3",
-   "source": "NRB Jobs",
-   "type": "private",
-   "title_bn": "",
-   "category": "অন্যান্য",
-   "first_seen": "2026-11-22T20:10:05+06:00"
-  },
-  {
-   "id": "c8f35485b977",
-   "title": "简体中文 (Tionghoa Sederhana)",
-   "url": "https://rmgjobs.com/?l=schinese",
-   "source": "RMG Jobs",
-   "type": "private",
-   "title_bn": "",
-   "category": "অন্যান্য",
-   "first_seen": "2026-11-22T20:10:05+06:00"
-  },
-  {
-   "id": "f87815891864",
-   "title": "繁體中文 (Tionghoa Tradisional)",
-   "url": "https://rmgjobs.com/?l=tchinese",
-   "source": "RMG Jobs",
-   "type": "private",
-   "title_bn": "",
-   "category": "অন্যান্য",
-   "first_seen": "2026-11-22T20:10:05+06:00"
-  },
-  {
-   "id": "54e5c251a306",
-   "title": "日本語 (Bahasa Jepang)",
-   "url": "https://rmgjobs.com/?l=japanese",
-   "source": "RMG Jobs",
-   "type": "private",
-   "title_bn": "",
-   "category": "অন্যান্য",
-   "first_seen": "2026-11-22T20:10:05+06:00"
-  },
-  {
-   "id": "65eaa8290b1d",
-   "title": "한국어 (Bahasa Korea)",
-   "url": "https://rmgjobs.com/?l=koreana",
-   "source": "RMG Jobs",
-   "type": "private",
-   "title_bn": "",
-   "category": "অন্যান্য",
-   "first_seen": "2026-11-22T20:10:05+06:00"
-  },
-  {
-   "id": "689c69fec8ba",
-   "title": "ไทย (Bahasa Thai)",
-   "url": "https://rmgjobs.com/?l=thai",
-   "source": "RMG Jobs",
-   "type": "private",
-   "title_bn": "",
-   "category": "অন্যান্য",
-   "first_seen": "2026-11-22T20:10:05+06:00"
-  },
-  {
-   "id": "287ec4057ecf",
-   "title": "Български (Bahasa Bulgaria)",
-   "url": "https://rmgjobs.com/?l=bulgarian",
-   "source": "RMG Jobs",
-   "type": "private",
-   "title_bn": "",
-   "category": "অন্যান্য",
-   "first_seen": "2026-11-22T20:10:05+06:00"
-  },
-  {
-   "id": "c579367103f0",
-   "title": "Čeština (Bahasa Ceko)",
-   "url": "https://rmgjobs.com/?l=czech",
-   "source": "RMG Jobs",
-   "type": "private",
-   "title_bn": "",
-   "category": "অন্যান্য",
-   "first_seen": "2026-11-22T20:10:05+06:00"
-  },
-  {
-   "id": "1b8d07a8d05a",
-   "title": "Dansk (Bahasa Denmark)",
-   "url": "https://rmgjobs.com/?l=danish",
-   "source": "RMG Jobs",
-   "type": "private",
-   "title_bn": "",
-   "category": "অন্যান্য",
-   "first_seen": "2026-11-22T20:10:05+06:00"
-  },
-  {
-   "id": "5544644f759d",
-   "title": "Deutsch (Bahasa Jerman)",
-   "url": "https://rmgjobs.com/?l=german",
-   "source": "RMG Jobs",
-   "type": "private",
-   "title_bn": "",
-   "category": "অন্যান্য",
-   "first_seen": "2026-11-22T20:10:05+06:00"
-  },
-  {
-   "id": "80bf313e5659",
-   "title": "English (Bahasa Inggris)",
-   "url": "https://rmgjobs.com/?l=english",
-   "source": "RMG Jobs",
-   "type": "private",
-   "title_bn": "",
-   "category": "অন্যান্য",
-   "first_seen": "2026-11-22T20:10:05+06:00"
-  },
-  {
-   "id": "ca26b827ab8a",
-   "title": "Español - España (Bahasa Spanyol - Spanyol)",
-   "url": "https://rmgjobs.com/?l=spanish",
-   "source": "RMG Jobs",
-   "type": "private",
-   "title_bn": "",
-   "category": "অন্যান্য",
-   "first_seen": "2026-11-22T20:10:05+06:00"
-  },
-  {
-   "id": "13be033dd63f",
-   "title": "Español - Latinoamérica (Bahasa Spanyol - Amerika Latin)",
-   "url": "https://rmgjobs.com/?l=latam",
-   "source": "RMG Jobs",
-   "type": "private",
-   "title_bn": "",
-   "category": "অন্যান্য",
-   "first_seen": "2026-11-22T20:10:05+06:00"
-  },
-  {
-   "id": "c77d3cf4ae7d",
-   "title": "Ελληνικά (Bahasa Yunani)",
-   "url": "https://rmgjobs.com/?l=greek",
-   "source": "RMG Jobs",
-   "type": "private",
-   "title_bn": "",
-   "category": "অন্যান্য",
-   "first_seen": "2026-11-22T20:10:05+06:00"
-  },
-  {
-   "id": "adc32f0b6fa6",
-   "title": "Français (Bahasa Prancis)",
-   "url": "https://rmgjobs.com/?l=french",
-   "source": "RMG Jobs",
-   "type": "private",
-   "title_bn": "",
-   "category": "অন্যান্য",
-   "first_seen": "2026-11-22T20:10:05+06:00"
-  },
-  {
-   "id": "f4d81e994709",
-   "title": "Italiano (Bahasa Italia)",
-   "url": "https://rmgjobs.com/?l=italian",
-   "source": "RMG Jobs",
-   "type": "private",
-   "title_bn": "",
-   "category": "অন্যান্য",
-   "first_seen": "2026-11-22T20:10:05+06:00"
-  },
-  {
-   "id": "3019a4e0c699",
-   "title": "Bahasa Indonesia",
-   "url": "https://rmgjobs.com/?l=indonesian",
-   "source": "RMG Jobs",
-   "type": "private",
-   "title_bn": "",
-   "category": "অন্যান্য",
-   "first_seen": "2026-11-22T20:10:05+06:00"
-  },
-  {
-   "id": "f6bb0ad56bec",
-   "title": "Magyar (Bahasa Hungaria)",
-   "url": "https://rmgjobs.com/?l=hungarian",
-   "source": "RMG Jobs",
-   "type": "private",
-   "title_bn": "",
-   "category": "অন্যান্য",
-   "first_seen": "2026-11-22T20:10:05+06:00"
-  },
-  {
-   "id": "a15b51ea3c18",
-   "title": "Nederlands (Bahasa Belanda)",
-   "url": "https://rmgjobs.com/?l=dutch",
-   "source": "RMG Jobs",
-   "type": "private",
-   "title_bn": "",
-   "category": "অন্যান্য",
-   "first_seen": "2026-11-22T20:10:05+06:00"
-  },
-  {
-   "id": "4de82a85c25e",
-   "title": "Norsk (Bahasa Norwegia)",
-   "url": "https://rmgjobs.com/?l=norwegian",
-   "source": "RMG Jobs",
-   "type": "private",
-   "title_bn": "",
-   "category": "অন্যান্য",
-   "first_seen": "2026-11-22T20:10:05+06:00"
-  },
-  {
-   "id": "d90210f2e35a",
-   "title": "Polski (Bahasa Polandia)",
-   "url": "https://rmgjobs.com/?l=polish",
-   "source": "RMG Jobs",
-   "type": "private",
-   "title_bn": "",
-   "category": "অন্যান্য",
-   "first_seen": "2026-11-22T20:10:05+06:00"
-  },
-  {
-   "id": "abd1926e7b1c",
-   "title": "Português (Portugis - Portugal)",
-   "url": "https://rmgjobs.com/?l=portuguese",
-   "source": "RMG Jobs",
-   "type": "private",
-   "title_bn": "",
-   "category": "অন্যান্য",
-   "first_seen": "2026-11-22T20:10:05+06:00"
-  },
-  {
-   "id": "98762accabe4",
-   "title": "Português-Brasil (Bahasa Portugis-Brasil)",
-   "url": "https://rmgjobs.com/?l=brazilian",
-   "source": "RMG Jobs",
-   "type": "private",
-   "title_bn": "",
-   "category": "অন্যান্য",
-   "first_seen": "2026-11-22T20:10:05+06:00"
-  },
-  {
-   "id": "8aca69d5290c",
-   "title": "Română (Bahasa Rumania)",
-   "url": "https://rmgjobs.com/?l=romanian",
-   "source": "RMG Jobs",
-   "type": "private",
-   "title_bn": "",
-   "category": "অন্যান্য",
-   "first_seen": "2026-11-22T20:10:05+06:00"
-  },
-  {
-   "id": "326f71efdd72",
-   "title": "Русский (Bahasa Rusia)",
-   "url": "https://rmgjobs.com/?l=russian",
-   "source": "RMG Jobs",
-   "type": "private",
-   "title_bn": "",
-   "category": "অন্যান্য",
-   "first_seen": "2026-11-22T20:10:05+06:00"
-  },
-  {
-   "id": "bc43f13a9dfe",
-   "title": "Suomi (Bahasa Finlandia)",
-   "url": "https://rmgjobs.com/?l=finnish",
-   "source": "RMG Jobs",
-   "type": "private",
-   "title_bn": "",
-   "category": "অন্যান্য",
-   "first_seen": "2026-11-22T20:10:05+06:00"
-  },
-  {
-   "id": "e14ca1ac55af",
-   "title": "Svenska (Bahasa Swedia)",
-   "url": "https://rmgjobs.com/?l=swedish",
-   "source": "RMG Jobs",
-   "type": "private",
-   "title_bn": "",
-   "category": "অন্যান্য",
-   "first_seen": "2026-11-22T20:10:05+06:00"
-  },
-  {
-   "id": "b4bfa3c24111",
-   "title": "Türkçe (Bahasa Turki)",
-   "url": "https://rmgjobs.com/?l=turkish",
-   "source": "RMG Jobs",
-   "type": "private",
-   "title_bn": "",
-   "category": "অন্যান্য",
-   "first_seen": "2026-11-22T20:10:05+06:00"
-  },
-  {
-   "id": "248aa17b49c1",
-   "title": "Tiếng Việt (Bahasa Vietnam)",
-   "url": "https://rmgjobs.com/?l=vietnamese",
-   "source": "RMG Jobs",
-   "type": "private",
-   "title_bn": "",
-   "category": "অন্যান্য",
-   "first_seen": "2026-11-22T20:10:05+06:00"
-  },
-  {
-   "id": "ac63498f3cbe",
-   "title": "Українська (Bahasa Ukraina)",
-   "url": "https://rmgjobs.com/?l=ukrainian",
-   "source": "RMG Jobs",
-   "type": "private",
-   "title_bn": "",
-   "category": "অন্যান্য",
-   "first_seen": "2026-11-22T20:10:05+06:00"
-  },
-  {
-   "id": "3a81e58c7414",
-   "title": "Ulasan Terbaru: Mayoritas Positif (98) - 72% positif dari 98 ulasan pengguna dalam 30 hari terakhir.",
-   "url": "https://rmgjobs.com/#app_reviews_hash",
-   "source": "RMG Jobs",
-   "type": "private",
-   "title_bn": "",
-   "category": "অন্যান্য",
-   "first_seen": "2026-11-22T20:10:05+06:00"
-  },
-  {
-   "id": "4f204e0bb2bf",
-   "title": "Company Jobs",
-   "url": "https://bd-career.com/category/company-jobs/",
-   "source": "BD Career",
-   "type": "private",
-   "title_bn": "",
-   "category": "অন্যান্য",
-   "first_seen": "2026-11-22T20:10:05+06:00"
-  },
-  {
-   "id": "8e14788fd466",
-   "title": "Bank Jobs",
-   "url": "https://bd-career.com/category/bank-jobs/",
-   "source": "BD Career",
-   "type": "private",
-   "title_bn": "",
-   "category": "ব্যাংক",
-   "first_seen": "2026-11-22T20:10:05+06:00"
-  },
-  {
-   "id": "13bf735813be",
-   "title": "Govt Jobs",
-   "url": "https://bd-career.com/category/govt-jobs/",
-   "source": "BD Career",
-   "type": "govt",
-   "title_bn": "",
+   "title_bn": "সামরিক চিকিৎসা সার্ভিস মহাপরিদপ্তর নিয়োগ",
    "category": "সরকারি",
-   "first_seen": "2026-11-22T20:10:05+06:00"
-  },
-  {
-   "id": "16028c380c4c",
-   "title": "NGO Jobs",
-   "url": "https://bd-career.com/category/ngo-jobs/",
-   "source": "BD Career",
-   "type": "private",
-   "title_bn": "",
-   "category": "এনজিও",
-   "first_seen": "2026-11-22T20:10:05+06:00"
-  },
-  {
-   "id": "f338b2fd1a03",
-   "title": "Exam Routine",
-   "url": "https://bd-career.com/category/exam-routine/",
-   "source": "BD Career",
-   "type": "private",
-   "title_bn": "",
-   "category": "অন্যান্য",
-   "first_seen": "2026-11-22T20:10:05+06:00"
-  },
-  {
-   "id": "cf0a9c97a5c0",
-   "title": "Teletalk Apply",
-   "url": "https://bd-career.com/category/teletalk-apply/",
-   "source": "BD Career",
-   "type": "govt",
-   "title_bn": "",
-   "category": "সরকারি",
-   "first_seen": "2026-11-22T20:10:05+06:00"
-  },
-  {
-   "id": "abfd843ace42",
-   "title": "NU Honours 1st Year Exam Routine 2026 (Update পরীক্ষা শুরু ২৮ জুলাই, রুটিন PDF)",
-   "url": "https://bd-career.com/nu-honours-1st-year-exam-routine/",
-   "source": "BD Career",
-   "type": "private",
-   "title_bn": "",
-   "category": "অন্যান্য",
-   "first_seen": "2026-11-22T20:10:05+06:00"
-  },
-  {
-   "id": "b2989fe68e1d",
-   "title": "SSC exam Routine Pdf 2027 All education board Bangladesh",
-   "url": "https://bd-career.com/ssc-exam-routine/",
-   "source": "BD Career",
-   "type": "private",
-   "title_bn": "",
-   "category": "অন্যান্য",
-   "first_seen": "2026-11-22T20:10:05+06:00"
-  },
-  {
-   "id": "c13e5dd2254a",
-   "title": "Nagorik seba 0",
-   "url": "https://bd-career.com/category/nagorik-seba/",
-   "source": "BD Career",
-   "type": "private",
-   "title_bn": "",
-   "category": "অন্যান্য",
    "first_seen": "2026-11-22T20:10:05+06:00"
   },
   {
@@ -8817,89 +8786,9 @@
    "url": "https://bd-career.com/category/saptahik-chakrir-khobor/",
    "source": "BD Career",
    "type": "private",
-   "title_bn": "",
+   "title_bn": "সাপ্তাহিক চাকরির খবর",
    "category": "অন্যান্য",
    "first_seen": "2026-11-22T20:10:05+06:00"
-  },
-  {
-   "id": "533f27badfd6",
-   "title": "BD Career",
-   "url": "https://bd-career.com/index.html",
-   "source": "BD Career",
-   "type": "private",
-   "title_bn": "",
-   "category": "অন্যান্য",
-   "first_seen": "2026-11-22T20:10:05+06:00"
-  },
-  {
-   "id": "2d155b3b4ebc",
-   "title": "কর্মকর্তাবৃন্দের তালিকা",
-   "url": "https://dpe.gov.bd/pages/officers",
-   "source": "প্রাথমিক শিক্ষা অধিদপ্তর",
-   "type": "govt",
-   "title_bn": "",
-   "category": "সরকারি",
-   "first_seen": "2026-11-22T16:40:15+06:00"
-  },
-  {
-   "id": "d4e72df1f48e",
-   "title": "প্রজ্ঞাপন/বিজ্ঞপ্তি",
-   "url": "https://dpe.gov.bd/pages/notification-circulars",
-   "source": "প্রাথমিক শিক্ষা অধিদপ্তর",
-   "type": "govt",
-   "title_bn": "",
-   "category": "সরকারি",
-   "first_seen": "2026-11-22T16:40:15+06:00"
-  },
-  {
-   "id": "403351c42759",
-   "title": "ম্যানেজার ও প্ল্যানারদের অ্যাপ",
-   "url": "http://etoolkits.dghs.gov.bd/toolkits/bangladesh-program-managers",
-   "source": "স্বাস্থ্য অধিদপ্তর (DGHS)",
-   "type": "govt",
-   "title_bn": "",
-   "category": "সরকারি",
-   "first_seen": "2026-11-22T16:19:58+06:00"
-  },
-  {
-   "id": "905d35cf209c",
-   "title": "কর্মকর্তাদের তালিকা",
-   "url": "https://dshe.gov.bd/pages/officers",
-   "source": "মাধ্যমিক ও উচ্চশিক্ষা",
-   "type": "govt",
-   "title_bn": "",
-   "category": "সরকারি",
-   "first_seen": "2026-11-22T16:19:58+06:00"
-  },
-  {
-   "id": "9eca202ccb42",
-   "title": "তথ্য প্রদানকারী কর্মকর্তা",
-   "url": "https://dshe.gov.bd/pages/info-officers",
-   "source": "মাধ্যমিক ও উচ্চশিক্ষা",
-   "type": "govt",
-   "title_bn": "",
-   "category": "সরকারি",
-   "first_seen": "2026-11-22T16:19:58+06:00"
-  },
-  {
-   "id": "f797dc7581de",
-   "title": "অভিযোগ নিষ্পত্তিকারি কর্মকর্তা",
-   "url": "https://dshe.gov.bd/pages/grievance-redressal-officers",
-   "source": "মাধ্যমিক ও উচ্চশিক্ষা",
-   "type": "govt",
-   "title_bn": "",
-   "category": "সরকারি",
-   "first_seen": "2026-11-22T16:19:58+06:00"
-  },
-  {
-   "id": "393684aa5efb",
-   "title": "জাতীয় শুদ্ধাচার কৌশল বাস্তবায়ন সংক্রান্ত ফোকাল পয়েন্ট কর্মকর্তা",
-   "url": "https://dshe.gov.bd/pages/focal-point-officers",
-   "source": "মাধ্যমিক ও উচ্চশিক্ষা",
-   "type": "govt",
-   "title_bn": "",
-   "category": "সরকারি",
-   "first_seen": "2026-11-22T16:19:58+06:00"
   },
   {
    "id": "9acf782a72e3",
@@ -8907,58 +8796,8 @@
    "url": "https://dshe.gov.bd/pages/static-pages/691997bc933eb65569ddea57",
    "source": "মাধ্যমিক ও উচ্চশিক্ষা",
    "type": "govt",
-   "title_bn": "",
-   "category": "সরকারি",
-   "first_seen": "2026-11-22T16:19:58+06:00"
-  },
-  {
-   "id": "485b93e0dcb5",
-   "title": "শিক্ষা ক্যাডারের কর্মকর্তাদের (প্রভাষক) চাকুরি স্থায়ীকরণের তথ্য ছক",
-   "url": "https://dshe.gov.bd/pages/forms/6919973d81fc96cef9e5955b",
-   "source": "মাধ্যমিক ও উচ্চশিক্ষা",
-   "type": "govt",
-   "title_bn": "",
+   "title_bn": "মাস অনুযায়ী সার্কুলার সমূহ",
    "category": "শিক্ষা",
-   "first_seen": "2026-11-22T16:19:58+06:00"
-  },
-  {
-   "id": "4b220633aac2",
-   "title": "পিএইচডি ডিগ্রির জন্য অগ্রিম বর্ধিতবেতনের আবেদনপত্র",
-   "url": "https://dshe.gov.bd/pages/files/69199760933eb65569ddc5fc",
-   "source": "মাধ্যমিক ও উচ্চশিক্ষা",
-   "type": "govt",
-   "title_bn": "",
-   "category": "সরকারি",
-   "first_seen": "2026-11-22T16:19:58+06:00"
-  },
-  {
-   "id": "97eaa596b95f",
-   "title": "ব্যক্তিগত বিদেশ ভ্রমনের অনুমতির আবেদন – মন্ত্রী ও সচিব",
-   "url": "https://dshe.gov.bd/pages/forms/6919973e81fc96cef9e595d4",
-   "source": "মাধ্যমিক ও উচ্চশিক্ষা",
-   "type": "govt",
-   "title_bn": "",
-   "category": "সরকারি",
-   "first_seen": "2026-11-22T16:19:58+06:00"
-  },
-  {
-   "id": "2b4db04b0967",
-   "title": "বিদেশ ভ্রমনের ছাড়পত্রের জন্য আবেদন (মাউশি)",
-   "url": "https://dshe.gov.bd/pages/forms/6919973f81fc96cef9e59604",
-   "source": "মাধ্যমিক ও উচ্চশিক্ষা",
-   "type": "govt",
-   "title_bn": "",
-   "category": "সরকারি",
-   "first_seen": "2026-11-22T16:19:58+06:00"
-  },
-  {
-   "id": "ebdb7b949361",
-   "title": "কর্মকর্তাবৃন্দ",
-   "url": "https://ntrca.gov.bd/pages/officers?filters=%7B%22officer_category%22%3A%20%226922d30f81fc96cef9e9bc57%22%7D",
-   "source": "NTRCA (শিক্ষক নিয়োগ)",
-   "type": "govt",
-   "title_bn": "",
-   "category": "সরকারি",
    "first_seen": "2026-11-22T16:19:58+06:00"
   },
   {
@@ -8967,18 +8806,8 @@
    "url": "https://ntrca.gov.bd/pages/static-pages/recruitment-notices-head-of-institution-and-assistant-head-36a0et-6af9265694968eb2e9df893f",
    "source": "NTRCA (শিক্ষক নিয়োগ)",
    "type": "govt",
-   "title_bn": "",
-   "category": "সরকারি",
-   "first_seen": "2026-11-22T16:19:58+06:00"
-  },
-  {
-   "id": "d7357dad9ca6",
-   "title": "কর্মকর্তাবৃন্দ",
-   "url": "https://ntrca.gov.bd/pages/officers",
-   "source": "NTRCA (শিক্ষক নিয়োগ)",
-   "type": "govt",
-   "title_bn": "",
-   "category": "সরকারি",
+   "title_bn": "প্রতিষ্ঠান প্রধান ও সহকারী প্রধান শিক্ষক নিয়োগ বিজ্ঞপ্তি",
+   "category": "শিক্ষা",
    "first_seen": "2026-11-22T16:19:58+06:00"
   },
   {
@@ -8987,8 +8816,8 @@
    "url": "https://ntrca.gov.bd/pages/notices/695fbadea31054345f106496",
    "source": "NTRCA (শিক্ষক নিয়োগ)",
    "type": "govt",
-   "title_bn": "",
-   "category": "সরকারি",
+   "title_bn": "শিক্ষক নিয়োগ বিজ্ঞপ্তি",
+   "category": "শিক্ষা",
    "first_seen": "2026-11-22T16:19:58+06:00"
   },
   {
@@ -8997,8 +8826,8 @@
    "url": "http://103.230.106.206:8182/cycle-6/",
    "source": "NTRCA (শিক্ষক নিয়োগ)",
    "type": "govt",
-   "title_bn": "",
-   "category": "সরকারি",
+   "title_bn": "শিক্ষক নিয়োগের আবেদন",
+   "category": "শিক্ষা",
    "first_seen": "2026-11-22T16:19:58+06:00"
   },
   {
@@ -9007,8 +8836,8 @@
    "url": "https://ntrca.gov.bd/pages/static-pages/6922de8c933eb65569e1b7b2",
    "source": "NTRCA (শিক্ষক নিয়োগ)",
    "type": "govt",
-   "title_bn": "",
-   "category": "সরকারি",
+   "title_bn": "শিক্ষক নিয়োগ বিজ্ঞপ্তি",
+   "category": "শিক্ষা",
    "first_seen": "2026-11-22T16:19:58+06:00"
   },
   {
@@ -9017,268 +8846,8 @@
    "url": "https://ntrca.gov.bd/pages/notices/৬ষ্ঠ-নিয়োগ-সুপারিশ-বিজ্ঞপ্তি-২০২৫-এর-আওতায়-প্রতিস্থাপন-সংক্রান্ত-বিজ্ঞপ্তি-6964928f05027d171a2f1153",
    "source": "NTRCA (শিক্ষক নিয়োগ)",
    "type": "govt",
-   "title_bn": "",
-   "category": "সরকারি",
-   "first_seen": "2026-11-22T16:19:58+06:00"
-  },
-  {
-   "id": "ac2a597eb2a5",
-   "title": "পরীক্ষার বিজ্ঞপ্তি",
-   "url": "https://ntrca.gov.bd/pages/static-pages/6922de63933eb65569e1a4f4",
-   "source": "NTRCA (শিক্ষক নিয়োগ)",
-   "type": "govt",
-   "title_bn": "",
-   "category": "সরকারি",
-   "first_seen": "2026-11-22T16:19:58+06:00"
-  },
-  {
-   "id": "1a993f5081d0",
-   "title": "সংশোধিত প্রত্যয়ন পত্র প্রাপ্তির আবেদন পত্র",
-   "url": "https://ntrca.gov.bd/pages/static-pages/6922df9e933eb65569e230eb",
-   "source": "NTRCA (শিক্ষক নিয়োগ)",
-   "type": "govt",
-   "title_bn": "",
-   "category": "সরকারি",
-   "first_seen": "2026-11-22T16:19:58+06:00"
-  },
-  {
-   "id": "44f70559510b",
-   "title": "ডুপ্লিকেট প্রত্যয়ন পত্র প্রাপ্তির আবেদন পত্র",
-   "url": "https://ntrca.gov.bd/pages/files/6922db3a933eb65569e09018",
-   "source": "NTRCA (শিক্ষক নিয়োগ)",
-   "type": "govt",
-   "title_bn": "",
-   "category": "সরকারি",
-   "first_seen": "2026-11-22T16:19:58+06:00"
-  },
-  {
-   "id": "9c763ed5035f",
-   "title": "অভিযোগ দাখিল (অনলাইন আবেদন)",
-   "url": "http://www.grs.gov.bd/",
-   "source": "NTRCA (শিক্ষক নিয়োগ)",
-   "type": "govt",
-   "title_bn": "",
-   "category": "সরকারি",
-   "first_seen": "2026-11-22T16:19:58+06:00"
-  },
-  {
-   "id": "558c354a5c96",
-   "title": "আবেদন ও আপিল ফরম",
-   "url": "https://ntrca.gov.bd/pages/static-pages/6922dd3a933eb65569e14044",
-   "source": "NTRCA (শিক্ষক নিয়োগ)",
-   "type": "govt",
-   "title_bn": "",
-   "category": "সরকারি",
-   "first_seen": "2026-11-22T16:19:58+06:00"
-  },
-  {
-   "id": "bc56e1a31ac7",
-   "title": "সরকারি অফিসের নতুন ওয়েবসাইটের আবেদন",
-   "url": "https://pms.portal.gov.bd/office/outauth_new_office",
-   "source": "NTRCA (শিক্ষক নিয়োগ)",
-   "type": "govt",
-   "title_bn": "",
-   "category": "সরকারি",
-   "first_seen": "2026-11-22T16:19:58+06:00"
-  },
-  {
-   "id": "6184d06bac7a",
-   "title": "কর্মকর্তাবৃন্দ",
-   "url": "https://cabinet.gov.bd/pages/officers?filters=%7B%22officer_category%22%3A%20%2269402ff43a9d8304af772bef%22%7D",
-   "source": "মন্ত্রিপরিষদ বিভাগ",
-   "type": "govt",
-   "title_bn": "",
-   "category": "সরকারি",
-   "first_seen": "2026-11-22T16:19:58+06:00"
-  },
-  {
-   "id": "eefd53006a99",
-   "title": "তথ্য প্রদানকারী কর্মকর্তা",
-   "url": "https://cabinet.gov.bd/pages/info-officers",
-   "source": "মন্ত্রিপরিষদ বিভাগ",
-   "type": "govt",
-   "title_bn": "",
-   "category": "সরকারি",
-   "first_seen": "2026-11-22T16:19:58+06:00"
-  },
-  {
-   "id": "3f570d28344b",
-   "title": "অভিযোগ নিষ্পত্তি কর্মকর্তা",
-   "url": "https://cabinet.gov.bd/pages/static-pages/cabinet-division-s-anik-and-appellate-officers-9f0847-694032a635ce18e1c055ff4f",
-   "source": "মন্ত্রিপরিষদ বিভাগ",
-   "type": "govt",
-   "title_bn": "",
-   "category": "সরকারি",
-   "first_seen": "2026-11-22T16:19:58+06:00"
-  },
-  {
-   "id": "04ca8a2da29a",
-   "title": "আপিল কর্মকর্তা",
-   "url": "https://cabinet.gov.bd/pages/static-pages/appellate-officer-z94lmd-6a4f564d23142f2e0fa25775",
-   "source": "মন্ত্রিপরিষদ বিভাগ",
-   "type": "govt",
-   "title_bn": "",
-   "category": "সরকারি",
-   "first_seen": "2026-11-22T16:19:58+06:00"
-  },
-  {
-   "id": "f811de3d17c5",
-   "title": "ফোকাল পয়েন্ট কর্মকর্তাগণ",
-   "url": "https://cabinet.gov.bd/pages/static-pages/focal-point-officers-jcac28-6afc145588a6e7617a00ea3e",
-   "source": "মন্ত্রিপরিষদ বিভাগ",
-   "type": "govt",
-   "title_bn": "",
-   "category": "সরকারি",
-   "first_seen": "2026-11-22T16:19:58+06:00"
-  },
-  {
-   "id": "c8b5fafbe26d",
-   "title": "মন্ত্রী/প্রতিমন্ত্রী পদমর্যাদায় উপদেষ্টাগণ",
-   "url": "https://cabinet.gov.bd/pages/static-pages/মন্ত্রীপ্রতিমন্ত্রী-পদমর্যাদায়-উপদেষ্টাগণ-u070iq-6996824c44b7c90f92230824",
-   "source": "মন্ত্রিপরিষদ বিভাগ",
-   "type": "govt",
-   "title_bn": "",
-   "category": "সরকারি",
-   "first_seen": "2026-11-22T16:19:58+06:00"
-  },
-  {
-   "id": "f6f7fcbb0f00",
-   "title": "প্রতিমন্ত্রী পদমর্যাদাপ্রাপ্ত ব্যক্তিগণ",
-   "url": "https://cabinet.gov.bd/pages/static-pages/special-assistants-with-the-status-of-a-state-minister-ieyakg-69cea76283b3473cbf02a2c9",
-   "source": "মন্ত্রিপরিষদ বিভাগ",
-   "type": "govt",
-   "title_bn": "",
-   "category": "সরকারি",
-   "first_seen": "2026-11-22T16:19:58+06:00"
-  },
-  {
-   "id": "1f3cb7185bf6",
-   "title": "কর্মকর্তাবৃন্দ",
-   "url": "https://www.bpsc.gov.bd/pages/officers",
-   "source": "BPSC",
-   "type": "govt",
-   "title_bn": "",
-   "category": "সরকারি",
-   "first_seen": "2026-11-22T16:19:58+06:00"
-  },
-  {
-   "id": "243e1c6be304",
-   "title": "কর্মকর্তাবৃন্দ",
-   "url": "https://mopa.gov.bd/pages/officers",
-   "source": "জনপ্রশাসন মন্ত্রণালয়",
-   "type": "govt",
-   "title_bn": "",
-   "category": "সরকারি",
-   "first_seen": "2026-11-22T16:19:58+06:00"
-  },
-  {
-   "id": "35cc3c01d53a",
-   "title": "তথ্য প্রদানকারী কর্মকর্তা",
-   "url": "https://mopa.gov.bd/pages/officers/69413991a31054345f0e5e2e",
-   "source": "জনপ্রশাসন মন্ত্রণালয়",
-   "type": "govt",
-   "title_bn": "",
-   "category": "সরকারি",
-   "first_seen": "2026-11-22T16:19:58+06:00"
-  },
-  {
-   "id": "5fdebb36c1d2",
-   "title": "অভিযোগ নিষ্পত্তিকারী কর্মকর্তা (অনিক)",
-   "url": "https://mopa.gov.bd/pages/officers/69413992a31054345f0e5f2a",
-   "source": "জনপ্রশাসন মন্ত্রণালয়",
-   "type": "govt",
-   "title_bn": "",
-   "category": "সরকারি",
-   "first_seen": "2026-11-22T16:19:58+06:00"
-  },
-  {
-   "id": "d04867f61fd8",
-   "title": "আপিল কর্মকর্তা",
-   "url": "https://mopa.gov.bd/pages/officers/69413991a31054345f0e5dd6",
-   "source": "জনপ্রশাসন মন্ত্রণালয়",
-   "type": "govt",
-   "title_bn": "",
-   "category": "সরকারি",
-   "first_seen": "2026-11-22T16:19:58+06:00"
-  },
-  {
-   "id": "04fa3e8bad7f",
-   "title": "নিয়োগ বিধি",
-   "url": "https://mopa.gov.bd/pages/jobs",
-   "source": "জনপ্রশাসন মন্ত্রণালয়",
-   "type": "govt",
-   "title_bn": "",
-   "category": "সরকারি",
-   "first_seen": "2026-11-22T16:19:58+06:00"
-  },
-  {
-   "id": "1a80500b4860",
-   "title": "সার্কুলার",
-   "url": "https://mopa.gov.bd/pages/notification-circulars",
-   "source": "জনপ্রশাসন মন্ত্রণালয়",
-   "type": "govt",
-   "title_bn": "",
-   "category": "সরকারি",
-   "first_seen": "2026-11-22T16:19:58+06:00"
-  },
-  {
-   "id": "c58a54ed618e",
-   "title": "Career 360",
-   "url": "https://www.skill.jobs/360",
-   "source": "Skill.Jobs",
-   "type": "private",
-   "title_bn": "",
-   "category": "অন্যান্য",
-   "first_seen": "2026-11-22T16:19:58+06:00"
-  },
-  {
-   "id": "1389eb072cb0",
-   "title": "Skill Assessment",
-   "url": "https://www.skill.jobs/skill-assessment",
-   "source": "Skill.Jobs",
-   "type": "private",
-   "title_bn": "",
-   "category": "অন্যান্য",
-   "first_seen": "2026-11-22T16:19:58+06:00"
-  },
-  {
-   "id": "515014f74a49",
-   "title": "Training",
-   "url": "https://training.skill.jobs",
-   "source": "Skill.Jobs",
-   "type": "private",
-   "title_bn": "",
-   "category": "অন্যান্য",
-   "first_seen": "2026-11-22T16:19:58+06:00"
-  },
-  {
-   "id": "5c31a6ebbd71",
-   "title": "Membership",
-   "url": "https://www.skill.jobs/paid-membership",
-   "source": "Skill.Jobs",
-   "type": "private",
-   "title_bn": "",
-   "category": "অন্যান্য",
-   "first_seen": "2026-11-22T16:19:58+06:00"
-  },
-  {
-   "id": "3c93ae5eef86",
-   "title": "Corporate",
-   "url": "https://www.skill.jobs/corporate",
-   "source": "Skill.Jobs",
-   "type": "private",
-   "title_bn": "",
-   "category": "অন্যান্য",
-   "first_seen": "2026-11-22T16:19:58+06:00"
-  },
-  {
-   "id": "26104370a58e",
-   "title": "Browse Jobs",
-   "url": "https://www.skill.jobs/browse-jobs",
-   "source": "Skill.Jobs",
-   "type": "private",
-   "title_bn": "",
-   "category": "অন্যান্য",
+   "title_bn": "শিক্ষক প্রতিস্থাপন নিয়োগ বিজ্ঞপ্তি",
+   "category": "শিক্ষা",
    "first_seen": "2026-11-22T16:19:58+06:00"
   },
   {
@@ -9287,7 +8856,7 @@
    "url": "https://www.skill.jobs/browse-jobs?search=Lecturer",
    "source": "Skill.Jobs",
    "type": "private",
-   "title_bn": "",
+   "title_bn": "প্রভাষক নিয়োগ",
    "category": "শিক্ষা",
    "first_seen": "2026-11-22T16:19:58+06:00"
   },
@@ -9297,7 +8866,7 @@
    "url": "https://www.skill.jobs/browse-jobs?search=Professor",
    "source": "Skill.Jobs",
    "type": "private",
-   "title_bn": "",
+   "title_bn": "অধ্যাপক নিয়োগ",
    "category": "শিক্ষা",
    "first_seen": "2026-11-22T16:19:58+06:00"
   },
@@ -9307,7 +8876,7 @@
    "url": "https://www.skill.jobs/browse-jobs?type=Internship",
    "source": "Skill.Jobs",
    "type": "private",
-   "title_bn": "",
+   "title_bn": "ইন্টার্নশিপ বিজ্ঞপ্তি",
    "category": "অন্যান্য",
    "first_seen": "2026-11-22T16:19:58+06:00"
   },
@@ -9317,18 +8886,8 @@
    "url": "https://www.skill.jobs/browse-jobs?search=Data+Science",
    "source": "Skill.Jobs",
    "type": "private",
-   "title_bn": "",
+   "title_bn": "ডেটা সায়েন্স চাকরি",
    "category": "আইটি",
-   "first_seen": "2026-11-22T16:19:58+06:00"
-  },
-  {
-   "id": "1f46cbe12698",
-   "title": "Fortune 500",
-   "url": "https://www.skill.jobs/browse-jobs?search=Fortune+500",
-   "source": "Skill.Jobs",
-   "type": "private",
-   "title_bn": "",
-   "category": "অন্যান্য",
    "first_seen": "2026-11-22T16:19:58+06:00"
   },
   {
@@ -9337,97 +8896,7 @@
    "url": "https://www.skill.jobs/browse-jobs?search=Supply+Chain",
    "source": "Skill.Jobs",
    "type": "private",
-   "title_bn": "",
-   "category": "অন্যান্য",
-   "first_seen": "2026-11-22T16:19:58+06:00"
-  },
-  {
-   "id": "d26926005a5f",
-   "title": "Analytics",
-   "url": "https://www.skill.jobs/browse-jobs?search=Analytics",
-   "source": "Skill.Jobs",
-   "type": "private",
-   "title_bn": "",
-   "category": "অন্যান্য",
-   "first_seen": "2026-11-22T16:19:58+06:00"
-  },
-  {
-   "id": "9d34374ff34e",
-   "title": "Marketing",
-   "url": "https://www.skill.jobs/browse-jobs?search=Marketing",
-   "source": "Skill.Jobs",
-   "type": "private",
-   "title_bn": "",
-   "category": "অন্যান্য",
-   "first_seen": "2026-11-22T16:19:58+06:00"
-  },
-  {
-   "id": "1ffd46e7b421",
-   "title": "Engineering",
-   "url": "https://www.skill.jobs/browse-jobs?search=Engineering",
-   "source": "Skill.Jobs",
-   "type": "private",
-   "title_bn": "",
-   "category": "প্রকৌশল",
-   "first_seen": "2026-11-22T16:19:58+06:00"
-  },
-  {
-   "id": "70914a6e7b41",
-   "title": "Engineering & IT",
-   "url": "https://www.skill.jobs/browse-jobs?search=Software",
-   "source": "Skill.Jobs",
-   "type": "private",
-   "title_bn": "",
-   "category": "আইটি",
-   "first_seen": "2026-11-22T16:19:58+06:00"
-  },
-  {
-   "id": "52139de1724c",
-   "title": "Design & Creative",
-   "url": "https://www.skill.jobs/browse-jobs?search=Design",
-   "source": "Skill.Jobs",
-   "type": "private",
-   "title_bn": "",
-   "category": "অন্যান্য",
-   "first_seen": "2026-11-22T16:19:58+06:00"
-  },
-  {
-   "id": "128a29b76015",
-   "title": "Finance & Accounts",
-   "url": "https://www.skill.jobs/browse-jobs?search=Accounts",
-   "source": "Skill.Jobs",
-   "type": "private",
-   "title_bn": "",
-   "category": "অন্যান্য",
-   "first_seen": "2026-11-22T16:19:58+06:00"
-  },
-  {
-   "id": "4e661cd0887c",
-   "title": "Healthcare",
-   "url": "https://www.skill.jobs/browse-jobs?search=Medical",
-   "source": "Skill.Jobs",
-   "type": "private",
-   "title_bn": "",
-   "category": "স্বাস্থ্য",
-   "first_seen": "2026-11-22T16:19:58+06:00"
-  },
-  {
-   "id": "91ef545090f8",
-   "title": "Data & AI",
-   "url": "https://www.skill.jobs/browse-jobs?search=Data",
-   "source": "Skill.Jobs",
-   "type": "private",
-   "title_bn": "",
-   "category": "আইটি",
-   "first_seen": "2026-11-22T16:19:58+06:00"
-  },
-  {
-   "id": "86e22979eed2",
-   "title": "HR & Admin",
-   "url": "https://www.skill.jobs/browse-jobs?search=HR",
-   "source": "Skill.Jobs",
-   "type": "private",
-   "title_bn": "",
+   "title_bn": "সাপ্লাই চেইন চাকরি",
    "category": "অন্যান্য",
    "first_seen": "2026-11-22T16:19:58+06:00"
   },
@@ -9437,7 +8906,7 @@
    "url": "https://www.skill.jobs/jobs/junior-video-editor-betopia-group-qluSjx4A",
    "source": "Skill.Jobs",
    "type": "private",
-   "title_bn": "",
+   "title_bn": "জুনিয়র ভিডিও এডিটর - বিটোপিয়া গ্রুপ",
    "category": "অন্যান্য",
    "first_seen": "2026-11-22T16:19:58+06:00"
   },
@@ -9447,7 +8916,7 @@
    "url": "https://www.skill.jobs/jobs/business-development-executive-betopia-group-dMFkyvUa",
    "source": "Skill.Jobs",
    "type": "private",
-   "title_bn": "",
+   "title_bn": "বিজনেস ডেভেলপমেন্ট এক্সিকিউটিভ - বিটোপিয়া গ্রুপ",
    "category": "অন্যান্য",
    "first_seen": "2026-11-22T16:19:58+06:00"
   },
@@ -9457,7 +8926,7 @@
    "url": "https://www.skill.jobs/jobs/junior-wordpress-developer-betopia-group-rFroVQGI",
    "source": "Skill.Jobs",
    "type": "private",
-   "title_bn": "",
+   "title_bn": "জুনিয়র ওয়ার্ডপ্রেস ডেভেলপার - বিটোপিয়া গ্রুপ",
    "category": "আইটি",
    "first_seen": "2026-11-22T16:19:58+06:00"
   },
@@ -9689,36 +9158,6 @@
    "type": "private",
    "title_bn": "",
    "category": "অন্যান্য",
-   "first_seen": "2026-11-22T16:19:58+06:00"
-  },
-  {
-   "id": "a5017409db81",
-   "title": "Government Jobs",
-   "url": "https://alljobs.teletalk.com.bd/jobs/government",
-   "source": "Teletalk সরকারি চাকরি",
-   "type": "govt",
-   "title_bn": "",
-   "category": "সরকারি",
-   "first_seen": "2026-11-22T16:19:58+06:00"
-  },
-  {
-   "id": "55fa3e7aec1b",
-   "title": "Private Jobs",
-   "url": "https://alljobs.teletalk.com.bd/jobs/private",
-   "source": "Teletalk সরকারি চাকরি",
-   "type": "govt",
-   "title_bn": "",
-   "category": "সরকারি",
-   "first_seen": "2026-11-22T16:19:58+06:00"
-  },
-  {
-   "id": "8682da71c379",
-   "title": "Trust & Safety",
-   "url": "https://alljobs.teletalk.com.bd/trust-and-safety",
-   "source": "Teletalk সরকারি চাকরি",
-   "type": "govt",
-   "title_bn": "",
-   "category": "সরকারি",
    "first_seen": "2026-11-22T16:19:58+06:00"
   }
  ]
