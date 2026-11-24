@@ -6,6 +6,7 @@ from collections import Counter
 from datetime import datetime, timezone, timedelta
 
 SITE = "https://chakrirkhobor.pages.dev"
+CONTACT = "nazmul.24x@gmail.com"
 BD = timezone(timedelta(hours=6))
 NOW = datetime.now(BD)
 GROUPS = ["আজ", "গতকাল", "এই সপ্তাহ", "আগের"]
@@ -54,15 +55,18 @@ for j in jobs:
     
     title = j.get("title_bn") or j["title"]
     
-    # --- ফিক্স: টাইটেলে সরকারি চাকরির কি-ওয়ার্ড থাকলে অটোমেটিক 'govt' ধরে নেবে ---
+    # --- ফিক্স: টাইটেলে সরকারি চাকরির কি-ওয়ার্ড থাকলে অটোমেটিক 'govt' ধরে নেবে ---
     search_text = (title + " " + j.get("title", "")).lower()
     govt_keywords = [
         "কর অঞ্চল", "অধিদপ্তর", "মন্ত্রণালয়", "কমিশনার", "আদালত", 
         "বিশ্ববিদ্যালয়", "পুলিশ", "সেনাবাহিনী", "এনবিআর", "nbr", 
-        "প্রশাসন", "সরকারি", "সচিবালয়", "মহাপরিচালক"
+        "প্রশাসন", "সরকারি", "সচিবালয়", "মহাপরিচালক",
+        "সিভিল সার্জন", "জেলা প্রশাসক", "উপজেলা", "পরিষদ"
     ]
     is_govt_keyword = any(k in search_text for k in govt_keywords)
-    kind = "govt" if (j.get("type") == "govt" or is_govt_keyword) else "private"
+    # সোর্স বা ক্যাটাগরি সরকারি হলেও govt ধরা হবে
+    is_govt_source = "govt" in str(j.get("source", "")).lower() or j.get("category") == "সরকারি"
+    kind = "govt" if (j.get("type") == "govt" or is_govt_keyword or is_govt_source) else "private"
     # -------------------------------------------------------------------------
 
     cat = j.get("category") or "অন্যান্য"
@@ -142,6 +146,10 @@ button,input{font:inherit}
 .hero-inner{position:relative;z-index:1}
 .eyebrow{display:inline-flex;align-items:center;gap:7px;padding:5px 11px;border:1px solid #ffffff25;background:#ffffff12;border-radius:99px;font-size:.86rem;color:#c9f5d8}
 .pulse{width:7px;height:7px;background:#77efa4;border-radius:50%;box-shadow:0 0 0 4px #77efa422}
+.eyerow{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.mailbtn{display:grid;place-items:center;width:34px;height:34px;border:1px solid #ffffff25;background:#ffffff12;border-radius:50%;color:#c9f5d8}
+.mailbtn svg{width:17px;height:17px}
+.mailbtn:hover{background:#ffffff22}
 h1{font-size:clamp(1.8rem,5vw,2.65rem);line-height:1.25;margin:13px 0 7px;font-weight:800;letter-spacing:-.4px}
 .hero p{margin:0;color:#d3eadb;font-size:1rem;max-width:34em}
 .statrow{display:flex;align-items:stretch;gap:10px;flex-wrap:wrap;margin-top:20px}
@@ -243,9 +251,10 @@ footer{padding:20px 0 36px;text-align:center;color:var(--mut);font-size:.84rem;b
 </header>
 <section class="hero">
  <div class="hero-inner">
-  <span class="eyebrow"><i class="pulse"></i> প্রতিদিন নতুন চাকরির আপডেট</span>
-  <h1>আপনার ক্যারিয়ারের <br>পরবর্তী সুযোগ খুঁজুন</h1>
-  <p>বাংলাদেশের সরকারি ও বেসরকারি নিয়োগ বিজ্ঞপ্তি—সব এক জায়গায়, সহজে খুঁজুন।</p>
+  <div class="eyerow"><span class="eyebrow"><i class="pulse"></i> প্রতিদিন নতুন চাকরির আপডেট</span>
+  <a class="mailbtn" href="mailto:__CONTACT__" aria-label="ইমেইলে যোগাযোগ" title="যোগাযোগ করুন"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg></a></div>
+  <h1>আপনার ক্যারিয়ারের <br>পরবর্তী সুযোগ খুঁজুন</h1>
+  <p>বাংলাদেশের সরকারি ও বেসরকারি নিয়োগ বিজ্ঞপ্তি—সব এক জায়গায়, সহজে খুঁজুন।</p>
   <div class="statrow">
    <div class="statbox"><strong>__TODAY__টি</strong><span>আজকের নতুন বিজ্ঞপ্তি</span></div>
    <div class="statbox"><strong>__COUNT__টি</strong><span>মোট চাকরির বিজ্ঞপ্তি</span></div>
@@ -323,7 +332,7 @@ themeBtn.addEventListener("click",function(){setTheme(root.getAttribute("data-th
 """
 
 body = "".join(sections) if sections else '<p class="empty">এখনো কোনো বিজ্ঞপ্তি নেই। কিছুক্ষণ পর আবার দেখুন।</p>'
-html = (PAGE.replace("__SITE__", SITE).replace("__TODAY__", bn(today_count))
+html = (PAGE.replace("__SITE__", SITE).replace("__CONTACT__", CONTACT).replace("__TODAY__", bn(today_count))
         .replace("__COUNT__", bn(len(jobs))).replace("__UPD__", escape(upd))
         .replace("__CHIPS__", chips).replace("__LIST__", body))
 
