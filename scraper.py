@@ -74,6 +74,7 @@ SOURCES += [_gnews(n, d) for n, d in [
     ("মানবজমিন", "mzamin.com"), ("জনকণ্ঠ", "dailyjanakantha.com"),
     ("আমাদের সময়", "dainikamadershomoy.com"), ("রাইজিংবিডি", "risingbd.com"), ("কালবেলা", "kalbela.com"),
 ]]
+SRC_TYPE = {s["name"]: s["type"] for s in SOURCES}
 
 JOB_RE = re.compile(
     r"নিয়োগ|বিজ্ঞপ্তি|চাকরি|চাকুরি|পদে|লোকবল|আবেদন|সার্কুলার|"
@@ -132,6 +133,24 @@ GOVT_RE = re.compile(
     r"জেলা প্রশাসক|পরিষদ|বিশ্ববিদ্যালয়|govt|government|ministry|bpsc|\bbcs\b|teletalk|police|"
     r"army|navy|railway|bangladesh bank|directorate|department|ntrca", re.I)
 
+# সরকারি কীওয়ার্ডের নতুন মডিউল (govt_keywords.py, scraper.py-র পাশেই রাখুন)।
+# মডিউল না পেলে/ভেঙে গেলে আগের GOVT_RE দিয়েই চলবে, তাই বট কখনো থামবে না।
+try:
+    from govt_keywords import is_govt as _kw_is_govt
+except Exception as _e:  # noqa
+    print(f"[warn] govt_keywords লোড হয়নি, পুরোনো নিয়মে চলবে: {_e}")
+    _kw_is_govt = None
+
+
+def is_govt_text(text, strict=False):
+    """strict=True: শুধু নিশ্চিত সরকারি নাম/ডোমেইন মিললে True।"""
+    if _kw_is_govt:
+        try:
+            return bool(_kw_is_govt(text, strict=strict))
+        except Exception:  # noqa
+            pass
+    return (not strict) and bool(GOVT_RE.search(text))
+
 
 NONJOB_RE = re.compile(
     r"রেজাল্ট|ফলাফল|প্রবেশপত্র|এডমিট কার্ড|admit card|সিলেবাস|syllabus|ভর্তি বিজ্ঞপ্তি|ভর্তি পরীক্ষা|"
@@ -148,6 +167,28 @@ NONJOB_RE = re.compile(
     r"নবায়ন|হালনাগাদ|প্রজ্ঞাপন|পরিপত্র|তথ্য অধিকার|বার্ষিক কর্মসম্পাদন|"
     r"trust ?& ?safety|^\s*(?:government jobs|private jobs|jobs|careers)\s*$|"
     r"^\s*(?:কর্মকর্তাবৃন্দ|কর্মকর্তা|কর্মচারীবৃন্দ|সার্কুলার|নোটিশ|নিয়োগ বিধি|আদেশ|সংবাদ)\s*$", re.I)
+
+# আবেদন পোর্টাল/নির্দেশনা পেজ চাকরির পোস্ট নয়
+NONJOB_RE = re.compile(
+    NONJOB_RE.pattern + r"|রোল, ?ব্যাচ|ড্রাফট|final submission|ইউজার আইডি|user id|কাস্টোমার কেয়ার|"
+    r"আবেদন প্রক্রিয়া|আবেদনের নিয়মাবলী|আবেদনের নির্দেশনা", re.I)
+
+# সরাসরি IP বা পোর্ট-ওয়ালা লিংক (যেমন http://x.x.x.x:8182/...) আসল বিজ্ঞপ্তি পেজ নয়
+BAD_URL_RE = re.compile(r"^https?://(?:\d{1,3}\.){3}\d{1,3}(?::\d+)?(?:/|$)|^https?://[^/]+:\d{2,5}(?:/|$)")
+_BN_DIG = str.maketrans("০১২৩৪৫৬৭৮৯", "0123456789")
+
+
+def is_stale_title(title):
+    """শিরোনামে শুধু পুরোনো বছর (যেমন ২০২৫) থাকলে true। জানুয়ারি-ফেব্রুয়ারিতে গত বছরেরটা ছাড় দেওয়া হয়।"""
+    tt = title.translate(_BN_DIG)
+    years = [int(y) for y in re.findall(r"(?<!\d)(20\d\d)(?!\d)", tt)]
+    years += [2000 + int(y) for y in re.findall(r"(?<!\d)20\d\d\s*[-–/]\s*(\d\d)(?!\d)", tt)]  # ২০২৫-২৬ অর্থবছর
+    if not years:
+        return False
+    cur = now().year
+    floor = cur - 1 if now().month <= 2 else cur
+    return max(years) < floor
+
 
 CAT_RULES = [
     ("ব্যাংক", r"ব্যাংক|\bbank\b|বীমা|insurance|ইসলামী ব্যাংক|ক্রেডিট"),
@@ -170,15 +211,18 @@ def rule_category(it):
     for cat, rx in CAT_RES:
         if rx.search(t):
             return cat
-    if it.get("type") == "govt" or GOVT_RE.search(t):
+    if it.get("type") == "govt" or is_govt_text(t):
         return "সরকারি"
     return "অন্যান্য"
 
 
 def fix_type(src, items):
-    if src.get("type") == "mixed":
-        for it in items:
-            it["type"] = "govt" if GOVT_RE.search(it["title"]) else "private"
+    for it in items:
+        if src.get("type") == "mixed":
+            it["type"] = "govt" if is_govt_text(it["title"]) else "private"
+        elif src.get("type") != "govt" and is_govt_text(it["title"], strict=True):
+            # বেসরকারি-ট্যাগ করা সাইটে নিশ্চিত সরকারি নাম (যেমন Sonali Bank, Tax Commissioner) থাকলে আপগ্রেড
+            it["type"] = "govt"
     return items
 
 
@@ -512,7 +556,7 @@ def main():
 
     keep = []
     for it in new_items:  # নিজস্ব ফিল্টার: ননজব আগেই বাদ (Gemini কোটা বাঁচে)
-        if NONJOB_RE.search(it["title"]):
+        if NONJOB_RE.search(it["title"]) or BAD_URL_RE.search(it["url"]) or is_stale_title(it["title"]):
             skipped.append({"id": it["id"], "title": it["title"]})
         else:
             keep.append(it)
@@ -539,9 +583,17 @@ def main():
     # পুরোনো জব: নিজস্ব ফিল্টার ও ক্যাটাগরি (Gemini-র শিরোনাম না থাকলে)
     cleaned = []
     for j in jobs:
-        if NONJOB_RE.search(j["title"]) or NONJOB_RE.search(j.get("title_bn", "")):
+        if (NONJOB_RE.search(j["title"]) or NONJOB_RE.search(j.get("title_bn", ""))
+                or BAD_URL_RE.search(j.get("url", "")) or is_stale_title(j["title"])):
             skipped.append({"id": j["id"], "title": j["title"]})
             continue
+        # আগে ভুল ট্যাগ হওয়া জবও ঠিক হবে (যেমন "বেসরকারি" লেখাকে সরকারি ধরা, বা নিশ্চিত সরকারি নাম বেসরকারি থাকা)
+        st = SRC_TYPE.get(j.get("source"))
+        txt = f'{j["title"]} {j.get("title_bn", "")}'
+        if st == "mixed":
+            j["type"] = "govt" if is_govt_text(txt) else "private"
+        elif st not in ("govt", None) and is_govt_text(txt, strict=True):
+            j["type"] = "govt"
         if not j.get("title_bn"):
             j["category"] = rule_category(j)
         cleaned.append(j)
