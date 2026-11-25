@@ -1,6 +1,8 @@
 #!/usr/bin/env python3
-"""jobs.json থেকে index.html ও sitemap.xml বানায়। (ডিজাইন আপডেট; automation/data logic অপরিবর্তিত)"""
+"""jobs.json থেকে index.html, sitemap.xml ও robots.txt বানায়।
+(ফিক্স: সরকারি/বেসরকারি শনাক্তকরণ, ক্র্যাশ-সেফ ডেটা, SEO, ক্যাটাগরি কাউন্ট)"""
 import json
+import re
 from html import escape
 from collections import Counter
 from datetime import datetime, timezone, timedelta
@@ -10,17 +12,61 @@ CONTACT = "nazmul.24x@gmail.com"
 BD = timezone(timedelta(hours=6))
 NOW = datetime.now(BD)
 GROUPS = ["আজ", "গতকাল", "এই সপ্তাহ", "আগের"]
+# হেডিংয়ে কিওয়ার্ডসহ নাম দেখাবে (SEO)
+GROUP_TITLE = {
+    "আজ": "আজকের চাকরির খবর",
+    "গতকাল": "গতকালের চাকরির খবর",
+    "এই সপ্তাহ": "এই সপ্তাহের চাকরির খবর",
+    "আগের": "আগের চাকরির বিজ্ঞপ্তি",
+}
+
+# ---------- সরকারি / বেসরকারি শনাক্তকরণ ----------
+# লক্ষ্য করো: এখানে "সরকারি", "বিশ্ববিদ্যালয়", "প্রশাসন" নেই,
+# কারণ "বেসরকারি"-র ভেতরেই "সরকারি" আছে এবং বাকি দুটো প্রাইভেটেও ব্যবহার হয়।
+GOVT_KW = [
+    "অধিদপ্তর", "অধিদফতর", "মন্ত্রণালয়", "জেলা প্রশাসক", "সিভিল সার্জন",
+    "মহাপরিচালক", "কর অঞ্চল", "কমিশনার", "এনবিআর", "সচিবালয়", "সেনাবাহিনী",
+    "উপজেলা পরিষদ", "জেলা পরিষদ", "ইউনিয়ন পরিষদ", "বিসিএস",
+    "পাবলিক সার্ভিস কমিশন", "পুলিশ", "আদালত", "জজ কোর্ট",
+    "জাতীয় বিশ্ববিদ্যালয়", "পাবলিক বিশ্ববিদ্যালয়",
+]
+PRIVATE_KW = ["লিমিটেড", "পিএলসি", "এনজিও", "প্রাইভেট", "বেসরকারি", "ব্যাংক লি"]
+PRIVATE_EN = re.compile(r"\b(ltd|limited|plc|ngo|private|pvt)\b", re.I)
 
 
+def kind_of(j, title):
+    # ১) স্পষ্ট type থাকলে সেটাই চূড়ান্ত
+    t = str(j.get("type", "")).strip().lower()
+    if t in ("govt", "private"):
+        return t
+    # ২) সোর্স/ক্যাটাগরি
+    if "govt" in str(j.get("source", "")).lower() or j.get("category") == "সরকারি":
+        return "govt"
+    if j.get("category") == "বেসরকারি":
+        return "private"
+    # ৩) কিওয়ার্ড: আগে বেসরকারি চেক, তারপর সরকারি
+    text = f"{title} {j.get('title', '')}".lower()
+    if any(k in text for k in PRIVATE_KW) or PRIVATE_EN.search(text):
+        return "private"
+    if any(k in text for k in GOVT_KW):
+        return "govt"
+    return "private"
+
+
+# ---------- হেল্পার ----------
 def bn(n):
     return str(n).translate(str.maketrans("0123456789", "০১২৩৪৫৬৭৮৯"))
 
 
 def parse(iso):
+    """টাইমজোন না থাকলে BD ধরে; Z সাপোর্ট করে; সবসময় BD টাইমজোনে ফেরত দেয়।"""
+    if not iso:
+        return None
     try:
-        return datetime.fromisoformat(iso)
+        dt = datetime.fromisoformat(str(iso).replace("Z", "+00:00"))
     except Exception:
         return None
+    return dt.replace(tzinfo=BD) if dt.tzinfo is None else dt.astimezone(BD)
 
 
 def group_of(dt):
@@ -37,13 +83,27 @@ def ago(dt):
     return "এইমাত্র" if h < 1 else f"{bn(h)} ঘণ্টা আগে" if h < 24 else f"{bn(h // 24)} দিন আগে"
 
 
+# ---------- ডেটা লোড ----------
 try:
     with open("jobs.json", encoding="utf-8") as f:
         db = json.load(f)
 except Exception:
     db = {}
-jobs = db.get("jobs", []) if isinstance(db, dict) else []
-jobs.sort(key=lambda j: j.get("first_seen", ""), reverse=True)
+raw_jobs = db.get("jobs", []) if isinstance(db, dict) else []
+
+jobs = []
+for j in raw_jobs:
+    if not isinstance(j, dict):
+        continue
+    url = str(j.get("url", "")).strip()
+    # শুধু http/https লিংক; javascript: ইত্যাদি বাদ
+    if not url.lower().startswith(("http://", "https://")):
+        continue
+    if not (j.get("title_bn") or j.get("title")):
+        continue
+    jobs.append(j)
+
+jobs.sort(key=lambda j: str(j.get("first_seen", "")), reverse=True)
 updated = parse(db.get("updated", "")) if isinstance(db, dict) else None
 
 buckets = {g: [] for g in GROUPS}
@@ -52,35 +112,24 @@ today_count = 0
 for j in jobs:
     dt = parse(j.get("first_seen", ""))
     g = group_of(dt)
-    
-    title = j.get("title_bn") or j["title"]
-    
-    # --- ফিক্স: টাইটেলে সরকারি চাকরির কি-ওয়ার্ড থাকলে অটোমেটিক 'govt' ধরে নেবে ---
-    search_text = (title + " " + j.get("title", "")).lower()
-    govt_keywords = [
-        "কর অঞ্চল", "অধিদপ্তর", "মন্ত্রণালয়", "কমিশনার", "আদালত", 
-        "বিশ্ববিদ্যালয়", "পুলিশ", "সেনাবাহিনী", "এনবিআর", "nbr", 
-        "প্রশাসন", "সরকারি", "সচিবালয়", "মহাপরিচালক",
-        "সিভিল সার্জন", "জেলা প্রশাসক", "উপজেলা", "পরিষদ"
-    ]
-    is_govt_keyword = any(k in search_text for k in govt_keywords)
-    # সোর্স বা ক্যাটাগরি সরকারি হলেও govt ধরা হবে
-    is_govt_source = "govt" in str(j.get("source", "")).lower() or j.get("category") == "সরকারি"
-    kind = "govt" if (j.get("type") == "govt" or is_govt_keyword or is_govt_source) else "private"
-    # -------------------------------------------------------------------------
 
-    cat = j.get("category") or "অন্যান্য"
+    raw_title = str(j.get("title", ""))
+    title = str(j.get("title_bn") or raw_title)
+    source = str(j.get("source", "") or "অজানা সোর্স")
+    kind = kind_of(j, title)
+
+    cat = str(j.get("category") or "অন্যান্য")
     cats[cat] += 1
     if g == "আজ":
         today_count += 1
     fresh = dt is not None and (NOW - dt).total_seconds() < 86400
-    q = escape(f"{title} {j['title']} {j['source']} {cat}".lower())
+    q = escape(f"{title} {raw_title} {source} {cat}".lower())
     buckets[g].append(
-        f'<a class="job {kind}" href="{escape(j["url"])}" target="_blank" rel="nofollow noopener" '
+        f'<a class="job {kind}" href="{escape(str(j["url"]).strip())}" target="_blank" rel="nofollow noopener" '
         f'data-k="{kind}" data-c="{escape(cat)}" data-q="{q}">'
         f'<span class="ttl">{escape(title)}{"<i class=dot title=নতুন></i>" if fresh else ""}</span>'
         f'<span class="meta"><b class="tag">{"সরকারি" if kind == "govt" else "বেসরকারি"}</b>'
-        f'<span>{escape(cat)}</span><span>{escape(j["source"])}</span>' +
+        f'<span>{escape(cat)}</span><span>{escape(source)}</span>' +
         (f'<span>শেষ: {escape(str(j["deadline"]))}</span>' if j.get("deadline") else "") +
         f'<span class="when">{ago(dt)}</span></span></a>'
     )
@@ -89,7 +138,7 @@ sections = []
 for g in GROUPS:
     if buckets[g]:
         sections.append(
-            f'<section class="grp"><h2>{g}<small>{bn(len(buckets[g]))}টি</small></h2>'
+            f'<section class="grp"><h2>{GROUP_TITLE[g]}<small>{bn(len(buckets[g]))}টি</small></h2>'
             f'<div class="list">{"".join(buckets[g])}</div></section>'
         )
 chips = "".join(
@@ -103,11 +152,22 @@ PAGE = """<!DOCTYPE html>
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>চাকরির খবর | বাংলাদেশের সরকারি ও বেসরকারি নতুন চাকরির বিজ্ঞপ্তি</title>
-<meta name="description" content="বাংলাদেশের সরকারি ও বেসরকারি সব নতুন নিয়োগ বিজ্ঞপ্তি এক জায়গায়। প্রতি কয়েক ঘণ্টায় আপডেট।">
-<meta property="og:title" content="চাকরির খবর">
-<meta property="og:description" content="বাংলাদেশের সরকারি ও বেসরকারি নতুন চাকরির বিজ্ঞপ্তি, প্রতি কয়েক ঘণ্টায় আপডেট।">
+<title>চাকরির খবর | সরকারি ও বেসরকারি নতুন চাকরি</title>
+<meta name="description" content="বাংলাদেশের সরকারি ও বেসরকারি সব নতুন চাকরির বিজ্ঞপ্তি এক জায়গায়। আজকের চাকরির খবর, শেষ তারিখ ও আবেদনের লিংক, প্রতি কয়েক ঘণ্টায় আপডেট।">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<meta name="theme-color" content="#16804c">
 <link rel="canonical" href="__SITE__/">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%2316804c'/%3E%3Ctext x='32' y='45' font-size='38' text-anchor='middle' fill='white'%3E%E0%A6%9A%3C/text%3E%3C/svg%3E">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="চাকরির খবর">
+<meta property="og:locale" content="bn_BD">
+<meta property="og:url" content="__SITE__/">
+<meta property="og:title" content="চাকরির খবর | সরকারি ও বেসরকারি নতুন চাকরি">
+<meta property="og:description" content="বাংলাদেশের সরকারি ও বেসরকারি নতুন চাকরির বিজ্ঞপ্তি, প্রতি কয়েক ঘণ্টায় আপডেট।">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="চাকরির খবর | সরকারি ও বেসরকারি নতুন চাকরি">
+<meta name="twitter:description" content="বাংলাদেশের সরকারি ও বেসরকারি নতুন চাকরির বিজ্ঞপ্তি, প্রতি কয়েক ঘণ্টায় আপডেট।">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"চাকরির খবর","url":"__SITE__/","inLanguage":"bn-BD"}</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=Noto+Sans+Bengali:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -306,6 +366,11 @@ j.style.display=ok?"":"none";if(ok)shown++;});
 grps.forEach(function(g){
 var n=0;g.querySelectorAll(".job").forEach(function(j){if(j.style.display!=="none")n++});
 g.style.display=n?"":"none";g.querySelector("small").textContent=bn(n)+"টি";});
+/* ধরন ফিল্টার বদলালে ক্যাটাগরি চিপের সংখ্যা ঠিক রাখা */
+document.querySelectorAll("#cats .chip:not([data-c=''])").forEach(function(b){
+var n=jobs.filter(function(j){return (k=="all"||j.dataset.k==k)&&j.dataset.c==b.dataset.c}).length;
+b.style.display=(n||b.dataset.c===c)?"":"none";
+var sm=b.querySelector("small");if(sm)sm.textContent=bn(n);});
 none.style.display=(shown||!jobs.length)?"none":"block";mark();}
 document.querySelectorAll("#kinds .chip").forEach(function(b){b.addEventListener("click",function(){k=b.dataset.k;run()})});
 document.querySelectorAll("#cats .chip").forEach(function(b){b.addEventListener("click",function(){c=b.dataset.c;run()})});
@@ -339,12 +404,17 @@ html = (PAGE.replace("__SITE__", SITE).replace("__CONTACT__", CONTACT).replace("
 with open("index.html", "w", encoding="utf-8") as f:
     f.write(html)
 
-lastmod = NOW.strftime("%Y-%m-%d")
+# sitemap: lastmod = ডেটা আপডেটের সময় (না থাকলে বিল্ডের সময়)
+lastmod = (updated or NOW).strftime("%Y-%m-%d")
 with open("sitemap.xml", "w", encoding="utf-8") as f:
     f.write(
         '<?xml version="1.0" encoding="UTF-8"?>\n'
         '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
-        f"<url><loc>{SITE}/</loc><lastmod>{lastmod}</lastmod>"
-        "<changefreq>hourly</changefreq><priority>1.0</priority></url>\n</urlset>\n"
+        f"<url><loc>{SITE}/</loc><lastmod>{lastmod}</lastmod></url>\n</urlset>\n"
     )
-print(f"index.html ও sitemap.xml তৈরি ({len(jobs)}টি জব)")
+
+# robots.txt
+with open("robots.txt", "w", encoding="utf-8") as f:
+    f.write(f"User-agent: *\nAllow: /\n\nSitemap: {SITE}/sitemap.xml\n")
+
+print(f"index.html, sitemap.xml ও robots.txt তৈরি ({len(jobs)}টি জব)")
