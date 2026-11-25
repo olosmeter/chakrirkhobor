@@ -1,8 +1,107 @@
 {
- "updated": "2026-11-25T06:59:47+06:00",
- "count": 895,
+ "updated": "2026-11-25T09:57:00+06:00",
+ "count": 904,
  "bdjobs_api_purged": true,
  "jobs": [
+  {
+   "id": "601440ababc5",
+   "title": "সিঙ্গারে নিয়োগ বিজ্ঞপ্তি, পাবেন সপ্তাহে দুই দিন ছুটি",
+   "url": "https://news.google.com/rss/articles/CBMiV0FVX3lxTE5MbDczZkRod3c0b3NETHJBSHFYMWVrVjhSRjVNaTJsdDE2aGEyb0pnbGV2SVE2bVBJVkZ2UlFWQ1pvaW0tdTloaUlYSzBNdzdYWUdEYllJaw?oc=5",
+   "source": "ঢাকা পোস্ট",
+   "type": "private",
+   "title_bn": "সিঙ্গারে নিয়োগ বিজ্ঞপ্তি",
+   "category": "অন্যান্য",
+   "deadline": "",
+   "first_seen": "2026-11-25T09:57:00+06:00"
+  },
+  {
+   "id": "149e597b9123",
+   "title": "সিলেটে সরকারি চাকরি, এসএসসি পাসেই আবেদন",
+   "url": "https://news.google.com/rss/articles/CBMiUEFVX3lxTE5udzhWUTJ4T1hSVDR0bWxPVWVQRU1FbGJTTkF2dzBIRThfLXV2aThndlE1UkhZYmJhaDV1RjNKMl9hcEMyOVNST3lMTjJCUkFj?oc=5",
+   "source": "কালবেলা",
+   "type": "govt",
+   "title_bn": "সিলেটে সরকারি চাকরি, এসএসসি পাসেই আবেদন",
+   "category": "সরকারি",
+   "deadline": "",
+   "first_seen": "2026-11-25T09:57:00+06:00"
+  },
+  {
+   "id": "e042e9b36e2a",
+   "title": "Technical Officer WAVE Foundation Rajshahi Deadline 30 Nov 2026 Experience At least 3 years Rajshahi Education Bachelor of Business Administration (BBA) At least 3 years Deadline: 30 Nov 2026",
+   "url": "https://bdjobs.com/h/details/1560272?ln=1",
+   "source": "Bdjobs জব তালিকা",
+   "type": "private",
+   "title_bn": "টেকনিক্যাল অফিসার পদে ওয়েভ ফাউন্ডেশনে চাকরি",
+   "category": "এনজিও",
+   "deadline": "",
+   "first_seen": "2026-11-25T09:57:00+06:00"
+  },
+  {
+   "id": "32e75119675b",
+   "title": "Marketing And Brand Promoter Niramoy Express Sylhet Deadline 05 Dec 2026 Experience 0 to 4 years Sylhet Education HSC 0 to 4 years Deadline: 05 Dec 2026",
+   "url": "https://bdjobs.com/h/details/1560260?ln=1",
+   "source": "Bdjobs জব তালিকা",
+   "type": "private",
+   "title_bn": "মার্কেটিং অ্যান্ড ব্র্যান্ড প্রমোটর পদে নিয়োগ",
+   "category": "অন্যান্য",
+   "deadline": "",
+   "first_seen": "2026-11-25T09:57:00+06:00"
+  },
+  {
+   "id": "6fbc948d1d22",
+   "title": "Daffodil Group Intern – i2i Campus Activation Program - Skill Jobs Dhanmondi, Dhaka Nov 25, 2026 Internship Work From Office Salary Negotiable",
+   "url": "https://www.skill.jobs/jobs/intern-i2i-campus-activation-program-skill-jobs-HYPa8VUU",
+   "source": "Skill.Jobs",
+   "type": "private",
+   "title_bn": "ড্যাফোডিল গ্রুপে ইন্টার্ন নিয়োগ",
+   "category": "শিক্ষা",
+   "deadline": "",
+   "first_seen": "2026-11-25T09:57:00+06:00"
+  },
+  {
+   "id": "2e15ad10f94f",
+   "title": "Career Development Center(CDC-DIU) Assistant Executive/Executive - HR, Admin & Compliance (Sailor Factory) - (Epyllion Group) Dhaka (Mirpur) Nov 25, 2026 Full Time Work From Office Salary Negotiable",
+   "url": "https://www.skill.jobs/jobs/assistant-executiveexecutive-hr-admin-compliance-sailor-factory-epyllion-group-Ui9OkqrY",
+   "source": "Skill.Jobs",
+   "type": "private",
+   "title_bn": "এপিলিয়ন গ্রুপে এচআর ও অ্যাডমিন পদে চাকরি",
+   "category": "অন্যান্য",
+   "deadline": "",
+   "first_seen": "2026-11-25T09:57:00+06:00"
+  },
+  {
+   "id": "6e0981b8aa76",
+   "title": "Career Development Center(CDC-DIU) Senior Manager - Learning & Development (For Corporate) - (Epyllion Group) Dhaka (Tejgaon) Nov 25, 2026 Full Time Work From Office Salary Negotiable",
+   "url": "https://www.skill.jobs/jobs/senior-manager-learning-development-for-corporate-epyllion-group-s3ldQth2",
+   "source": "Skill.Jobs",
+   "type": "private",
+   "title_bn": "সিনিয়র ম্যানেজার - লার্নিং অ্যান্ড ডেভেলপমেন্ট",
+   "category": "অন্যান্য",
+   "deadline": "",
+   "first_seen": "2026-11-25T09:57:00+06:00"
+  },
+  {
+   "id": "18d9824bbb5f",
+   "title": "Career Development Center(CDC-DIU) Manager/ Senior Manager - HR, Admin & Compliance - (Epyllion Group) Dhaka (Tejgaon) Nov 25, 2026 Full Time Work From Office Salary Negotiable",
+   "url": "https://www.skill.jobs/jobs/manager-senior-manager-hr-admin-compliance-epyllion-group-WqyRZMm7",
+   "source": "Skill.Jobs",
+   "type": "private",
+   "title_bn": "ম্যানেজার/সিনিয়র ম্যানেজার - এইচআর, অ্যাডমিন অ্যান্ড কমপ্লায়েন্স",
+   "category": "অন্যান্য",
+   "deadline": "",
+   "first_seen": "2026-11-25T09:57:00+06:00"
+  },
+  {
+   "id": "14ac8739cc80",
+   "title": "Career Development Center(CDC-DIU) Junior Executive/ Executive - Customer Support(BRACNet Limited) Navana Yusuf Infinity (Level-7), 16 Mohakhali C/A, Dhaka-1212 Nov 25, 2026 Full Time Work From Office Salary Negotiable",
+   "url": "https://www.skill.jobs/jobs/junior-executive-executive-customer-supportbracnet-limited-hMnClJo2",
+   "source": "Skill.Jobs",
+   "type": "private",
+   "title_bn": "জুনিয়র এক্সিকিউটিভ/এক্সিকিউটিভ - কাস্টমার সাপোর্ট",
+   "category": "অন্যান্য",
+   "deadline": "",
+   "first_seen": "2026-11-25T09:57:00+06:00"
+  },
   {
    "id": "826acefbb268",
    "title": "১৩-২০তম গ্রেডে সমাজকল্যাণ মন্ত্রণালয়ে নিয়োগ, আবেদন করতে পারবেন যারা",
