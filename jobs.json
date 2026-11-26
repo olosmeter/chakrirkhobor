@@ -1,8 +1,85 @@
 {
- "updated": "2026-11-26T07:00:55+06:00",
- "count": 1076,
+ "updated": "2026-11-26T09:55:04+06:00",
+ "count": 1083,
  "bdjobs_api_purged": true,
  "jobs": [
+  {
+   "id": "1a9f60456a0e",
+   "title": "৫৯ পদে কর অঞ্চল ২৪ ঢাকা নিয়োগ ২০২৬ প্রকাশিত! TAX24 Dhaka Job Circular 2026",
+   "url": "https://bdgovtjob.net/tax24-job-circular/",
+   "source": "BD Govt Job",
+   "type": "govt",
+   "title_bn": "কর অঞ্চল ২৪ ঢাকা নিয়োগ",
+   "category": "সরকারি",
+   "deadline": "",
+   "first_seen": "2026-11-26T09:55:04+06:00"
+  },
+  {
+   "id": "b3e5e2df2998",
+   "title": "৩৬ পদে কর অঞ্চল সিলেট নিয়োগ ২০২৬ প্রকাশিত – Taxes Zone Sylhet Job Circular 2026",
+   "url": "https://bdgovtjob.net/taxes-zone-sylhet-job-circular/",
+   "source": "BD Govt Job",
+   "type": "govt",
+   "title_bn": "কর অঞ্চল সিলেট নিয়োগ বিজ্ঞপ্তি",
+   "category": "সরকারি",
+   "deadline": "",
+   "first_seen": "2026-11-26T09:55:04+06:00"
+  },
+  {
+   "id": "af79df92600d",
+   "title": "২৫ পদে খুলনা বিশ্ববিদ্যালয় নিয়োগ বিজ্ঞপ্তি ২০২৬",
+   "url": "https://bdgovtjob.net/khulna-university-job-circular/",
+   "source": "BD Govt Job",
+   "type": "govt",
+   "title_bn": "খুলনা বিশ্ববিদ্যালয় নিয়োগ বিজ্ঞপ্তি",
+   "category": "শিক্ষা",
+   "deadline": "",
+   "first_seen": "2026-11-26T09:55:04+06:00"
+  },
+  {
+   "id": "91737f88c4b3",
+   "title": "৬৭ পদে ই-জোন এইচআরএম লিমিটেড নিয়োগ বিজ্ঞপ্তি ২০২৬",
+   "url": "https://bdgovtjob.net/e-zone-hrm-limited-job-circular/",
+   "source": "BD Govt Job",
+   "type": "private",
+   "title_bn": "ই-জোন এইচআরএম লিমিটেড নিয়োগ বিজ্ঞপ্তি",
+   "category": "অন্যান্য",
+   "deadline": "",
+   "first_seen": "2026-11-26T09:55:04+06:00"
+  },
+  {
+   "id": "a1004703b4c5",
+   "title": "ন্যাশনাল ব্যাংকে নিয়োগ বিজ্ঞপ্তি, আবেদন চলবে আরও ৫ দিন",
+   "url": "https://news.google.com/rss/articles/CBMiV0FVX3lxTE51aS1LcGxzREZUTW9tdmlYTkxRaDNENHluTURtVS04bXZ5N0RZUU11Mm5wdUlVVU5NZFUwU1lRU1lnb19GbjAxek90enQ0cjRrcWJURndwSQ?oc=5",
+   "source": "ঢাকা পোস্ট",
+   "type": "private",
+   "title_bn": "ন্যাশনাল ব্যাংке নিয়োগ বিজ্ঞপ্তি",
+   "category": "ব্যাংক",
+   "deadline": "",
+   "first_seen": "2026-11-26T09:55:04+06:00"
+  },
+  {
+   "id": "94e99271607a",
+   "title": "Assistant Manager- Admin Hop Lun (Bangladesh) Ltd Dhaka Deadline 26 Dec 2026 Experience 4 to 8 years Dhaka Education Bachelor of Commerce (BCom) 4 to 8 years Deadline: 26 Dec 2026",
+   "url": "https://bdjobs.com/h/details/1560693?ln=1",
+   "source": "Bdjobs জব তালিকা",
+   "type": "private",
+   "title_bn": "অ্যাসিস্ট্যান্ট ম্যানেজার - অ্যাডমিন পদে চাকরি",
+   "category": "অন্যান্য",
+   "deadline": "",
+   "first_seen": "2026-11-26T09:55:04+06:00"
+  },
+  {
+   "id": "750d5523209a",
+   "title": "Digital Marketing & Corporate Communication Executive Mindora Limited Lalmatia Deadline 10 Dec 2026 Experience At least 3 years Lalmatia At least 3 years Deadline: 10 Dec 2026",
+   "url": "https://bdjobs.com/h/details/1560672?ln=1",
+   "source": "Bdjobs জব তালিকা",
+   "type": "private",
+   "title_bn": "ডিজিটাল মার্কেটিং অ্যান্ড করপোরেট কমিউনিকেশন এক্সিকিউটিভ পদে চাকরি",
+   "category": "অন্যান্য",
+   "deadline": "",
+   "first_seen": "2026-11-26T09:55:04+06:00"
+  },
   {
    "id": "22ee76d0ceb4",
    "title": "৪৪তম বিসিএসে শিক্ষা ক্যাডারে একজনকে নিয়োগ",
