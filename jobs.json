@@ -1,8 +1,85 @@
 {
- "updated": "2026-11-27T13:08:36+06:00",
- "count": 1267,
+ "updated": "2026-11-27T16:02:13+06:00",
+ "count": 1274,
  "bdjobs_api_purged": true,
  "jobs": [
+  {
+   "id": "c448dd5ff605",
+   "title": "আখতার গ্রুপে নিয়োগ, ২৩ বছর বয়স হলেই আবেদন",
+   "url": "https://news.google.com/rss/articles/CBMiXkFVX3lxTE50WVRHZHAzdzZmUzJTanMta0E4NnpWYUlRM1lVRDVvWGpMc2hSNHFVSFFmT0FRZjBjSFROdUR5d0lZeGo2a29Pc2U3bzFkQWVZblpYZ0NEUHI3aDE2NGc?oc=5",
+   "source": "জাগো নিউজ",
+   "type": "private",
+   "title_bn": "আখতার গ্রুপে চাকরি",
+   "category": "অন্যান্য",
+   "deadline": "",
+   "first_seen": "2026-11-27T16:02:13+06:00"
+  },
+  {
+   "id": "f6cdce64ad64",
+   "title": "অফিসার পদে জনবল নিয়োগ দেবে কমিউনিটি ব্যাংক",
+   "url": "https://news.google.com/rss/articles/CBMiXkFVX3lxTE04RVJEdHIzcTFqaF95SjlXcXNoVUJxUDh6QWViQ0RpWXZEalRoQm1VdkFMTTZaWTVZaEpCS2Q1Q0ZPQ3hGZF9SZ19OOVVGMlMzSllkV3YyRXNfSTFFQ2c?oc=5",
+   "source": "জাগো নিউজ",
+   "type": "private",
+   "title_bn": "কমিউনিটি ব্যাংকে অফিসার পদে চাকরি",
+   "category": "ব্যাংক",
+   "deadline": "",
+   "first_seen": "2026-11-27T16:02:13+06:00"
+  },
+  {
+   "id": "c20197450547",
+   "title": "মিউচুয়াল ট্রাস্ট ব্যাংকে নিয়োগ, ২৪ বছর হলেই আবেদন",
+   "url": "https://news.google.com/rss/articles/CBMiXkFVX3lxTE9PWHhsRGZaeUF5eUtfSWh0cG1obm56S3dyc0hQTVVGNXhvRjIwZW9IVVp4V3pUdnpkQTUtREp5RF9iV0lBcmFYa0RObnVHTng1S2lIX2FacHFqOTc5Rmc?oc=5",
+   "source": "জাগো নিউজ",
+   "type": "private",
+   "title_bn": "মিউচুয়াল ট্রাস্ট ব্যাংকে চাকরি",
+   "category": "ব্যাংক",
+   "deadline": "",
+   "first_seen": "2026-11-27T16:02:13+06:00"
+  },
+  {
+   "id": "cef264fdd7c1",
+   "title": "নিয়োগ দেবে আকিজ ইলেকট্রিক, বিমাসহ রয়েছে প্রভিডেন্ট ফান্ড",
+   "url": "https://news.google.com/rss/articles/CBMiV0FVX3lxTFA1WjE2STc1RGVMY0tKQm1mdnpOMDJSSTRlQ1R4ZUpYZ3pyUVBkaWdFVEFnVmMySWVaUDg0V01kMzV6Szd0ZHJPN0FsbGMySTQ3OVhPUnpGUQ?oc=5",
+   "source": "ঢাকা পোস্ট",
+   "type": "private",
+   "title_bn": "আকিজ ইলেকট্রিকে চাকরি",
+   "category": "অন্যান্য",
+   "deadline": "",
+   "first_seen": "2026-11-27T16:02:13+06:00"
+  },
+  {
+   "id": "b6d0ae8210fd",
+   "title": "নিয়োগ দেবে ট্রাস্ট ব্যাংক, স্নাতক পাসেই আবেদনের সুযোগ",
+   "url": "https://news.google.com/rss/articles/CBMiYEFVX3lxTFBVTjBtdE03ZFNKbVg2QmR6ay12YzFDc3pwckMwM3RBeGp3LXVRT2lIbERBMnBLS3plOUtLdGpnT2ZKbkduTnNFUHhaaVlwMlpqOTN3MklaTnA1aU9vZWhWRtIBZkFVX3lxTFBydjd0NUpCWkRub0JGV0NkeXZENC12WHAwTEF2U2RzakptRlBQWXVxTU1ZdjVMV2FxM1paR3pValJKZHYwLVFRY2hLNTNjRFNxbGtXWldRWUF5WE8wWFJzdVVNWDdCdw?oc=5",
+   "source": "আজকের পত্রিকা",
+   "type": "private",
+   "title_bn": "ট্রাস্ট ব্যাংকে চাকরি",
+   "category": "ব্যাংক",
+   "deadline": "",
+   "first_seen": "2026-11-27T16:02:13+06:00"
+  },
+  {
+   "id": "5ae6cda496d2",
+   "title": "Daffodil Group Intern – Talent Acquisition & Corporate Affairs (Skill Jobs) Dhanmondi 32, Dhaka Nov 27, 2026 Internship Work From Office Salary Negotiable",
+   "url": "https://www.skill.jobs/jobs/intern-talent-acquisition-corporate-affairs-skill-jobs-fiOFe7LM",
+   "source": "Skill.Jobs",
+   "type": "private",
+   "title_bn": "ড্যাফোডিল গ্রুপে ইন্টার্ন পদে নিয়োগ",
+   "category": "আইটি",
+   "deadline": "",
+   "first_seen": "2026-11-27T16:02:13+06:00"
+  },
+  {
+   "id": "8c96885a4e12",
+   "title": "Daffodil Group Affiliate Referrer, Eduvas Partnership Program (Daffodil Computers PLC) Anywhere in Bangladesh Nov 27, 2026 Part Time Work From Office Salary Negotiable",
+   "url": "https://www.skill.jobs/jobs/affiliate-referrer-eduvas-partnership-program-daffodil-computers-plc-cPat84ej",
+   "source": "Skill.Jobs",
+   "type": "private",
+   "title_bn": "ড্যাফোডিল গ্রুপে অ্যাফিলিয়েট রেফারার পদে নিয়োগ",
+   "category": "আইটি",
+   "deadline": "",
+   "first_seen": "2026-11-27T16:02:13+06:00"
+  },
   {
    "id": "6404dbe53a5d",
    "title": "আরপিসিএল-নরিনকো ইন্টারন্যাশনাল পাওয়ার লিমিটেড (RNPL) নিয়োগ বিজ্ঞপ্তি ২০২৬",
