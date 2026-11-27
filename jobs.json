@@ -1,8 +1,19 @@
 {
- "updated": "2026-11-27T21:55:32+06:00",
- "count": 1287,
+ "updated": "2026-11-28T00:52:55+06:00",
+ "count": 1288,
  "bdjobs_api_purged": true,
  "jobs": [
+  {
+   "id": "e25bf573edb8",
+   "title": "ওয়ান ব্যাংকে অফিসার নিয়োগ, থাকতে হবে স্নাতক পাস",
+   "url": "https://news.google.com/rss/articles/CBMiXkFVX3lxTFBzbTdOYnZDLV9DTjR5TndnM3VXWWhiSmRqd0ozOHVlbGVUclMya1U0aVdsNHBFRlp5amttZXFPWkZWRk1PR05OYjkxeGdDajBvVjhBY0FaNXlWR3hIRlE?oc=5",
+   "source": "জাগো নিউজ",
+   "type": "private",
+   "title_bn": "ওয়ান ব্যাংকে অফিসার নিয়োগ",
+   "category": "ব্যাংক",
+   "deadline": "",
+   "first_seen": "2026-11-28T00:52:55+06:00"
+  },
   {
    "id": "521ced7ee95d",
    "title": "চাকরি দিচ্ছে বাংলাদেশ সেনাবাহিনী, এসএসসি পাসেও আবেদনের সুযোগ",
