@@ -1,151 +1,461 @@
 #!/usr/bin/env python3
-"""jobs.json থেকে index.html, sitemap.xml ও robots.txt বানায়।
-(ফিক্স: সরকারি/বেসরকারি শনাক্তকরণ, ক্র্যাশ-সেফ ডেটা, SEO, ক্যাটাগরি কাউন্ট)"""
+"""jobs.json থেকে index.html, sitemap.xml ও robots.txt বানায়।"""
 import json
+import os
 import re
 from html import escape
 from collections import Counter
 from datetime import datetime, timezone, timedelta
+from urllib.parse import urlsplit
 
 SITE = "https://chakrirkhobor.pages.dev"
 CONTACT = "nazmul.24x@gmail.com"
 BD = timezone(timedelta(hours=6))
 NOW = datetime.now(BD)
-GROUPS = ["আজ", "গতকাল", "এই সপ্তাহ", "আগের"]
-# হেডিংয়ে কিওয়ার্ডসহ নাম দেখাবে (SEO)
+
+# টাইমজোনহীন (naive) সময় কোন জোনে ধরা হবে। আপনার বট/স্ক্র্যাপার UTC-তে naive সময়
+# লিখলে এটি timezone.utc করুন। এখন আগের মতোই BD ধরা হচ্ছে (আচরণ বদলায়নি)।
+NAIVE_TZ = BD
+
+GROUPS = ["আজ", "গতকাল", "এই সপ্তাহ", "নির্ধারিত", "আগের"]
+
 GROUP_TITLE = {
     "আজ": "আজকের চাকরির খবর",
     "গতকাল": "গতকালের চাকরির খবর",
     "এই সপ্তাহ": "এই সপ্তাহের চাকরির খবর",
+    "নির্ধারিত": "নির্ধারিত চাকরির বিজ্ঞপ্তি",
     "আগের": "আগের চাকরির বিজ্ঞপ্তি",
 }
 
 # ---------- সরকারি / বেসরকারি শনাক্তকরণ ----------
-# লক্ষ্য করো: এখানে "সরকারি", "বিশ্ববিদ্যালয়", "প্রশাসন" নেই,
-# কারণ "বেসরকারি"-র ভেতরেই "সরকারি" আছে এবং বাকি দুটো প্রাইভেটেও ব্যবহার হয়।
-GOVT_KW = [
-    "অধিদপ্তর", "অধিদফতর", "মন্ত্রণালয়", "জেলা প্রশাসক", "সিভিল সার্জন",
-    "মহাপরিচালক", "কর অঞ্চল", "কমিশনার", "এনবিআর", "সচিবালয়", "সেনাবাহিনী",
-    "বিমানবাহিনী", "নৌবাহিনী", "আনসার", "বিজিবি", "কোস্ট গার্ড",
-    "উপজেলা পরিষদ", "জেলা পরিষদ", "ইউনিয়ন পরিষদ", "বিসিএস",
-    "পাবলিক সার্ভিস কমিশন", "পুলিশ", "আদালত", "জজ কোর্ট",
-    "ডিএসসিসি", "ডিএনসিসি", "সিটি করপোরেশন", "ব্যানবেইস",
-    "বোয়েসেল", "সরকারিভাবে", "সরকারি চাকরি",
+GOVT_STRONG = [
+    "সোনালী ব্যাংক", "জনতা ব্যাংক", "অগ্রণী ব্যাংক", "রূপালী ব্যাংক",
+    "বাংলাদেশ ব্যাংক", "বেসিক ব্যাংক", "বিডিবিএল", "কৃষি ব্যাংক",
+    "বাংলাদেশ ডেভেলপমেন্ট ব্যাংক", "মন্ত্রণালয়", "অধিদপ্তর",
+    "অধিদফতর", "গোয়েন্দা",
 ]
-PRIVATE_KW = ["লিমিটেড", "পিএলসি", "এনজিও", "প্রাইভেট", "বেসরকারি",
-              "গ্রুপ", "গ্রামীণফোন", "ফাউন্ডেশন", "ইউনিভার্সিটি"]
-PRIVATE_EN = re.compile(r"\b(ltd|limited|plc|ngo|private|pvt|group|foundation|university)\b", re.I)
 
-# "বিশ্ববিদ্যালয়" নামে সাধারণত পাবলিক; এই নামগুলো প্রাইভেট
-PRIVATE_UNI = [
-    "নর্থ সাউথ", "ইস্ট ওয়েস্ট", "ব্র্যাক", "ইউআইইউ", "ইউনাইটেড ইন্টারন্যাশনাল",
-    "ড্যাফোডিল", "স্টামফোর্ড", "ইস্টার্ন", "সাউথইস্ট", "সাউথ ইস্ট", "গ্রিন",
-    "ইন্ডিপেন্ডেন্ট", "আহসানউল্লাহ", "আমেরিকান ইন্টারন্যাশনাল", "প্রাইম এশিয়া",
-    "সিটি ইউনিভার্সিটি", "বাংলাদেশ ইউনিভার্সিটি", "ইউসিএসআই", "লিডিং",
+# "কমিশন" ও "কর্তৃপক্ষ" খুব সাধারণ শব্দ ("কমিশন ভিত্তিক সেলস") — তাই সরাসরি না রেখে
+# নির্দিষ্ট প্রতিষ্ঠানের নাম রাখা হয়েছে।
+GOVT_KW = [
+    "অধিদপ্তর", "অধিদফতর", "মন্ত্রণালয়", "জেলা প্রশাসক",
+    "সিভিল সার্জন", "মহাপরিচালক", "কর অঞ্চল", "কমিশনার",
+    "পাবলিক সার্ভিস কমিশন", "দুর্নীতি দমন কমিশন", "নির্বাচন কমিশন",
+    "বিদ্যুৎ কমিশন", "এনবিআর", "সচিবালয়", "সেনাবাহিনী",
+    "বিমানবাহিনী", "নৌবাহিনী", "আনসার", "বিজিবি",
+    "কোস্ট গার্ড", "উপজেলা পরিষদ", "জেলা পরিষদ",
+    "ইউনিয়ন পরিষদ", "বিসিএস",
+    "পুলিশ", "আদালত", "জজ কোর্ট", "ডিএসসিসি",
+    "ডিএনসিসি", "সিটি করপোরেশন", "ব্যানবেইস",
+    "বোয়েসেল", "সরকারিভাবে", "সরকারি চাকরি",
+    "উন্নয়ন বোর্ড", "শিক্ষা বোর্ড",
+    "বিমান চলাচল কর্তৃপক্ষ", "বন্দর কর্তৃপক্ষ", "প্রাথমিক বিদ্যালয়",
+    "পৌরসভা", "ওয়াসা", "রেলওয়ে", "ডাক বিভাগ", "বিটিসিএল", "বিআরটিএ",
+    "ফায়ার সার্ভিস", "কারা অধিদ", "ট্রাইব্যুনাল", "পিডিবি", "পল্লী বিদ্যুৎ",
+    "বাংলাদেশ বিমান", "বিসিক", "জাতীয় সংসদ", "রাষ্ট্রায়ত্ত",
+    "বেপজা", "বিআইডব্লিউটিসি", "পেট্রোলিয়াম করপোরেশন",
+    "পার্বত্য জেলা পরিষদ",
 ]
+
+PRIVATE_KW = [
+    "লিমিটেড", "পিএলসি", "এনজিও", "প্রাইভেট",
+    "বেসরকারি", "গ্রুপ", "গ্রামীণফোন",
+    "ফাউন্ডেশন", "ইউনিভার্সিটি",
+]
+
+PRIVATE_EN = re.compile(
+    r"\b(ltd|limited|plc|ngo|private|pvt|group|foundation|university)\b",
+    re.I
+)
+
+# "ব্লাড গ্রুপ", "গ্রুপ-সি" ইত্যাদি বেসরকারি-সংকেত নয়
+NOT_GROUP = re.compile(
+    r"ব্লাড\s*গ্রুপ|গ্রুপ\s*[-–]\s*\S+|\bgroup\s*[-–]\s*\w+|blood\s*group",
+    re.I
+)
+
+PRIVATE_UNI = [
+    "নর্থ সাউথ", "ইস্ট ওয়েস্ট", "ব্র্যাক", "ইউআইইউ",
+    "ইউনাইটেড ইন্টারন্যাশনাল", "ড্যাফোডিল", "স্টামফোর্ড",
+    "ইস্টার্ন", "সাউথইস্ট", "সাউথ ইস্ট", "গ্রিন",
+    "ইন্ডিপেন্ডেন্ট", "আহসানউল্লাহ",
+    "আমেরিকান ইন্টারন্যাশনাল", "প্রাইম এশিয়া",
+    "সিটি ইউনিভার্সিটি", "বাংলাদেশ ইউনিভার্সিটি",
+    "ইউসিএসআই", "লিডিং",
+]
+
+
+# "সরকারি" শব্দ — কিন্তু "বেসরকারি"-র ভেতরের "সরকারি" নয়
+GOVT_WORD = re.compile(r"(?<!বে)সরকারি")
+
+# বেসরকারি হলেও "সরকারি" লেখা থাকতে পারে এমন বাক্যাংশ (যেমন "সরকারি অনুমোদিত")
+GOVT_WORD_FALSE = re.compile(r"সরকারি\s*(অনুমোদিত|নিবন্ধিত|স্বীকৃত)")
 
 
 def kind_of(j, title):
-    # ১) স্পষ্ট type থাকলে সেটাই চূড়ান্ত
+    """সরকারি/বেসরকারি নির্ণয়। অগ্রাধিকার ক্রম:
+    1. বট/জেমিনি যদি type দেয় (govt/private) — সেটাই চূড়ান্ত
+    2. নিশ্চিত সরকারি নাম (মন্ত্রণালয়, সরকারি ব্যাংক ইত্যাদি)
+    3. নিশ্চিত বেসরকারি সংকেত (লিমিটেড, পিএলসি, এনজিও, বেসরকারি)
+    4. শিরোনামে আলাদা শব্দ হিসেবে "সরকারি" (সরকারি হাসপাতাল, সরকারি কলেজ)
+    5. বিশ্ববিদ্যালয়: পরিচিত প্রাইভেট তালিকায় থাকলে বেসরকারি, নইলে সরকারি
+    6. সাধারণ সরকারি কীওয়ার্ড
+    7. বটের category == "সরকারি"
+    8. কিছুই না মিললে বেসরকারি
+    """
     t = str(j.get("type", "")).strip().lower()
+
     if t in ("govt", "private"):
         return t
+
+    # বট type-এ বাংলা/ভিন্ন বানান দিলেও ধরার চেষ্টা
+    if t in ("সরকারি", "government", "gov"):
+        return "govt"
+    if t in ("বেসরকারি", "pvt"):
+        return "private"
+
     text = f"{title} {j.get('title', '')}".lower()
-    # ২) বেসরকারি আগে
+    text = NOT_GROUP.sub(" ", text)
+    text = GOVT_WORD_FALSE.sub(" ", text)
+
+    if any(k in text for k in GOVT_STRONG):
+        return "govt"
+
     if any(k in text for k in PRIVATE_KW) or PRIVATE_EN.search(text):
         return "private"
-    # ৩) বিশ্ববিদ্যালয়: প্রাইভেট তালিকায় না থাকলে সরকারি
+
+    if GOVT_WORD.search(text):
+        return "govt"
+
     if "বিশ্ববিদ্যালয়" in text:
-        return "private" if any(k in text for k in PRIVATE_UNI) else "govt"
-    # ৪) সরকারি কিওয়ার্ড
+        return (
+            "private"
+            if any(k in text for k in PRIVATE_UNI)
+            else "govt"
+        )
+
     if any(k in text for k in GOVT_KW):
         return "govt"
-    # ৫) স্ক্র্যাপার সরকারি চিহ্নিত করলে
+
     if j.get("category") == "সরকারি":
         return "govt"
+
     return "private"
 
 
-# ---------- ক্যাটাগরি (সরকারি/বেসরকারি এখানে ক্যাটাগরি নয়, ওটা "ধরন") ----------
 CAT_RULES = [
-    ("সেনা-পুলিশ", ["সেনাবাহিনী", "বিমানবাহিনী", "নৌবাহিনী", "পুলিশ", "আনসার", "বিজিবি", "সৈনিক"]),
-    ("শিক্ষা", ["অধ্যাপক", "প্রভাষক", "লেকচারার", "শিক্ষক", "বিশ্ববিদ্যালয়", "ইউনিভার্সিটি",
-               "স্কুল", "কলেজ", "মাদ্রাসা", "professor", "lecturer"]),
+    ("সেনা-পুলিশ", [
+        "সেনাবাহিনী", "বিমানবাহিনী", "নৌবাহিনী",
+        "পুলিশ", "আনসার", "বিজিবি", "সৈনিক"
+    ]),
+    ("শিক্ষা", [
+        "অধ্যাপক", "প্রভাষক", "লেকচারার", "শিক্ষক",
+        "বিশ্ববিদ্যালয়", "ইউনিভার্সিটি", "স্কুল",
+        "কলেজ", "মাদ্রাসা", "ইনস্ট্রাক্টর",
+        "professor", "lecturer"
+    ]),
     ("ব্যাংক", ["ব্যাংক", "bank", "ইসলামী ব্যাংক"]),
-    ("স্বাস্থ্য", ["সিভিল সার্জন", "হাসপাতাল", "স্বাস্থ্য", "নার্স", "ডাক্তার", "মেডিকেল", "medical", "hospital"]),
+    ("স্বাস্থ্য", [
+        "সিভিল সার্জন", "হাসপাতাল", "স্বাস্থ্য",
+        "নার্স", "ডাক্তার", "মেডিকেল", "ফার্মা",
+        "প্যারামেডিক", "ল্যাব", "medical", "hospital"
+    ]),
     ("এনজিও", ["এনজিও", "ngo", "ফাউন্ডেশন", "foundation"]),
-    ("আইটি", ["সফটওয়্যার", "প্রোগ্রামার", "ডেভেলপার", "developer", "software", "আইটি"]),
+    ("আইটি", [
+        "সফটওয়্যার", "প্রোগ্রামার", "ডেভেলপার",
+        "developer", "software", "আইটি"
+    ]),
+    ("প্রকৌশল", [
+        "ইঞ্জিনিয়ার", "প্রকৌশলী", "টেকনিশিয়ান",
+        "আর্কিটেক্ট", "engineer"
+    ]),
+    ("সেলস ও মার্কেটিং", [
+        "সেলস", "মার্কেটিং", "বিজনেস ডেভেলপমেন্ট",
+        "টেলিসেলস", "টেরিটরি", "sales", "marketing"
+    ]),
+    ("অ্যাকাউন্টস ও ফাইন্যান্স", [
+        "অ্যাকাউন্ট", "একাউন্ট", "হিসাব",
+        "ফাইন্যান্স", "ফিন্যান্স", "অডিট",
+        "নিরীক্ষা", "accounts", "finance", "audit"
+    ]),
+    ("ডিজাইন ও মিডিয়া", [
+        "গ্রাফিক", "ভিডিও এডিটর", "ভিডিওগ্রাফার",
+        "কনটেন্ট", "ডিজাইনার", "ফটোগ্রাফার",
+        "সাংবাদিক", "রিপোর্টার", "ভিডিও এডিটিং"
+    ]),
+    ("প্রশাসন ও অফিস", [
+        "অফিস সহায়ক", "অফিস সহকারী", "অফিস সাপোর্ট",
+        "রিসেপশন", "ফ্রন্ট ডেস্ক", "পার্সোনাল",
+        "অ্যাডমিন", "এইচআর", "ডেটা এন্ট্রি",
+        "ডাটা এন্ট্রি", "কম্পিউটার অপারেটর",
+        "টাইপিস্ট", "সেক্রেটারি", "কাস্টমার"
+    ]),
+    ("নিরাপত্তা ও ড্রাইভার", [
+        "সিকিউরিটি", "নিরাপত্তা প্রহরী", "গার্ড",
+        "ড্রাইভার", "রাইডার", "পিয়ন",
+        "ক্লিনার", "মালী", "লিফট", "অপারেটর"
+    ]),
 ]
+
 NOT_CATS = {"", "সরকারি", "বেসরকারি", "অন্যান্য"}
 
 
 def cat_of(j, title):
     c = str(j.get("category") or "").strip()
+
     if c not in NOT_CATS:
         return c
+
     text = f"{title} {j.get('title', '')}".lower()
+
     for name, kws in CAT_RULES:
         if any(k in text for k in kws):
             return name
+
     return "অন্যান্য"
 
 
 # ---------- হেল্পার ----------
 def bn(n):
-    return str(n).translate(str.maketrans("0123456789", "০১২৩৪৫৬৭৮৯"))
+    return str(n).translate(
+        str.maketrans("0123456789", "০১২৩৪৫৬৭৮৯")
+    )
 
 
 def parse(iso):
-    """টাইমজোন না থাকলে BD ধরে; Z সাপোর্ট করে; সবসময় BD টাইমজোনে ফেরত দেয়।"""
     if not iso:
         return None
+
     try:
-        dt = datetime.fromisoformat(str(iso).replace("Z", "+00:00"))
-    except Exception:
+        dt = datetime.fromisoformat(
+            str(iso).replace("Z", "+00:00")
+        )
+    except (ValueError, TypeError):
         return None
-    return dt.replace(tzinfo=BD) if dt.tzinfo is None else dt.astimezone(BD)
+
+    return (
+        dt.replace(tzinfo=NAIVE_TZ).astimezone(BD)
+        if dt.tzinfo is None
+        else dt.astimezone(BD)
+    )
 
 
 def group_of(dt):
     if not dt:
         return "আগের"
+
     d = (NOW.date() - dt.date()).days
-    return "আজ" if d <= 0 else "গতকাল" if d == 1 else "এই সপ্তাহ" if d <= 7 else "আগের"
+
+    if d < 0:
+        return "নির্ধারিত"
+    if d == 0:
+        return "আজ"
+    if d == 1:
+        return "গতকাল"
+    if d <= 7:
+        return "এই সপ্তাহ"
+
+    return "আগের"
 
 
 def ago(dt):
     if not dt:
         return ""
-    h = int((NOW - dt).total_seconds() // 3600)
-    return "এইমাত্র" if h < 1 else f"{bn(h)} ঘণ্টা আগে" if h < 24 else f"{bn(h // 24)} দিন আগে"
+
+    seconds = (NOW - dt).total_seconds()
+
+    if seconds < 0:
+        return "প্রকাশের সময় আসেনি"
+
+    h = int(seconds // 3600)
+
+    if h < 1:
+        return "এইমাত্র"
+    if h < 24:
+        return f"{bn(h)} ঘণ্টা আগে"
+
+    days = h // 24
+
+    if days < 30:
+        return f"{bn(days)} দিন আগে"
+    if days < 365:
+        return f"{bn(days // 30)} মাস আগে"
+
+    return f"{bn(days // 365)} বছর আগে"
+
+
+def bn_period(hour):
+    if hour < 4:
+        return "রাত"
+    if hour < 6:
+        return "ভোর"
+    if hour < 12:
+        return "সকাল"
+    if hour < 15:
+        return "দুপুর"
+    if hour < 18:
+        return "বিকাল"
+    if hour < 20:
+        return "সন্ধ্যা"
+    return "রাত"
+
+
+def fmt_updated(dt):
+    h12 = dt.hour % 12 or 12
+    return (
+        f"{bn(dt.strftime('%d/%m/%Y'))}, "
+        f"{bn_period(dt.hour)} {bn(h12)}:{bn(dt.strftime('%M'))}"
+    )
+
+
+def fmt_deadline(d):
+    if not d:
+        return ""
+
+    dt = parse(d)
+
+    return bn(dt.strftime("%d/%m/%Y")) if dt else str(d)
+
+
+BAD_SCRIPT = re.compile(
+    r"[\u0400-\u04FF\u0600-\u06FF\u0900-\u097F]"
+)
+
+JUNK_URL = (
+    "/policies/",
+    "privacy-policy",
+    "terms-and-conditions",
+    "terms-of-service",
+    "shipping-policy",
+    "refund-policy",
+    "rmgjobs.com/pages/",
+)
+
+
+def clean_title(j):
+    tb = str(j.get("title_bn") or "")
+    raw = str(j.get("title") or "")
+
+    if (
+        tb and BAD_SCRIPT.search(tb)
+        and raw and not BAD_SCRIPT.search(raw)
+    ):
+        tb = raw
+
+    t = tb or raw
+
+    if BAD_SCRIPT.search(t):
+        t = BAD_SCRIPT.sub("", t)
+
+    return re.sub(r"\s+", " ", t).strip()
+
+
+def norm_title(t):
+    """সোর্স-নিরপেক্ষ ডুপ্লিকেট ধরার জন্য শিরোনাম স্বাভাবিক করে।"""
+    # \W ব্যবহার করা যাবে না: বাংলা স্বরচিহ্ন (ি, া ইত্যাদি) \w নয়, মুছে যেত
+    return re.sub(r"[\s।,.;:!?\-–—_'\"()\[\]]+", "", t.lower())
+
+
+def _write_atomic(path, text):
+    """আগে .tmp-এ লিখে পরে বদলায়, যাতে মাঝপথে ব্যর্থ হলে অর্ধেক ফাইল না থাকে।"""
+    tmp = path + ".tmp"
+
+    with open(tmp, "w", encoding="utf-8") as f:
+        f.write(text)
+
+    os.replace(tmp, path)
 
 
 # ---------- ডেটা লোড ----------
 try:
     with open("jobs.json", encoding="utf-8") as f:
         db = json.load(f)
-except Exception:
-    db = {}
-raw_jobs = db.get("jobs", []) if isinstance(db, dict) else []
+
+except FileNotFoundError:
+    raise SystemExit("ERROR: jobs.json ফাইল পাওয়া যায়নি")
+
+except json.JSONDecodeError as e:
+    raise SystemExit(
+        f"ERROR: jobs.json-এ JSON সমস্যা আছে: {e}"
+    )
+
+if not isinstance(db, dict):
+    raise SystemExit(
+        "ERROR: jobs.json-এর মূল ডেটা অবজেক্ট হতে হবে"
+    )
+
+raw_jobs = db.get("jobs", [])
+
+if not isinstance(raw_jobs, list):
+    raise SystemExit(
+        "ERROR: jobs.json-এর jobs অবশ্যই একটি তালিকা হতে হবে"
+    )
+
 
 jobs = []
+seen_urls, seen_titles, seen_global = set(), set(), set()
+
 for j in raw_jobs:
     if not isinstance(j, dict):
         continue
+
     url = str(j.get("url", "")).strip()
-    # শুধু http/https লিংক; javascript: ইত্যাদি বাদ
+
     if not url.lower().startswith(("http://", "https://")):
         continue
-    if not (j.get("title_bn") or j.get("title")):
+
+    low = url.lower()
+
+    if any(x in low for x in JUNK_URL):
         continue
+
+    ukey = low.split("#")[0].rstrip("/")
+
+    if ukey in seen_urls:
+        continue
+
+    title_fixed = clean_title(j)
+
+    if not title_fixed:
+        continue
+
+    tkey = (title_fixed, str(j.get("source", "")))
+
+    if tkey in seen_titles:
+        continue
+
+    # একই বিজ্ঞপ্তি ভিন্ন সোর্সে এলে বাদ দেওয়া হয়। শুধু লম্বা (নির্দিষ্ট) শিরোনামে
+    # প্রযোজ্য, যাতে "অফিস সহায়ক"-এর মতো ছোট সাধারণ শিরোনাম ভুলে বাদ না পড়ে।
+    gkey = norm_title(title_fixed)
+    use_global = len(gkey) >= 20
+
+    if use_global and gkey in seen_global:
+        continue
+
+    seen_urls.add(ukey)
+    seen_titles.add(tkey)
+
+    if use_global:
+        seen_global.add(gkey)
+
+    j["title_bn"] = title_fixed
     jobs.append(j)
 
-jobs.sort(key=lambda j: str(j.get("first_seen", "")), reverse=True)
-updated = parse(db.get("updated", "")) if isinstance(db, dict) else None
+
+# টাইমজোন-সেফ সর্ট; ম্যালফর্মেড first_seen সবার শেষে
+_MIN_DT = datetime.min.replace(tzinfo=BD)
+
+jobs.sort(
+    key=lambda j: parse(j.get("first_seen", "")) or _MIN_DT,
+    reverse=True
+)
+
+updated = parse(db.get("updated", ""))
 
 buckets = {g: [] for g in GROUPS}
 cats = Counter()
 today_count = 0
+
 for j in jobs:
     dt = parse(j.get("first_seen", ""))
     g = group_of(dt)
@@ -153,36 +463,75 @@ for j in jobs:
     raw_title = str(j.get("title", ""))
     title = str(j.get("title_bn") or raw_title)
     source = str(j.get("source", "") or "অজানা সোর্স")
-    kind = kind_of(j, title)
 
+    kind = kind_of(j, title)
     cat = cat_of(j, title)
+
     cats[cat] += 1
+
     if g == "আজ":
         today_count += 1
-    fresh = dt is not None and (NOW - dt).total_seconds() < 86400
-    q = escape(f"{title} {raw_title} {source} {cat}".lower())
-    buckets[g].append(
-        f'<a class="job {kind}" href="{escape(str(j["url"]).strip())}" target="_blank" rel="nofollow noopener" '
-        f'data-k="{kind}" data-c="{escape(cat)}" data-q="{q}">'
-        f'<span class="ttl">{escape(title)}{"<i class=dot title=নতুন></i>" if fresh else ""}</span>'
-        f'<span class="meta"><b class="tag">{"সরকারি" if kind == "govt" else "বেসরকারি"}</b>'
-        f'<span>{escape(cat)}</span><span>{escape(source)}</span>' +
-        (f'<span>শেষ: {escape(str(j["deadline"]))}</span>' if j.get("deadline") else "") +
-        f'<span class="when">{ago(dt)}</span></span></a>'
+
+    age_seconds = (
+        (NOW - dt).total_seconds()
+        if dt is not None
+        else None
     )
 
+    fresh = (
+        age_seconds is not None
+        and 0 <= age_seconds < 86400
+    )
+
+    q = escape(
+        f"{title} {raw_title} {source} {cat}".lower()
+    )
+
+    deadline_html = (
+        f'<span>শেষ: {escape(fmt_deadline(j.get("deadline")))}</span>'
+        if j.get("deadline")
+        else ""
+    )
+
+    dot_html = '<i class="dot" title="নতুন"></i>' if fresh else ""
+
+    buckets[g].append(
+        f'<a class="job {kind}" href="{escape(str(j["url"]).strip())}" '
+        f'target="_blank" rel="nofollow noopener noreferrer" '
+        f'data-k="{kind}" data-c="{escape(cat)}" data-q="{q}">'
+        f'<span class="ttl">{escape(title)}'
+        f'{dot_html}</span>'
+        f'<span class="meta">'
+        f'<b class="tag">{"সরকারি" if kind == "govt" else "বেসরকারি"}</b>'
+        f'<span>{escape(cat)}</span>'
+        f'<span>{escape(source)}</span>'
+        + deadline_html +
+        f'<span class="when">{ago(dt)}</span>'
+        f'</span></a>'
+    )
+
+
 sections = []
+
 for g in GROUPS:
     if buckets[g]:
         sections.append(
-            f'<section class="grp"><h2>{GROUP_TITLE[g]}<small>{bn(len(buckets[g]))}টি</small></h2>'
-            f'<div class="list">{"".join(buckets[g])}</div></section>'
+            f'<section class="grp">'
+            f'<h2>{GROUP_TITLE[g]}'
+            f'<small>{bn(len(buckets[g]))}টি</small></h2>'
+            f'<div class="list">{"".join(buckets[g])}</div>'
+            f'</section>'
         )
+
+
 chips = "".join(
-    f'<button class="chip" data-c="{escape(c)}">{escape(c)} <small>{bn(n)}</small></button>'
+    f'<button class="chip" data-c="{escape(c)}">'
+    f'{escape(c)} <small>{bn(n)}</small></button>'
     for c, n in cats.most_common(8)
 )
-upd = updated.strftime("%d/%m/%Y, %I:%M %p") if updated else "এখনো হয়নি"
+
+upd = fmt_updated(updated) if updated else "এখনো হয়নি"
+
 
 PAGE = """<!DOCTYPE html>
 <html lang="bn">
@@ -227,7 +576,6 @@ button,input{font:inherit}
 :focus-visible{outline:3px solid var(--red);outline-offset:3px}
 .wrap{width:min(900px,calc(100% - 32px));margin:0 auto}
 
-/* top navigation */
 .topbar{padding:14px 0}
 .nav{display:flex;align-items:center;justify-content:space-between;gap:12px}
 .brand{display:flex;align-items:center;gap:10px;font-weight:700;font-size:1.18rem}
@@ -237,7 +585,6 @@ button,input{font:inherit}
 .iconbtn{width:40px;height:40px;display:grid;place-items:center;border:1px solid var(--line);background:var(--surface);color:var(--ink);border-radius:13px;cursor:pointer}
 .iconbtn svg{width:19px;height:19px}
 
-/* hero */
 .hero{position:relative;margin-top:9px;padding:28px 28px 24px;border-radius:26px;background:linear-gradient(120deg,#0d3b26,#145b39 70%,#17804c);color:#f2fff6;overflow:hidden;box-shadow:0 14px 34px rgba(13,59,38,.15)}
 .hero:after{content:"";position:absolute;width:290px;height:290px;right:-105px;top:-130px;border-radius:50%;border:1px solid #ffffff20;box-shadow:0 0 0 35px #ffffff08,0 0 0 70px #ffffff06}
 .hero-inner{position:relative;z-index:1}
@@ -255,7 +602,6 @@ h1{font-size:clamp(1.8rem,5vw,2.65rem);line-height:1.25;margin:13px 0 7px;font-w
 .statbox span{display:block;font-size:.83rem;color:#d0e8d8;margin-top:3px}
 .updated{font-size:.82rem;color:#c5e1cf;align-self:center;padding-left:2px}
 
-/* search / filters */
 .tools{margin-top:16px;padding:14px;border:1px solid var(--line);background:var(--surface);border-radius:20px;box-shadow:var(--shadow)}
 .searchwrap{position:relative}
 .searchicon{position:absolute;left:14px;top:50%;transform:translateY(-50%);width:19px;height:19px;color:var(--mut)}
@@ -275,7 +621,6 @@ h1{font-size:clamp(1.8rem,5vw,2.65rem);line-height:1.25;margin:13px 0 7px;font-w
 .divider{height:1px;background:var(--line);margin:12px 0}
 #cats{padding-bottom:2px}
 
-/* jobs */
 main{padding:12px 0 40px}
 .grp{margin-top:23px}
 .grp h2{display:flex;align-items:center;gap:10px;margin:0 0 11px;font-size:1.12rem;font-weight:700}
@@ -301,7 +646,6 @@ footer{padding:20px 0 36px;text-align:center;color:var(--mut);font-size:.84rem;b
 .footerbrand{font-weight:600;color:var(--ink);margin-bottom:3px}
 .mobilebottom{display:none}
 
-/* responsive */
 @media(max-width:640px){
  .wrap{width:min(900px,calc(100% - 22px))}
  .topbar{padding:10px 0}
@@ -398,24 +742,26 @@ clearq.style.display=q.value?"block":"none";
 function run(){
 var s=q.value.trim().toLowerCase(),shown=0;
 jobs.forEach(function(j){
-var ok=(k=="all"||j.dataset.k==k)&&(!c||j.dataset.c==c)&&(!s||j.dataset.q.indexOf(s)>-1);
+var ok=(k==="all"||j.dataset.k===k)&&(!c||j.dataset.c===c)&&(!s||j.dataset.q.indexOf(s)>-1);
 j.style.display=ok?"":"none";if(ok)shown++;});
 grps.forEach(function(g){
 var n=0;g.querySelectorAll(".job").forEach(function(j){if(j.style.display!=="none")n++});
-g.style.display=n?"":"none";g.querySelector("small").textContent=bn(n)+"টি";});
-/* ধরন ফিল্টার বদলালে ক্যাটাগরি চিপের সংখ্যা ঠিক রাখা */
+g.style.display=n?"":"none";
+var sm=g.querySelector("small");if(sm)sm.textContent=bn(n)+"টি";});
+/* ধরন + সার্চ উভয়ই চিপের সংখ্যায় ধরা হয়; সিলেক্টেড চিপ ০ হলেও দৃশ্যমান থাকে */
 document.querySelectorAll("#cats .chip:not([data-c=''])").forEach(function(b){
-var n=jobs.filter(function(j){return (k=="all"||j.dataset.k==k)&&j.dataset.c==b.dataset.c}).length;
+var n=jobs.filter(function(j){return (k==="all"||j.dataset.k===k)&&(!s||j.dataset.q.indexOf(s)>-1)&&j.dataset.c===b.dataset.c}).length;
 b.style.display=(n||b.dataset.c===c)?"":"none";
 var sm=b.querySelector("small");if(sm)sm.textContent=bn(n);});
-none.style.display=(shown||!jobs.length)?"none":"block";mark();}
+none.style.display=(shown||!jobs.length)?"none":"block";
+mark();}
 document.querySelectorAll("#kinds .chip").forEach(function(b){b.addEventListener("click",function(){k=b.dataset.k;run()})});
 document.querySelectorAll("#cats .chip").forEach(function(b){b.addEventListener("click",function(){c=b.dataset.c;run()})});
 document.getElementById("reset").addEventListener("click",function(){k="all";c="";q.value="";run()});
 clearq.addEventListener("click",function(){q.value="";run();q.focus()});
 q.addEventListener("input",run);
 
-/* Theme toggle; no impact on job collection or scheduled automation */
+/* থিম টগল — চাকরি সংগ্রহ বা শিডিউল অটোমেশনে কোনো প্রভাব নেই */
 var themeBtn=document.getElementById("theme"),root=document.documentElement,icon=document.getElementById("themeIcon");
 function setTheme(t){
 root.setAttribute("data-theme",t);
@@ -433,25 +779,120 @@ themeBtn.addEventListener("click",function(){setTheme(root.getAttribute("data-th
 </html>
 """
 
-body = "".join(sections) if sections else '<p class="empty">এখনো কোনো বিজ্ঞপ্তি নেই। কিছুক্ষণ পর আবার দেখুন।</p>'
-html = (PAGE.replace("__SITE__", SITE).replace("__CONTACT__", CONTACT).replace("__TODAY__", bn(today_count))
-        .replace("__COUNT__", bn(len(jobs))).replace("__UPD__", escape(upd))
-        .replace("__CHIPS__", chips).replace("__LIST__", body))
 
-with open("index.html", "w", encoding="utf-8") as f:
-    f.write(html)
+body = (
+    "".join(sections)
+    if sections
+    else '<p class="empty">এখনো কোনো বিজ্ঞপ্তি নেই। কিছুক্ষণ পর আবার দেখুন।</p>'
+)
 
-# sitemap: lastmod = ডেটা আপডেটের সময় (না থাকলে বিল্ডের সময়)
-lastmod = (updated or NOW).strftime("%Y-%m-%d")
-with open("sitemap.xml", "w", encoding="utf-8") as f:
-    f.write(
-        '<?xml version="1.0" encoding="UTF-8"?>\n'
-        '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
-        f"<url><loc>{SITE}/</loc><lastmod>{lastmod}</lastmod></url>\n</urlset>\n"
+html = (
+    PAGE.replace("__SITE__", SITE)
+    .replace("__CONTACT__", CONTACT)
+    .replace("__TODAY__", bn(today_count))
+    .replace("__COUNT__", bn(len(jobs)))
+    .replace("__UPD__", escape(upd))
+    .replace("__CHIPS__", chips)
+    .replace("__LIST__", body)
+)
+
+_write_atomic("index.html", html)
+
+
+def write_sitemap(extra_urls=None):
+    """Home URL এবং বৈধ অতিরিক্ত URL দিয়ে sitemap.xml তৈরি করে।"""
+
+    lastmod = (updated or NOW).strftime("%Y-%m-%d")
+    site_host = urlsplit(SITE).netloc.lower()
+
+    lines = [
+        '<?xml version="1.0" encoding="UTF-8"?>',
+        '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">',
+        f"<url><loc>{escape(SITE + '/')}</loc>"
+        f"<lastmod>{lastmod}</lastmod></url>",
+    ]
+
+    seen = {SITE.rstrip("/") + "/"}
+
+    if isinstance(extra_urls, (list, tuple, set)):
+        for u in extra_urls:
+            raw = str(u).strip()
+
+            if not raw:
+                continue
+
+            if raw.startswith("/") and not raw.startswith("//"):
+                loc = SITE.rstrip("/") + raw
+
+            elif raw.lower().startswith(("http://", "https://")):
+                loc = raw
+
+            else:
+                continue
+
+            parsed = urlsplit(loc)
+
+            if parsed.scheme not in ("http", "https"):
+                continue
+
+            if parsed.netloc.lower() != site_host:
+                continue
+
+            if loc in seen:
+                continue
+
+            seen.add(loc)
+
+            lines.append(
+                f"<url><loc>{escape(loc)}</loc>"
+                f"<lastmod>{lastmod}</lastmod></url>"
+            )
+
+    lines.append("</urlset>")
+
+    _write_atomic("sitemap.xml", "\n".join(lines) + "\n")
+
+
+write_sitemap()
+
+_write_atomic(
+    "robots.txt",
+    f"User-agent: *\n"
+    f"Allow: /\n\n"
+    f"Sitemap: {SITE}/sitemap.xml\n"
+)
+
+print(
+    f"index.html, sitemap.xml ও robots.txt তৈরি ({len(jobs)}টি জব)"
+)
+
+
+# extra_pages.py এই স্ক্রিপ্টের গ্লোবাল ভ্যারিয়েবল (jobs, SITE, bn, NOW ইত্যাদি) ব্যবহার করে,
+# তাই exec পদ্ধতি ইচ্ছা করেই রাখা হয়েছে — import করলে ওই ফাইল ভেঙে যেত।
+try:
+    with open("extra_pages.py", encoding="utf-8") as _f:
+        _src = _f.read()
+
+    exec(compile(_src, "extra_pages.py", "exec"), globals())
+
+    _extra = globals().get("EXTRA_URLS")
+
+    if _extra:
+        try:
+            write_sitemap(_extra)
+            print(
+                f"sitemap.xml extended with {len(_extra)} extra URL(s)"
+            )
+
+        except Exception as e:
+            print("sitemap extend ব্যর্থ:", e)
+
+except FileNotFoundError:
+    print(
+        "extra_pages.py পাওয়া যায়নি, শুধু হোমপেজ তৈরি হয়েছে"
     )
 
-# robots.txt
-with open("robots.txt", "w", encoding="utf-8") as f:
-    f.write(f"User-agent: *\nAllow: /\n\nSitemap: {SITE}/sitemap.xml\n")
-
-print(f"index.html, sitemap.xml ও robots.txt তৈরি ({len(jobs)}টি জব)")
+except Exception as e:
+    import traceback
+    traceback.print_exc()
+    print("extra_pages ব্যর্থ:", e)
