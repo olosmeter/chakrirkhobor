@@ -1,8 +1,63 @@
 {
- "updated": "2026-11-27T16:02:13+06:00",
- "count": 1274,
+ "updated": "2026-11-27T19:02:15+06:00",
+ "count": 1279,
  "bdjobs_api_purged": true,
  "jobs": [
+  {
+   "id": "3e05bb23c55d",
+   "title": "ঢাকায় চাকরির সুযোগ দিচ্ছে এসিআই মটরস",
+   "url": "https://news.google.com/rss/articles/CBMiXkFVX3lxTE1kMjVHUnR4bUcybHY2U2ZfQ1pBbWYzejdIaVpoRWdQU1BHTDV2RW95a3RFSnJqSkxsZzgteF9FZXJsaU1ybkZWak1TM0FhMEVld1pzcWhwWUtjUjh0X2c?oc=5",
+   "source": "জাগো নিউজ",
+   "type": "private",
+   "title_bn": "এসিআই মটরসে চাকরির সুযোগ",
+   "category": "অন্যান্য",
+   "deadline": "",
+   "first_seen": "2026-11-27T19:02:15+06:00"
+  },
+  {
+   "id": "419dfaa6080c",
+   "title": "ন্যাশনাল ব্যাংকে ব্র্যাঞ্চ ম্যানেজার নিয়োগ, আবেদন অনলাইনে",
+   "url": "https://news.google.com/rss/articles/CBMiXkFVX3lxTFBmRDNyaUxqdVNCM2VQTWdYbkxyc3pxUWEwdWtxT0NKSktfVURBclc1dHVZTVdJVUlodEpvQmNnSlFBMVhLWXZ3OWFjYzJYWjFQaHlwV3ZGN1FhMlpxUWc?oc=5",
+   "source": "জাগো নিউজ",
+   "type": "private",
+   "title_bn": "ন্যাশনাল ব্যাংকে ব্র্যাঞ্চ ম্যানেজার নিয়োগ",
+   "category": "ব্যাংক",
+   "deadline": "",
+   "first_seen": "2026-11-27T19:02:15+06:00"
+  },
+  {
+   "id": "dc004f368fc1",
+   "title": "নিয়োগ দেবে কাজী ফার্মস গ্রুপ, রয়েছে নানা সুবিধা",
+   "url": "https://news.google.com/rss/articles/CBMiZEFVX3lxTE1USG5SNUdKSVhyNnJnX0tPakM0NlZ4aXBtSWU3YnF1MUcyVlh0aFJpWlp5XzFqZkRockhHbXBxZTJkSE03a1RuZHdhNUtza0c5WHNRSE1BVHFyT0ZqWnhBbWZmNDE?oc=5",
+   "source": "আজকের পত্রিকা",
+   "type": "private",
+   "title_bn": "কাজী ফার্মস গ্রুপে নিয়োগ",
+   "category": "অন্যান্য",
+   "deadline": "",
+   "first_seen": "2026-11-27T19:02:15+06:00"
+  },
+  {
+   "id": "53eeafda1fdd",
+   "title": "মেঘনা গ্রুপে ক্যারিয়ার গড়ার সুযোগ, আবেদন অনলাইনে",
+   "url": "https://news.google.com/rss/articles/CBMiZEFVX3lxTE1mTDlpN1VGdXhNZ3hNM0lzQld4djFKdnZUZGZaSHVJSHloZjByTUlfdGVISk5JOEIxVjRtdzFSM1hyckF1MG5zcllKaVZvZHRHN0pnWXRQcnB2LVhpYXFxcFhsb3XSAWpBVV95cUxOYVl0OHBrTVFieWRlVEJfU1VtbWFkdkxtN1N0MUpsN1BhMi1mbXJPSGxRMHpsY1EzdEpzSU5pdk1SaVZkSDg1Y25lRnJJcWJwQWwyY3NGTmZNVmJrcGJrZ0VRUV9lX3l6eG5R?oc=5",
+   "source": "আজকের পত্রিকা",
+   "type": "private",
+   "title_bn": "মেঘনা গ্রুপে ক্যারিয়ার গড়ার সুযোগ",
+   "category": "অন্যান্য",
+   "deadline": "",
+   "first_seen": "2026-11-27T19:02:15+06:00"
+  },
+  {
+   "id": "1ac2ac7e5e70",
+   "title": "Manager CAD SAG Fashion Ltd. Tongi Deadline 27 Dec 2026 Experience 8 to 12 years Tongi 8 to 12 years Deadline: 27 Dec 2026",
+   "url": "https://bdjobs.com/h/details/1561145?ln=1",
+   "source": "Bdjobs জব তালিকা",
+   "type": "private",
+   "title_bn": "ম্যানেজার সিএডি পদে নিয়োগ - এসএজি ফ্যাশন লিমিটেড",
+   "category": "অন্যান্য",
+   "deadline": "",
+   "first_seen": "2026-11-27T19:02:15+06:00"
+  },
   {
    "id": "c448dd5ff605",
    "title": "আখতার গ্রুপে নিয়োগ, ২৩ বছর বয়স হলেই আবেদন",
